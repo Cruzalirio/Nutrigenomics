@@ -67,17 +67,17 @@ The evaluation of the course Design of Experimental Studies and Applied Statisti
 
 | **Session** | **Date**       | **Type**         | **Description** |
 |--------------|----------------|------------------|-----------------|
-| 01 | 21/10/2025 | Lecture | Introduction to Nutrigenomics and Experimental Design |
+| 01 | 21/10/2025 | Lecture | Introduction to Nutrigenomics and Experimental Design. Installation of R and Rstudio |
 | 02 | 23/10/2025 | Lecture | Study Designs: Observational and Experimental |
-| 03 | 27/10/2025 | Lecture | Measures of Association |
-| 04 | 28/10/2025 | Practice 1 | Exploratory Data Analysis in R |
+| 03 | 27/10/2025 | Lecture | Measures of Association - RR - OR |
+| 04 | 28/10/2025 | Practice 1 | Measures of Association - RR - OR|
 | 05 | 30/10/2025 | Lecture | Data Management and Cleaning |
-| 06 | 03/11/2025 | Lecture | Multivariate Descriptive Analysis |
-| 07 | 04/11/2025 | Practice 2 | Principal Components and Clustering |
-| 08 | 06/11/2025 | Lecture | Correlation and Multivariate Association |
-| 09 | 10/11/2025 | Lecture | Experimental Design in Omics Contexts |
-| 10 | 11/11/2025 | Lecture | Integration of Clinical and Omics Data |
-| 11 | 13/11/2025 | Practice 3 | Applied Case Study in Nutrigenomics |
+| 06 | 03/11/2025 | Lecture | Correlation and Bivariate Association|
+| 07 | 04/11/2025 | Practice 2 |Exploratory Data Analysis in R|
+| 08 | 06/11/2025 | Lecture | Multivariate Descriptive Analysis |
+| 09 | 10/11/2025 | Lecture | Principal Components Analysis|
+| 10 | 11/11/2025 | Lecture | Clustering Analysis  |
+| 11 | 13/11/2025 | Practice 3 | Applied Case Study in Nutrigenomics in R|
 | 12 | 01/12/2025 | Lecture | Introduction to Systematic Reviews |
 | 13 | 02/12/2025 | Lecture | Synthesis and Preparation for Expositive Seminar |
 | 14 | 04/12/2025 | Seminar | **Final Expositive Seminar (Group Presentation)** |
