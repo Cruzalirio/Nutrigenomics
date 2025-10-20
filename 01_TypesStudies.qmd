@@ -128,16 +128,6 @@ For each of the following studies or study types, complete the tasks below:
 
 ---
 
-## Assessment System (Summary)
-
-| Component            | Weight | Recoverable | Period        | Note        | Improvement |
-|:-----------|:-----------|:-----------|:-----------|:-----------|:-----------|
-| Seminar presentation | 30%    | No          | Continuous    | –           | No          |
-| Final exam           | 45%    | Yes         | Complementary | Min grade 4 | No          |
-| Problem sets         | 25%    | No          | Continuous    | –           | No          |
-
-------------------------------------------------------------------------
-
 ## References
 
 -   Horne J et al. (2019). *BMC Public Health*. DOI: [10.1186/s12889-019-6621-8](https://doi.org/10.1186/s12889-019-6621-8)\
