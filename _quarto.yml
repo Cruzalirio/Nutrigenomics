@@ -1,0 +1,45 @@
+project:
+  type: book
+  output-dir: docs
+
+book:
+  title: "Design of Experimental Studies and Statistics Applied to Nutrigenomics"
+  author:
+    - "Alirio Cruz"
+  date: last-modified
+  reader-mode: true
+  page-footer:
+    left: |
+      Design of Experimental Studies and Statistics Applied to Nutrigenomics
+    right: |
+     This book has been created with  <a href="https://quarto.org/">Quarto</a>.
+  cover-image: Figures/atlas.jpeg
+  favicon: Figures/atlas.jpeg
+  site-url: https://Cruzalirio.github.io/Nutrigenomics
+  repo-url: https://github.com/Cruzalirio/Nutrigenomics
+  repo-branch: main
+  repo-actions: [edit, issue]
+  chapters:
+    - index.qmd
+    - 01_TypesStudies.qmd
+    - referencias.qmd
+
+bibliography: referencias.bib
+
+format:
+  html:
+    sidebar:
+      float: true  # Keeps sidebar floating on scroll
+      width: 300px  # Customize width if needed
+    page-layout: full
+    theme: cosmo
+    lang: es 
+  # pdf:
+  #   documentclass: scrreprt
+  #   linkcolor: blue
+  #   lang: es
+
+website:
+  sidebar:
+    style: "floating"
+    search: true

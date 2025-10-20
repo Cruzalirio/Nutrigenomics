@@ -1,0 +1,8 @@
+# Referencias {.unnumbered}
+
+::: {#refs}
+:::
+
+* Bolton, S., & Bon, C. B. (2010). Pharmaceutical Statistics: Practical and Clinical Applications (5th ed.). CRC Press.
+
+* Martínez González, M., Sánchez Villegas, A., & Faulín Fajardo, J. (2020). Bioestadística Amigable. CRC Press.

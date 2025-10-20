@@ -1,0 +1,5 @@
+# Presentación {.unnumbered}
+
+Esta edición en línea ofrecerá un compendio completo de los apuntes de la asignatura de Matemáticas y Estadística, diseñada específicamente para el grado de Farmacia en la UIB.
+
+El contenido combina un enfoque teórico-práctico que facilita la comprensión de los conceptos matemáticos y estadísticos fundamentales, aplicados al ámbito farmacéutico, proporcionando una herramienta esencial para el aprendizaje y la aplicación en situaciones reales de la disciplina.

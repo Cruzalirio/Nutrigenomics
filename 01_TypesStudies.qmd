@@ -1,0 +1,197 @@
+
+# 1. Overview
+
+This chapter introduces nutrigenomics from a **statistical perspective**, motivates key **experimental designs**, and reviews the **types of data** used in this field. It concludes with practical guidance for setting up R and the course repository.
+
+---
+
+## 1.1 What is Nutrigenomics (Statistical View)
+
+Nutrigenomics explores how dietary patterns influence gene expression, epigenetic marks, and metabolic outcomes. Statistically, we ask:
+
+- Which molecular features are associated with nutrient intake or dietary interventions?  
+- How to separate real signals from high-dimensional noise (multiple testing, regularization, FDR)?  
+- How to model complex designs and account for confounding or batch effects?  
+- How to quantify uncertainty and reproducibility?
+
+**Main challenges:** high dimensionality (p≫n), correlated predictors, measurement error in diet data, and causal inference vs. association.
+
+---
+
+## 1.2 Why Design Matters
+
+Design choice determines causal interpretability and power.
+
+- **Case–control (retrospective):** efficient for rare outcomes, common in gene–diet interaction studies.  
+  *Example:* Hoang et al., *JAMA Network Open* (2024). DOI: [10.1001/jamanetworkopen.2024.0465](https://doi.org/10.1001/jamanetworkopen.2024.0465)
+
+- **Cross-sectional:** exposure and outcome measured simultaneously, used for exploratory omics–diet associations.  
+  *Example:* Do et al., *Int J Epidemiol.* (2021). DOI: [10.1093/ije/dyaa215](https://doi.org/10.1093/ije/dyaa215)
+
+- **Randomized Controlled Trial (RCT):** causal inference via randomization; typical for genotype‑based dietary advice.  
+  *Example:* Horne et al., *BMC Public Health* (2019). DOI: [10.1186/s12889-019-6621-8](https://doi.org/10.1186/s12889-019-6621-8)
+
+**Note:** Randomization removes confounding in expectation; observational designs require covariate adjustment and sensitivity analyses.
+
+---
+
+## 1.3 Statistical View of Each Design
+
+| Design | Typical Model | Key Statistical Notes |
+|:--|:--|:--|
+| Case–control | Conditional logistic regression | Adjust for matching and population structure |
+| Cross-sectional | Linear model or GLM | Control FDR in omics scans |
+| RCT | Mixed models or ANCOVA | Power analysis, ITT principle |
+
+---
+
+## 1.4 Types of Data in Nutrigenomics
+
+1. **Omics data** (gene expression, methylation, metabolomics)  
+   - Example: EWAS of diet quality — DOI: [10.1093/ije/dyaa215](https://doi.org/10.1093/ije/dyaa215)
+2. **Clinical data** (anthropometry, blood lipids, disease outcomes)  
+   - Example: NOW Trial — DOI: [10.1186/s12889-019-6621-8](https://doi.org/10.1186/s12889-019-6621-8)
+3. **Dietary data** (FFQs, 24h recalls, dietary indices)  
+   - Example: Zheng et al., *PLOS ONE* (2020). DOI: [10.1371/journal.pone.0230669](https://doi.org/10.1371/journal.pone.0230669)
+
+Each has unique preprocessing and error structures (e.g., normalization for omics, energy adjustment for dietary data).
+
+---
+
+# 2. First R Session for Beginners
+
+This section introduces R to students with no prior experience.
+
+## 2.1 Software Installation
+
+- Install **R**: <https://cran.r-project.org>  
+- Install **RStudio (Posit Desktop)**: <https://posit.co/desktop>
+
+---
+
+## 2.2 Class Repository Setup
+
+1. Visit the course GitHub repository:  
+   `https://github.com/your-institution/nutrigenomics-course` (placeholder URL)
+2. Click **Code → Download ZIP** (or clone with Git if familiar).
+3. Open the folder in RStudio.
+
+The repository will include:
+
+```
+/data/          → datasets
+/scripts/       → R scripts for each class
+/assignments/   → homework templates
+```
+
+---
+
+## 2.3 Basic R Commands
+
+```r
+# Install packages
+install.packages("tidyverse")
+
+# Load libraries
+library(tidyverse)
+
+# Read a CSV file
+d <- read_csv("data/diet_gene_example.csv")
+
+# Inspect structure
+glimpse(d)
+
+# Quick summary
+d %>% group_by(case_status) %>% summarize(mean_BMI = mean(BMI, na.rm = TRUE), n = n())
+```
+
+### Exercise
+Run each line, explain what it does, and identify one potential data quality issue (missing values, unrealistic ranges, etc.).
+
+---
+
+# 3. Homework Assignment 1
+
+**Objective:** Ensure students can run R code and submit outputs.
+
+**Tasks:**
+1. Install R and RStudio.  
+2. Download or clone the GitHub repository.  
+3. Run the script `scripts/01_read_and_inspect.R`.  
+4. Save a screenshot of your R console with the output of `glimpse()` and `summary()`.
+5. Write a short note (4–6 sentences) describing the dataset, one variable of interest, and one issue you observed.
+
+**Submission:** Upload both files to the repository folder `submissions/`.
+
+---
+
+# 4. Assessment System (Summary)
+
+| Component | Weight | Recoverable | Period | Note | Improvement |
+|:-----------|:--------|:-------------|:---------|:-------|:--------------|
+| Seminar presentation | 30% | No | Continuous | – | No |
+| Final exam | 45% | Yes | Complementary | Min grade 4 | No |
+| Problem sets | 25% | No | Continuous | – | No |
+
+---
+
+# 5. References
+
+- Horne J et al. (2019). *BMC Public Health*. DOI: [10.1186/s12889-019-6621-8](https://doi.org/10.1186/s12889-019-6621-8)  
+- Hoang T et al. (2024). *JAMA Network Open*. DOI: [10.1001/jamanetworkopen.2024.0465](https://doi.org/10.1001/jamanetworkopen.2024.0465)  
+- Do WL et al. (2021). *Int J Epidemiol.* DOI: [10.1093/ije/dyaa215](https://doi.org/10.1093/ije/dyaa215)  
+- Zheng M et al. (2020). *PLOS ONE*. DOI: [10.1371/journal.pone.0230669](https://doi.org/10.1371/journal.pone.0230669)
+
+---
+
+# 6. GitHub Pages Setup Instructions
+
+To publish this Quarto book as a GitHub Pages site:
+
+1. Create a GitHub repository (e.g., `nutrigenomics-course`).
+2. Place this file inside a Quarto book structure:
+   ```
+   nutrigenomics-course/
+   ├── _quarto.yml
+   ├── index.qmd
+   ├── intro_nutrigenomics.qmd  ← this file
+   ├── data/
+   └── scripts/
+   ```
+3. Example `_quarto.yml`:
+   ```yaml
+   project:
+     type: book
+     output-dir: _site
+     render:
+       - index.qmd
+       - intro_nutrigenomics.qmd
+
+   book:
+     title: "Experimental Study Design & Applied Statistics in Nutrigenomics"
+     author: "Course Team"
+     chapters:
+       - index.qmd
+       - intro_nutrigenomics.qmd
+
+   format:
+     html:
+       theme: cosmo
+       toc: true
+   ```
+4. In RStudio terminal:
+   ```bash
+   quarto render
+   git add .
+   git commit -m "Initial build"
+   git push origin main
+   ```
+5. In GitHub: *Settings → Pages → Build from main branch /root directory*.
+6. Your course will appear at `https://your-username.github.io/nutrigenomics-course/`.
+
+---
+
+# End of Chapter 1
+
+Next chapter: **Study Design Methods in Nutrigenomics — Statistical Models and Examples**.
+
