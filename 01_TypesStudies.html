@@ -219,7 +219,7 @@ window.Quarto = {
   <li><a href="#basic-r-commands" id="toc-basic-r-commands" class="nav-link" data-scroll-target="#basic-r-commands"><span class="header-section-number">2.1.3</span> Basic R Commands</a></li>
   <li><a href="#exercise" id="toc-exercise" class="nav-link" data-scroll-target="#exercise"><span class="header-section-number">2.1.4</span> Exercise</a></li>
   </ul></li>
-  <li><a href="#homework-assignment-1" id="toc-homework-assignment-1" class="nav-link" data-scroll-target="#homework-assignment-1"><span class="header-section-number">2.2</span> Homework Assignment 1</a></li>
+  <li><a href="#homework-study-design-classification-and-critical-assessment" id="toc-homework-study-design-classification-and-critical-assessment" class="nav-link" data-scroll-target="#homework-study-design-classification-and-critical-assessment"><span class="header-section-number">2.2</span> Homework: Study Design Classification and Critical Assessment</a></li>
   <li><a href="#assessment-system-summary" id="toc-assessment-system-summary" class="nav-link" data-scroll-target="#assessment-system-summary"><span class="header-section-number">2.3</span> Assessment System (Summary)</a></li>
   <li><a href="#references" id="toc-references" class="nav-link" data-scroll-target="#references"><span class="header-section-number">2.4</span> References</a></li>
   </ul>
@@ -282,57 +282,67 @@ window.Quarto = {
 <h3 data-number="2.0.3" class="anchored" data-anchor-id="statistical-view-of-each-design"><span class="header-section-number">2.0.3</span> Statistical View of Each Design</h3>
 <table class="caption-top table">
 <colgroup>
-<col style="width: 33%">
-<col style="width: 33%">
-<col style="width: 33%">
+<col style="width: 21%">
+<col style="width: 35%">
+<col style="width: 21%">
+<col style="width: 21%">
 </colgroup>
 <thead>
 <tr class="header">
 <th style="text-align: left;"><strong>Design</strong></th>
+<th style="text-align: left;"><strong>Description</strong></th>
 <th style="text-align: left;"><strong>Typical Model</strong></th>
 <th style="text-align: left;"><strong>Key Statistical Notes</strong></th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
-<td style="text-align: left;">Case–control</td>
-<td style="text-align: left;">Conditional logistic regression</td>
-<td style="text-align: left;">Adjust for matching and population structure</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">Cross-sectional</td>
-<td style="text-align: left;">Linear model or GLM</td>
-<td style="text-align: left;">Control FDR in omics scans</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">Randomized Controlled Trial (RCT)</td>
-<td style="text-align: left;">Mixed models or ANCOVA</td>
-<td style="text-align: left;">Power analysis, ITT (intention-to-treat) principle</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">Cohort study</td>
-<td style="text-align: left;">Cox proportional hazards or mixed models</td>
-<td style="text-align: left;">Handle time-to-event data; control for confounding</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">Case series</td>
+<td style="text-align: left;"><strong>Case series</strong></td>
+<td style="text-align: left;">Descriptive report of a group of individuals with a shared exposure, treatment, or outcome, without a control group.</td>
 <td style="text-align: left;">Descriptive or exploratory modeling</td>
-<td style="text-align: left;">Limited inferential power; often hypothesis-generating</td>
+<td style="text-align: left;">Limited inferential power; often used for hypothesis generation.</td>
 </tr>
 <tr class="even">
-<td style="text-align: left;">Survey</td>
+<td style="text-align: left;"><strong>Survey</strong></td>
+<td style="text-align: left;">Cross-sectional collection of information from a sample representing a population at one point in time.</td>
 <td style="text-align: left;">Weighted regression or complex survey design models</td>
-<td style="text-align: left;">Incorporate sampling weights and stratification</td>
+<td style="text-align: left;">Incorporate sampling weights and stratification; correct for design effects.</td>
 </tr>
 <tr class="odd">
-<td style="text-align: left;">Meta-analysis</td>
-<td style="text-align: left;">Random- or fixed-effects models</td>
-<td style="text-align: left;">Assess heterogeneity (<span class="math inline">\(I^2\)</span>); potential publication bias</td>
+<td style="text-align: left;"><strong>Cohort study</strong></td>
+<td style="text-align: left;">Observational design following participants over time to assess associations between exposures and outcomes.</td>
+<td style="text-align: left;">Cox proportional hazards or mixed models</td>
+<td style="text-align: left;">Handle time-to-event data; control for confounding and censoring.</td>
 </tr>
 <tr class="even">
-<td style="text-align: left;">Systematic review</td>
+<td style="text-align: left;"><strong>Case–control study</strong></td>
+<td style="text-align: left;">Observational design comparing subjects with an outcome (cases) to those without (controls).</td>
+<td style="text-align: left;">Conditional logistic regression</td>
+<td style="text-align: left;">Adjust for matching, population structure, and selection bias.</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><strong>Quasi-experimental study</strong></td>
+<td style="text-align: left;">Design with an intervention but lacking random assignment, often using pre/post or matched control comparisons.</td>
+<td style="text-align: left;">Difference-in-differences, interrupted time series</td>
+<td style="text-align: left;">Control for confounding and temporal trends; weaker causal inference.</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><strong>Experimental (RCT)</strong></td>
+<td style="text-align: left;">Randomized Controlled Trial assigning subjects randomly to treatments to infer causal effects.</td>
+<td style="text-align: left;">Mixed models or ANCOVA</td>
+<td style="text-align: left;">Power analysis, ITT (intention-to-treat) principle; high internal validity.</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><strong>Meta-analysis</strong></td>
+<td style="text-align: left;">Statistical synthesis of results from multiple independent studies addressing the same question.</td>
+<td style="text-align: left;">Random- or fixed-effects models</td>
+<td style="text-align: left;">Assess heterogeneity (<span class="math inline">\(I^2\)</span>); evaluate publication bias.</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><strong>Systematic review</strong></td>
+<td style="text-align: left;">Structured, transparent literature review following predefined inclusion and exclusion criteria.</td>
 <td style="text-align: left;">Narrative synthesis or meta-analytic framework</td>
-<td style="text-align: left;">Transparent inclusion criteria; quality assessment essential</td>
+<td style="text-align: left;">Ensures reproducibility and quality assessment of included studies.</td>
 </tr>
 </tbody>
 </table>
@@ -372,8 +382,7 @@ window.Quarto = {
 <section id="class-repository-setup" class="level3" data-number="2.1.2">
 <h3 data-number="2.1.2" class="anchored" data-anchor-id="class-repository-setup"><span class="header-section-number">2.1.2</span> Class Repository Setup</h3>
 <ol type="1">
-<li>Visit the course GitHub repository:<br>
-<code>https://Cruzalirio.github.io/Nutrigenomics</code> (placeholder URL)</li>
+<li>Visit the course GitHub repository: <code>https://Cruzalirio.github.io/Nutrigenomics</code></li>
 <li>Open the folder in RStudio.</li>
 </ol>
 <p>The repository will include:</p>
@@ -385,19 +394,22 @@ window.Quarto = {
 <section id="basic-r-commands" class="level3" data-number="2.1.3">
 <h3 data-number="2.1.3" class="anchored" data-anchor-id="basic-r-commands"><span class="header-section-number">2.1.3</span> Basic R Commands</h3>
 <div class="sourceCode" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Install packages</span></span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">"tidyverse"</span>)</span>
-<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Load libraries</span></span>
-<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
-<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Read a CSV file</span></span>
-<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>d <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">"data/diet_gene_example.csv"</span>)</span>
-<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a><span class="co"># Inspect structure</span></span>
-<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a><span class="fu">glimpse</span>(d)</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="co">#install.packages("NHANES")</span></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="co">#install.packages("tidyverse")</span></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Load packages</span></span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(NHANES)</span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a><span class="co"># Load data</span></span>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a><span class="fu">data</span>(<span class="st">"NHANES"</span>)</span>
+<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a><span class="fu">glimpse</span>(NHANES)</span>
 <span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a><span class="co"># Quick summary</span></span>
-<span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a>d <span class="sc">%&gt;%</span> <span class="fu">group_by</span>(case_status) <span class="sc">%&gt;%</span> <span class="fu">summarize</span>(<span class="at">mean_BMI =</span> <span class="fu">mean</span>(BMI, <span class="at">na.rm =</span> <span class="cn">TRUE</span>), <span class="at">n =</span> <span class="fu">n</span>())</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a><span class="co"># How select any column of the data?</span></span>
+<span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-15"><a href="#cb2-15" aria-hidden="true" tabindex="-1"></a><span class="co"># How select any individual of the data?</span></span>
+<span id="cb2-16"><a href="#cb2-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-17"><a href="#cb2-17" aria-hidden="true" tabindex="-1"></a><span class="co"># Has missing data?</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 <section id="exercise" class="level3" data-number="2.1.4">
 <h3 data-number="2.1.4" class="anchored" data-anchor-id="exercise"><span class="header-section-number">2.1.4</span> Exercise</h3>
@@ -405,26 +417,27 @@ window.Quarto = {
 <hr>
 </section>
 </section>
-<section id="homework-assignment-1" class="level2" data-number="2.2">
-<h2 data-number="2.2" class="anchored" data-anchor-id="homework-assignment-1"><span class="header-section-number">2.2</span> Homework Assignment 1</h2>
-<p><strong>Objective:</strong> Ensure students can run R code and submit outputs.</p>
-<p><strong>Tasks:</strong> 1. Install R and RStudio.<br>
-2. Download or clone the GitHub repository.<br>
-3. Run the script <code>scripts/01_read_and_inspect.R</code>.<br>
-4. Save a screenshot of your R console with the output of <code>glimpse()</code> and <code>summary()</code>. 5. Write a short note (4–6 sentences) describing the dataset, one variable of interest, and one issue you observed.</p>
-<p><strong>Submission:</strong> Upload both files to the repository folder <code>submissions/</code>.</p>
+<section id="homework-study-design-classification-and-critical-assessment" class="level2" data-number="2.2">
+<h2 data-number="2.2" class="anchored" data-anchor-id="homework-study-design-classification-and-critical-assessment"><span class="header-section-number">2.2</span> Homework: Study Design Classification and Critical Assessment</h2>
+<p>For each of the following studies or study types, complete the tasks below:</p>
+<ol type="1">
+<li>Classify the study according to the design type.</li>
+<li>Identify the primary objective of the study.</li>
+<li>Describe the target population.</li>
+<li>Discuss at least one limitation of the study design in the context of nutrigenomics.</li>
+</ol>
 <hr>
 </section>
 <section id="assessment-system-summary" class="level2" data-number="2.3">
 <h2 data-number="2.3" class="anchored" data-anchor-id="assessment-system-summary"><span class="header-section-number">2.3</span> Assessment System (Summary)</h2>
 <table class="caption-top table">
 <colgroup>
-<col style="width: 17%">
-<col style="width: 13%">
-<col style="width: 20%">
-<col style="width: 14%">
-<col style="width: 11%">
-<col style="width: 22%">
+<col style="width: 16%">
+<col style="width: 16%">
+<col style="width: 16%">
+<col style="width: 16%">
+<col style="width: 16%">
+<col style="width: 16%">
 </colgroup>
 <thead>
 <tr class="header">
@@ -475,6 +488,8 @@ window.Quarto = {
 <li>Do WL et al.&nbsp;(2021). <em>Int J Epidemiol.</em> DOI: <a href="https://doi.org/10.1093/ije/dyaa215">10.1093/ije/dyaa215</a><br>
 </li>
 <li>Zheng M et al.&nbsp;(2020). <em>PLOS ONE</em>. DOI: <a href="https://doi.org/10.1371/journal.pone.0230669">10.1371/journal.pone.0230669</a></li>
+<li>Moitra et al.&nbsp;(2024). <em>Scientific reports</em>. DOI:<a href="https://doi.org/10.1038/s41598-024-82080-9">10.1038/s41598-024-82080-9</a></li>
+<li>Keathley J et al.&nbsp;(2021). <em>Frontiers in Nutrition</em>. DOI: <a href="https://doi.org/10.3389/fnut.2021.789215">fnut.2021.789215</a></li>
 </ul>
 <hr>
 

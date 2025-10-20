@@ -34,7 +34,7 @@
     "href": "index.html#course-schedule",
     "title": "Design of Experimental Studies and Statistics Applied to Nutrigenomics",
     "section": "0.3 Course Schedule",
-    "text": "0.3 Course Schedule\n\n\n\n\n\n\n\n\n\nSession\nDate\nType\nDescription\n\n\n\n\n01\n21/10/2025\nLecture\nIntroduction to Nutrigenomics and Experimental Design\n\n\n02\n23/10/2025\nLecture\nStudy Designs: Observational and Experimental\n\n\n03\n27/10/2025\nLecture\nMeasures of Association\n\n\n04\n28/10/2025\nPractice 1\nExploratory Data Analysis in R\n\n\n05\n30/10/2025\nLecture\nData Management and Cleaning\n\n\n06\n03/11/2025\nLecture\nMultivariate Descriptive Analysis\n\n\n07\n04/11/2025\nPractice 2\nPrincipal Components and Clustering\n\n\n08\n06/11/2025\nLecture\nCorrelation and Multivariate Association\n\n\n09\n10/11/2025\nLecture\nExperimental Design in Omics Contexts\n\n\n10\n11/11/2025\nLecture\nIntegration of Clinical and Omics Data\n\n\n11\n13/11/2025\nPractice 3\nApplied Case Study in Nutrigenomics\n\n\n12\n01/12/2025\nLecture\nIntroduction to Systematic Reviews\n\n\n13\n02/12/2025\nLecture\nSynthesis and Preparation for Expositive Seminar\n\n\n14\n04/12/2025\nSeminar\nFinal Expositive Seminar (Group Presentation)",
+    "text": "0.3 Course Schedule\n\n\n\n\n\n\n\n\n\nSession\nDate\nType\nDescription\n\n\n\n\n01\n21/10/2025\nLecture\nIntroduction to Nutrigenomics and Experimental Design. Installation of R and Rstudio\n\n\n02\n23/10/2025\nLecture\nStudy Designs: Observational and Experimental\n\n\n03\n27/10/2025\nLecture\nMeasures of Association - RR - OR\n\n\n04\n28/10/2025\nPractice 1\nMeasures of Association - RR - OR\n\n\n05\n30/10/2025\nLecture\nData Management and Cleaning\n\n\n06\n03/11/2025\nLecture\nCorrelation and Bivariate Association\n\n\n07\n04/11/2025\nPractice 2\nExploratory Data Analysis in R\n\n\n08\n06/11/2025\nLecture\nMultivariate Descriptive Analysis\n\n\n09\n10/11/2025\nLecture\nPrincipal Components Analysis\n\n\n10\n11/11/2025\nLecture\nClustering Analysis\n\n\n11\n13/11/2025\nPractice 3\nApplied Case Study in Nutrigenomics in R\n\n\n12\n01/12/2025\nLecture\nIntroduction to Systematic Reviews\n\n\n13\n02/12/2025\nLecture\nSynthesis and Preparation for Expositive Seminar\n\n\n14\n04/12/2025\nSeminar\nFinal Expositive Seminar (Group Presentation)",
     "crumbs": [
       "<span class='chapter-number'>1</span>  <span class='chapter-title'>Introduction</span>"
     ]
@@ -64,17 +64,17 @@
     "href": "01_TypesStudies.html#first-r-session-for-beginners",
     "title": "2  Overview",
     "section": "2.1 First R Session for Beginners",
-    "text": "2.1 First R Session for Beginners\nThis section introduces R to students with no prior experience.\n\n2.1.1 Software Installation\n\nInstall R: https://cran.r-project.org\n\nInstall RStudio (Posit Desktop): https://posit.co/desktop\n\n\n\n\n2.1.2 Class Repository Setup\n\nVisit the course GitHub repository:\nhttps://Cruzalirio.github.io/Nutrigenomics (placeholder URL)\nOpen the folder in RStudio.\n\nThe repository will include:\n/data/          → datasets\n/scripts/       → R scripts for each class\n/assignments/   → homework templates\n\n\n\n2.1.3 Basic R Commands\n# Install packages\ninstall.packages(\"tidyverse\")\n\n# Load libraries\nlibrary(tidyverse)\n\n# Read a CSV file\nd &lt;- read_csv(\"data/diet_gene_example.csv\")\n\n# Inspect structure\nglimpse(d)\n\n# Quick summary\nd %&gt;% group_by(case_status) %&gt;% summarize(mean_BMI = mean(BMI, na.rm = TRUE), n = n())\n\n\n2.1.4 Exercise\nRun each line, explain what it does, and identify one potential data quality issue (missing values, unrealistic ranges, etc.).",
+    "text": "2.1 First R Session for Beginners\nThis section introduces R to students with no prior experience.\n\n2.1.1 Software Installation\n\nInstall R: https://cran.r-project.org\n\nInstall RStudio (Posit Desktop): https://posit.co/desktop\n\n\n\n\n2.1.2 Class Repository Setup\n\nVisit the course GitHub repository: https://Cruzalirio.github.io/Nutrigenomics\nOpen the folder in RStudio.\n\nThe repository will include:\n/data/          → datasets\n/scripts/       → R scripts for each class\n/assignments/   → homework templates\n\n\n\n2.1.3 Basic R Commands\n# Install packages\n#install.packages(\"NHANES\")\n#install.packages(\"tidyverse\")\n\n# Load packages\nlibrary(tidyverse)\nlibrary(NHANES)\n\n# Load data\ndata(\"NHANES\")\nglimpse(NHANES)\n\n# How select any column of the data?\n\n# How select any individual of the data?\n\n# Has missing data?\n\n\n2.1.4 Exercise\nRun each line, explain what it does, and identify one potential data quality issue (missing values, unrealistic ranges, etc.).",
     "crumbs": [
       "<span class='chapter-number'>2</span>  <span class='chapter-title'>Overview</span>"
     ]
   },
   {
-    "objectID": "01_TypesStudies.html#homework-assignment-1",
-    "href": "01_TypesStudies.html#homework-assignment-1",
+    "objectID": "01_TypesStudies.html#homework-study-design-classification-and-critical-assessment",
+    "href": "01_TypesStudies.html#homework-study-design-classification-and-critical-assessment",
     "title": "2  Overview",
-    "section": "2.2 Homework Assignment 1",
-    "text": "2.2 Homework Assignment 1\nObjective: Ensure students can run R code and submit outputs.\nTasks: 1. Install R and RStudio.\n2. Download or clone the GitHub repository.\n3. Run the script scripts/01_read_and_inspect.R.\n4. Save a screenshot of your R console with the output of glimpse() and summary(). 5. Write a short note (4–6 sentences) describing the dataset, one variable of interest, and one issue you observed.\nSubmission: Upload both files to the repository folder submissions/.",
+    "section": "2.2 Homework: Study Design Classification and Critical Assessment",
+    "text": "2.2 Homework: Study Design Classification and Critical Assessment\nFor each of the following studies or study types, complete the tasks below:\n\nClassify the study according to the design type.\nIdentify the primary objective of the study.\nDescribe the target population.\nDiscuss at least one limitation of the study design in the context of nutrigenomics.",
     "crumbs": [
       "<span class='chapter-number'>2</span>  <span class='chapter-title'>Overview</span>"
     ]
@@ -94,7 +94,7 @@
     "href": "01_TypesStudies.html#references",
     "title": "2  Overview",
     "section": "2.4 References",
-    "text": "2.4 References\n\nHorne J et al. (2019). BMC Public Health. DOI: 10.1186/s12889-019-6621-8\n\nHoang T et al. (2024). JAMA Network Open. DOI: 10.1001/jamanetworkopen.2024.0465\n\nDo WL et al. (2021). Int J Epidemiol. DOI: 10.1093/ije/dyaa215\n\nZheng M et al. (2020). PLOS ONE. DOI: 10.1371/journal.pone.0230669",
+    "text": "2.4 References\n\nHorne J et al. (2019). BMC Public Health. DOI: 10.1186/s12889-019-6621-8\n\nHoang T et al. (2024). JAMA Network Open. DOI: 10.1001/jamanetworkopen.2024.0465\n\nDo WL et al. (2021). Int J Epidemiol. DOI: 10.1093/ije/dyaa215\n\nZheng M et al. (2020). PLOS ONE. DOI: 10.1371/journal.pone.0230669\nMoitra et al. (2024). Scientific reports. DOI:10.1038/s41598-024-82080-9\nKeathley J et al. (2021). Frontiers in Nutrition. DOI: fnut.2021.789215",
     "crumbs": [
       "<span class='chapter-number'>2</span>  <span class='chapter-title'>Overview</span>"
     ]
