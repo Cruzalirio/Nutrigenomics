@@ -1,11 +1,10 @@
-
-# 1. Overview
+##  Overview
 
 This chapter introduces nutrigenomics from a **statistical perspective**, motivates key **experimental designs**, and reviews the **types of data** used in this field. It concludes with practical guidance for setting up R and the course repository.
 
 ---
 
-## 1.1 What is Nutrigenomics (Statistical View)
+###  What is Nutrigenomics (Statistical View)
 
 Nutrigenomics explores how dietary patterns influence gene expression, epigenetic marks, and metabolic outcomes. Statistically, we ask:
 
@@ -18,7 +17,7 @@ Nutrigenomics explores how dietary patterns influence gene expression, epigeneti
 
 ---
 
-## 1.2 Why Design Matters
+###  Why Design Matters
 
 Design choice determines causal interpretability and power.
 
@@ -35,17 +34,22 @@ Design choice determines causal interpretability and power.
 
 ---
 
-## 1.3 Statistical View of Each Design
+### Statistical View of Each Design
 
-| Design | Typical Model | Key Statistical Notes |
+| **Design** | **Typical Model** | **Key Statistical Notes** |
 |:--|:--|:--|
 | Case–control | Conditional logistic regression | Adjust for matching and population structure |
 | Cross-sectional | Linear model or GLM | Control FDR in omics scans |
-| RCT | Mixed models or ANCOVA | Power analysis, ITT principle |
+| Randomized Controlled Trial (RCT) | Mixed models or ANCOVA | Power analysis, ITT (intention-to-treat) principle |
+| Cohort study | Cox proportional hazards or mixed models | Handle time-to-event data; control for confounding |
+| Case series | Descriptive or exploratory modeling | Limited inferential power; often hypothesis-generating |
+| Survey | Weighted regression or complex survey design models | Incorporate sampling weights and stratification |
+| Meta-analysis | Random- or fixed-effects models | Assess heterogeneity ($I^2$); potential publication bias |
+| Systematic review | Narrative synthesis or meta-analytic framework | Transparent inclusion criteria; quality assessment essential |
 
 ---
 
-## 1.4 Types of Data in Nutrigenomics
+### Types of Data in Nutrigenomics
 
 1. **Omics data** (gene expression, methylation, metabolomics)  
    - Example: EWAS of diet quality — DOI: [10.1093/ije/dyaa215](https://doi.org/10.1093/ije/dyaa215)
@@ -58,23 +62,22 @@ Each has unique preprocessing and error structures (e.g., normalization for omic
 
 ---
 
-# 2. First R Session for Beginners
+##  First R Session for Beginners
 
 This section introduces R to students with no prior experience.
 
-## 2.1 Software Installation
+###  Software Installation
 
 - Install **R**: <https://cran.r-project.org>  
 - Install **RStudio (Posit Desktop)**: <https://posit.co/desktop>
 
 ---
 
-## 2.2 Class Repository Setup
+###  Class Repository Setup
 
 1. Visit the course GitHub repository:  
-   `https://github.com/your-institution/nutrigenomics-course` (placeholder URL)
-2. Click **Code → Download ZIP** (or clone with Git if familiar).
-3. Open the folder in RStudio.
+   `https://Cruzalirio.github.io/Nutrigenomics` (placeholder URL)
+2. Open the folder in RStudio.
 
 The repository will include:
 
@@ -86,7 +89,7 @@ The repository will include:
 
 ---
 
-## 2.3 Basic R Commands
+### Basic R Commands
 
 ```r
 # Install packages
@@ -110,7 +113,7 @@ Run each line, explain what it does, and identify one potential data quality iss
 
 ---
 
-# 3. Homework Assignment 1
+##  Homework Assignment 1
 
 **Objective:** Ensure students can run R code and submit outputs.
 
@@ -125,7 +128,7 @@ Run each line, explain what it does, and identify one potential data quality iss
 
 ---
 
-# 4. Assessment System (Summary)
+## Assessment System (Summary)
 
 | Component | Weight | Recoverable | Period | Note | Improvement |
 |:-----------|:--------|:-------------|:---------|:-------|:--------------|
@@ -135,7 +138,7 @@ Run each line, explain what it does, and identify one potential data quality iss
 
 ---
 
-# 5. References
+##  References
 
 - Horne J et al. (2019). *BMC Public Health*. DOI: [10.1186/s12889-019-6621-8](https://doi.org/10.1186/s12889-019-6621-8)  
 - Hoang T et al. (2024). *JAMA Network Open*. DOI: [10.1001/jamanetworkopen.2024.0465](https://doi.org/10.1001/jamanetworkopen.2024.0465)  
@@ -144,54 +147,4 @@ Run each line, explain what it does, and identify one potential data quality iss
 
 ---
 
-# 6. GitHub Pages Setup Instructions
-
-To publish this Quarto book as a GitHub Pages site:
-
-1. Create a GitHub repository (e.g., `nutrigenomics-course`).
-2. Place this file inside a Quarto book structure:
-   ```
-   nutrigenomics-course/
-   ├── _quarto.yml
-   ├── index.qmd
-   ├── intro_nutrigenomics.qmd  ← this file
-   ├── data/
-   └── scripts/
-   ```
-3. Example `_quarto.yml`:
-   ```yaml
-   project:
-     type: book
-     output-dir: _site
-     render:
-       - index.qmd
-       - intro_nutrigenomics.qmd
-
-   book:
-     title: "Experimental Study Design & Applied Statistics in Nutrigenomics"
-     author: "Course Team"
-     chapters:
-       - index.qmd
-       - intro_nutrigenomics.qmd
-
-   format:
-     html:
-       theme: cosmo
-       toc: true
-   ```
-4. In RStudio terminal:
-   ```bash
-   quarto render
-   git add .
-   git commit -m "Initial build"
-   git push origin main
-   ```
-5. In GitHub: *Settings → Pages → Build from main branch /root directory*.
-6. Your course will appear at `https://your-username.github.io/nutrigenomics-course/`.
-
----
-
-# End of Chapter 1
-
-Next chapter: **Study Design Methods in Nutrigenomics — Statistical Models and Examples**.
 

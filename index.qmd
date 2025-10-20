@@ -1,15 +1,15 @@
-# Design of Experimental Studies and Applied Statistics in Nutrigenomics
+## Introduction
 
-Welcome to the repository for the course **Design of Experimental Studies and Applied Statistics in Nutrigenomics** — part of the Master’s in Nutrigenomics program.
+Welcome to the repository for the course Design of Experimental Studies and Applied Statistics in Nutrigenomics — part of the Master’s in Nutrigenomics program.
 
 This repository contains all teaching materials, examples, datasets, and R scripts used throughout the course.  
-The course is fully reproducible and designed to be explored as a **Quarto Book** published via **GitHub Pages**.
+The course is fully reproducible and designed to be explored as a Quarto Book published via **GitHub Pages**.
 
 ---
 
-## 📘 Course Overview
+### 📘 Course Overview
 
-This course introduces the statistical foundations of **experimental design** and **applied data analysis** in the context of nutrigenomics.  
+This course introduces the statistical foundations of experimental design and applied data analysis in the context of nutrigenomics.  
 Students will learn to manage, visualize, and analyze omics, clinical, and dietary data using **R** and reproducible workflows.
 
 ### Topics
@@ -23,9 +23,9 @@ Students will learn to manage, visualize, and analyze omics, clinical, and dieta
 Each topic includes lectures, practical labs, and problem sets.
 
 
-## Evaluation Criteria
+### Evaluation Criteria
 
-The evaluation of the course **Design of Experimental Studies and Applied Statistics in Nutrigenomics** will be based on three main activities, each contributing to the final grade as described below.
+The evaluation of the course Design of Experimental Studies and Applied Statistics in Nutrigenomics will be based on three main activities, each contributing to the final grade as described below.
 
 | **Evaluation activity** | **Weight** | **Recoverable** | **Validation mark** | **Improvement of qualification** |
 |--------------------------|------------|------------------|----------------------|----------------------------------|
