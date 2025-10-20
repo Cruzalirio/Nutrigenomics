@@ -1,5 +1,97 @@
-# Presentación {.unnumbered}
+# Design of Experimental Studies and Applied Statistics in Nutrigenomics
 
-Esta edición en línea ofrecerá un compendio completo de los apuntes de la asignatura de Matemáticas y Estadística, diseñada específicamente para el grado de Farmacia en la UIB.
+Welcome to the repository for the course **Design of Experimental Studies and Applied Statistics in Nutrigenomics** — part of the Master’s in Nutrigenomics program.
 
-El contenido combina un enfoque teórico-práctico que facilita la comprensión de los conceptos matemáticos y estadísticos fundamentales, aplicados al ámbito farmacéutico, proporcionando una herramienta esencial para el aprendizaje y la aplicación en situaciones reales de la disciplina.
+This repository contains all teaching materials, examples, datasets, and R scripts used throughout the course.  
+The course is fully reproducible and designed to be explored as a **Quarto Book** published via **GitHub Pages**.
+
+---
+
+## 📘 Course Overview
+
+This course introduces the statistical foundations of **experimental design** and **applied data analysis** in the context of nutrigenomics.  
+Students will learn to manage, visualize, and analyze omics, clinical, and dietary data using **R** and reproducible workflows.
+
+### Topics
+1. **Introduction to Nutrigenomics** — study design and data types  
+2. **Measures of Association**  
+3. **Data Reading and Cleaning in R**  
+4. **Multivariate Descriptive Statistics**  
+5. **Dimensionality Reduction and Clustering**  
+6. **Introduction to Systematic Reviews**
+
+Each topic includes lectures, practical labs, and problem sets.
+
+
+## Evaluation Criteria
+
+The evaluation of the course **Design of Experimental Studies and Applied Statistics in Nutrigenomics** will be based on three main activities, each contributing to the final grade as described below.
+
+| **Evaluation activity** | **Weight** | **Recoverable** | **Validation mark** | **Improvement of qualification** |
+|--------------------------|------------|------------------|----------------------|----------------------------------|
+| Expositive seminar       | 30%        | No               | –                    | No                               |
+| Practices (R exercises)  | 25%        | No               | –                    | No                               |
+| Final exam               | 45%        | Yes              | 4                    | No                               |
+
+---
+
+## Description of the Evaluation Components
+
+### 1. Expositive Seminar (30%)
+
+- **Format:** Group presentation in pairs or groups of three.  
+- **Objective:** To present and discuss a specific topic related to experimental design, statistical modeling, or data analysis applied to nutrigenomics.  
+- **Evaluation criteria:** Clarity, scientific accuracy, statistical interpretation, and ability to engage in discussion.  
+- **Date:** **December 4, 2025** (final class session).  
+- **Deliverables:**
+  - 15-minute oral presentation.
+  - Accompanying Quarto or R Markdown document with code and figures (submitted through the GitHub repository).
+
+### 2. Practices (25%)
+
+- **Format:** Individual R exercises completed during the practical sessions (marked below as *Practices*).  
+- **Objective:** To apply the statistical techniques discussed in class using real or synthetic omics, clinical, and dietary datasets.  
+- **Submission:** Each student must upload the corresponding `.R` or `.qmd` file to their personal GitHub fork or send it through the course platform.
+
+### 3. Final Exam (45%)
+
+- **Format:** Individual written and computational test.  
+- **Objective:** To assess conceptual understanding and practical skills in the design and analysis of studies in nutrigenomics.  
+- **Date:** **January 21, 2026**  
+- **Recovery Exam:** **February 13, 2026**  
+- **Minimum mark required for validation:** 4 (out of 10).
+
+---
+
+## Course Schedule
+
+| **Session** | **Date**       | **Type**         | **Description** |
+|--------------|----------------|------------------|-----------------|
+| 01 | 21/10/2025 | Lecture | Introduction to Nutrigenomics and Experimental Design |
+| 02 | 23/10/2025 | Lecture | Study Designs: Observational and Experimental |
+| 03 | 27/10/2025 | Lecture | Measures of Association |
+| 04 | 28/10/2025 | Practice 1 | Exploratory Data Analysis in R |
+| 05 | 30/10/2025 | Lecture | Data Management and Cleaning |
+| 06 | 03/11/2025 | Lecture | Multivariate Descriptive Analysis |
+| 07 | 04/11/2025 | Practice 2 | Principal Components and Clustering |
+| 08 | 06/11/2025 | Lecture | Correlation and Multivariate Association |
+| 09 | 10/11/2025 | Lecture | Experimental Design in Omics Contexts |
+| 10 | 11/11/2025 | Lecture | Integration of Clinical and Omics Data |
+| 11 | 13/11/2025 | Practice 3 | Applied Case Study in Nutrigenomics |
+| 12 | 01/12/2025 | Lecture | Introduction to Systematic Reviews |
+| 13 | 02/12/2025 | Lecture | Synthesis and Preparation for Expositive Seminar |
+| 14 | 04/12/2025 | Seminar | **Final Expositive Seminar (Group Presentation)** |
+
+---
+
+## Additional Notes
+
+- Attendance to all lectures and practices is **strongly recommended**.
+- All R scripts and datasets will be available in the GitHub repository under `/scripts` and `/data`.
+- Students are encouraged to collaborate during practice sessions but must submit **individual code** unless otherwise specified.
+- The **seminar** is designed to promote teamwork and critical discussion of applied methods in nutrigenomics.
+
+---
+
+> *“Design is not just about data collection; it is about asking questions the data can truly answer.”*  
+> — Course motto

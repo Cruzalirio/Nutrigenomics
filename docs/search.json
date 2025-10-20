@@ -1,0 +1,112 @@
+[
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "Design of Experimental Studies and Statistics Applied to Nutrigenomics",
+    "section": "",
+    "text": "1 Design of Experimental Studies and Applied Statistics in Nutrigenomics\nWelcome to the repository for the course Design of Experimental Studies and Applied Statistics in Nutrigenomics — part of the Master’s in Nutrigenomics program.\nThis repository contains all teaching materials, examples, datasets, and R scripts used throughout the course.\nThe course is fully reproducible and designed to be explored as a Quarto Book published via GitHub Pages.",
+    "crumbs": [
+      "<span class='chapter-number'>1</span>  <span class='chapter-title'>Design of Experimental Studies and Applied Statistics in Nutrigenomics</span>"
+    ]
+  },
+  {
+    "objectID": "index.html#course-overview",
+    "href": "index.html#course-overview",
+    "title": "Design of Experimental Studies and Statistics Applied to Nutrigenomics",
+    "section": "1.1 📘 Course Overview",
+    "text": "1.1 📘 Course Overview\nThis course introduces the statistical foundations of experimental design and applied data analysis in the context of nutrigenomics.\nStudents will learn to manage, visualize, and analyze omics, clinical, and dietary data using R and reproducible workflows.\n\n1.1.1 Topics\n\nIntroduction to Nutrigenomics — study design and data types\n\nMeasures of Association\n\nData Reading and Cleaning in R\n\nMultivariate Descriptive Statistics\n\nDimensionality Reduction and Clustering\n\nIntroduction to Systematic Reviews\n\nEach topic includes lectures, practical labs, and problem sets.",
+    "crumbs": [
+      "<span class='chapter-number'>1</span>  <span class='chapter-title'>Design of Experimental Studies and Applied Statistics in Nutrigenomics</span>"
+    ]
+  },
+  {
+    "objectID": "01_TypesStudies.html",
+    "href": "01_TypesStudies.html",
+    "title": "2  1. Overview",
+    "section": "",
+    "text": "2.1 1.1 What is Nutrigenomics (Statistical View)\nThis chapter introduces nutrigenomics from a statistical perspective, motivates key experimental designs, and reviews the types of data used in this field. It concludes with practical guidance for setting up R and the course repository.\nNutrigenomics explores how dietary patterns influence gene expression, epigenetic marks, and metabolic outcomes. Statistically, we ask:\nMain challenges: high dimensionality (p≫n), correlated predictors, measurement error in diet data, and causal inference vs. association.",
+    "crumbs": [
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>1. Overview</span>"
+    ]
+  },
+  {
+    "objectID": "01_TypesStudies.html#what-is-nutrigenomics-statistical-view",
+    "href": "01_TypesStudies.html#what-is-nutrigenomics-statistical-view",
+    "title": "2  1. Overview",
+    "section": "",
+    "text": "Which molecular features are associated with nutrient intake or dietary interventions?\n\nHow to separate real signals from high-dimensional noise (multiple testing, regularization, FDR)?\n\nHow to model complex designs and account for confounding or batch effects?\n\nHow to quantify uncertainty and reproducibility?",
+    "crumbs": [
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>1. Overview</span>"
+    ]
+  },
+  {
+    "objectID": "01_TypesStudies.html#why-design-matters",
+    "href": "01_TypesStudies.html#why-design-matters",
+    "title": "2  1. Overview",
+    "section": "2.2 1.2 Why Design Matters",
+    "text": "2.2 1.2 Why Design Matters\nDesign choice determines causal interpretability and power.\n\nCase–control (retrospective): efficient for rare outcomes, common in gene–diet interaction studies.\nExample: Hoang et al., JAMA Network Open (2024). DOI: 10.1001/jamanetworkopen.2024.0465\nCross-sectional: exposure and outcome measured simultaneously, used for exploratory omics–diet associations.\nExample: Do et al., Int J Epidemiol. (2021). DOI: 10.1093/ije/dyaa215\nRandomized Controlled Trial (RCT): causal inference via randomization; typical for genotype‑based dietary advice.\nExample: Horne et al., BMC Public Health (2019). DOI: 10.1186/s12889-019-6621-8\n\nNote: Randomization removes confounding in expectation; observational designs require covariate adjustment and sensitivity analyses.",
+    "crumbs": [
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>1. Overview</span>"
+    ]
+  },
+  {
+    "objectID": "01_TypesStudies.html#statistical-view-of-each-design",
+    "href": "01_TypesStudies.html#statistical-view-of-each-design",
+    "title": "2  1. Overview",
+    "section": "2.3 1.3 Statistical View of Each Design",
+    "text": "2.3 1.3 Statistical View of Each Design\n\n\n\n\n\n\n\n\nDesign\nTypical Model\nKey Statistical Notes\n\n\n\n\nCase–control\nConditional logistic regression\nAdjust for matching and population structure\n\n\nCross-sectional\nLinear model or GLM\nControl FDR in omics scans\n\n\nRCT\nMixed models or ANCOVA\nPower analysis, ITT principle",
+    "crumbs": [
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>1. Overview</span>"
+    ]
+  },
+  {
+    "objectID": "01_TypesStudies.html#types-of-data-in-nutrigenomics",
+    "href": "01_TypesStudies.html#types-of-data-in-nutrigenomics",
+    "title": "2  1. Overview",
+    "section": "2.4 1.4 Types of Data in Nutrigenomics",
+    "text": "2.4 1.4 Types of Data in Nutrigenomics\n\nOmics data (gene expression, methylation, metabolomics)\n\nExample: EWAS of diet quality — DOI: 10.1093/ije/dyaa215\n\nClinical data (anthropometry, blood lipids, disease outcomes)\n\nExample: NOW Trial — DOI: 10.1186/s12889-019-6621-8\n\nDietary data (FFQs, 24h recalls, dietary indices)\n\nExample: Zheng et al., PLOS ONE (2020). DOI: 10.1371/journal.pone.0230669\n\n\nEach has unique preprocessing and error structures (e.g., normalization for omics, energy adjustment for dietary data).",
+    "crumbs": [
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>1. Overview</span>"
+    ]
+  },
+  {
+    "objectID": "01_TypesStudies.html#software-installation",
+    "href": "01_TypesStudies.html#software-installation",
+    "title": "2  1. Overview",
+    "section": "3.1 2.1 Software Installation",
+    "text": "3.1 2.1 Software Installation\n\nInstall R: https://cran.r-project.org\n\nInstall RStudio (Posit Desktop): https://posit.co/desktop",
+    "crumbs": [
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>1. Overview</span>"
+    ]
+  },
+  {
+    "objectID": "01_TypesStudies.html#class-repository-setup",
+    "href": "01_TypesStudies.html#class-repository-setup",
+    "title": "2  1. Overview",
+    "section": "3.2 2.2 Class Repository Setup",
+    "text": "3.2 2.2 Class Repository Setup\n\nVisit the course GitHub repository:\nhttps://github.com/your-institution/nutrigenomics-course (placeholder URL)\nClick Code → Download ZIP (or clone with Git if familiar).\nOpen the folder in RStudio.\n\nThe repository will include:\n/data/          → datasets\n/scripts/       → R scripts for each class\n/assignments/   → homework templates",
+    "crumbs": [
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>1. Overview</span>"
+    ]
+  },
+  {
+    "objectID": "01_TypesStudies.html#basic-r-commands",
+    "href": "01_TypesStudies.html#basic-r-commands",
+    "title": "2  1. Overview",
+    "section": "3.3 2.3 Basic R Commands",
+    "text": "3.3 2.3 Basic R Commands\n# Install packages\ninstall.packages(\"tidyverse\")\n\n# Load libraries\nlibrary(tidyverse)\n\n# Read a CSV file\nd &lt;- read_csv(\"data/diet_gene_example.csv\")\n\n# Inspect structure\nglimpse(d)\n\n# Quick summary\nd %&gt;% group_by(case_status) %&gt;% summarize(mean_BMI = mean(BMI, na.rm = TRUE), n = n())\n\n3.3.1 Exercise\nRun each line, explain what it does, and identify one potential data quality issue (missing values, unrealistic ranges, etc.).",
+    "crumbs": [
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>1. Overview</span>"
+    ]
+  },
+  {
+    "objectID": "referencias.html",
+    "href": "referencias.html",
+    "title": "Referencias",
+    "section": "",
+    "text": "Bolton, S., & Bon, C. B. (2010). Pharmaceutical Statistics: Practical and Clinical Applications (5th ed.). CRC Press.\nMartínez González, M., Sánchez Villegas, A., & Faulín Fajardo, J. (2020). Bioestadística Amigable. CRC Press.",
+    "crumbs": [
+      "Referencias"
+    ]
+  }
+]
