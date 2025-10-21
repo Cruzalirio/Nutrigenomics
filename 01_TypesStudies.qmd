@@ -16,6 +16,7 @@ Nutrigenomics explores how dietary patterns influence gene expression, epigeneti
 **Main challenges:** high dimensionality (p≫n), correlated predictors, measurement error in diet data, and causal inference vs. association.
 
 ------------------------------------------------------------------------
+
 ## Basic Concepts
 
 ### Clinical Study
@@ -63,6 +64,90 @@ Design choice determines causal interpretability and power.
 **Note:** Randomization removes confounding in expectation; observational designs require covariate adjustment and sensitivity analyses.
 
 ------------------------------------------------------------------------
+
+## Design Types
+
+#### Descriptive Studies
+
+* **Case Report**: A detailed description of a patient.
+
+* **Case Series**: A detailed description of a small group of people with a common health problem. Information is usually collected through medical histories and clinical interviews.
+
+* **Survey**: A description of a large group of individuals with a common characteristic. Information is usually collected through questionnaires or interviews. These studies are used to identify interesting observations worthy of investigation.
+
+#### Case-Control Studies
+
+* A group of individuals with the disease (cases) and a group of individuals without the disease (controls) are taken.
+
+* They are compared retrospectively to find differences in their past exposure to risk factors.
+
+* It is determined which risk factors were more common among cases than among controls.
+
+* It is inferred that, in the general population, exposure to these factors is associated with a higher likelihood of suffering from the disease.
+
+**Case-control samples**
+
+* **Stratified sample**: A sample made up of predetermined numbers of cases and controls. If the sample is stratified and *artificially composed*, we do not expect the proportion of cases in the sample to be representative of the population.
+
+* **Cross-sectional samples**: A sample with no restrictions on its composition, "whatever comes out." If the sample is cross-sectional, we expect the proportion of cases in the sample to be representative of the population.
+**Advantages of case-control samples**:
+
+* The survey suffers from a **lack of denominators**: a control group with which to compare the cases.
+
+* Relatively easy and quick to carry out, and therefore inexpensive.
+
+* Suitable for studying rare, infrequent, or very short-term diseases.
+
+* They allow for studying the association between exposure to many risk factors and the disease in question.
+
+**Problems: Biases**
+
+**Biases**: Errors in the design or execution of a study that affect the data collected and may jeopardize the accuracy of the conclusions drawn from data collection through interviews/questionnaires.
+
+* **Recall bias**: Everyone lies. Forgetfulness.
+
+* **Differential recall bias**: Cases and controls may recall relevant data differently.
+
+* **Survivorship bias**: Only "living" individuals are studied.
+
+**Problems: Representativeness**
+
+To conclude that there is an association between exposure and disease, it would be necessary that:
+
+* Controls were similar to cases in all aspects except exposure.
+
+* Matching: Select controls who are similar to cases in all relevant characteristics.
+
+* Controls were representative of the healthy population.
+**Problems: Confounders**
+
+* **Confounder**: A characteristic associated with exposure that can cause disease. Disease
+
+**Problems: Lack of Causality**
+
+A case-control study cannot "prove" that exposure to a risk "causes" a disease.
+
+In reality: <p style="color: red;">No type of medical study can demonstrate with absolute certainty that exposure to a risk causes a disease.</p>
+
+#### Cohort Studies
+
+* A group of individuals are **exposed** to a risk factor and a group of individuals **not exposed** to the same risk factor.
+* A group of individuals are **exposed** to a risk factor and a group of individuals **not exposed** to the same risk factor.
+
+* They are followed over a period of time to **prospectively** compare the occurrence of a disease in both groups.
+
+* A study is made to determine whether the disease is more common among those exposed than among those not exposed.
+
+* If so, it can be inferred that, in the general population, exposure to the risk factor is associated with a higher likelihood of suffering from the disease.
+
+* The objective is to study the onset of the disease after exposure: The cohort must be composed of individuals without the disease at the time of follow-up.
+
+**Prospective versus Retrospective Cohort Studies**
+
+<p style="color: red;"> Prospective </p>: Exposed and unexposed individuals are taken today, and their future outcomes are studied.
+
+<p style="color: red;"> Retrospective </p>: Exposed and unexposed individuals are taken at a certain point in the past, and their outcomes to the present are studied.
+
 
 ### Statistical View of Each Design
 
