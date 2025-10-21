@@ -261,7 +261,55 @@ window.Quarto = {
 <li>How to quantify uncertainty and reproducibility?</li>
 </ul>
 <p><strong>Main challenges:</strong> high dimensionality (p≫n), correlated predictors, measurement error in diet data, and causal inference vs.&nbsp;association.</p>
-<hr>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 100%">
+</colgroup>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">## Basic Concepts</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">### Clinical Study</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">A clinical study is a process whose objective is to obtain empirical evidence on a specific issue. In the case of the studies we are dealing with in this course, this issue is, naturally, about some aspect of nutrigenomics.</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">### Unit of Observation</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">In a statistical study, the unit of observation is, for the sake of clarity, the type of what or who is being measured during the research. In medical studies, these are typically people, but not always. For example, they can be events that happen to people, so that the same person can be observed multiple times: pregnancies, surgical operations. For example, we can measure the average daily expenditure on processed food vending machines in different primary schools in a city and the proportion of myopic students in their schools, to estimate whether there is any relationship between processed food consumption and myopia. Here, the unit of observation is the primary schools, not the students.</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">### Population and Sample</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">- <strong>Population</strong>: This is the set of all observation units about which we want to know some information. This population can be perfectly defined in a place and time: for example, those registered in Mallorca today. But its definition will usually be vague. If, for example, we want to estimate something about “diabetic Spaniards over 65 years of age,” who exactly are we talking about? Those who are alive right now? All those who have been in Spain since its founding? Do we include those who have not yet been born? What do we do with those who are diabetic but have not been diagnosed, and never will be?</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">- <strong>Sample</strong>: This is a subset of the population that has been selected for observation. The idea is for the sample to be representative of the population, so that the results obtained from the sample can be generalized to the population. In the previous example, we could select a sample of diabetic Spaniards over the age of 65, and from this sample, attempt to estimate some characteristic of the diabetic population of Spaniards over the age of 65.</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">### Types of Statistics</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">In statistics, we always start by obtaining <strong>data</strong> on a sample of a population. Well, actually, we don’t start by obtaining the data, but by carefully planning how to obtain it.</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">We <strong>generalize the information</strong> obtained about this group of people to the entire population. And this isn’t just a case of fortune-telling magic tricks, but a <strong>science</strong> whose methodology has been validated through mathematical demonstrations or, in the worst case, through numerical simulations (the mathematical equivalent of experiments in other sciences).</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Thus, the starting point when applying statistical techniques is that we have a set of data that describe some characteristics of a group of individuals. Statistical analysis of these data can then be of two basic types:</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">- <strong>Exploratory data analysis</strong>, when our objective is simply to summarize, represent, and explain the specific data available. <strong>Descriptive statistics</strong> is the set of techniques used for this purpose.</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">- <strong>Inferential analysis</strong>, if our objective is to deduce (<strong>infer</strong>) from these data, significant information about the entire population of interest. The techniques used in this case comprise <strong>inferential statistics</strong>.</td>
+</tr>
+</tbody>
+</table>
 </section>
 <section id="why-design-matters" class="level3" data-number="2.0.2">
 <h3 data-number="2.0.2" class="anchored" data-anchor-id="why-design-matters"><span class="header-section-number">2.0.2</span> Why Design Matters</h3>
