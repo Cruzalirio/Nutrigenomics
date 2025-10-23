@@ -1,0 +1,102 @@
+# Análisis de estudios en nutrigenómica
+
+## 1. Horne J et al. (2019). *BMC Public Health*. DOI: [10.1186/s12889-019-6621-8](https://doi.org/10.1186/s12889-019-6621-8)
+
+### 1.1 Tipo de diseño
+- **Diseño**: Ensayo clínico aleatorizado pragmático.
+- **Descripción**: Comparación entre asesoramiento estándar y asesoramiento personalizado basado en genética para la gestión del peso en adultos con sobrepeso u obesidad. :contentReference[oaicite:4]{index=4}
+
+### 1.2 Objetivo principal
+- Evaluar si el asesoramiento basado en genética reduce el porcentaje de grasa corporal en mayor medida que el asesoramiento estándar. :contentReference[oaicite:8]{index=8}
+
+### 1.3 Población objetivo
+- Adultos con sobrepeso u obesidad (IMC ≥ 25) participantes en el programa Group Lifestyle Balance™ en una comunidad rural de Ontario, Canadá. :contentReference[oaicite:12]{index=12}
+
+### 1.4 Limitación en el contexto de la nutrigenómica
+- La implementación de asesoramiento genético personalizado puede ser costosa y logísticamente desafiante en entornos comunitarios, limitando su aplicabilidad generalizada.
+
+---
+
+## 2. Hoang T et al. (2024). *JAMA Network Open*. DOI: [10.1001/jamanetworkopen.2024.0465](https://doi.org/10.1001/jamanetworkopen.2024.0465)
+
+### 2.1 Tipo de diseño
+- **Diseño**: Estudio de interacción genómica a nivel del genoma (GWAS) sobre la relación entre la dieta y el riesgo de cáncer colorrectal (CRC). :contentReference[oaicite:19]{index=19}
+
+### 2.2 Objetivo principal
+- Identificar variantes genéticas que modifiquen las asociaciones entre la dieta y el riesgo de CRC, explorando vías subyacentes en la causa del CRC. :contentReference[oaicite:23]{index=23}
+
+### 2.3 Población objetivo
+- Datos del UK Biobank. :contentReference[oaicite:27]{index=27}
+
+### 2.4 Limitación en el contexto de la nutrigenómica
+- La heterogeneidad genética y ambiental puede complicar la interpretación de las interacciones dieta-genoma, requiriendo cohortes más específicas para conclusiones precisas.
+
+---
+
+## 3. Do WL et al. (2021). *Int J Epidemiol.* DOI: [10.1093/ije/dyaa215](https://doi.org/10.1093/ije/dyaa215)
+
+### 3.1 Tipo de diseño
+- **Diseño**: Estudio de asociación epigenómica a nivel del genoma (EWAS) sobre la calidad de la dieta. :contentReference[oaicite:34]{index=34}
+
+### 3.2 Objetivo principal
+- Investigar asociaciones entre la calidad de la dieta y modificaciones epigenéticas en cohortes de mujeres. :contentReference[oaicite:38]{index=38}
+
+### 3.3 Población objetivo
+- Cohortes de mujeres del Women's Health Initiative y TwinsUK. :contentReference[oaicite:42]{index=42}
+
+### 3.4 Limitación en el contexto de la nutrigenómica
+- Las modificaciones epigenéticas pueden ser reversibles y sensibles a factores ambientales, lo que dificulta la identificación de relaciones causales claras.
+
+---
+
+## 4. Zheng M et al. (2020). *PLOS ONE*. DOI: [10.1371/journal.pone.0230669](https://doi.org/10.1371/journal.pone.0230669)
+
+### 4.1 Tipo de diseño
+- **Diseño**: Desarrollo y evaluación de un cuestionario de frecuencia alimentaria (FFQ) para niños pequeños. :contentReference[oaicite:49]{index=49}
+
+### 4.2 Objetivo principal
+- Desarrollar y validar un FFQ para medir la ingesta dietética de niños pequeños en el último mes. :contentReference[oaicite:53]{index=53}
+
+### 4.3 Población objetivo
+- Padres de niños pequeños. :contentReference[oaicite:57]{index=57}
+
+### 4.4 Limitación en el contexto de la nutrigenómica
+- La dependencia de los informes de los padres puede introducir sesgos de información, afectando la precisión de los datos dietéticos recolectados.
+
+---
+
+## 5. Moitra P et al. (2024). *Scientific Reports*. DOI: [10.1038/s41598-024-82080-9](https://doi.org/10.1038/s41598-024-82080-9)
+
+### 5.1 Tipo de diseño
+- **Diseño**: Estudio de métodos mixtos para desarrollar y evaluar un cuestionario sobre conocimientos, actitudes y comportamientos (KAB) relacionados con la nutrigenómica y la nutrición personalizada. :contentReference[oaicite:64]{index=64}
+
+### 5.2 Objetivo principal
+- Desarrollar y evaluar las propiedades psicométricas de un cuestionario KAB en estudiantes y profesionales de dietética en India. :contentReference[oaicite:68]{index=68}
+
+### 5.3 Población objetivo
+- Estudiantes y profesionales de dietética en India. :contentReference[oaicite:72]{index=72}
+
+### 5.4 Limitación en el contexto de la nutrigenómica
+- La validez y confiabilidad del cuestionario pueden no ser generalizables a otras poblaciones o contextos culturales, limitando su aplicabilidad global.
+
+---
+
+## 6. Keathley J et al. (2021). *Frontiers in Nutrition*. DOI: [10.3389/fnut.2021.789215](https://doi.org/10.3389/fnut.2021.789215)
+
+### 6.1 Tipo de diseño
+- **Diseño**: Revisión sistemática de marcos existentes para evaluar la validez científica en la nutrigenómica. :contentReference[oaicite:79]{index=79}
+
+### 6.2 Objetivo principal
+- Examinar marcos existentes para determinar la validez científica en la nutrigenómica y proponer un marco adecuado para futuras evaluaciones. :contentReference[oaicite:83]{index=83}
+
+### 6.3 Población objetivo
+- Investigadores y profesionales en el campo de la nutrigenómica. :contentReference[oaicite:87]{index=87}
+
+### 6.4 Limitación en el contexto de la nutrigenómica
+- La falta de consenso sobre los marcos de evaluación puede dificultar la estandarización y comparación de estudios en nutrigenómica.
+
+---
+
+## Conclusión
+
+Estos estudios ilustran la diversidad de enfoques en la investigación de la nutrigenómica, desde ensayos clínicos hasta estudios de validación de herramientas y revisiones metodológicas. Cada uno aporta valiosos conocimientos, pero también enfrenta desafíos inherentes a sus diseños que deben ser considerados al interpretar sus hallazgos.

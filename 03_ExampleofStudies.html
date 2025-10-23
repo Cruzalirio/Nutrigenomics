@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" lang="es" xml:lang="es"><head>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
 <meta name="generator" content="quarto-1.7.32">
@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>References – Design of Experimental Studies and Statistics Applied to Nutrigenomics</title>
+<title>exampleofstudies</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -20,185 +20,212 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
-/* CSS for citations */
-div.csl-bib-body { }
-div.csl-entry {
-  clear: both;
-}
-.hanging-indent div.csl-entry {
-  margin-left:2em;
-  text-indent:-2em;
-}
-div.csl-left-margin {
-  min-width:2em;
-  float:left;
-}
-div.csl-right-inline {
-  margin-left:2em;
-  padding-left:1em;
-}
-div.csl-indent {
-  margin-left: 2em;
-}</style>
+</style>
 
 
-<script src="site_libs/quarto-nav/quarto-nav.js"></script>
-<script src="site_libs/quarto-nav/headroom.min.js"></script>
-<script src="site_libs/clipboard/clipboard.min.js"></script>
-<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
-<script src="site_libs/quarto-search/fuse.min.js"></script>
-<script src="site_libs/quarto-search/quarto-search.js"></script>
-<meta name="quarto:offset" content="./">
-<link href="./02_FirstR.html" rel="prev">
-<link href="./Figures/atlas.jpeg" rel="icon" type="image/jpeg">
-<script src="site_libs/quarto-html/quarto.js" type="module"></script>
-<script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
-<script src="site_libs/quarto-html/popper.min.js"></script>
-<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
-<script src="site_libs/quarto-html/anchor.min.js"></script>
-<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-37eea08aefeeee20ff55810ff984fec1.css" rel="stylesheet" id="quarto-text-highlighting-styles">
-<script src="site_libs/bootstrap/bootstrap.min.js"></script>
-<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-364982630eef5352dd1537128a8ed5cb.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
-<script id="quarto-search-options" type="application/json">{
-  "location": "sidebar",
-  "copy-button": false,
-  "collapse-after": 3,
-  "panel-placement": "start",
-  "type": "textbox",
-  "limit": 50,
-  "keyboard-shortcut": [
-    "f",
-    "/",
-    "s"
-  ],
-  "show-item-context": false,
-  "language": {
-    "search-no-results-text": "Sin resultados",
-    "search-matching-documents-text": "documentos encontrados",
-    "search-copy-link-title": "Copiar el enlace en la búsqueda",
-    "search-hide-matches-text": "Ocultar resultados adicionales",
-    "search-more-match-text": "resultado adicional en este documento",
-    "search-more-matches-text": "resultados adicionales en este documento",
-    "search-clear-button-title": "Borrar",
-    "search-text-placeholder": "",
-    "search-detached-cancel-button-title": "Cancelar",
-    "search-submit-button-title": "Enviar",
-    "search-label": "Buscar"
-  }
-}</script>
+<script src="03_ExampleofStudies_files/libs/clipboard/clipboard.min.js"></script>
+<script src="03_ExampleofStudies_files/libs/quarto-html/quarto.js" type="module"></script>
+<script src="03_ExampleofStudies_files/libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="03_ExampleofStudies_files/libs/quarto-html/popper.min.js"></script>
+<script src="03_ExampleofStudies_files/libs/quarto-html/tippy.umd.min.js"></script>
+<script src="03_ExampleofStudies_files/libs/quarto-html/anchor.min.js"></script>
+<link href="03_ExampleofStudies_files/libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="03_ExampleofStudies_files/libs/quarto-html/quarto-syntax-highlighting-37eea08aefeeee20ff55810ff984fec1.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="03_ExampleofStudies_files/libs/bootstrap/bootstrap.min.js"></script>
+<link href="03_ExampleofStudies_files/libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="03_ExampleofStudies_files/libs/bootstrap/bootstrap-bb462d781dde1847d9e3ccf7736099dd.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 
 
 </head>
 
-<body class="nav-sidebar floating quarto-light">
+<body class="fullcontent quarto-light">
 
-<div id="quarto-search-results"></div>
-  <header id="quarto-header" class="headroom fixed-top">
-  <nav class="quarto-secondary-nav">
-    <div class="container-fluid d-flex">
-      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Alternar barra lateral" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
-        <i class="bi bi-layout-text-sidebar-reverse"></i>
-      </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./referencias.html">References</a></li></ol></nav>
-        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Alternar barra lateral" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
-        </a>
-      <button type="button" class="btn quarto-search-button" aria-label="Buscar" onclick="window.quartoOpenSearch();">
-        <i class="bi bi-search"></i>
-      </button>
-    </div>
-  </nav>
-</header>
-<!-- content -->
-<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-full">
-<!-- sidebar -->
-  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
-    <div class="pt-lg-2 mt-2 text-left sidebar-header">
-    <div class="sidebar-title mb-0 py-0">
-      <a href="./">Design of Experimental Studies and Statistics Applied to Nutrigenomics</a> 
-        <div class="sidebar-tools-main">
-    <a href="https://github.com/Cruzalirio/Nutrigenomics" title="Source Code" class="quarto-navigation-tool px-1" aria-label="Source Code"><i class="bi bi-github"></i></a>
-  <a href="" class="quarto-reader-toggle quarto-navigation-tool px-1" onclick="window.quartoToggleReader(); return false;" title="Alternar modo lector">
-  <div class="quarto-reader-toggle-btn">
-  <i class="bi"></i>
-  </div>
-</a>
-</div>
-    </div>
-      </div>
-        <div class="mt-2 flex-shrink-0 align-items-center">
-        <div class="sidebar-search">
-        <div id="quarto-search" class="" title="Buscar"></div>
-        </div>
-        </div>
-    <div class="sidebar-menu-container"> 
-    <ul class="list-unstyled mt-1">
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./index.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Introduction</span></span></a>
-  </div>
-</li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./01_TypesStudies.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Overview</span></span></a>
-  </div>
-</li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./02_FirstR.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Variable Classification and R</span></span></a>
-  </div>
-</li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./referencias.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text">References</span></a>
-  </div>
-</li>
-    </ul>
-    </div>
-</nav>
-<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
-<!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
-        
-    </div>
-<!-- main -->
-<main class="content column-page-right" id="quarto-document-content">
+<div id="quarto-content" class="page-columns page-rows-contents page-layout-article">
 
-<header id="title-block-header" class="quarto-title-block default">
-<div class="quarto-title">
-<h1 class="title">References</h1>
-</div>
+<main class="content" id="quarto-document-content">
 
 
 
-<div class="quarto-title-meta column-page-right">
 
-    
-  
-    
-  </div>
-  
-
-
-</header>
-
-
-<div id="refs" role="list" style="display: none">
-
-</div>
+<section id="análisis-de-estudios-en-nutrigenómica" class="level1">
+<h1>Análisis de estudios en nutrigenómica</h1>
+<section id="horne-j-et-al.-2019.-bmc-public-health.-doi-10.1186s12889-019-6621-8" class="level2">
+<h2 class="anchored" data-anchor-id="horne-j-et-al.-2019.-bmc-public-health.-doi-10.1186s12889-019-6621-8">1. Horne J et al.&nbsp;(2019). <em>BMC Public Health</em>. DOI: <a href="https://doi.org/10.1186/s12889-019-6621-8">10.1186/s12889-019-6621-8</a></h2>
+<section id="tipo-de-diseño" class="level3">
+<h3 class="anchored" data-anchor-id="tipo-de-diseño">1.1 Tipo de diseño</h3>
 <ul>
-<li><p>Bolton, S., &amp; Bon, C. B. (2010). Pharmaceutical Statistics: Practical and Clinical Applications (5th ed.). CRC Press.</p></li>
-<li><p>Martínez González, M., Sánchez Villegas, A., &amp; Faulín Fajardo, J. (2020). Bioestadística Amigable. CRC Press.</p></li>
+<li><strong>Diseño</strong>: Ensayo clínico aleatorizado pragmático.</li>
+<li><strong>Descripción</strong>: Comparación entre asesoramiento estándar y asesoramiento personalizado basado en genética para la gestión del peso en adultos con sobrepeso u obesidad. :contentReference<span data-index="4">oaicite:4</span></li>
 </ul>
+</section>
+<section id="objetivo-principal" class="level3">
+<h3 class="anchored" data-anchor-id="objetivo-principal">1.2 Objetivo principal</h3>
+<ul>
+<li>Evaluar si el asesoramiento basado en genética reduce el porcentaje de grasa corporal en mayor medida que el asesoramiento estándar. :contentReference<span data-index="8">oaicite:8</span></li>
+</ul>
+</section>
+<section id="población-objetivo" class="level3">
+<h3 class="anchored" data-anchor-id="población-objetivo">1.3 Población objetivo</h3>
+<ul>
+<li>Adultos con sobrepeso u obesidad (IMC ≥ 25) participantes en el programa Group Lifestyle Balance™ en una comunidad rural de Ontario, Canadá. :contentReference<span data-index="12">oaicite:12</span></li>
+</ul>
+</section>
+<section id="limitación-en-el-contexto-de-la-nutrigenómica" class="level3">
+<h3 class="anchored" data-anchor-id="limitación-en-el-contexto-de-la-nutrigenómica">1.4 Limitación en el contexto de la nutrigenómica</h3>
+<ul>
+<li>La implementación de asesoramiento genético personalizado puede ser costosa y logísticamente desafiante en entornos comunitarios, limitando su aplicabilidad generalizada.</li>
+</ul>
+<hr>
+</section>
+</section>
+<section id="hoang-t-et-al.-2024.-jama-network-open.-doi-10.1001jamanetworkopen.2024.0465" class="level2">
+<h2 class="anchored" data-anchor-id="hoang-t-et-al.-2024.-jama-network-open.-doi-10.1001jamanetworkopen.2024.0465">2. Hoang T et al.&nbsp;(2024). <em>JAMA Network Open</em>. DOI: <a href="https://doi.org/10.1001/jamanetworkopen.2024.0465">10.1001/jamanetworkopen.2024.0465</a></h2>
+<section id="tipo-de-diseño-1" class="level3">
+<h3 class="anchored" data-anchor-id="tipo-de-diseño-1">2.1 Tipo de diseño</h3>
+<ul>
+<li><strong>Diseño</strong>: Estudio de interacción genómica a nivel del genoma (GWAS) sobre la relación entre la dieta y el riesgo de cáncer colorrectal (CRC). :contentReference<span data-index="19">oaicite:19</span></li>
+</ul>
+</section>
+<section id="objetivo-principal-1" class="level3">
+<h3 class="anchored" data-anchor-id="objetivo-principal-1">2.2 Objetivo principal</h3>
+<ul>
+<li>Identificar variantes genéticas que modifiquen las asociaciones entre la dieta y el riesgo de CRC, explorando vías subyacentes en la causa del CRC. :contentReference<span data-index="23">oaicite:23</span></li>
+</ul>
+</section>
+<section id="población-objetivo-1" class="level3">
+<h3 class="anchored" data-anchor-id="población-objetivo-1">2.3 Población objetivo</h3>
+<ul>
+<li>Datos del UK Biobank. :contentReference<span data-index="27">oaicite:27</span></li>
+</ul>
+</section>
+<section id="limitación-en-el-contexto-de-la-nutrigenómica-1" class="level3">
+<h3 class="anchored" data-anchor-id="limitación-en-el-contexto-de-la-nutrigenómica-1">2.4 Limitación en el contexto de la nutrigenómica</h3>
+<ul>
+<li>La heterogeneidad genética y ambiental puede complicar la interpretación de las interacciones dieta-genoma, requiriendo cohortes más específicas para conclusiones precisas.</li>
+</ul>
+<hr>
+</section>
+</section>
+<section id="do-wl-et-al.-2021.-int-j-epidemiol.-doi-10.1093ijedyaa215" class="level2">
+<h2 class="anchored" data-anchor-id="do-wl-et-al.-2021.-int-j-epidemiol.-doi-10.1093ijedyaa215">3. Do WL et al.&nbsp;(2021). <em>Int J Epidemiol.</em> DOI: <a href="https://doi.org/10.1093/ije/dyaa215">10.1093/ije/dyaa215</a></h2>
+<section id="tipo-de-diseño-2" class="level3">
+<h3 class="anchored" data-anchor-id="tipo-de-diseño-2">3.1 Tipo de diseño</h3>
+<ul>
+<li><strong>Diseño</strong>: Estudio de asociación epigenómica a nivel del genoma (EWAS) sobre la calidad de la dieta. :contentReference<span data-index="34">oaicite:34</span></li>
+</ul>
+</section>
+<section id="objetivo-principal-2" class="level3">
+<h3 class="anchored" data-anchor-id="objetivo-principal-2">3.2 Objetivo principal</h3>
+<ul>
+<li>Investigar asociaciones entre la calidad de la dieta y modificaciones epigenéticas en cohortes de mujeres. :contentReference<span data-index="38">oaicite:38</span></li>
+</ul>
+</section>
+<section id="población-objetivo-2" class="level3">
+<h3 class="anchored" data-anchor-id="población-objetivo-2">3.3 Población objetivo</h3>
+<ul>
+<li>Cohortes de mujeres del Women’s Health Initiative y TwinsUK. :contentReference<span data-index="42">oaicite:42</span></li>
+</ul>
+</section>
+<section id="limitación-en-el-contexto-de-la-nutrigenómica-2" class="level3">
+<h3 class="anchored" data-anchor-id="limitación-en-el-contexto-de-la-nutrigenómica-2">3.4 Limitación en el contexto de la nutrigenómica</h3>
+<ul>
+<li>Las modificaciones epigenéticas pueden ser reversibles y sensibles a factores ambientales, lo que dificulta la identificación de relaciones causales claras.</li>
+</ul>
+<hr>
+</section>
+</section>
+<section id="zheng-m-et-al.-2020.-plos-one.-doi-10.1371journal.pone.0230669" class="level2">
+<h2 class="anchored" data-anchor-id="zheng-m-et-al.-2020.-plos-one.-doi-10.1371journal.pone.0230669">4. Zheng M et al.&nbsp;(2020). <em>PLOS ONE</em>. DOI: <a href="https://doi.org/10.1371/journal.pone.0230669">10.1371/journal.pone.0230669</a></h2>
+<section id="tipo-de-diseño-3" class="level3">
+<h3 class="anchored" data-anchor-id="tipo-de-diseño-3">4.1 Tipo de diseño</h3>
+<ul>
+<li><strong>Diseño</strong>: Desarrollo y evaluación de un cuestionario de frecuencia alimentaria (FFQ) para niños pequeños. :contentReference<span data-index="49">oaicite:49</span></li>
+</ul>
+</section>
+<section id="objetivo-principal-3" class="level3">
+<h3 class="anchored" data-anchor-id="objetivo-principal-3">4.2 Objetivo principal</h3>
+<ul>
+<li>Desarrollar y validar un FFQ para medir la ingesta dietética de niños pequeños en el último mes. :contentReference<span data-index="53">oaicite:53</span></li>
+</ul>
+</section>
+<section id="población-objetivo-3" class="level3">
+<h3 class="anchored" data-anchor-id="población-objetivo-3">4.3 Población objetivo</h3>
+<ul>
+<li>Padres de niños pequeños. :contentReference<span data-index="57">oaicite:57</span></li>
+</ul>
+</section>
+<section id="limitación-en-el-contexto-de-la-nutrigenómica-3" class="level3">
+<h3 class="anchored" data-anchor-id="limitación-en-el-contexto-de-la-nutrigenómica-3">4.4 Limitación en el contexto de la nutrigenómica</h3>
+<ul>
+<li>La dependencia de los informes de los padres puede introducir sesgos de información, afectando la precisión de los datos dietéticos recolectados.</li>
+</ul>
+<hr>
+</section>
+</section>
+<section id="moitra-p-et-al.-2024.-scientific-reports.-doi-10.1038s41598-024-82080-9" class="level2">
+<h2 class="anchored" data-anchor-id="moitra-p-et-al.-2024.-scientific-reports.-doi-10.1038s41598-024-82080-9">5. Moitra P et al.&nbsp;(2024). <em>Scientific Reports</em>. DOI: <a href="https://doi.org/10.1038/s41598-024-82080-9">10.1038/s41598-024-82080-9</a></h2>
+<section id="tipo-de-diseño-4" class="level3">
+<h3 class="anchored" data-anchor-id="tipo-de-diseño-4">5.1 Tipo de diseño</h3>
+<ul>
+<li><strong>Diseño</strong>: Estudio de métodos mixtos para desarrollar y evaluar un cuestionario sobre conocimientos, actitudes y comportamientos (KAB) relacionados con la nutrigenómica y la nutrición personalizada. :contentReference<span data-index="64">oaicite:64</span></li>
+</ul>
+</section>
+<section id="objetivo-principal-4" class="level3">
+<h3 class="anchored" data-anchor-id="objetivo-principal-4">5.2 Objetivo principal</h3>
+<ul>
+<li>Desarrollar y evaluar las propiedades psicométricas de un cuestionario KAB en estudiantes y profesionales de dietética en India. :contentReference<span data-index="68">oaicite:68</span></li>
+</ul>
+</section>
+<section id="población-objetivo-4" class="level3">
+<h3 class="anchored" data-anchor-id="población-objetivo-4">5.3 Población objetivo</h3>
+<ul>
+<li>Estudiantes y profesionales de dietética en India. :contentReference<span data-index="72">oaicite:72</span></li>
+</ul>
+</section>
+<section id="limitación-en-el-contexto-de-la-nutrigenómica-4" class="level3">
+<h3 class="anchored" data-anchor-id="limitación-en-el-contexto-de-la-nutrigenómica-4">5.4 Limitación en el contexto de la nutrigenómica</h3>
+<ul>
+<li>La validez y confiabilidad del cuestionario pueden no ser generalizables a otras poblaciones o contextos culturales, limitando su aplicabilidad global.</li>
+</ul>
+<hr>
+</section>
+</section>
+<section id="keathley-j-et-al.-2021.-frontiers-in-nutrition.-doi-10.3389fnut.2021.789215" class="level2">
+<h2 class="anchored" data-anchor-id="keathley-j-et-al.-2021.-frontiers-in-nutrition.-doi-10.3389fnut.2021.789215">6. Keathley J et al.&nbsp;(2021). <em>Frontiers in Nutrition</em>. DOI: <a href="https://doi.org/10.3389/fnut.2021.789215">10.3389/fnut.2021.789215</a></h2>
+<section id="tipo-de-diseño-5" class="level3">
+<h3 class="anchored" data-anchor-id="tipo-de-diseño-5">6.1 Tipo de diseño</h3>
+<ul>
+<li><strong>Diseño</strong>: Revisión sistemática de marcos existentes para evaluar la validez científica en la nutrigenómica. :contentReference<span data-index="79">oaicite:79</span></li>
+</ul>
+</section>
+<section id="objetivo-principal-5" class="level3">
+<h3 class="anchored" data-anchor-id="objetivo-principal-5">6.2 Objetivo principal</h3>
+<ul>
+<li>Examinar marcos existentes para determinar la validez científica en la nutrigenómica y proponer un marco adecuado para futuras evaluaciones. :contentReference<span data-index="83">oaicite:83</span></li>
+</ul>
+</section>
+<section id="población-objetivo-5" class="level3">
+<h3 class="anchored" data-anchor-id="población-objetivo-5">6.3 Población objetivo</h3>
+<ul>
+<li>Investigadores y profesionales en el campo de la nutrigenómica. :contentReference<span data-index="87">oaicite:87</span></li>
+</ul>
+</section>
+<section id="limitación-en-el-contexto-de-la-nutrigenómica-5" class="level3">
+<h3 class="anchored" data-anchor-id="limitación-en-el-contexto-de-la-nutrigenómica-5">6.4 Limitación en el contexto de la nutrigenómica</h3>
+<ul>
+<li>La falta de consenso sobre los marcos de evaluación puede dificultar la estandarización y comparación de estudios en nutrigenómica.</li>
+</ul>
+<hr>
+</section>
+</section>
+<section id="conclusión" class="level2">
+<h2 class="anchored" data-anchor-id="conclusión">Conclusión</h2>
+<p>Estos estudios ilustran la diversidad de enfoques en la investigación de la nutrigenómica, desde ensayos clínicos hasta estudios de validación de herramientas y revisiones metodológicas. Cada uno aporta valiosos conocimientos, pero también enfrenta desafíos inherentes a sus diseños que deben ser considerados al interpretar sus hallazgos.</p>
+</section>
+</section>
 
-
-
-</main> <!-- /main -->
+</main>
+<!-- /main column -->
 <script id="quarto-html-after-body" type="application/javascript">
   window.document.addEventListener("DOMContentLoaded", function (event) {
     const icon = "";
@@ -224,12 +251,12 @@ div.csl-indent {
       // flash "checked"
       button.classList.add('code-copy-button-checked');
       var currentTitle = button.getAttribute("title");
-      button.setAttribute("title", "Copiado");
+      button.setAttribute("title", "Copied!");
       let tooltip;
       if (window.bootstrap) {
         button.setAttribute("data-bs-toggle", "tooltip");
         button.setAttribute("data-bs-placement", "left");
-        button.setAttribute("data-bs-title", "Copiado");
+        button.setAttribute("data-bs-title", "Copied!");
         tooltip = new bootstrap.Tooltip(button, 
           { trigger: "manual", 
             customClass: "code-copy-button-tooltip",
@@ -271,7 +298,7 @@ div.csl-indent {
     }
       var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
       var mailtoRegex = new RegExp(/^mailto:/);
-        var filterRegex = new RegExp("https:\/\/Cruzalirio\.github\.io\/Nutrigenomics");
+        var filterRegex = new RegExp('/' + window.location.host + '/');
       var isInternal = (href) => {
           return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
       }
@@ -598,29 +625,7 @@ div.csl-indent {
     }
   });
   </script>
-<nav class="page-navigation column-page-right">
-  <div class="nav-page nav-page-previous">
-      <a href="./02_FirstR.html" class="pagination-link" aria-label="Variable Classification and R">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Variable Classification and R</span></span>
-      </a>          
-  </div>
-  <div class="nav-page nav-page-next">
-  </div>
-</nav>
 </div> <!-- /content -->
-<footer class="footer">
-  <div class="nav-footer">
-    <div class="nav-footer-left">
-<p>Design of Experimental Studies and Statistics Applied to Nutrigenomics</p>
-</div>   
-    <div class="nav-footer-center">
-      &nbsp;
-    <div class="toc-actions"><ul><li><a href="https://github.com/Cruzalirio/Nutrigenomics/edit/main/referencias.qmd" class="toc-action"><i class="bi bi-github"></i>Editar esta página</a></li><li><a href="https://github.com/Cruzalirio/Nutrigenomics/issues/new" class="toc-action"><i class="bi empty"></i>Informar de un problema</a></li></ul></div></div>
-    <div class="nav-footer-right">
-<p>This book has been created with <a href="https://quarto.org/">Quarto</a>.</p>
-</div>
-  </div>
-</footer>
 
 
 

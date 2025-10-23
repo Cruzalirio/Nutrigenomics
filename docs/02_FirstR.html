@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>3&nbsp; Variable Classification – Design of Experimental Studies and Statistics Applied to Nutrigenomics</title>
+<title>3&nbsp; Variable Classification and R – Design of Experimental Studies and Statistics Applied to Nutrigenomics</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -118,7 +118,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Alternar barra lateral" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./02_FirstR.html"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Variable Classification</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./02_FirstR.html"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Variable Classification and R</span></a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Alternar barra lateral" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Buscar" onclick="window.quartoOpenSearch();">
@@ -166,7 +166,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./02_FirstR.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Variable Classification</span></span></a>
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Variable Classification and R</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
@@ -186,20 +186,20 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
    
   <ul>
   <li><a href="#definitions" id="toc-definitions" class="nav-link active" data-scroll-target="#definitions"><span class="header-section-number">3.1</span> Definitions</a></li>
-  <li><a href="#introduction-to-r" id="toc-introduction-to-r" class="nav-link" data-scroll-target="#introduction-to-r"><span class="header-section-number">4</span> Introduction to R</a>
+  <li><a href="#introduction-to-r" id="toc-introduction-to-r" class="nav-link" data-scroll-target="#introduction-to-r"><span class="header-section-number">3.2</span> Introduction to R</a>
   <ul class="collapse">
-  <li><a href="#basic-filters-and-queries" id="toc-basic-filters-and-queries" class="nav-link" data-scroll-target="#basic-filters-and-queries"><span class="header-section-number">4.1</span> Basic Filters and Queries</a></li>
-  <li><a href="#applying-what-we-learned" id="toc-applying-what-we-learned" class="nav-link" data-scroll-target="#applying-what-we-learned"><span class="header-section-number">4.2</span> Applying What We Learned</a></li>
-  <li><a href="#exercise-1" id="toc-exercise-1" class="nav-link" data-scroll-target="#exercise-1"><span class="header-section-number">4.3</span> Exercise 1</a></li>
-  <li><a href="#exercise-2" id="toc-exercise-2" class="nav-link" data-scroll-target="#exercise-2"><span class="header-section-number">4.4</span> Exercise 2</a></li>
-  <li><a href="#working-with-r" id="toc-working-with-r" class="nav-link" data-scroll-target="#working-with-r"><span class="header-section-number">4.5</span> Working with R</a>
+  <li><a href="#basic-filters-and-queries" id="toc-basic-filters-and-queries" class="nav-link" data-scroll-target="#basic-filters-and-queries"><span class="header-section-number">3.2.1</span> Basic Filters and Queries</a></li>
+  </ul></li>
+  <li><a href="#applying-what-we-learned" id="toc-applying-what-we-learned" class="nav-link" data-scroll-target="#applying-what-we-learned"><span class="header-section-number">3.3</span> Applying What We Learned</a>
   <ul class="collapse">
-  <li><a href="#installing-tidyverse" id="toc-installing-tidyverse" class="nav-link" data-scroll-target="#installing-tidyverse"><span class="header-section-number">4.5.1</span> Installing Tidyverse</a></li>
-  <li><a href="#using-functions-to-create-new-variables" id="toc-using-functions-to-create-new-variables" class="nav-link" data-scroll-target="#using-functions-to-create-new-variables"><span class="header-section-number">4.5.2</span> Using Functions to Create New Variables</a></li>
-  <li><a href="#r-practice" id="toc-r-practice" class="nav-link" data-scroll-target="#r-practice"><span class="header-section-number">4.5.3</span> R Practice</a></li>
+  <li><a href="#exercise-1" id="toc-exercise-1" class="nav-link" data-scroll-target="#exercise-1"><span class="header-section-number">3.3.1</span> Exercise 1</a></li>
+  <li><a href="#exercise-2" id="toc-exercise-2" class="nav-link" data-scroll-target="#exercise-2"><span class="header-section-number">3.3.2</span> Exercise 2</a></li>
+  <li><a href="#working-with-r" id="toc-working-with-r" class="nav-link" data-scroll-target="#working-with-r"><span class="header-section-number">3.3.3</span> Working with R</a></li>
+  <li><a href="#installing-tidyverse" id="toc-installing-tidyverse" class="nav-link" data-scroll-target="#installing-tidyverse"><span class="header-section-number">3.3.4</span> Installing Tidyverse</a></li>
+  <li><a href="#using-functions-to-create-new-variables" id="toc-using-functions-to-create-new-variables" class="nav-link" data-scroll-target="#using-functions-to-create-new-variables"><span class="header-section-number">3.3.5</span> Using Functions to Create New Variables</a></li>
+  <li><a href="#r-practice" id="toc-r-practice" class="nav-link" data-scroll-target="#r-practice"><span class="header-section-number">3.3.6</span> R Practice</a></li>
   </ul></li>
-  </ul></li>
-  <li><a href="#additional-activities" id="toc-additional-activities" class="nav-link" data-scroll-target="#additional-activities"><span class="header-section-number">5</span> Additional Activities</a></li>
+  <li><a href="#additional-activities" id="toc-additional-activities" class="nav-link" data-scroll-target="#additional-activities"><span class="header-section-number">3.4</span> Additional Activities</a></li>
   </ul>
 <div class="toc-actions"><ul><li><a href="https://github.com/Cruzalirio/Nutrigenomics/edit/main/02_FirstR.qmd" class="toc-action"><i class="bi bi-github"></i>Editar esta página</a></li><li><a href="https://github.com/Cruzalirio/Nutrigenomics/issues/new" class="toc-action"><i class="bi empty"></i>Informar de un problema</a></li></ul></div></nav>
     </div>
@@ -208,7 +208,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Variable Classification</span></h1>
+<h1 class="title"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Variable Classification and R</span></h1>
 </div>
 
 
@@ -256,15 +256,15 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </ul></li>
 </ol>
 </section>
-<section id="introduction-to-r" class="level1" data-number="4">
-<h1 data-number="4"><span class="header-section-number">4</span> Introduction to R</h1>
+<section id="introduction-to-r" class="level2" data-number="3.2">
+<h2 data-number="3.2" class="anchored" data-anchor-id="introduction-to-r"><span class="header-section-number">3.2</span> Introduction to R</h2>
 <ol type="1">
 <li>R is a calculator (<strong>with steroids</strong>)</li>
 <li>R is an Excel (<strong>with steroids</strong>)</li>
 <li>And what it doesn’t do, you can program it. These files are known as <a href="https://cran.r-project.org/">libraries or packages</a>. For how they work, watch this <a href="https://www.youtube.com/watch?v=Yg3PEllMlyw&amp;ab_channel=SantiagoOrtiz">video</a>.</li>
 </ol>
-<section id="basic-filters-and-queries" class="level2" data-number="4.1">
-<h2 data-number="4.1" class="anchored" data-anchor-id="basic-filters-and-queries"><span class="header-section-number">4.1</span> Basic Filters and Queries</h2>
+<section id="basic-filters-and-queries" class="level3" data-number="3.2.1">
+<h3 data-number="3.2.1" class="anchored" data-anchor-id="basic-filters-and-queries"><span class="header-section-number">3.2.1</span> Basic Filters and Queries</h3>
 <p>Let’s perform a filter; we must be careful with logical algebra.</p>
 <ol type="1">
 <li>Logical OR operator –&gt; |</li>
@@ -326,8 +326,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb1-48"><a href="#cb1-48" aria-hidden="true" tabindex="-1"></a><span class="do">## The object 'a' is different from 'A'</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
-<section id="applying-what-we-learned" class="level2" data-number="4.2">
-<h2 data-number="4.2" class="anchored" data-anchor-id="applying-what-we-learned"><span class="header-section-number">4.2</span> Applying What We Learned</h2>
+</section>
+<section id="applying-what-we-learned" class="level2" data-number="3.3">
+<h2 data-number="3.3" class="anchored" data-anchor-id="applying-what-we-learned"><span class="header-section-number">3.3</span> Applying What We Learned</h2>
 <ol type="1">
 <li><p>For this exercise, we will use the data from <a href="https://www.kaggle.com/datasets/alexteboul/diabetes-health-indicators-dataset?resource=download">here</a></p></li>
 <li><p>The Behavioral Risk Factor Surveillance System (BRFSS) is a telephone health survey collected annually by the CDC. Each year, the survey collects responses from over 400,000 Americans about health risk behaviors, chronic health conditions, and preventive service use. It has been conducted annually since 1984. For this project, we used a CSV file from the dataset available on Kaggle for the year 2015.</p></li>
@@ -358,16 +359,15 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li><code>Education</code>: Education level (EDUCA) scale 1-6 (1 = never attended school, 6 = college graduate)</li>
 <li><code>Income</code>: Income scale (INCOME2) 1 = &lt;$10,000, 8 = $75,000 or more</li>
 </ul>
-</section>
-<section id="exercise-1" class="level2" data-number="4.3">
-<h2 data-number="4.3" class="anchored" data-anchor-id="exercise-1"><span class="header-section-number">4.3</span> Exercise 1</h2>
+<section id="exercise-1" class="level3" data-number="3.3.1">
+<h3 data-number="3.3.1" class="anchored" data-anchor-id="exercise-1"><span class="header-section-number">3.3.1</span> Exercise 1</h3>
 <ol type="1">
 <li>How would you classify each of the variables above?</li>
 <li>Some variables were transformed during measurement. How would you classify them if they were not transformed?</li>
 </ol>
 </section>
-<section id="exercise-2" class="level2" data-number="4.4">
-<h2 data-number="4.4" class="anchored" data-anchor-id="exercise-2"><span class="header-section-number">4.4</span> Exercise 2</h2>
+<section id="exercise-2" class="level3" data-number="3.3.2">
+<h3 data-number="3.3.2" class="anchored" data-anchor-id="exercise-2"><span class="header-section-number">3.3.2</span> Exercise 2</h3>
 <p>Review this <a href="https://microdatos.dane.gov.co//catalog/548/datafile/F1">questionnaire</a></p>
 <ol type="1">
 <li>Classify each variable.</li>
@@ -377,8 +377,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li>What issues could arise when applying it?</li>
 </ol>
 </section>
-<section id="working-with-r" class="level2" data-number="4.5">
-<h2 data-number="4.5" class="anchored" data-anchor-id="working-with-r"><span class="header-section-number">4.5</span> Working with R</h2>
+<section id="working-with-r" class="level3" data-number="3.3.3">
+<h3 data-number="3.3.3" class="anchored" data-anchor-id="working-with-r"><span class="header-section-number">3.3.3</span> Working with R</h3>
 <p>Libraries needed for loading, manipulating, and visualizing data:</p>
 <ol type="1">
 <li><p><strong>readxl</strong>: readxl is a package designed for a single task: importing Excel sheets into R. It is lightweight and efficient but does not have advanced functions. It works on Windows, Linux, and OSX, and supports Excel 97-03 (.xls) and newer versions (.xlsx). Formulas in cells are imported as their results. The goal of using readxl is to have <strong>tidy data</strong>, where each row is an observation and each column is a variable — ideal for statistical analysis.</p></li>
@@ -396,8 +396,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li><a href="https://readr.tidyverse.org/"><strong>readr</strong></a>: Provides a fast way to read rectangular data from CSV or TSV files and reports parsing issues clearly.</li>
 </ul></li>
 </ol>
-<section id="installing-tidyverse" class="level3" data-number="4.5.1">
-<h3 data-number="4.5.1" class="anchored" data-anchor-id="installing-tidyverse"><span class="header-section-number">4.5.1</span> Installing Tidyverse</h3>
+</section>
+<section id="installing-tidyverse" class="level3" data-number="3.3.4">
+<h3 data-number="3.3.4" class="anchored" data-anchor-id="installing-tidyverse"><span class="header-section-number">3.3.4</span> Installing Tidyverse</h3>
 <p>After installing, load it with the command:</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -576,8 +577,8 @@ dbl (22): Diabetes_012, HighBP, HighChol, CholCheck, BMI, Smoker, Stroke, He...
 </div>
 </div>
 </section>
-<section id="using-functions-to-create-new-variables" class="level3" data-number="4.5.2">
-<h3 data-number="4.5.2" class="anchored" data-anchor-id="using-functions-to-create-new-variables"><span class="header-section-number">4.5.2</span> Using Functions to Create New Variables</h3>
+<section id="using-functions-to-create-new-variables" class="level3" data-number="3.3.5">
+<h3 data-number="3.3.5" class="anchored" data-anchor-id="using-functions-to-create-new-variables"><span class="header-section-number">3.3.5</span> Using Functions to Create New Variables</h3>
 <p><code>ifelse</code> allows you to construct categories or ranges from an existing variable with the data already available.<br>
 Next, we will get familiar with the <strong>ifelse</strong> and <strong>mutate</strong> functions:</p>
 <div class="cell">
@@ -655,8 +656,8 @@ For example, if we want to create a dataset called <code>DiabetesWomen</code> th
 </div>
 </div>
 </section>
-<section id="r-practice" class="level3" data-number="4.5.3">
-<h3 data-number="4.5.3" class="anchored" data-anchor-id="r-practice"><span class="header-section-number">4.5.3</span> R Practice</h3>
+<section id="r-practice" class="level3" data-number="3.3.6">
+<h3 data-number="3.3.6" class="anchored" data-anchor-id="r-practice"><span class="header-section-number">3.3.6</span> R Practice</h3>
 <ol type="1">
 <li><p>Select a dataset with individuals who are underweight, do not eat vegetables, and smoke.</p></li>
 <li><p>Create a new variable that sums all variables related to previous diseases.</p></li>
@@ -666,9 +667,8 @@ For example, if we want to create a dataset called <code>DiabetesWomen</code> th
 </ol>
 </section>
 </section>
-</section>
-<section id="additional-activities" class="level1" data-number="5">
-<h1 data-number="5"><span class="header-section-number">5</span> Additional Activities</h1>
+<section id="additional-activities" class="level2" data-number="3.4">
+<h2 data-number="3.4" class="anchored" data-anchor-id="additional-activities"><span class="header-section-number">3.4</span> Additional Activities</h2>
 <ol type="1">
 <li>Watch this <a href="https://www.youtube.com/watch?v=_BOABxNC5q4&amp;t=69s">video</a>.<br>
 </li>
