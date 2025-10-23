@@ -1,0 +1,267 @@
+# Variable Classification
+
+1. What is a variable? 
+2. What is a population?
+3. What is a sample?
+4. What is an individual?
+
+## Definitions
+
+**Variable**: A statistical variable is a characteristic of a sample or population that can take on different values.
+
+Although there are many types of statistical variables, in general we can distinguish two main types:
+
+1. **Quantitative variable**: Variables expressed numerically.
+   * a) Continuous variable: Can take an infinite number of values within a range.
+   * b) Discrete variable: Can take a finite number of values within a range.
+2. **Qualitative variable**: Variables expressed in words or numerical codes.
+   * a) Ordinal variable: Expresses different levels and order. Any Likert-scale variable. Read this blog: [What is the Likert scale?](https://www.questionpro.com/blog/es/que-es-la-escala-de-likert-y-como-utilizarla/)
+   * b) Nominal variable: Clearly expresses a name or category.
+   
+   
+# Introduction to R
+
+
+1. R is a calculator (**with steroids**)
+2. R is an Excel (**with steroids**)
+3. And what it doesn’t do, you can program it. These files are known as [libraries or packages](https://cran.r-project.org/). For how they work, watch this [video](https://www.youtube.com/watch?v=Yg3PEllMlyw&ab_channel=SantiagoOrtiz).  
+
+## Basic Filters and Queries
+Let's perform a filter; we must be careful with logical algebra.
+
+1. Logical OR operator --> |
+2. Logical AND operator --> &
+3. Equality operator --> ==
+4. Not equal operator --> !=
+5. Pipe operator --> %>% 
+6. True --> TRUE (or just T)
+7. False --> FALSE (or just F)
+
+```{r, eval=FALSE}
+#### Logical Algebra
+
+5 > 3
+
+4 <= 6
+
+6 < 6
+
+6 <= 6
+
+4 > 45
+
+4 != 5
+
+3 = 6  ## What happens? (Error: this is assignment, not comparison)
+
+3 == 6  ## Correct comparison
+
+## Assigning objects
+## Arrow
+x <- c(1,4,5,6,7,86867,7,89,4,5,6,7)
+
+## Equal sign
+Alirio = c(1,4,5,6,7,86867,7,89,4,5,6,7)
+
+x^3  ## Not assigned, just displayed
+
+## Creating a new object
+y = Alirio^3 
+
+nombre = "Al"  ### Use quotes for names
+nombres = c("Al", "Ali", "Car", "Jhon", "Kar") ## Comma-separated
+
+nombres^2  ## Problem: non-numeric values
+
+z = 1:100
+
+## Name <- Operation
+y <- z > 7  ## A vector with TRUE if z is greater than 7, FALSE otherwise
+
+y
+str(y) ### Structure of y
+
+a = y^2  ## FALSE = 0, TRUE = 1
+
+A = y + 2 ## Adds 2 to every element
+
+## The object 'a' is different from 'A'
+
+```
+
+
+
+## Applying What We Learned
+
+1. For this exercise, we will use the data from [here](https://www.kaggle.com/datasets/alexteboul/diabetes-health-indicators-dataset?resource=download)
+
+2. The Behavioral Risk Factor Surveillance System (BRFSS) is a telephone health survey collected annually by the CDC. Each year, the survey collects responses from over 400,000 Americans about health risk behaviors, chronic health conditions, and preventive service use. It has been conducted annually since 1984. For this project, we used a CSV file from the dataset available on Kaggle for the year 2015.
+
+3. The [diabetes_BRFSS2015.csv](https://raw.githubusercontent.com/Cruzalirio/Unal-Enfermeria-/main/Datos/diabetes_BRFSS2015.csv) dataset contains 253,680 cleaned responses from the 2015 BRFSS survey. The target variable `Diabetes_012` has 3 classes: 0 = no diabetes or only during pregnancy, 1 = prediabetes, 2 = diabetes. The dataset has class imbalance and 21 feature variables.
+
+4. Variable descriptions:
+
+* `Diabetes_012`: 0 = no diabetes, 1 = prediabetes, 2 = diabetes
+* `HighBP`: 0 = no high BP, 1 = high BP
+* `HighChol`: 0 = no high cholesterol, 1 = high cholesterol
+* `CholCheck`: 0 = no cholesterol check in 5 years, 1 = yes
+* `BMI`: Body Mass Index
+* `Smoker`: Have you smoked at least 100 cigarettes in your lifetime? 0 = no, 1 = yes
+* `Stroke`: Ever told you had a stroke? 0 = no, 1 = yes
+* `HeartDiseaseorAttack`: Coronary heart disease (CHD) or myocardial infarction (MI) 0 = no, 1 = yes
+* `PhysActivity`: Physical activity in past 30 days (excluding job) 0 = no, 1 = yes
+* `Fruits`: Consume fruit once or more per day 0 = no, 1 = yes
+* `Veggies`: Consume vegetables once or more per day 0 = no, 1 = yes
+* `HvyAlcoholConsump`: Heavy drinkers (adult men >14 drinks/week, adult women >7 drinks/week) 0 = no, 1 = yes
+* `AnyHealthcare`: Have any health care coverage? 0 = no, 1 = yes
+* `NoDocbcCost`: Could not see a doctor due to cost in the past 12 months? 0 = no, 1 = yes
+* `GenHlth`: General health self-assessment scale 1-5 (1 = excellent, 5 = poor)
+* `MentHlth`: Days in past 30 days mental health was not good (stress, depression, emotions) 1-30
+* `PhysHlth`: Days in past 30 days physical health was not good 1-30
+* `DiffWalk`: Serious difficulty walking or climbing stairs? 0 = no, 1 = yes
+* `Sex`: 0 = female, 1 = male
+* `Age`: 13-level age category (_AGEG5YR) 1 = 18-24, 13 = 80+
+* `Education`: Education level (EDUCA) scale 1-6 (1 = never attended school, 6 = college graduate)
+* `Income`: Income scale (INCOME2) 1 = <\$10,000, 8 = \$75,000 or more
+
+## Exercise 1
+
+1. How would you classify each of the variables above?
+2. Some variables were transformed during measurement. How would you classify them if they were not transformed?
+
+## Exercise 2
+
+Review this [questionnaire](https://microdatos.dane.gov.co//catalog/548/datafile/F1)
+
+1. Classify each variable.
+2. Which variables do not fit in the four categories (nominal, ordinal, interval, ratio)?
+3. Are any of these questions sensitive?
+4. Are any questions unclear to the target population?
+5. What issues could arise when applying it?
+
+## Working with R
+
+Libraries needed for loading, manipulating, and visualizing data:
+
+1. **readxl**: readxl is a package designed for a single task: importing Excel sheets into R. It is lightweight and efficient but does not have advanced functions. It works on Windows, Linux, and OSX, and supports Excel 97-03 (.xls) and newer versions (.xlsx). Formulas in cells are imported as their results. The goal of using readxl is to have **tidy data**, where each row is an observation and each column is a variable — ideal for statistical analysis.
+
+2. [**Tidyverse**](https://www.tidyverse.org/#:~:text=The%20tidyverse%20is%20an%20opinionated,%2C%20grammar%2C%20and%20data%20structures.&text=See%20how%20the%20tidyverse%20makes,%E2%80%9CR%20for%20Data%20Science%E2%80%9D.): A data ecosystem in R, consisting of several packages:
+   * [**dplyr**](https://dplyr.tidyverse.org/): A grammar of data manipulation providing verbs to solve common data tasks:
+     1. `mutate()` adds new variables as functions of existing ones
+     2. `select()` selects variables by name
+     3. `filter()` selects cases based on values
+     4. `summarise()` reduces multiple values to a summary
+     5. `arrange()` reorders rows
+   * [**ggplot2**](https://ggplot2.tidyverse.org/): A system for declaratively creating graphics, based on The Grammar of Graphics.
+   * [**readr**](https://readr.tidyverse.org/): Provides a fast way to read rectangular data from CSV or TSV files and reports parsing issues clearly.
+
+### Installing Tidyverse
+
+After installing, load it with the command:
+
+```{r}
+library(tidyverse)
+```
+
+```{r}
+datos = read_csv("https://raw.githubusercontent.com/Cruzalirio/Unal-Enfermeria-/main/Datos/diabetes_BRFSS2015.csv")
+### La función head me permite ver las primeras filas
+head(datos)
+
+## Seleccionar la variable Diabetes_012
+datos %>% select(Diabetes_012)
+
+# Seleccionar la variable Diabetes_012 y edad
+datos %>% select(Diabetes_012, Age)
+
+
+## Filtrar las personas con de sexo femenino
+
+datos %>% filter(Sex==1)
+
+## Filtrar las personas con de sexo femenino y BMI menor a 14
+
+datos %>% filter(Sex==1, BMI< 14)
+
+## Ordenar la base por BMI
+## Notar que el menor BMI es de 12
+
+datos %>% arrange(BMI)
+
+## Ordenar por BMI y luego por ingreso
+
+datos %>% arrange(BMI, Income)
+
+```
+
+
+
+### Using Functions to Create New Variables
+
+``ifelse`` allows you to construct categories or ranges from an existing variable with the data already available.  
+Next, we will get familiar with the **ifelse** and **mutate** functions:
+
+```{r}
+## Comparación básica
+
+ifelse(5>3, "Bingo", "Next")
+
+## Comparación sobre un vector
+
+x = c(1,2,3,6,7,4,3,2,900)
+
+ifelse(x<5, "Bingo", "Next")
+
+### Sobre toda una variable
+
+datos %>% mutate(ComeVegetales = ifelse(Veggies==0, "No come vegetales", "Sí come vegetales"))
+
+```
+
+The previous operations only display the result, but they are not saved in R's workspace.  
+To save them, you need to assign the result to an object using a name.
+
+
+```{r}
+datosVege = datos %>% mutate(ComeVegetales = ifelse(Veggies==0, "No come vegetales", "Sí come vegetales"))
+```
+
+You can also perform successive operations on the dataset using the `%>%` operator.  
+For example, if we want to create a dataset called `DiabetesWomen` that contains the following variables:
+
+1. `Overweight` = Yes: if BMI > 26, and No otherwise.
+2. `RiskFactor` = Sum of the variables HighChol, Smoker, Stroke, HvyAlcoholConsump
+3. `Diet` = Sum of the variables Fruits and Veggies
+4. Include only women with diabetes.
+
+We would proceed as follows:
+
+
+```{r}
+DiabetesMujeres = datos %>% mutate(Sobrepeso = ifelse(BMI>26, "Sí", "No"),
+                                   FactorRiesgo =HighChol+ Smoker +  Stroke + HvyAlcoholConsump,
+                                   Comida = Fruits + Veggies ) %>%
+                            filter(Sex==0, Diabetes_012 == 2) %>%
+                            select(Sobrepeso, FactorRiesgo, Comida)
+
+head(DiabetesMujeres)
+```
+
+### R Practice
+
+1. Select a dataset with individuals who are underweight, do not eat vegetables, and smoke.
+
+2. Create a new variable that sums all variables related to previous diseases.
+
+3. Export this dataset to Excel format. A guide can be found [here](https://r-coder.com/exportar-datos-r/)
+
+4. Propose at least three pairs of variables whose relationships could be analyzed. How would you relate them? What kind of relationship do you expect?  
+*An example would be analyzing the relationship between eating vegetables and fruits with BMI.*
+
+
+# Additional Activities
+
+1. Watch this [video](https://www.youtube.com/watch?v=_BOABxNC5q4&t=69s).  
+2. If you want a more scientific perspective on how to handle a Likert scale, read this: [Idea 2](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC3886444/) and [Idea 3](https://archives.joe.org/joe/2012april/pdf/JOE_v50_2tt2.pdf)
+
+

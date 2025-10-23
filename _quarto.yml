@@ -22,6 +22,7 @@ book:
   chapters:
     - index.qmd
     - 01_TypesStudies.qmd
+    - 02_FirstR.qmd
     - referencias.qmd
 
 bibliography: referencias.bib
