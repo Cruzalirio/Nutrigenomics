@@ -148,6 +148,90 @@ In reality: <p style="color: red;">No type of medical study can demonstrate with
 
 <p style="color: red;"> Retrospective </p>: Exposed and unexposed individuals are taken at a certain point in the past, and their outcomes to the present are studied.
 
+#### Cross-sectional studies
+
+In cross-sectional studies, both the disease and potential influencing factors (or other characteristics) are observed simultaneously in a cross-sectional sample of individuals — that is, without a before-and-after component.
+
+::: {.callout-note}
+For a study to be considered cross-sectional, it must meet the following criteria:
+
+* **Cross-sectional in time**: The information refers to a single point in time, or at least the passage of time is not relevant to the study.
+
+* **Cross-sectional sample**: The sample is not pre-stratified by the characteristics under study or by variables related to them (i.e., not stratified sampling).
+:::
+
+---
+
+#### Ecological studies
+
+In ecological studies, the variables of interest are measured at the **group level** (countries, cities, neighborhoods), not at the individual level.  
+The occurrence of a disease is compared across groups with different levels of exposure.
+
+::: {.callout-note}
+**Beware of the ecological fallacy:**
+
+* From an ecological study, nothing can be inferred at the individual level.  
+* For example, we cannot conclude that *individuals* who eat red meat have a higher risk of colon cancer — it may be that the cases of colon cancer occurred among those who did **not** eat red meat.
+:::
+
+---
+
+#### Interventional studies
+
+* **Clinical trial**: Interventional medical study involving humans.
+
+* **Randomized clinical trial (RCT)**: Clinical trial in which individuals are randomly assigned to two or more groups receiving different treatments, and the outcomes are compared. Usually, one group serves as the control group.
+
+* **Controlled clinical trial**: Clinical trial comparing a group that receives a treatment with another that does not receive it.
+
+* **Experimental study**: Any other type of interventional study.
+
+---
+
+#### Classification by blinding
+
+* **Open-label**: Both participants and evaluators know which treatment each participant receives.
+
+* **Single-blind**: Either the participants or the evaluators do not know which treatment each participant receives.
+
+* **Double-blind**: Neither participants nor evaluators know which treatment each participant receives.
+
+* **Triple-blind**: Participants, evaluators, and data analysts all remain unaware of the treatment allocation.
+
+---
+
+#### Placebo
+
+A placebo is a substance identical in appearance to the active treatment but **pharmacologically inactive**. It can be used for:
+
+* **Blinding the trial**: The control group receives something inert rather than nothing at all.
+* **Assessing the placebo effect**: Change in the patient’s response simply due to receiving treatment.
+* **Estimating the spontaneous recovery rate**: The proportion of patients who recover without any active treatment.
+
+---
+
+#### Classification by group formation
+
+* **Parallel-group study**: Different groups of subjects are assigned to receive different treatments.
+
+* **Crossover study**: Each subject receives multiple treatments at different times in a randomized order — each participant serves as their own control.
+
+---
+
+#### Meta-analysis
+
+* **Systematic review**: A summary of all published research addressing a specific question. Patients are not studied directly — only previously published clinical studies.
+
+* **Meta-analysis**: A systematic review that uses **statistical techniques** to quantitatively combine results from previous studies.
+
+> **Meta-analysis**: A systematic review that uses statistical techniques to jointly analyze published results.
+
+---
+
+#### Pyramid of evidence
+
+![](Figuras/systematic.png){width="70%" fig-align="center"}
+
 
 ### Statistical View of Each Design
 
