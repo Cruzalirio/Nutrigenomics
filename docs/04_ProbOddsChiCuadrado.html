@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>References – Design of Experimental Studies and Statistics Applied to Nutrigenomics</title>
+<title>4&nbsp; Probability – Design of Experimental Studies and Statistics Applied to Nutrigenomics</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -20,26 +20,7 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
-/* CSS for citations */
-div.csl-bib-body { }
-div.csl-entry {
-  clear: both;
-}
-.hanging-indent div.csl-entry {
-  margin-left:2em;
-  text-indent:-2em;
-}
-div.csl-left-margin {
-  min-width:2em;
-  float:left;
-}
-div.csl-right-inline {
-  margin-left:2em;
-  padding-left:1em;
-}
-div.csl-indent {
-  margin-left: 2em;
-}</style>
+</style>
 
 
 <script src="site_libs/quarto-nav/quarto-nav.js"></script>
@@ -49,7 +30,8 @@ div.csl-indent {
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./05_Odds.html" rel="prev">
+<link href="./05_Odds.html" rel="next">
+<link href="./02_FirstR.html" rel="prev">
 <link href="./Figures/atlas.jpeg" rel="icon" type="image/jpeg">
 <script src="site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
@@ -89,6 +71,35 @@ div.csl-indent {
   }
 }</script>
 
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN") {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
 
 </head>
 
@@ -101,7 +112,7 @@ div.csl-indent {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Alternar barra lateral" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./referencias.html">References</a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./04_ProbOddsChiCuadrado.html"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Probability</span></a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Alternar barra lateral" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Buscar" onclick="window.quartoOpenSearch();">
@@ -154,7 +165,7 @@ div.csl-indent {
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./04_ProbOddsChiCuadrado.html" class="sidebar-item-text sidebar-link">
+  <a href="./04_ProbOddsChiCuadrado.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Probability</span></span></a>
   </div>
 </li>
@@ -166,7 +177,7 @@ div.csl-indent {
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./referencias.html" class="sidebar-item-text sidebar-link active">
+  <a href="./referencias.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">References</span></a>
   </div>
 </li>
@@ -175,20 +186,27 @@ div.csl-indent {
 </nav>
 <div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
-        
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Tabla de contenidos</h2>
+   
+  <ul>
+  <li><a href="#set-algebra" id="toc-set-algebra" class="nav-link active" data-scroll-target="#set-algebra"><span class="header-section-number">4.0.1</span> Set Algebra</a></li>
+  <li><a href="#some-basic-formulas" id="toc-some-basic-formulas" class="nav-link" data-scroll-target="#some-basic-formulas"><span class="header-section-number">4.0.2</span> Some basic formulas</a></li>
+  </ul>
+<div class="toc-actions"><ul><li><a href="https://github.com/Cruzalirio/Nutrigenomics/edit/main/04_ProbOddsChiCuadrado.qmd" class="toc-action"><i class="bi bi-github"></i>Editar esta página</a></li><li><a href="https://github.com/Cruzalirio/Nutrigenomics/issues/new" class="toc-action"><i class="bi empty"></i>Informar de un problema</a></li></ul></div></nav>
     </div>
 <!-- main -->
-<main class="content column-page-right" id="quarto-document-content">
+<main class="content column-body" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">References</h1>
+<h1 class="title"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Probability</span></h1>
 </div>
 
 
 
-<div class="quarto-title-meta column-page-right">
+<div class="quarto-title-meta column-body">
 
     
   
@@ -200,17 +218,155 @@ div.csl-indent {
 </header>
 
 
-<div id="refs" role="list" style="display: none">
-
+<p>The probability of an event is, basically, a number between 0 and 1 (or, if you prefer, a percentage between 0% and 100%) that measures the expectation of that event occurring.</p>
+<p>In this course, we will define the <strong>probability of an event</strong> as the <strong>proportion</strong> (the <strong>fraction</strong>, the <strong>percentage</strong>) of subjects in a population (or sometimes a sample, depending on the context) in whom the event occurs. This proportion measures the “probability” that if we randomly select a subject from the population, the event will occur.</p>
+<strong>Example:</strong>
+<div style="border-left: 4px solid #f0ad4e; background-color: #fcf8e3; padding: 10px; margin: 10px 0;">
+<p>The probability that a coin toss lands on heads is the proportion of the population of tosses that land on heads.</p>
 </div>
+<p>In VERY simple cases, when <strong>all possible outcomes have the same probability</strong>, this proportion coincides with the fraction of times this event occurs in the set of possible outcomes and can therefore be calculated using the famous <strong>Laplace’s rule</strong>: <span class="math display">\[
+\text{Probability}=\frac{\text{Favorable cases}}{\text{Possible cases}}
+\]</span></p>
+<p>For example:</p>
 <ul>
-<li><p>Bolton, S., &amp; Bon, C. B. (2010). Pharmaceutical Statistics: Practical and Clinical Applications (5th ed.). CRC Press.</p></li>
-<li><p>Martínez González, M., Sánchez Villegas, A., &amp; Faulín Fajardo, J. (2020). Bioestadística Amigable. CRC Press.</p></li>
+<li><p>The probability of landing heads when tossing a balanced coin is 1/2 (favorable cases, 1; possible cases, 2; both outcomes have the same probability by definition of a balanced coin).</p></li>
+<li><p>However, the probability of a child being male is not 1/2, even though there are only two chromosomal sexes. It is the proportion of male children in the total number of all children, which is estimated to be around 51.22%.</p></li>
+<li><p>Or more exaggeratedly, the probability that a woman between the ages of 17 and 27 is myopic is not 1/2, even though there are only two possible outcomes: being myopic or not. This probability is the proportion of myopic individuals in the population made up of all women in that age group, which, in Spain in 2018, was estimated at 65.4% according to a <a href="http://visionyvida.org/informe-prevalencia-de-la-miopia-en-los-jovenes-en-espana-2018/">report by the Visión y Vida Association</a>.</p></li>
 </ul>
+<section id="set-algebra" class="level3" data-number="4.0.1">
+<h3 data-number="4.0.1" class="anchored" data-anchor-id="set-algebra"><span class="header-section-number">4.0.1</span> Set Algebra</h3>
+<p>Let’s very quickly review the notations and properties of set operations, so we can use this language in what follows.</p>
+<p>Let <span class="math inline">\(A\)</span> and <span class="math inline">\(B\)</span> be subsets (in the context of probability theory, they are called <strong>events</strong>) of a set <span class="math inline">\(\Omega\)</span> (our <strong>population</strong> or, in the language of probability theory, the <strong>sample space</strong>).</p>
+<ul>
+<li><p><span class="math inline">\(A\cup B\)</span> is the <strong>union</strong> of <span class="math inline">\(A\)</span> and <span class="math inline">\(B\)</span>: the set consisting of the elements of <span class="math inline">\(\Omega\)</span> that belong to <span class="math inline">\(A\)</span> or <span class="math inline">\(B\)</span> (or both).</p></li>
+<li><p><span class="math inline">\(A \cap B\)</span> is the <strong>intersection</strong> of <span class="math inline">\(A\)</span> and <span class="math inline">\(B\)</span>: the set consisting of the elements that simultaneously belong to <span class="math inline">\(A\)</span> and <span class="math inline">\(B\)</span>.</p></li>
+</ul>
+<p>This corresponds to the <strong>conjunction</strong> of natural language.</p>
+<ul>
+<li><span class="math inline">\(A^c\)</span> is the <strong>complementary</strong> of <span class="math inline">\(A\)</span>: the set consisting of the elements of <span class="math inline">\(\Omega\)</span> that do not belong to <span class="math inline">\(A\)</span>.</li>
+</ul>
+<p>This corresponds to the <strong>negation</strong> of natural language.</p>
+<ul>
+<li><span class="math inline">\(A-B=A \cap B^c\)</span> is the <strong>difference</strong> “<span class="math inline">\(A\)</span> minus <span class="math inline">\(B\)</span>”: the set formed by the elements of <span class="math inline">\(A\)</span> that do not belong to <span class="math inline">\(B\)</span>.</li>
+</ul>
+<p>Therefore, <span class="math inline">\(A^c=\Omega-A\)</span>.</p>
+<ul>
+<li><p>We will say that <span class="math inline">\(A\)</span> and <span class="math inline">\(B\)</span> are <strong>disjoint</strong>, or <strong>incompatible</strong>, when <span class="math inline">\(A\cap B=\emptyset\)</span>, where <span class="math inline">\(\emptyset\)</span> is the <strong>empty set</strong>, the set that has no elements.</p></li>
+<li><p>We will say that <span class="math inline">\(A\)</span> is <strong>contained</strong>, or <strong>included</strong>, in <span class="math inline">\(B\)</span>, and we will denote it by <span class="math inline">\(A\subseteq B\)</span>, when every element of <span class="math inline">\(A\)</span> belongs to <span class="math inline">\(B\)</span>. To emphasize that <span class="math inline">\(A\)</span> is <strong>strictly contained</strong> in <span class="math inline">\(B\)</span> (that it is contained in <span class="math inline">\(B\)</span> but is not equal to <span class="math inline">\(B\)</span>), we will use <span class="math inline">\(A\subsetneq B\)</span>.</p></li>
+</ul>
+<strong>Example:</strong>
+<div style="border-left: 4px solid #f0ad4e; background-color: #fcf8e3; padding: 10px; margin: 10px 0;">
+<p>Consider the population <span class="math inline">\(\Omega\)</span> consisting of the students in a class, and let <span class="math inline">\(A\)</span> be the subset consisting of the females in that class and <span class="math inline">\(B\)</span> be the subset consisting of the students in that class who wear glasses.</p>
+<ul>
+<li><p><span class="math inline">\(A\cup B\)</span> is the set consisting of the females in the class or the males in the class who wear glasses (or both).</p></li>
+<li><p><span class="math inline">\(A \cap B\)</span> is the set consisting of the females in the class who wear glasses.</p></li>
+<li><p><span class="math inline">\(A^c\)</span> is the set consisting of the males in the class.</p></li>
+<li><p><span class="math inline">\(A-B\)</span> is the set consisting of the females in the class who do not wear glasses.</p></li>
+<li><p><span class="math inline">\(A\subseteq B\)</span> means that all the females in the class wear glasses.</p></li>
+</ul>
+</div>
+</section>
+<section id="some-basic-formulas" class="level3" data-number="4.0.2">
+<h3 data-number="4.0.2" class="anchored" data-anchor-id="some-basic-formulas"><span class="header-section-number">4.0.2</span> Some basic formulas</h3>
+<p>We have defined the probability <span class="math inline">\(P(A)\)</span> of a subset (event) <span class="math inline">\(A\)</span> of a population (sample space) <span class="math inline">\(\Omega\)</span> as the fraction of the subjects in <span class="math inline">\(\Omega\)</span> that belong to <span class="math inline">\(A\)</span>. From this definition, the following properties follow:</p>
+<ol type="1">
+<li>For every event <span class="math inline">\(A\)</span>, <span class="math inline">\(0\leqslant P(A)\leqslant 1\)</span>.</li>
+</ol>
+<p>A subset <span class="math inline">\(A\)</span> of <span class="math inline">\(\Omega\)</span> cannot represent either a negative fraction or a fraction greater than 1 of the subjects in <span class="math inline">\(\Omega\)</span>.</p>
+<ol start="2" type="1">
+<li><p><span class="math inline">\(P(\Omega)=1\)</span> and <span class="math inline">\(P(\emptyset)=0\)</span> (remember that <span class="math inline">\(\emptyset\)</span> is the empty set).</p></li>
+<li><p>If <span class="math inline">\(A\)</span> and <span class="math inline">\(B\)</span> are two disjoint events, then Thus, <span class="math inline">\(P(A\cup B)=P(A)+P(B)\)</span>.</p></li>
+</ol>
+<p>If no subject belongs simultaneously to both <span class="math inline">\(A\)</span> and <span class="math inline">\(B\)</span>, then the number of subjects belonging to <span class="math inline">\(A\)</span> or <span class="math inline">\(B\)</span> is the sum of those belonging to <span class="math inline">\(A\)</span> and those belonging to <span class="math inline">\(B\)</span>. Then, dividing by the total number of individuals in the population <span class="math inline">\(\Omega\)</span> (its <strong>cardinal</strong>), we obtain that the fraction of subjects belonging to <span class="math inline">\(A\)</span> or <span class="math inline">\(B\)</span> is the sum of the fractions belonging to <span class="math inline">\(A\)</span> and those belonging to <span class="math inline">\(B\)</span>.</p>
+<ol start="4" type="1">
+<li><p>More generally, if <span class="math inline">\(A_1,A_2,\ldots,A_n\)</span> are pairwise disjoint events, then <span class="math display">\[
+P(A_1\cup A_2\cup \cdots \cup A_n)=P(A_1)+P(A_2)+\cdots +P(A_n).
+\]</span></p></li>
+<li><p><span class="math inline">\(P(A-B)=P(A)-P(A\cap B)\)</span>.</p></li>
+<li><p><span class="math inline">\(P(A^c)=1-P(A)\)</span>.</p></li>
+</ol>
+<p>That is, the fraction of subjects that do not belong to <span class="math inline">\(A\)</span> is 1 minus the fraction of those that do belong to <span class="math inline">\(A\)</span>.</p>
+<ol start="7" type="1">
+<li>If <span class="math inline">\(A\subseteq B\)</span>, then <span class="math inline">\(P(A)\leqslant P(B)\)</span>.</li>
+</ol>
+<p>If <span class="math inline">\(A\)</span> is contained in <span class="math inline">\(B\)</span>, the fraction of subjects belonging to <span class="math inline">\(A\)</span> is less than or equal to the fraction of those belonging to <span class="math inline">\(B\)</span>.</p>
+<ol start="8" type="1">
+<li><span class="math inline">\(P(A\cup B)=P(A)+P(B)-P(A \cap B)\)</span>.</li>
+</ol>
+<p>If you want to count how many subjects there are in <span class="math inline">\(A\cup B\)</span>, you have to add those in <span class="math inline">\(A\)</span> to those in <span class="math inline">\(B-A\)</span>. Dividing by the total population to convert to proportions, this tells us that <span class="math display">\[
+P(A\cup B)=P(A)+P(B-A)=P(A)+P(B)-P(A \cap B)
+\]</span> where the second equality is due to (5).</p>
+<p>For example, if a population is 50% female and 60% nearsighted, and 35% of the total are nearsighted women, then the number of people who are either female or nearsighted (remember, or both) makes up 75% of the population. To the 50% of women, we must add the 25% of nearsighted people who are not women.</p>
+<p>The number of subjects who belong to <span class="math inline">\(A\)</span> but not to <span class="math inline">\(B\)</span> is obtained by subtracting from the total number of subjects in <span class="math inline">\(A\)</span> those who belong simultaneously to <span class="math inline">\(A\)</span> and <span class="math inline">\(B\)</span>, that is, to <span class="math inline">\(A\cap B\)</span>. Dividing by the total number of individuals in the population, we obtain the corresponding equality of proportions.</p>
+<strong>Example:</strong>
+<div style="border-left: 4px solid #f0ad4e; background-color: #fcf8e3; padding: 10px; margin: 10px 0;">
+<p>Suppose 0.1% of blood donors test positive for HIV, 1% test positive for herpes simplex virus (HSV), and 0.05% test positive for both tests.</p>
+<p>What is the probability that a randomly selected donor tests positive for at least one of the two tests? What is the probability that a randomly selected donor tests positive for HSV but not HIV?</p>
+<p>Let’s name the events involved in these questions:</p>
+<ul>
+<li><p><span class="math inline">\(A\)</span>: Test positive for HIV. We know that <span class="math inline">\(P(A)=0.001\)</span>.</p></li>
+<li><p><span class="math inline">\(B\)</span>: Test positive for HSV. We know that <span class="math inline">\(P(B)=0.01\)</span>.</p></li>
+<li><p><span class="math inline">\(A\cap B\)</span>: Test positive for both. We know that <span class="math inline">\(P(A\cap B)=0.0005\)</span>.</p></li>
+<li><p><span class="math inline">\(A\cup B\)</span>: Test positive for at least one of the two. This is what we wanted to calculate in the first question.</p></li>
+</ul>
+<p>By property (8): <span class="math display">\[
+P(A \cup B) = P(A)+P(B)-P(A\cap B)=0.001+0.01-0.0005=0.0105
+\]</span> The probability that a randomly selected donor will test positive for at least one of the two tests is 1.05%.</p>
+<ul>
+<li><span class="math inline">\(B-A\)</span>: Test positive for HSV but not HIV. This is what we wanted to calculate in the second question.</li>
+</ul>
+<p>By property (5), <span class="math display">\[
+P(B-A)=P(B)-P(A\cap B)=0.01-0.0005=0.0095
+\]</span></p>
+<p>The probability that a randomly selected donor tests positive for HSV but not HIV is 0.95%.</p>
+</div>
+<p>Another way to calculate these probabilities without having to remember formulas would be:</p>
+<ul>
+<li><p>Take a population of a specific size as a reference.</p></li>
+<li><p>Calculate in this population how many individuals belong to <span class="math inline">\(A\cap B\)</span> (positive on both tests), how many to <span class="math inline">\(A-B\)</span> (positive for HIV but not HSV), how many to <span class="math inline">\(B-A\)</span> (positive for HSV but not HIV), and how many to <span class="math inline">\(A^c\cap B^c\)</span> (negative on both tests), and from there calculate whatever we want.</p></li>
+</ul>
+<p>This method is often called the <strong>natural frequency method</strong> (“the old lady’s calculations” doesn’t sound scientific enough), and that’s what we’ll call it. Let’s put it into practice in our case:</p>
+<ol type="1">
+<li>Let’s take a reference population of 10,000 donors.</li>
+</ol>
+<p>Why this number? Let’s see, notice that the proportion of subjects in <span class="math inline">\(A\cap B\)</span> is 0.05%, or 0.0005. To make the calculations easier, we’d like all the numbers we get to be whole numbers, so as not to get confused with decimals. Since 0.0005 10000 = 5, it seems that 10,000 will work.</p>
+<ol type="1">
+<li>The subjects in <span class="math inline">\(A\)</span> are 0.1% of the population: 10</li>
+<li>The subjects in <span class="math inline">\(B\)</span> are 1% of the population: 100</li>
+<li>The subjects in <span class="math inline">\(A\cap B\)</span> are 0.05% of the population: 5</li>
+</ol>
+<p>In summary: <span class="math display">\[
+\begin{array}{r|c|c|c}
+&amp; A\ (\text{HIV}+) &amp; A^c \ (\text{HIV}-) &amp; \text{Total} \\ \hline
+B\ (\text{HSV}+) &amp; 5 &amp; &amp; 100 \\ \hline
+B^c\ (\text{HSV}-) &amp; &amp; &amp; 9900 \\ \hline
+\text{Total} &amp; 10&amp; 9990 &amp; 10000 \\
+\end{array}
+\]</span> 1. Then, the subjects in <span class="math inline">\(A-B\)</span> will be those in <span class="math inline">\(A\)</span> minus those in <span class="math inline">\(A\cap B\)</span>: 5 1. And the subjects in <span class="math inline">\(B-A\)</span> will be those in <span class="math inline">\(B\)</span> minus those in <span class="math inline">\(A\cap B\)</span>: 95 1. For now we have: 5 subjects positive for HIV and HSV; 5 positive for HIV and negative for HSV; and 95 positive for HSV and negative for HIV. In total, 105 subjects. The rest will be negative for both HIV and HSV.</p>
+<p>Therefore, the subjects in <span class="math inline">\(A^c\cap B^c\)</span> will be 10,000-105=9,895.</p>
+<p>We obtain the following frequency table: <span class="math display">\[
+\begin{array}{r|c|c|c}
+&amp; A\ (\text{HIV}+) &amp; A^c \ (\text{HIV}-) &amp; \text{Total} \\ \hline
+B\ (\text{HSV}+) &amp; 5 &amp; 95 &amp; 100 \\ \hline
+B^c\ (\text{HSV}-) &amp; 5 &amp; 9895 &amp; 9900 \\ \hline
+\text{Total} &amp; 10&amp; 9990 &amp; 10000 \\
+\end{array}
+\]</span></p>
+<p>And now, by changing “probability” to “proportion,” we can calculate whatever we want.</p>
+<ul>
+<li>What is the proportion of subjects who test positive for a given test?</li>
+</ul>
+<p>There are 105 subjects in the table who test positive for some test: the 10 who are HIV positive and the 95 who are HSV positive and HIV negative. Therefore, their proportion is 105/10000 = 0.0105.</p>
+<ul>
+<li>What is the proportion of subjects who test positive for HSV but not HIV?</li>
+</ul>
+<p>There are 95 subjects in the table who test positive for HSV and HIV negative, so their proportion is 95/10000 = 0.0095.</p>
+</section></main></div>
 
 
 
-</main> <!-- /main -->
+
+ <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
   window.document.addEventListener("DOMContentLoaded", function (event) {
     const icon = "";
@@ -610,16 +766,19 @@ div.csl-indent {
     }
   });
   </script>
-<nav class="page-navigation column-page-right">
+<nav class="page-navigation column-body">
   <div class="nav-page nav-page-previous">
-      <a href="./05_Odds.html" class="pagination-link" aria-label="Odds">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Odds</span></span>
+      <a href="./02_FirstR.html" class="pagination-link" aria-label="Variable Classification and R">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Variable Classification and R</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
+      <a href="./05_Odds.html" class="pagination-link" aria-label="Odds">
+        <span class="nav-page-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Odds</span></span> <i class="bi bi-arrow-right-short"></i>
+      </a>
   </div>
 </nav>
-</div> <!-- /content -->
+ <!-- /content -->
 <footer class="footer">
   <div class="nav-footer">
     <div class="nav-footer-left">
@@ -627,7 +786,7 @@ div.csl-indent {
 </div>   
     <div class="nav-footer-center">
       &nbsp;
-    <div class="toc-actions"><ul><li><a href="https://github.com/Cruzalirio/Nutrigenomics/edit/main/referencias.qmd" class="toc-action"><i class="bi bi-github"></i>Editar esta página</a></li><li><a href="https://github.com/Cruzalirio/Nutrigenomics/issues/new" class="toc-action"><i class="bi empty"></i>Informar de un problema</a></li></ul></div></div>
+    <div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/Cruzalirio/Nutrigenomics/edit/main/04_ProbOddsChiCuadrado.qmd" class="toc-action"><i class="bi bi-github"></i>Editar esta página</a></li><li><a href="https://github.com/Cruzalirio/Nutrigenomics/issues/new" class="toc-action"><i class="bi empty"></i>Informar de un problema</a></li></ul></div></div>
     <div class="nav-footer-right">
 <p>This book has been created with <a href="https://quarto.org/">Quarto</a>.</p>
 </div>

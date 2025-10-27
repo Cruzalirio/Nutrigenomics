@@ -1,0 +1,192 @@
+## Probability
+
+The probability of an event is, basically, a number between 0 and 1 (or, if you prefer, a percentage between 0% and 100%) that measures the expectation of that event occurring.
+
+In this course, we will define the **probability of an event** as the **proportion** (the **fraction**, the **percentage**) of subjects in a population (or sometimes a sample, depending on the context) in whom the event occurs. This proportion measures the "probability" that if we randomly select a subject from the population, the event will occur.
+
+<strong>Example:</strong>
+<div style="border-left: 4px solid #f0ad4e; background-color: #fcf8e3; padding: 10px; margin: 10px 0;">
+The probability that a coin toss lands on heads is the proportion of the population of tosses that land on heads.
+</div>
+
+In VERY simple cases, when **all possible outcomes have the same probability**, this proportion coincides with the fraction of times this event occurs in the set of possible outcomes and can therefore be calculated using the famous **Laplace's rule**:
+$$
+\text{Probability}=\frac{\text{Favorable cases}}{\text{Possible cases}}
+$$
+
+For example:
+
+* The probability of landing heads when tossing a balanced coin is 1/2 (favorable cases, 1; possible cases, 2; both outcomes have the same probability by definition of a balanced coin).
+
+* However, the probability of a child being male is not 1/2, even though there are only two chromosomal sexes. It is the proportion of male children in the total number of all children, which is estimated to be around 51.22%.
+
+* Or more exaggeratedly, the probability that a woman between the ages of 17 and 27 is myopic is not 1/2, even though there are only two possible outcomes: being myopic or not. This probability is the proportion of myopic individuals in the population made up of all women in that age group, which, in Spain in 2018, was estimated at 65.4% according to a [report by the Visión y Vida Association](http://visionyvida.org/informe-prevalencia-de-la-miopia-en-los-jovenes-en-espana-2018/).
+
+### Set Algebra
+
+Let's very quickly review the notations and properties of set operations, so we can use this language in what follows.
+
+Let $A$ and $B$ be subsets (in the context of probability theory, they are called **events**) of a set $\Omega$ (our **population** or, in the language of probability theory, the **sample space**).
+
+* $A\cup B$ is the **union** of $A$ and $B$: the set consisting of the elements of $\Omega$ that belong to $A$ or $B$ (or both).
+
+* $A \cap B$ is the **intersection** of $A$ and $B$: the set consisting of the elements that simultaneously belong to $A$ and $B$.
+
+This corresponds to the **conjunction** of natural language.
+
+* $A^c$ is the **complementary** of $A$: the set consisting of the elements of $\Omega$ that do not belong to $A$.
+
+This corresponds to the **negation** of natural language.
+
+* $A-B=A \cap B^c$ is the **difference** "$A$ minus $B$": the set formed by the elements of $A$ that do not belong to $B$.
+
+Therefore, $A^c=\Omega-A$.
+
+* We will say that $A$ and $B$ are **disjoint**, or **incompatible**, when $A\cap B=\emptyset$, where $\emptyset$ is the **empty set**, the set that has no elements.
+
+* We will say that $A$ is **contained**, or **included**, in $B$, and we will denote it by $A\subseteq B$, when every element of $A$ belongs to $B$. To emphasize that $A$ is **strictly contained** in $B$ (that it is contained in $B$ but is not equal to $B$), we will use $A\subsetneq B$.
+
+<strong>Example:</strong>
+<div style="border-left: 4px solid #f0ad4e; background-color: #fcf8e3; padding: 10px; margin: 10px 0;">
+
+Consider the population $\Omega$ consisting of the students in a class, and let $A$ be the subset consisting of the females in that class and $B$ be the subset consisting of the students in that class who wear glasses.
+
+* $A\cup B$ is the set consisting of the females in the class or the males in the class who wear glasses (or both).
+
+* $A \cap B$ is the set consisting of the females in the class who wear glasses.
+
+* $A^c$ is the set consisting of the males in the class.
+
+* $A-B$ is the set consisting of the females in the class who do not wear glasses.
+
+* $A\subseteq B$ means that all the females in the class wear glasses.
+
+</div>
+
+### Some basic formulas
+
+We have defined the probability $P(A)$ of a subset (event) $A$ of a population (sample space) $\Omega$ as the fraction of the subjects in $\Omega$ that belong to $A$. From this definition, the following properties follow:
+
+1. For every event $A$, $0\leqslant P(A)\leqslant 1$.
+
+A subset $A$ of $\Omega$ cannot represent either a negative fraction or a fraction greater than 1 of the subjects in $\Omega$.
+
+2. $P(\Omega)=1$ and $P(\emptyset)=0$ (remember that $\emptyset$ is the empty set).
+
+3. If $A$ and $B$ are two disjoint events, then Thus, $P(A\cup B)=P(A)+P(B)$.
+
+If no subject belongs simultaneously to both $A$ and $B$, then the number of subjects belonging to $A$ or $B$ is the sum of those belonging to $A$ and those belonging to $B$. Then, dividing by the total number of individuals in the population $\Omega$ (its **cardinal**), we obtain that the fraction of subjects belonging to $A$ or $B$ is the sum of the fractions belonging to $A$ and those belonging to $B$.
+
+4. More generally, if $A_1,A_2,\ldots,A_n$ are pairwise disjoint events, then
+$$
+P(A_1\cup A_2\cup \cdots \cup A_n)=P(A_1)+P(A_2)+\cdots +P(A_n).
+$$
+
+5. $P(A-B)=P(A)-P(A\cap B)$.
+
+6. $P(A^c)=1-P(A)$.
+
+That is, the fraction of subjects that do not belong to $A$ is 1 minus the fraction of those that do belong to $A$.
+
+7. If $A\subseteq B$, then $P(A)\leqslant P(B)$.
+
+If $A$ is contained in $B$, the fraction of subjects belonging to $A$ is less than or equal to the fraction of those belonging to $B$.
+
+8. $P(A\cup B)=P(A)+P(B)-P(A \cap B)$.
+
+If you want to count how many subjects there are in $A\cup B$, you have to add those in $A$ to those in $B-A$. Dividing by the total population to convert to proportions, this tells us that
+$$
+P(A\cup B)=P(A)+P(B-A)=P(A)+P(B)-P(A \cap B)
+$$
+where the second equality is due to (5).
+
+For example, if a population is 50% female and 60% nearsighted, and 35% of the total are nearsighted women, then the number of people who are either female or nearsighted (remember, or both) makes up 75% of the population. To the 50% of women, we must add the 25% of nearsighted people who are not women.
+
+The number of subjects who belong to $A$ but not to $B$ is obtained by subtracting from the total number of subjects in $A$ those who belong simultaneously to $A$ and $B$, that is, to $A\cap B$. Dividing by the total number of individuals in the population, we obtain the corresponding equality of proportions.
+
+<strong>Example:</strong>
+<div style="border-left: 4px solid #f0ad4e; background-color: #fcf8e3; padding: 10px; margin: 10px 0;">
+Suppose 0.1% of blood donors test positive for HIV, 1% test positive for herpes simplex virus (HSV), and 0.05% test positive for both tests.
+
+What is the probability that a randomly selected donor tests positive for at least one of the two tests? What is the probability that a randomly selected donor tests positive for HSV but not HIV?
+
+Let's name the events involved in these questions:
+
+* $A$: Test positive for HIV. We know that $P(A)=0.001$.
+
+* $B$: Test positive for HSV. We know that $P(B)=0.01$.
+
+* $A\cap B$: Test positive for both. We know that $P(A\cap B)=0.0005$.
+
+* $A\cup B$: Test positive for at least one of the two. This is what we wanted to calculate in the first question.
+
+By property (8):
+$$
+P(A \cup B) = P(A)+P(B)-P(A\cap B)=0.001+0.01-0.0005=0.0105
+$$
+The probability that a randomly selected donor will test positive for at least one of the two tests is 1.05%.
+
+* $B-A$: Test positive for HSV but not HIV. This is what we wanted to calculate in the second question.
+
+By property (5),
+$$
+P(B-A)=P(B)-P(A\cap B)=0.01-0.0005=0.0095
+$$
+
+The probability that a randomly selected donor tests positive for HSV but not HIV is 0.95%.
+
+</div>
+
+Another way to calculate these probabilities without having to remember formulas would be:
+
+* Take a population of a specific size as a reference.
+
+* Calculate in this population how many individuals belong to $A\cap B$ (positive on both tests), how many to $A-B$ (positive for HIV but not HSV), how many to $B-A$ (positive for HSV but not HIV), and how many to $A^c\cap B^c$ (negative on both tests), and from there calculate whatever we want.
+
+This method is often called the **natural frequency method** ("the old lady's calculations" doesn't sound scientific enough), and that's what we'll call it. Let's put it into practice in our case:
+
+1. Let's take a reference population of 10,000 donors.
+
+Why this number? Let's see, notice that the proportion of subjects in $A\cap B$ is 0.05%, or 0.0005. To make the calculations easier, we'd like all the numbers we get to be whole numbers, so as not to get confused with decimals. Since 0.0005 10000 = 5, it seems that 10,000 will work.
+
+1. The subjects in $A$ are 0.1% of the population: 10
+1. The subjects in $B$ are 1% of the population: 100
+1. The subjects in $A\cap B$ are 0.05% of the population: 5
+
+In summary:
+$$
+\begin{array}{r|c|c|c}
+& A\ (\text{HIV}+) & A^c \ (\text{HIV}-) & \text{Total} \\ \hline
+B\ (\text{HSV}+) & 5 & & 100 \\ \hline
+B^c\ (\text{HSV}-) & & & 9900 \\ \hline
+\text{Total} & 10& 9990 & 10000 \\
+\end{array}
+$$
+1. Then, the subjects in $A-B$ will be those in $A$ minus those in $A\cap B$: 5
+1. And the subjects in $B-A$ will be those in $B$ minus those in $A\cap B$: 95
+1. For now we have: 5 subjects positive for HIV and HSV; 5 positive for HIV and negative for HSV; and 95 positive for HSV and negative for HIV. In total, 105 subjects. The rest will be negative for both HIV and HSV.
+
+Therefore, the subjects in $A^c\cap B^c$ will be 10,000-105=9,895.
+
+We obtain the following frequency table:
+$$
+\begin{array}{r|c|c|c}
+& A\ (\text{HIV}+) & A^c \ (\text{HIV}-) & \text{Total} \\ \hline
+B\ (\text{HSV}+) & 5 & 95 & 100 \\ \hline
+B^c\ (\text{HSV}-) & 5 & 9895 & 9900 \\ \hline
+\text{Total} & 10& 9990 & 10000 \\
+\end{array}
+$$
+
+And now, by changing "probability" to "proportion," we can calculate whatever we want.
+
+* What is the proportion of subjects who test positive for a given test?
+
+There are 105 subjects in the table who test positive for some test: the 10 who are HIV positive and the 95 who are HSV positive and HIV negative. Therefore, their proportion is 105/10000 = 0.0105.
+
+* What is the proportion of subjects who test positive for HSV but not HIV?
+
+There are 95 subjects in the table who test positive for HSV and HIV negative, so their proportion is 95/10000 = 0.0095.
+
+</div>
+

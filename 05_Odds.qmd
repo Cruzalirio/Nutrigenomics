@@ -1,0 +1,554 @@
+## Odds
+
+In some contexts, probabilities are presented in the form of *odds*. The most common translation in Spanish is [**momios**](https://es.wikipedia.org/wiki/Apuesta_deportiva#Momios_o_Cuotas_Deportivas), but others are used: posibilidades, oportunidades, oportunidades... Here we will use *odds*.
+
+The **odds** of an event $A$ are
+$$
+\text{Odds}(A)=\frac{P(A)}{P(A^c)}=\frac{P(A)}{1-P(A)}
+$$
+and therefore tell us how many times more likely $A$ is than "not $A$".
+
+If $\text{Odds}(A)=q$, it means that **for every time "not $A$" occurs, $A$ occurs $q$ times**. For example, if the odds of failing a subject are 2/3, it means that:
+
+* For every student who passes, 2/3 fail.
+
+* For every 3 students who pass, 2 fail.
+
+* Of every 5 students, 3 pass and 2 fail.
+
+* 2 out of every 5 students fail.
+
+* The **probability** of failing is 40%.
+
+:::{.callout-important}
+Sometimes, odds ratios of $a/b$ are expressed as $a\!:\!b$, and are read as "$a$ a $b$". For example, the *odds* of failing above are 2:3, that is, 2 to 3.
+:::
+
+<strong>Example:</strong>
+<div style="border-left: 4px solid #f0ad4e; background-color: #fcf8e3; padding: 10px; margin: 10px 0;">
+Some examples of *odds* from probabilities:
+
+* If $P(A)=0.2$, $\text{Odds}(A)=0.2/0.8=0.25$.
+* If $P(A)=0$, $\text{Odds}(A)=0$.
+* If $P(A)=0.5$, $\text{Odds}(A)=1$.
+* If $P(A)=1$, $\text{Odds}(A)=\infty$.
+</div>
+
+Since they are a quotient of two probabilities, the *odds* of an event are always greater than or equal to 0 and can take any value between 0 and $\infty$, inclusive.
+
+**Exercise**
+If we roll a balanced 10-sided die numbered from 0 to 9:
+
+1. What are the *odds* of rolling a 3?
+
+2. What are the *odds* of rolling a multiple of 3?
+
+If we know the *odds* of $A$, we can calculate the probability $P(A)$:
+$$
+\begin{array}{rl}
+\text{Odds}(A)=\dfrac{P(A)}{1-P(A)}\!\!\!\! & \Longrightarrow \text{Odds}(A)-\text{Odds}(A)P(A)=P(A)\\
+& \Longrightarrow P(A)=\dfrac{\text{Odds}(A)}{1+\text{Odds}(A)}
+\end{array}
+$$
+
+Therefore, two events have the same probability if, and only if, they have the same *odds*.
+
+Note that the function
+$$
+x\mapsto\frac{x}{1+x}
+$$
+is increasing in $x$:
+
+```{r,echo=FALSE,fig.cap="Graph of the curve y=x/(1+x)."}
+plot(function(x){x/(1+x)},xlim=c(0,50),lwd=1.5,ylab="y")
+```
+
+Since this is the function that transforms $\text{Odds}(A)$ into $P(A)$, we deduce that
+$$
+\text{Odds}(A)>\text{Odds}(B)\Longleftrightarrow P(A)>P(B)
+$$
+
+> $A$ is more likely than $B$ if, and only if, the *odds* of $A$ are greater than those of $B$.
+
+As we will see, the correct way to present the results in case-control studies is in the form of odds ratios. The odds ratio of two events $A$ and $B$ is the quotient of their odds:
+$$
+\text{OR}(A,B)=\frac{\text{Odds}(A)}{\text{Odds}(B)}
+$$
+That is, $\text{OR}(A,B)$ tells us how many times greater (or less) the odds of $A$ are than those of $B$. Its value is difficult to interpret in terms of probabilities except for its relationship to 1:
+
+* $\text{OR}(A,B)=1\Longleftrightarrow \text{Odds}(A)=\text{Odds}(B) \Longleftrightarrow P(A)=P(B)$
+
+* $\text{OR}(A,B)>1\Longleftrightarrow \text{Odds}(A)>\text{Odds}(B) \Longleftrightarrow P(A)>P(B)$
+
+* $\text{OR}(A,B)<1\Longleftrightarrow \text{Odds}(A)<\text{Odds}(B) \Longleftrightarrow P(A)<P(B)$
+
+
+But for example
+$$
+\text{OR}(A,B)=2 \Longleftrightarrow \text{Odds}(A)= 2\cdot \text{Odds}(B) \hspace{1.2ex}
+\not\hspace{-1.2ex}\Longleftrightarrow P(A)=
+2\cdot P(B)
+$$
+
+<strong>Example:</strong>
+<div style="border-left: 4px solid #f0ad4e; background-color: #fcf8e3; padding: 10px; margin: 10px 0;">
+
+A [case-control study](https://www.gastrojournal.org/article/S0016-5085(20)30490-X/fulltext) (Y. Nobel *et al*, *Gastroenterology* 159 (2020), pp. 373-375) states that
+
+> "the presence of gastrointestinal symptoms was associated with a 70% increased risk of testing positive [on the COVID-19]: odds ratio, 1.7."
+
+What does this mean? An *odds ratio* of 1.7 means that the *odds* of testing positive for COVID-19 if you have gastrointestinal symptoms are 1.7 times the odds of testing positive if you don't have gastrointestinal symptoms, i.e., 70% higher. But note that we're talking about *odds*, not **risk** understood in the sense of **probability**. It doesn't necessarily mean that the probability of testing positive for COVID-19 if you have gastrointestinal symptoms is 70% higher than if you don't have gastrointestinal symptoms.
+
+In fact, in this particular study, the following frequency table was obtained (GI symptoms abbreviated as "gastrointestinal symptoms")
+$$
+\begin{array}{r|c|c|c}
+& \text{COVID-19 } + & \text{COVID-19 } - & \text{Total}\\ \hline
+\text{GI Yes} & 97& 63 & 160\\\hline
+\text{GI No} & 181 & 175 & 356\\\hline
+\text{Total} & 278 & 238 &316
+\end{array}
+$$
+
+Therefore, the proportion of COVID-19 positive cases among those with gastrointestinal symptoms was 97/160 = 0.606, and the proportion of COVID-19 positive cases among those without gastrointestinal symptoms was 181/356 = 0.508. Since 0.606/0.508 = 1.19, the former is 19% higher than the latter, not 70% higher.
+
+Let's look at the odds. The odds of being COVID-19 positive among those with gastrointestinal symptoms are
+$$
+\frac{97/160}{63/160}=1.54
+$$
+The odds of being COVID-19 positive among those without gastrointestinal symptoms are
+$$
+\frac{181/356}{175/356}=1.03
+$$
+The odds ratio is then 1.54/1.03=1.495.
+
+But didn't we say that their odds ratio was 1.7?
+
+Well, yes, what gives them 1.7 is the adjusted odds ratio, ORa, an odds ratio obtained by discounting the influence of confounders on the outcome.
+
+</div>
+
+### Conditional Probability
+
+Given two events $A$ and $B$, with $P(A)>0$, the **probability of $B$ conditioned on $A$** is
+$$
+P(B|A)=\frac{P(A\cap B)}{P(A)}
+$$
+
+This value represents the fraction of the subjects in $A$ that belong to $B$; that is, it is the probability that if $A$ occurs, then $B$ also occurs.
+
+<strong>Example:</strong>
+<div style="border-left: 4px solid #f0ad4e; background-color: #fcf8e3; padding: 10px; margin: 10px 0;">
+
+Suppose that in a class of 20 men and 30 women, 15 men and 18 women wear glasses. The corresponding frequency table is
+
+$$
+\begin{array}{r|c|c|c}
+& \text{Glasses} & \text{No glasses} & \text{Total}\\ \hline
+\text{Women} & 18 & 12 & 30\\ \hline
+\text{Men} & 15 & 5 & 20 \\ \hline
+\text{Total} & 33 & 17 & 50 \\
+\end{array}
+$$
+
+1. What is the probability that a student is female?
+
+Since there are 30 women out of a total of 50 students, this probability is 30/50 = 0.6
+
+2. What is the probability that a student wears glasses?
+
+Since there are 33 students with glasses out of a total of 50 students, this probability is 33/50 = 0.66.
+
+3. What is the probability that a student is female and wears glasses?
+
+Since the probability of being female is 0.6 and the probability of wearing glasses is 0.66, the probability of being female and wearing glasses is the product: 0.6 0.66 = 0.396.
+
+:::{.callout-caution}
+**No!** In general, the probability of the intersection is NOT the product of the probabilities.
+:::
+
+Let's calculate it carefully. Since there are 18 women wearing glasses out of a total of 50 students, this probability is 18/50 = 0.36.
+
+4. What is the probability that a woman wears glasses?
+
+Since there are 18 women wearing glasses out of a total of 30 women, this probability is 18/30 = 0.6. Note that this value is equal to
+$$
+P(\text{glasses}|\text{woman})=\frac{P(\text{woman and glasses})}{P(\text{woman})}=\frac{18/50}{30/50}=\frac{18}{30}
+$$
+
+5. We choose a student at random. What is the probability that if she is a woman, she wears glasses?
+
+This is the same question as the previous one, so the answer is the same: 18/30=0.6.
+
+6. What is the probability that a student wearing glasses is a woman?
+
+Since there are 18 women wearing glasses out of a total of 33 students wearing glasses, this probability is 18/33=0.545. Note, again, that this value is equal to
+$$
+P(\text{woman}|\text{glasses})=\frac{P(\text{woman and glasses})}{P(\text{glasses})}=\frac{18/50}{33/50}=\frac{18}{33}
+$$
+
+</div>
+
+:::{.callout-important}
+Don't get confused:
+
+* $P(B)$: The probability that an individual in the global population $\Omega$ belongs to $B$.
+
+For example, if $B$ is "wearing glasses," $P(B)$ is the probability that a person wears glasses. The population in which we calculate probabilities is **all people**.
+
+* $P(B|A)$: Probability that an individual in $A$ belongs to $B$.
+
+For example, if $A$ also means "being a woman," $P(B|A)$ is the probability that a **woman** wears glasses. The population in which we calculate probabilities is that of **women**.
+
+* $P(A|B)$: Probability that an individual in $B$ belongs to $A$.
+
+For example, using the notations above, $P(A|B)$ is the probability that a person who wears glasses is a woman. The population in which we calculate probabilities is that of **people who wear glasses**.
+
+* $P(B\cap A)$: Probability that an individual in the overall population belongs simultaneously to both $A$ and $B$.
+
+For example, using the notations above, $P(A\cap B)$ is the probability that a person **is a woman and wears glasses**. The population in which we calculate probabilities is again **all people**.
+:::
+
+**Exercise:**
+
+At a university, students are distributed as follows by type of study and gender:
+$$
+\begin{array}{r|c|c|c|c|c}
+\text{Study} & \text{Science} & \text{Law} & \text{Education} & \text{Others} & \text{Total}\\ \hline
+\text{Men} & 1200 & 1300 & 300 & 2000 & 4800\\ \hline
+\text{Women} & 1400 & 600 & 1600 & 1600 & 5200\\ \hline
+\text{Total} & 2600 & 1900 & 1900 & 3600 & 10000\\
+\end{array}
+$$
+
+If I choose a student at random, what is the probability that:
+
+a. They are male or female?
+b. They are female?
+c. They study Science?
+d. They do not study Science?
+e. They are female or study Law?
+f. They are female and study Law?
+g. They are female but do not study Law?
+h. If they study Education, are they female?
+i. If they are female, do they study Education?
+j. If they are female, do they not study Education?
+k. If they are not female, do they study Education?
+
+:::{.callout-important}
+The probability conditional on $A$, $P(\ldots|A)$, is a "true" probability; we have simply changed the population from $\Omega$ to $A$. That is, instead of working with proportions of the total population $\Omega$, we work with proportions of the subpopulation defined by the subjects in $A$. Therefore, $P(\ldots |A)$ satisfies all the properties of probabilities. For example, it is true that:
+
+* $P(B^c|A)=1-P(B|A)$
+* $P(C-B|A)=P(C|A)-P(B\cap C|A)$
+* $P(B\cup C|A)=P(B|A)+P(C|A)-P(B\cap C|A)$
+:::
+
+<strong>Example:</strong>
+<div style="border-left: 4px solid #f0ad4e; background-color: #fcf8e3; padding: 10px; margin: 10px 0;">
+
+Suppose 15% of adults are hypertensive, 25% of adults believe they are hypertensive, and 9% of adults are hypertensive and believe they are.
+
+* If an adult believes they are hypertensive, what is the probability that they are?
+
+* If an adult is hypertensive, what is the probability that they believe they are?
+
+* If an adult doesn't believe they are hypertensive, what is the probability that they are?
+
+Let's name the events involved in these questions:
+
+* $A$: Being hypertensive; $P(A)=0.15$
+
+* $B$: Believing they are hypertensive; $P(B)=0.25$
+
+* $A\cap B$: Being hypertensive and believing it; $P(A \cap B)=0.09$
+
+The first question asks us for the probability of $A$ conditional on $B$:
+$$
+P(A|B)=\frac{P(A\cap B)}{P(B)}=\dfrac{0.09}{0.25}=0.36
+$$
+If an adult believes they are hypertensive, they have a 36% chance of being so.
+
+In the second question, we are asked the probability of $B$ conditional on $A$:
+$$
+P(B|A) =\frac{P(A\cap B)}{P(A)}=\frac{0.09}{0.15}=0.6
+$$
+If an adult is hypertensive, they have a 60% probability of believing they are.
+
+And in the third question, we are asked the probability of $A$ conditional on $B^c$:
+$$
+P(A|B^c) =\frac{P(A\cap B^c)}{P(B^c)}=\frac{P(A)-P(A\cap B)}{1-P(B)}=\frac{0.06}{0.75}=0.08
+$$
+If an adult does not believe they are hypertensive, they have an 8% probability of being hypertensive.
+
+</div>
+
+<strong>Example:</strong>
+<div style="border-left: 4px solid #f0ad4e; background-color: #fcf8e3; padding: 10px; margin: 10px 0;">
+
+An HIV test is positive in 99% of cases where the virus is present. In a population with 0.5% HIV infection:
+
+* What is the probability that if we test an infected person, they will be positive?
+
+* What is the probability that we test an infected person and they will be positive?
+
+The answer to the first question is given in the statement: "the test is positive in 99% of cases where the virus is present," so "the probability that if we test an infected person, they will be positive" is 0.99.
+
+But the second question doesn't ask the same thing as the first, but rather the probability of two things happening: that we test an infected person **AND** that they test positive. This is the probability of an intersection.
+
+Let's name it:
+
+* $A$: Being infected; $P(A)=0.005$
+
+* $B$: Testing positive. Of this event, we only know the conditional probability $P(B|A)=0.99$
+
+* $A\cap B$: Being infected and testing positive. This is the event for which we are asked the probability.
+$$
+P(B|A)=\frac{P(A \cap B)}{P(A)}\Longrightarrow P(A \cap B)=P(B|A)\cdot P(A)=0.99\cdot 0.005=0.00495
+$$
+
+The probability that a random individual will test positive and be infected is 0.495%.
+
+</div>
+
+<strong>Example:</strong>
+<div style="border-left: 4px solid #f0ad4e; background-color: #fcf8e3; padding: 10px; margin: 10px 0;">
+
+A cardiologist friend once told us that half of the patients who came to his office with supposed heart problems were actually stressed, and two-thirds were depressed. We're also going to assume that only 15% of these patients did not suffer from either of these two conditions.
+
+* What is the probability that such a patient has stress if they have depression?
+* What is the probability that such a patient **does not** have stress if they **do not** have depression?
+
+This time, we're going to use the natural frequencies method first. Let's assume we have a reference population of 300 people who see a cardiologist.
+
+* Half, 150, have stress, and the other 150 do not.
+* Two-thirds, 200, have depression, and 100 do not.
+* There are 15% of the population, or 45 subjects, who do not have either of these two conditions.
+
+In summary, for now we have that
+$$
+\begin{array}{r|c|c|c}
+& \text{Depression} & \text{Non-depression} & \text{Total}\\ \hline
+\text{Stress} & & & 150 \\ \hline
+\text{Non-stress} & & 45 & 150 \\ \hline
+\text{Total} & 200 & 100 & 300\\
+\end{array}
+$$
+
+* AhNow:
+* Of the 150 who don't have stress, about 45 don't have depression either, there are 105 who do have depression.
+* Of the 100 who don't have depression, about 45 don't have stress either, there are 55 who do have stress.
+* Of the 150 who have stress, about 55 don't have depression, there are 95 who do have stress.
+
+We now have the complete frequency table:
+$$
+\begin{array}{r|c|c|c}
+& \text{Depression} & \text{Non-depression} & \text{Total}\\ \hline
+\text{Stress} & 95 & 55 & 150 \\ \hline
+\text{Non-stress} & 105 & 45 & 150 \\ \hline
+\text{Total} & 200 & 100 & 300\\
+\end{array}
+$$
+And now:
+
+* Since there are 200 patients with depression, of which 95 also have stress, the proportion of patients with depression who have stress is 95/200 = 0.475. 47.5% of patients who have depression also have stress.
+
+* Since there are 100 patients without depression, of whom 45 do not have stress, the proportion of patients without depression who also do not have stress is 45/100 = 0.45. 45% of patients who do not have depression also do not have stress.
+
+How would we have solved this using the properties of probabilities? Let's name them:
+
+* $E$: Having stress; $P(E)=0.5$
+
+* $D$: Having depression; $P(D)=2/3$
+
+* $E^c \cap D^c$: Having neither stress nor depression; $P(E^c\cap D^c)=0.15$
+
+With these notations, in the first question they ask us
+$$
+P(E|D)=\dfrac{P(E\cap D)}{P(D)}
+$$
+To calculate it, we need to know $P(E\cap D)$, which is worth:
+$$
+P(E\cap D)=P(E)P(D)=0.5\cdot \frac{2}{3}=0.3333
+$$
+
+:::{.callout-caution}
+**No!** That the probability of the intersection is NOT in general equal to the product of the probabilities!
+
+:::
+
+You'll have to work on something else:
+
+1. $P((E\cup D)^c)=P(E^c\cap D^c)=0.15$, therefore $P(E\cup D)=1-P((E\cup D)^c)=0.85$
+
+2. $P(E\cap D)=P(E)+P(D)-P(E\cup D)=0.5+2/3-0.85=0.31667$
+
+Now, finally, $P(E|D)=P(E\cap D)/P(D)=0.31667/0.66667=0.475$
+
+In the second question they ask us
+$$
+P(E^c|D^c)=\dfrac{P(E^c\cap D^c)}{P(D^c)}
+$$
+and we can now calculate this probability, Because we know that $P(E^c\cap D^c)=0.15$ and $P(D^c)=1-P(D)=1-2/3=1/3$, so $P(E^c|D^c)=P(E^c\cap D^c)/P(D^c)=0.15/(1/3)=0.45$.
+
+</div>
+
+### Independent Events
+
+Two events $A$ and $B$ (both with probability not 0) are **independent** when $P(B|A)=P(B)$. That is:
+
+* When belonging to $A$ does not change the probability of belonging to $B$.
+* When the occurrence of $A$ does not change the probability of $B$ occurring.
+* When the proportion of subjects from $B$ within $A$ is the same as that within the total population.
+
+In this definition, the roles of $A$ and $B$ are interchangeable, as the following result shows, which also provides a very important alternative characterization.
+
+> Given two events $A,B$, both with probability neither 0 nor 1, the following five conditions are equivalent:
+>
+>a. $P(A \cap B)=P(A)\cdot P(B)$
+b. $P(B|A)=P(B)$
+c. $P(A|B)=P(A)$
+d. $P(B|A)=P(B|A^c)$
+e. $P(A|B)=P(A|B^c)$
+
+### Conditional Odds and Relative Odds Ratios
+
+In *odds* and *odds ratios*, we can also condition on a subpopulation defined by an event.
+
+* The ***odds* of $B$ among the subjects in $A$** (or the *odds* of $B$ **conditional** on $A$) are
+$$
+\text{Odds}(B|A)=\frac{P(B|A)}{P(B^c|A)}
+$$
+It measures how many times $B$ is more (or less) likely than "not $B$" among the subjects in $A$.
+
+* The ***odds ratio* of $B$ relative to $A$** is
+$$
+\text{OR}(B|A)=\frac{\text{Odds}(B|A)}{\text{Odds}(B|A^c)}
+$$
+It measures how many times the *odds* of $B$ among the subjects in $A$ are greater (or smaller) than the *odds* of $B$ among the subjects outside $A$.
+
+<strong>Example:</strong>
+<div style="border-left: 4px solid #f0ad4e; background-color: #fcf8e3; padding: 10px; margin: 10px 0;">
+
+Let's go back to the situation in the cardiologist friend's example. If, among our cardiologist friend's patients, we call $E$ the event "Experience stress" and $D$ the event "Experience depression," we would have calculated that $P(E|D)=0.475$ and $P(E^c|D^c)=0.45$. If you did the exercise we suggested after the example, you would have calculated $P(D|E)=0.6334$ and $P(D^c|E^c)=0.3$.
+
+So:
+
+* The *odds* of having stress among patients with depression are
+$$
+\text{Odds}(E|D)=\frac{P(E|D)}{P(E^c|D)}=\frac{0.475}{0.525}=0.905
+$$
+
+Among patients with depression, the probability of having stress is 0.905 times that of not having it, that is, 9.5% lower.
+
+:::{.callout-important}
+
+Please don't say that "the probability of having stress is 0.905 times **greater** than that of not having it."
+:::
+
+* The odds of having stress among patients who do not have depression are
+$$
+\text{Odds}(E|D^c)=\frac{P(E|D^c)}{P(E^c|D^c)}=\frac{0.55}{0.45}=1.22
+$$
+
+Among patients without depression, the probability of having stress is 1.22 times that of not having it, that is, 22% higher.
+
+* The odds of having depression among patients who have stress are
+$$
+\text{Odds}(D|E)=\frac{P(D|E)}{P(D^c|E)}=\frac{0.6334}{0.3666}=1.73
+$$
+
+Among patients with stress, the probability of having Depression is 1.73 times that of not having it, or 73% higher.
+
+* The *odds* of having depression among patients without stress are
+$$
+\text{Odds}(D|E^c)=\frac{P(D|E^c)}{P(D^c|E^c)}=\frac{0.7}{0.3}=2.33
+$$
+
+Among patients without stress, the probability of having depression is 2.33 times that of not having it, or 133% higher.
+
+* The *odds ratio* of having stress relative to having depression is
+$$
+\text{OR}(E|D)=\frac{\text{Odds}(E|D)}{\text{Odds}(E|D^c)}=\frac{0.905}{1.222}=0.74
+$$
+
+The *odds* of having stress among those with depression are 0.74 times those of having stress among those without depression, or 26% lower.
+
+* The odds ratio of having depression relative to having stress is
+$$
+\text{OR}(D|E)=\frac{\text{Odds}(D|E)}{\text{Odds}(D|E^c)}=\frac{1.73}{2.33}=0.74
+$$
+
+The odds of having depression among those with stress are 0.74 times those of having depression among those without stress, again 26% lower.
+
+:::{.callout-important}
+The odds of having stress among those with depression are 0.74 times those of having stress among those without depression, and the odds of having depression among those with stress are 0.74 times those of having depression among those without stress. **But it is not true** that the probability of having stress among those with depression is 0.74 times that of having stress among those without depression, nor that the probability of having depression among those with stress is 0.74 times that of having depression among those without stress. These ratios are
+$$
+\frac{P(E|D)}{P(E|D^c)}=\frac{0.475}{0.55}=0.864,\quad \frac{P(D|E)}{P(D|E^c)}=\frac{0.6334}{0.7}=0.905
+$$
+:::
+
+The *odds ratio* of having stress relative to having depression was the same as the *odds ratio* of having depression relative to having stress. Coincidence? No.
+
+</div>
+
+**Exercise:**
+An early detection test for a disease is positive 97.5% of the time when the disease is present, and 12% of the time when the disease is not present. The probability that a randomly selected individual has this disease is 2%.
+
+a. What is the probability that a randomly selected individual will test positive?
+
+b. What is the probability that a randomly selected individual will have the disease and test positive?
+
+c. What is the probability that an individual who tests positive will have this disease?
+
+d. Are testing positive and having the disease independent events?
+
+
+## Example in R
+
+```{r odds-example}
+if(!require(epitools)) install.packages("epitools")
+library(epitools)
+
+# Contingency table: Stress vs Depression
+stress_depression <- matrix(c(95, 55, 105, 45), nrow=2, byrow=TRUE)
+rownames(stress_depression) <- c("Stress", "NoStress")
+colnames(stress_depression) <- c("Depression", "NoDepression")
+stress_depression
+
+# Odds ratio using epitools
+oddsratio(stress_depression)
+```
+
+# Chi-Squared Test
+
+The chi-squared test is used to test **independence between categorical variables**.
+
+## Example in R
+
+```{r chisq-example}
+# Contingency table: Glasses vs Gender
+glasses_gender <- matrix(c(18,12,15,5), nrow=2, byrow=TRUE)
+rownames(glasses_gender) <- c("Women", "Men")
+colnames(glasses_gender) <- c("Glasses", "NoGlasses")
+glasses_gender
+
+# Chi-squared test
+chi_test <- chisq.test(glasses_gender, correct=FALSE)
+chi_test
+
+# Expected counts under independence
+chi_test$expected
+```
+
+# Relative Risk
+
+```{r rel-risk-example}
+riskratio(stress_depression)
+```
+
+# Exercises
+
+1. Create a 2x2 table for a disease test (positive/negative) vs actual disease (yes/no). Compute:
+   - Odds of testing positive given disease
+   - Odds ratio
+   - Chi-squared test for independence
+2. Interpret your results in terms of risk and association.

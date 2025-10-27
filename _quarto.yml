@@ -23,6 +23,8 @@ book:
     - index.qmd
     - 01_TypesStudies.qmd
     - 02_FirstR.qmd
+    - 04_ProbOddsChiCuadrado.qmd
+    - 05_Odds.qmd
     - referencias.qmd
 
 bibliography: referencias.bib
