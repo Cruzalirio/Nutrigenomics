@@ -166,26 +166,23 @@ theme(axis.text.x = element_text(angle = 90, vjust = 0.5, hjust=1))+
 
 ## Practice Questions
 
-1. **Case-Control Study Design**  (2.0 points)
+1. **Case-Control Study Design**  (2.5 points)
    Propose how you would design a **case-control study** to assess whether consuming vegetables has an effect on diabetes. Clearly define:
    - Who would be the **cases** and **controls**  
    - How you would measure **vegetable intake**  
    - What potential confounders you would consider
 
-2. **Cohort Study Design**  (2.0 points)
+2. **Cohort Study Design**  (2.5 points)
    Propose a **cohort study** to assess the effect of risk factors on diabetes. Clearly define:
    - The **cohort population**  
    - The **exposure/risk factors** to follow  
    - How diabetes outcomes will be measured over time  
 
-3. **Odds Ratio Analysis**  (2.0 points)
+3. **Odds Ratio Analysis**  (2.5 points)
    Perform an **odds ratio analysis** defining:  
    - Diabetes: 1 and 2 → “diabetes”, 0 → “no diabetes”  
    - Risk factor: **No physical activity**  
    Calculate the odds ratio between no physical activity and diabetes.
 
-4. **Contingency Table Plot**  (2.0 points)
-   Generate a **graphical representation** (e.g., bar plot or mosaic plot) of the contingency table for diabetes vs no physical activity trough GenHlth only for Woman with BMI less than 30.
-
-5. **Confidence Interval Analysis** (2.0 points)
-   Calculate the **95% confidence intervals** for the odds ratio from question 3 and interpret the results.
+4. **Contingency Table Plot**  (2.5 points)
+   Generate a **graphical representation** of the contingency table for diabetes vs no physical activity only for Woman with BMI less than 30.
