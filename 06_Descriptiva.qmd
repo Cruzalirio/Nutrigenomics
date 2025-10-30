@@ -1,0 +1,191 @@
+## Descriptive Statistics
+
+```{r}
+library(tidyverse)
+library(epitools)
+```
+
+Load the [dataset](https://github.com/Cruzalirio/Unal-Enfermeria-/blob/main/Datos/diabetes_BRFSS2015.csv)
+```{r}
+datos = read_csv("https://raw.githubusercontent.com/Cruzalirio/Unal-Enfermeria-/main/Datos/diabetes_BRFSS2015.csv")
+### La función head me pe ver las primeras filas
+head(datos)
+```
+
+### Contingency Table
+
+A contingency table is a tool used in statistics that consists of creating at least two rows and two columns to represent categorical (qualitative nominal) data in terms of frequency counts. This tool, also known as a cross-tabulation or two-way table, aims to summarize and display the relationship between different categorical variables.
+
+For example, consider the relationship between high blood pressure and high cholesterol
+```{r}
+## Forma 1
+tabla = table(datos$HighBP, datos$HighChol)
+tabla
+
+```
+
+```{r}
+## Agreguemosle más cosas
+colnames(tabla) = c("Colesterol alto", "Colesterol normal")
+rownames(tabla) = c("Presión alta", "Presión normal")
+tabla
+```
+```{r}
+oddsratio(tabla)
+```
+
+```{r}
+chisq.test(tabla)
+```
+
+
+```{r}
+## Forma 2
+tabla1 = datos %>% group_by(HighBP, HighChol) %>% summarise(Conteo=n())
+tabla1
+```
+
+Some graphs
+
+```{r}
+## Grafico al lado
+## Primero vamos a solucionar lo de los sí y no
+datos1 = datos %>% mutate(TA = ifelse(HighBP==0, "No", "Sí"),
+                         CA = ifelse(HighChol==0, "No", "Sí"))
+
+ggplot(datos1, aes(fill=TA, x=CA))+ geom_bar(position = "dodge")+
+theme(axis.text.x = element_text(angle = 90, vjust = 0.5, hjust=1))
+```
+
+
+```{r}
+## Grafico de barras, pero apiladas
+ggplot(datos1, aes(fill=TA, x=CA))+ geom_bar(position = "stack")+
+theme(axis.text.x = element_text(angle = 90, vjust = 0.5, hjust=1))
+```
+
+
+```{r}
+## Grafico de barras, pero apiladas con porcentaje
+ggplot(datos1, aes(fill=TA, x=CA))+ geom_bar(position = "fill")+
+theme(axis.text.x = element_text(angle = 90, vjust = 0.5, hjust=1))
+```
+
+### Ordinal variables
+
+We will take the variables GenHlt and Income.
+
+It is advisable to convert them into factors so that R recognizes them as ordinal categorical variables.
+
+```{r}
+## Grafico al lado
+## Primero vamos a solucionar lo de los sí y no
+datos1 = datos %>% mutate(GenHlth = factor(GenHlth),
+                         Income = factor(Income))
+
+ggplot(datos1, aes(fill=GenHlth, x=Income))+ geom_bar(position = "dodge")+
+theme(axis.text.x = element_text(angle = 90, vjust = 0.5, hjust=1))
+```
+
+```{r}
+ggplot(datos1, aes(fill=GenHlth, x=Income))+ geom_bar(position = "stack")+
+theme(axis.text.x = element_text(angle = 90, vjust = 0.5, hjust=1))
+```
+
+```{r}
+ggplot(datos1, aes(fill=GenHlth, x=Income))+ geom_bar(position = "fill")+
+theme(axis.text.x = element_text(angle = 90, vjust = 0.5, hjust=1))
+```
+
+
+
+### Ordinal and Qualitative
+
+```{r}
+## Grafico al lado
+## Primero vamos a solucionar lo de los sí y no
+datos1 = datos %>% mutate(GenHlth = factor(GenHlth),
+                         PhysActivity = ifelse(PhysActivity==0, "No", "Sí"))
+
+ggplot(datos1, aes(fill=PhysActivity, x=GenHlth))+ geom_bar(position = "dodge")+
+theme(axis.text.x = element_text(angle = 90, vjust = 0.5, hjust=1))
+```
+```{r}
+ggplot(datos1, aes(fill=PhysActivity, x=GenHlth))+ geom_bar(position = "stack")+
+theme(axis.text.x = element_text(angle = 90, vjust = 0.5, hjust=1))
+```
+
+```{r}
+ggplot(datos1, aes(fill=PhysActivity, x=GenHlth))+ geom_bar(position = "fill")+
+theme(axis.text.x = element_text(angle = 90, vjust = 0.5, hjust=1))
+```
+
+
+### One Qualitative and One Quantitative Variable
+
+You can calculate means, medians, and variances for each group of the qualitative variable.
+
+You can create boxplots and density plots for each group.
+
+```{r}
+datos %>% group_by(GenHlth) %>% summarise(Media=mean(BMI), Mediana =median(BMI),
+  varianza = var(BMI), Min=min(BMI), max=max(BMI))
+```
+
+```{r}
+datos1 = datos %>% mutate(GenHlth = factor(GenHlth),
+                         PhysActivity = ifelse(PhysActivity==0, "No", "Sí"))
+
+ggplot(datos1, aes(y=BMI, x=GenHlth))+ geom_boxplot()+
+theme(axis.text.x = element_text(angle = 90, vjust = 0.5, hjust=1))
+```
+```{r}
+datos1 = datos %>% mutate(GenHlth = factor(GenHlth),
+                         PhysActivity = ifelse(PhysActivity==0, "No", "Sí"))
+
+ggplot(datos1, aes(y=BMI, x=GenHlth, color = GenHlth))+ geom_boxplot()+
+theme(axis.text.x = element_text(angle = 90, vjust = 0.5, hjust=1))
+```
+
+```{r}
+datos1 = datos %>% mutate(GenHlth = factor(GenHlth),
+                         PhysActivity = ifelse(PhysActivity==0, "No", "Sí"))
+
+ggplot(datos1, aes(x=BMI, fill = GenHlth))+ geom_density(alpha=0.3)+
+theme(axis.text.x = element_text(angle = 90, vjust = 0.5, hjust=1))
+```
+```{r}
+ggplot(datos1, aes(x=BMI, fill = GenHlth))+ geom_density(alpha=0.3)+
+theme(axis.text.x = element_text(angle = 90, vjust = 0.5, hjust=1))+
+  facet_wrap(.~GenHlth, ncol=1)
+```
+
+### Two Quantitative
+
+
+
+## Practice Questions
+
+1. **Case-Control Study Design**  (2.0 points)
+   Propose how you would design a **case-control study** to assess whether consuming vegetables has an effect on diabetes. Clearly define:
+   - Who would be the **cases** and **controls**  
+   - How you would measure **vegetable intake**  
+   - What potential confounders you would consider
+
+2. **Cohort Study Design**  (2.0 points)
+   Propose a **cohort study** to assess the effect of risk factors on diabetes. Clearly define:
+   - The **cohort population**  
+   - The **exposure/risk factors** to follow  
+   - How diabetes outcomes will be measured over time  
+
+3. **Odds Ratio Analysis**  (2.0 points)
+   Perform an **odds ratio analysis** defining:  
+   - Diabetes: 1 and 2 → “diabetes”, 0 → “no diabetes”  
+   - Risk factor: **No physical activity**  
+   Calculate the odds ratio between no physical activity and diabetes.
+
+4. **Contingency Table Plot**  (2.0 points)
+   Generate a **graphical representation** (e.g., bar plot or mosaic plot) of the contingency table for diabetes vs no physical activity trough GenHlth only for Woman with BMI less than 30.
+
+5. **Confidence Interval Analysis** (2.0 points)
+   Calculate the **95% confidence intervals** for the odds ratio from question 3 and interpret the results.

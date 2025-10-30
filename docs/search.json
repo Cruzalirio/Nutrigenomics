@@ -200,6 +200,26 @@
     ]
   },
   {
+    "objectID": "06_Descriptiva.html",
+    "href": "06_Descriptiva.html",
+    "title": "6  Descriptive Statistics",
+    "section": "",
+    "text": "6.0.1 Contingency Table\nLoad the dataset\nA contingency table is a tool used in statistics that consists of creating at least two rows and two columns to represent categorical (qualitative nominal) data in terms of frequency counts. This tool, also known as a cross-tabulation or two-way table, aims to summarize and display the relationship between different categorical variables.\nFor example, consider the relationship between high blood pressure and high cholesterol\n## Forma 1\ntabla = table(datos$HighBP, datos$HighChol)\ntabla\n\n   \n         0      1\n  0 101920  42931\n  1  44169  64660\n## Agreguemosle más cosas\ncolnames(tabla) = c(\"Colesterol alto\", \"Colesterol normal\")\nrownames(tabla) = c(\"Presión alta\", \"Presión normal\")\ntabla\n\n                \n                 Colesterol alto Colesterol normal\n  Presión alta            101920             42931\n  Presión normal           44169             64660\noddsratio(tabla)\n\n$data\n                \n                 Colesterol alto Colesterol normal  Total\n  Presión alta            101920             42931 144851\n  Presión normal           44169             64660 108829\n  Total                   146089            107591 253680\n\n$measure\n                odds ratio with 95% C.I.\n                 estimate   lower    upper\n  Presión alta    1.00000      NA       NA\n  Presión normal  3.47539 3.41841 3.533175\n\n$p.value\n                two-sided\n                 midp.exact fisher.exact chi.square\n  Presión alta           NA           NA         NA\n  Presión normal          0            0          0\n\n$correction\n[1] FALSE\n\nattr(,\"method\")\n[1] \"median-unbiased estimate & mid-p exact CI\"\nchisq.test(tabla)\n\n\n    Pearson's Chi-squared test with Yates' continuity correction\n\ndata:  tabla\nX-squared = 22557, df = 1, p-value &lt; 2.2e-16\n## Forma 2\ntabla1 = datos %&gt;% group_by(HighBP, HighChol) %&gt;% summarise(Conteo=n())\n\n`summarise()` has grouped output by 'HighBP'. You can override using the\n`.groups` argument.\n\ntabla1\n\n# A tibble: 4 × 3\n# Groups:   HighBP [2]\n  HighBP HighChol Conteo\n   &lt;dbl&gt;    &lt;dbl&gt;  &lt;int&gt;\n1      0        0 101920\n2      0        1  42931\n3      1        0  44169\n4      1        1  64660\nSome graphs\n## Grafico al lado\n## Primero vamos a solucionar lo de los sí y no\ndatos1 = datos %&gt;% mutate(TA = ifelse(HighBP==0, \"No\", \"Sí\"),\n                         CA = ifelse(HighChol==0, \"No\", \"Sí\"))\n\nggplot(datos1, aes(fill=TA, x=CA))+ geom_bar(position = \"dodge\")+\ntheme(axis.text.x = element_text(angle = 90, vjust = 0.5, hjust=1))\n## Grafico de barras, pero apiladas\nggplot(datos1, aes(fill=TA, x=CA))+ geom_bar(position = \"stack\")+\ntheme(axis.text.x = element_text(angle = 90, vjust = 0.5, hjust=1))\n## Grafico de barras, pero apiladas con porcentaje\nggplot(datos1, aes(fill=TA, x=CA))+ geom_bar(position = \"fill\")+\ntheme(axis.text.x = element_text(angle = 90, vjust = 0.5, hjust=1))",
+    "crumbs": [
+      "<span class='chapter-number'>6</span>  <span class='chapter-title'>Descriptive Statistics</span>"
+    ]
+  },
+  {
+    "objectID": "06_Descriptiva.html#practice-questions",
+    "href": "06_Descriptiva.html#practice-questions",
+    "title": "6  Descriptive Statistics",
+    "section": "6.1 Practice Questions",
+    "text": "6.1 Practice Questions\n\nCase-Control Study Design (2.0 points) Propose how you would design a case-control study to assess whether consuming vegetables has an effect on diabetes. Clearly define:\n\nWho would be the cases and controls\n\nHow you would measure vegetable intake\n\nWhat potential confounders you would consider\n\nCohort Study Design (2.0 points) Propose a cohort study to assess the effect of risk factors on diabetes. Clearly define:\n\nThe cohort population\n\nThe exposure/risk factors to follow\n\nHow diabetes outcomes will be measured over time\n\nOdds Ratio Analysis (2.0 points) Perform an odds ratio analysis defining:\n\nDiabetes: 1 and 2 → “diabetes”, 0 → “no diabetes”\n\nRisk factor: No physical activity\nCalculate the odds ratio between no physical activity and diabetes.\n\nContingency Table Plot (2.0 points) Generate a graphical representation (e.g., bar plot or mosaic plot) of the contingency table for diabetes vs no physical activity trough GenHlth only for Woman with BMI less than 30.\nConfidence Interval Analysis (2.0 points) Calculate the 95% confidence intervals for the odds ratio from question 3 and interpret the results.",
+    "crumbs": [
+      "<span class='chapter-number'>6</span>  <span class='chapter-title'>Descriptive Statistics</span>"
+    ]
+  },
+  {
     "objectID": "referencias.html",
     "href": "referencias.html",
     "title": "References",

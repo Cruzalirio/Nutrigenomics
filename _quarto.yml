@@ -25,6 +25,7 @@ book:
     - 02_FirstR.qmd
     - 04_ProbOddsChiCuadrado.qmd
     - 05_Odds.qmd
+    - 06_Descriptiva.qmd
     - referencias.qmd
 
 bibliography: referencias.bib
