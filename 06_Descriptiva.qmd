@@ -3,6 +3,7 @@
 ```{r}
 library(tidyverse)
 library(epitools)
+library(GGally)
 ```
 
 Load the [dataset](https://github.com/Cruzalirio/Unal-Enfermeria-/blob/main/Datos/diabetes_BRFSS2015.csv)
@@ -26,8 +27,8 @@ tabla
 
 ```{r}
 ## Agreguemosle más cosas
-colnames(tabla) = c("Colesterol alto", "Colesterol normal")
-rownames(tabla) = c("Presión alta", "Presión normal")
+colnames(tabla) = c("Colesterol normal", "Colesterol alto")
+rownames(tabla) = c("Presión normal","Presión alta")
 tabla
 ```
 ```{r}
@@ -57,6 +58,9 @@ ggplot(datos1, aes(fill=TA, x=CA))+ geom_bar(position = "dodge")+
 theme(axis.text.x = element_text(angle = 90, vjust = 0.5, hjust=1))
 ```
 
+```{r}
+ggplot(datos1, aes(fill=TA, x=CA))+ geom_bar(position = "dodge")
+```
 
 ```{r}
 ## Grafico de barras, pero apiladas
@@ -110,13 +114,23 @@ datos1 = datos %>% mutate(GenHlth = factor(GenHlth),
 ggplot(datos1, aes(fill=PhysActivity, x=GenHlth))+ geom_bar(position = "dodge")+
 theme(axis.text.x = element_text(angle = 90, vjust = 0.5, hjust=1))
 ```
+
+```{r}
+ggplot(datos1, aes(x=PhysActivity, fill=GenHlth))+ geom_bar(position = "dodge")+
+theme(axis.text.x = element_text(angle = 90, vjust = 0.5, hjust=1))
+```
+
 ```{r}
 ggplot(datos1, aes(fill=PhysActivity, x=GenHlth))+ geom_bar(position = "stack")+
 theme(axis.text.x = element_text(angle = 90, vjust = 0.5, hjust=1))
 ```
 
 ```{r}
-ggplot(datos1, aes(fill=PhysActivity, x=GenHlth))+ geom_bar(position = "fill")+
+ggplot(datos1, aes(fill=PhysActivity, y=GenHlth))+ geom_bar(position = "fill")+
+theme(axis.text.x = element_text(angle = 90, vjust = 0.5, hjust=1))
+```
+```{r}
+ggplot(datos1, aes(x=PhysActivity, fill=GenHlth))+ geom_bar(position = "fill")+
 theme(axis.text.x = element_text(angle = 90, vjust = 0.5, hjust=1))
 ```
 
@@ -128,6 +142,7 @@ You can calculate means, medians, and variances for each group of the qualitativ
 You can create boxplots and density plots for each group.
 
 ```{r}
+
 datos %>% group_by(GenHlth) %>% summarise(Media=mean(BMI), Mediana =median(BMI),
   varianza = var(BMI), Min=min(BMI), max=max(BMI))
 ```
@@ -139,6 +154,11 @@ datos1 = datos %>% mutate(GenHlth = factor(GenHlth),
 ggplot(datos1, aes(y=BMI, x=GenHlth))+ geom_boxplot()+
 theme(axis.text.x = element_text(angle = 90, vjust = 0.5, hjust=1))
 ```
+```{r}
+ggplot(datos1, aes(y=BMI, x=GenHlth))+ geom_boxplot()+
+theme(axis.text.x = element_text(angle = 90, vjust = 0.5, hjust=1))+coord_cartesian(ylim=c(12,50))
+```
+
 ```{r}
 datos1 = datos %>% mutate(GenHlth = factor(GenHlth),
                          PhysActivity = ifelse(PhysActivity==0, "No", "Sí"))
@@ -159,10 +179,6 @@ ggplot(datos1, aes(x=BMI, fill = GenHlth))+ geom_density(alpha=0.3)+
 theme(axis.text.x = element_text(angle = 90, vjust = 0.5, hjust=1))+
   facet_wrap(.~GenHlth, ncol=1)
 ```
-
-### Two Quantitative
-
-
 
 ## Practice Questions
 
@@ -186,3 +202,170 @@ theme(axis.text.x = element_text(angle = 90, vjust = 0.5, hjust=1))+
 
 4. **Contingency Table Plot**  (2.5 points)
    Generate a **graphical representation** of the contingency table for diabetes vs no physical activity only for Woman with BMI less than 30.
+
+
+### Two Quantitative
+
+| Variable | Meaning (Biomedical context) |
+|-----------|------------------------------|
+| **Inflammatory_Index** | Composite score reflecting systemic inflammation; higher with obesity, sedentary lifestyle, and low fruit/vegetable intake. |
+| **Insulin_Resistance_Score** | Proxy for insulin resistance; increases with BMI, age, hypertension, and low physical activity. |
+| **Oxidative_Stress** | Captures oxidative load from smoking, alcohol, and aging. |
+| **Antioxidant_Intake** | Represents dietary antioxidant exposure, mainly from fruits and vegetables. |
+| **Cardiometabolic_Risk** | Integrates hypertension, cholesterol, age, and BMI as risk factors. |
+| **Sleep_Quality_Score** | Inverse measure of perceived health burden; lower when physical or mental health is poor. |
+| **Gut_Microbiome_Balance** | Approximation of intestinal microbiota equilibrium; improved by diet and reduced alcohol consumption. |
+| **Nutritional_Score** | Overall nutritional quality combining diet, antioxidant intake, and BMI. |
+| **Inflammation_to_Antioxidant_Ratio** | Balance indicator between inflammatory processes and dietary protection. |
+| **Biological_Age** | Approximation of physiological aging relative to metabolic and oxidative status. |
+
+
+Scatter plot
+
+```{r}
+## Vamos a seleccionar una muestra de tamaño 10000
+
+data <- datos %>% 
+  sample_n(size=10000)
+
+ggplot(datos, aes(x = Antioxidant_Intake, y =Nutritional_Score, color = factor(Veggies))) +
+  geom_point(alpha = 0.7, size = 2) +
+  scale_color_manual(values = c("#56B4E9", "#009E73"), labels = c("No Veggies", "Consumes Veggies"))  +
+  theme_minimal(base_size = 14) +
+  theme(plot.title = element_text(face = "bold", hjust = 0.5))
+```
+Interpretation:  
+- The **Pearson correlation coefficient (r)** quantifies the linear association between two variables.  
+- A positive value indicates that higher values of $X$ is associated with higher values of $Y$.
+
+
+```{r}
+cor_test <- cor.test(datos$Antioxidant_Intake, datos$Nutritional_Score, method = "pearson")
+cor_test
+```
+
+```{r}
+quant_vars <- datos %>%
+  select(Inflammatory_Index, Oxidative_Stress, Antioxidant_Intake, Cardiometabolic_Risk,
+         Sleep_Quality_Score, Gut_Microbiome_Balance, Nutritional_Score, Inflammation_to_Antioxidant_Ratio, Biological_Age)
+
+corr_matrix <- cor(quant_vars, use = "pairwise.complete.obs")
+round(corr_matrix, 2)
+```
+```{r}
+library(GGally)
+library(corrplot)
+corrplot(
+  corr_matrix,
+  method = "color",
+  tl.col = "black",
+  tl.srt = 45,
+  addCoef.col = "black",
+  number.cex = 0.8,
+  mar = c(0,0,1,0),
+  title = "Correlation Matrix of Biomedical Variables"
+)
+```
+More options of corrplot [here](https://www.rpubs.com/cloud_wei/786861)
+
+```{r}
+corrplot(corr_matrix, method = 'square', order = 'FPC', type = 'lower', diag = FALSE)
+```
+```{r}
+corrplot.mixed(corr_matrix, order = 'AOE')
+```
+```{r}
+data <- datos %>% 
+  group_by(Diabetes_012, HighBP, HighChol, CholCheck, Smoker,
+           Stroke, HeartDiseaseorAttack, PhysActivity, Fruits, Veggies,
+           HvyAlcoholConsump, AnyHealthcare, NoDocbcCost, Sex) %>% 
+  summarise(Inflammatory_Index=mean(Inflammatory_Index, na.rm=TRUE),
+            BMI = mean(BMI, na.rm=TRUE),
+            Oxidative_Stress=mean(Oxidative_Stress, na.rm=TRUE), 
+            Antioxidant_Intake=mean(Antioxidant_Intake, na.rm=TRUE), 
+            Cardiometabolic_Risk=mean(Cardiometabolic_Risk, na.rm=TRUE),
+            Sleep_Quality_Score=mean(Sleep_Quality_Score, na.rm=TRUE),
+            Gut_Microbiome_Balance=mean(Gut_Microbiome_Balance, na.rm=TRUE),
+            Nutritional_Score=mean(Nutritional_Score, na.rm=TRUE),
+            Inflammation_to_Antioxidant_Ratio=mean(Inflammatory_Index, na.rm=TRUE),
+            Biological_Age=mean(Biological_Age, na.rm=TRUE))
+
+data <- na.exclude(data)
+GGally::ggpairs(
+  data,
+  columns = c("Inflammatory_Index", "Oxidative_Stress", "BMI",
+              "Cardiometabolic_Risk",  "Biological_Age"),
+  mapping = aes(color = factor(Veggies)),
+  upper = list(continuous = wrap("cor", size = 4)),
+  lower = list(continuous = wrap("points", alpha = 0.6, size = 1.5))
+) +
+  theme_bw(base_size = 12)
+```
+
+
+## Practice 2
+
+
+
+** *1.Data Sampling (2.5 points)*
+
+- Load the dataset and select a random sample of **2000 observations**.
+- Report how many complete cases remain after removing missing values.
+- Briefly describe the selected variables (include at least one biomedical quantitative variable).
+
+```{r setup, message=FALSE, warning=FALSE}
+library(tidyverse)
+library(corrplot)
+
+# Example loading (adjust to your local path)
+# data <- read.csv("diabetes_BRFSS2015.csv")
+
+# Example simulated data (for illustration)
+datos = read_csv("https://raw.githubusercontent.com/Cruzalirio/Unal-Enfermeria-/main/Datos/diabetes_BRFSS2015.csv")
+
+sample_data <- datos %>% sample_n(2000) %>% na.omit()
+```
+
+
+** *2. Boxplot Analysis (2.5 points)*
+
+Create a boxplot comparing a biomedical variable by a categorical variable (e.g., Veggies, PhysicalActivity).
+
+Comment on whether the distributions differ between groups and what that might imply biologically.
+
+```{r}
+ggplot(sample_data, aes(x = factor(Veggies), y = BMI, fill = factor(Veggies))) +
+geom_boxplot() +
+labs(x = "Vegetable Consumption (0=No, 1=Yes)",
+y = "Glucose Level (mg/dL)",
+title = "Boxplot of Glucose Level by Vegetable Consumption") +
+theme_minimal()
+```
+
+
+** *3. Scatter Plot (2.5 points)**
+
+Make a scatter plot between two quantitative biomedical variables.
+
+Add a regression line and describe the observed trend.
+
+Discuss whether the relationship seems linear and if it has biological relevance
+
+```{r}
+ggplot(sample_data, aes(x = Inflammatory_Index, y = BMI, color = factor(Veggies))) +
+geom_point(alpha = 0.7) +
+geom_smooth(method = "lm", se = FALSE, color = "black") +
+labs(title = "Scatter plot: BMI vs Glucose Level",
+x = "Body Mass Index (BMI)",
+y = "Glucose Level (mg/dL)",
+color = "Vegetable Consumption") +
+theme_minimal()
+```
+** *4. Correlation Matrix (2.5 points)* 
+
+Select a plot between the following that you should replicate with the `sample data` as part of your report
+
+1. Bubble plot[here](https://r-graph-gallery.com/320-the-basis-of-bubble-plot.html)
+2. Density 2d [here](https://r-graph-gallery.com/2d-density-plot-with-ggplot2.html#hist)
+3. Spider [here](https://r-graph-gallery.com/142-basic-radar-chart.html)
+
