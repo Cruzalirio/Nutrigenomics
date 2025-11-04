@@ -106,6 +106,35 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   }
 }</script>
 
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN") {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
 
 </head>
 
@@ -207,8 +236,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#ordinal-variables" id="toc-ordinal-variables" class="nav-link" data-scroll-target="#ordinal-variables"><span class="header-section-number">6.0.2</span> Ordinal variables</a></li>
   <li><a href="#ordinal-and-qualitative" id="toc-ordinal-and-qualitative" class="nav-link" data-scroll-target="#ordinal-and-qualitative"><span class="header-section-number">6.0.3</span> Ordinal and Qualitative</a></li>
   <li><a href="#one-qualitative-and-one-quantitative-variable" id="toc-one-qualitative-and-one-quantitative-variable" class="nav-link" data-scroll-target="#one-qualitative-and-one-quantitative-variable"><span class="header-section-number">6.0.4</span> One Qualitative and One Quantitative Variable</a></li>
-  <li><a href="#two-quantitative" id="toc-two-quantitative" class="nav-link" data-scroll-target="#two-quantitative"><span class="header-section-number">6.0.5</span> Two Quantitative</a></li>
-  <li><a href="#practice-questions" id="toc-practice-questions" class="nav-link" data-scroll-target="#practice-questions"><span class="header-section-number">6.1</span> Practice Questions</a></li>
+  <li><a href="#practice-questions" id="toc-practice-questions" class="nav-link" data-scroll-target="#practice-questions"><span class="header-section-number">6.1</span> Practice Questions</a>
+  <ul class="collapse">
+  <li><a href="#two-quantitative" id="toc-two-quantitative" class="nav-link" data-scroll-target="#two-quantitative"><span class="header-section-number">6.1.1</span> Two Quantitative</a></li>
+  </ul></li>
+  <li><a href="#practice-2" id="toc-practice-2" class="nav-link" data-scroll-target="#practice-2"><span class="header-section-number">6.2</span> Practice 2</a></li>
   </ul>
 <div class="toc-actions"><ul><li><a href="https://github.com/Cruzalirio/Nutrigenomics/edit/main/06_Descriptiva.qmd" class="toc-action"><i class="bi bi-github"></i>Editar esta página</a></li><li><a href="https://github.com/Cruzalirio/Nutrigenomics/issues/new" class="toc-action"><i class="bi empty"></i>Informar de un problema</a></li></ul></div></nav>
     </div>
@@ -248,24 +280,30 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 ✖ dplyr::lag()    masks stats::lag()
 ℹ Use the conflicted package (&lt;http://conflicted.r-lib.org/&gt;) to force all conflicts to become errors</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(epitools)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(epitools)</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(GGally)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Registered S3 method overwritten by 'GGally':
+  method from   
+  +.gg   ggplot2</code></pre>
+</div>
 </div>
 <p>Load the <a href="https://github.com/Cruzalirio/Unal-Enfermeria-/blob/main/Datos/diabetes_BRFSS2015.csv">dataset</a></p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>datos <span class="ot">=</span> <span class="fu">read_csv</span>(<span class="st">"https://raw.githubusercontent.com/Cruzalirio/Unal-Enfermeria-/main/Datos/diabetes_BRFSS2015.csv"</span>)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>datos <span class="ot">=</span> <span class="fu">read_csv</span>(<span class="st">"https://raw.githubusercontent.com/Cruzalirio/Unal-Enfermeria-/main/Datos/diabetes_BRFSS2015.csv"</span>)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
-<pre><code>Rows: 253680 Columns: 22
+<pre><code>Rows: 253680 Columns: 32
 ── Column specification ────────────────────────────────────────────────────────
 Delimiter: ","
-dbl (22): Diabetes_012, HighBP, HighChol, CholCheck, BMI, Smoker, Stroke, He...
+dbl (32): Diabetes_012, HighBP, HighChol, CholCheck, BMI, Smoker, Stroke, He...
 
 ℹ Use `spec()` to retrieve the full column specification for this data.
 ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="do">### La función head me pe ver las primeras filas</span></span>
-<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(datos)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="do">### La función head me pe ver las primeras filas</span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(datos)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 6 × 22
+<pre><code># A tibble: 6 × 32
   Diabetes_012 HighBP HighChol CholCheck   BMI Smoker Stroke
          &lt;dbl&gt;  &lt;dbl&gt;    &lt;dbl&gt;     &lt;dbl&gt; &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;
 1            0      1        1         1    40      1      0
@@ -274,10 +312,13 @@ dbl (22): Diabetes_012, HighBP, HighChol, CholCheck, BMI, Smoker, Stroke, He...
 4            0      1        0         1    27      0      0
 5            0      1        1         1    24      0      0
 6            0      1        1         1    25      1      0
-# ℹ 15 more variables: HeartDiseaseorAttack &lt;dbl&gt;, PhysActivity &lt;dbl&gt;,
+# ℹ 25 more variables: HeartDiseaseorAttack &lt;dbl&gt;, PhysActivity &lt;dbl&gt;,
 #   Fruits &lt;dbl&gt;, Veggies &lt;dbl&gt;, HvyAlcoholConsump &lt;dbl&gt;, AnyHealthcare &lt;dbl&gt;,
 #   NoDocbcCost &lt;dbl&gt;, GenHlth &lt;dbl&gt;, MentHlth &lt;dbl&gt;, PhysHlth &lt;dbl&gt;,
-#   DiffWalk &lt;dbl&gt;, Sex &lt;dbl&gt;, Age &lt;dbl&gt;, Education &lt;dbl&gt;, Income &lt;dbl&gt;</code></pre>
+#   DiffWalk &lt;dbl&gt;, Sex &lt;dbl&gt;, Age &lt;dbl&gt;, Education &lt;dbl&gt;, Income &lt;dbl&gt;,
+#   Inflammatory_Index &lt;dbl&gt;, Insulin_Resistance_Score &lt;dbl&gt;,
+#   Oxidative_Stress &lt;dbl&gt;, Antioxidant_Intake &lt;dbl&gt;,
+#   Cardiometabolic_Risk &lt;dbl&gt;, Sleep_Quality_Score &lt;dbl&gt;, …</code></pre>
 </div>
 </div>
 <section id="contingency-table" class="level3" data-number="6.0.1">
@@ -285,9 +326,9 @@ dbl (22): Diabetes_012, HighBP, HighChol, CholCheck, BMI, Smoker, Stroke, He...
 <p>A contingency table is a tool used in statistics that consists of creating at least two rows and two columns to represent categorical (qualitative nominal) data in terms of frequency counts. This tool, also known as a cross-tabulation or two-way table, aims to summarize and display the relationship between different categorical variables.</p>
 <p>For example, consider the relationship between high blood pressure and high cholesterol</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="do">## Forma 1</span></span>
-<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>tabla <span class="ot">=</span> <span class="fu">table</span>(datos<span class="sc">$</span>HighBP, datos<span class="sc">$</span>HighChol)</span>
-<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>tabla</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="do">## Forma 1</span></span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>tabla <span class="ot">=</span> <span class="fu">table</span>(datos<span class="sc">$</span>HighBP, datos<span class="sc">$</span>HighChol)</span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>tabla</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>   
          0      1
@@ -296,38 +337,38 @@ dbl (22): Diabetes_012, HighBP, HighChol, CholCheck, BMI, Smoker, Stroke, He...
 </div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="do">## Agreguemosle más cosas</span></span>
-<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="fu">colnames</span>(tabla) <span class="ot">=</span> <span class="fu">c</span>(<span class="st">"Colesterol alto"</span>, <span class="st">"Colesterol normal"</span>)</span>
-<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a><span class="fu">rownames</span>(tabla) <span class="ot">=</span> <span class="fu">c</span>(<span class="st">"Presión alta"</span>, <span class="st">"Presión normal"</span>)</span>
-<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a>tabla</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="do">## Agreguemosle más cosas</span></span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="fu">colnames</span>(tabla) <span class="ot">=</span> <span class="fu">c</span>(<span class="st">"Colesterol normal"</span>, <span class="st">"Colesterol alto"</span>)</span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a><span class="fu">rownames</span>(tabla) <span class="ot">=</span> <span class="fu">c</span>(<span class="st">"Presión normal"</span>,<span class="st">"Presión alta"</span>)</span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a>tabla</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>                
-                 Colesterol alto Colesterol normal
-  Presión alta            101920             42931
-  Presión normal           44169             64660</code></pre>
+                 Colesterol normal Colesterol alto
+  Presión normal            101920           42931
+  Presión alta               44169           64660</code></pre>
 </div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="fu">oddsratio</span>(tabla)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="fu">oddsratio</span>(tabla)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>$data
                 
-                 Colesterol alto Colesterol normal  Total
-  Presión alta            101920             42931 144851
-  Presión normal           44169             64660 108829
-  Total                   146089            107591 253680
+                 Colesterol normal Colesterol alto  Total
+  Presión normal            101920           42931 144851
+  Presión alta               44169           64660 108829
+  Total                     146089          107591 253680
 
 $measure
                 odds ratio with 95% C.I.
                  estimate   lower    upper
-  Presión alta    1.00000      NA       NA
-  Presión normal  3.47539 3.41841 3.533175
+  Presión normal  1.00000      NA       NA
+  Presión alta    3.47539 3.41841 3.533175
 
 $p.value
                 two-sided
                  midp.exact fisher.exact chi.square
-  Presión alta           NA           NA         NA
-  Presión normal          0            0          0
+  Presión normal         NA           NA         NA
+  Presión alta            0            0          0
 
 $correction
 [1] FALSE
@@ -337,7 +378,7 @@ attr(,"method")
 </div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="fu">chisq.test</span>(tabla)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="fu">chisq.test</span>(tabla)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>
     Pearson's Chi-squared test with Yates' continuity correction
@@ -347,13 +388,13 @@ X-squared = 22557, df = 1, p-value &lt; 2.2e-16</code></pre>
 </div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="do">## Forma 2</span></span>
-<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>tabla1 <span class="ot">=</span> datos <span class="sc">%&gt;%</span> <span class="fu">group_by</span>(HighBP, HighChol) <span class="sc">%&gt;%</span> <span class="fu">summarise</span>(<span class="at">Conteo=</span><span class="fu">n</span>())</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="do">## Forma 2</span></span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>tabla1 <span class="ot">=</span> datos <span class="sc">%&gt;%</span> <span class="fu">group_by</span>(HighBP, HighChol) <span class="sc">%&gt;%</span> <span class="fu">summarise</span>(<span class="at">Conteo=</span><span class="fu">n</span>())</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
 <pre><code>`summarise()` has grouped output by 'HighBP'. You can override using the
 `.groups` argument.</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>tabla1</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>tabla1</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 4 × 3
 # Groups:   HighBP [2]
@@ -367,13 +408,13 @@ X-squared = 22557, df = 1, p-value &lt; 2.2e-16</code></pre>
 </div>
 <p>Some graphs</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="do">## Grafico al lado</span></span>
-<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a><span class="do">## Primero vamos a solucionar lo de los sí y no</span></span>
-<span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a>datos1 <span class="ot">=</span> datos <span class="sc">%&gt;%</span> <span class="fu">mutate</span>(<span class="at">TA =</span> <span class="fu">ifelse</span>(HighBP<span class="sc">==</span><span class="dv">0</span>, <span class="st">"No"</span>, <span class="st">"Sí"</span>),</span>
-<span id="cb20-4"><a href="#cb20-4" aria-hidden="true" tabindex="-1"></a>                         <span class="at">CA =</span> <span class="fu">ifelse</span>(HighChol<span class="sc">==</span><span class="dv">0</span>, <span class="st">"No"</span>, <span class="st">"Sí"</span>))</span>
-<span id="cb20-5"><a href="#cb20-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb20-6"><a href="#cb20-6" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(datos1, <span class="fu">aes</span>(<span class="at">fill=</span>TA, <span class="at">x=</span>CA))<span class="sc">+</span> <span class="fu">geom_bar</span>(<span class="at">position =</span> <span class="st">"dodge"</span>)<span class="sc">+</span></span>
-<span id="cb20-7"><a href="#cb20-7" aria-hidden="true" tabindex="-1"></a><span class="fu">theme</span>(<span class="at">axis.text.x =</span> <span class="fu">element_text</span>(<span class="at">angle =</span> <span class="dv">90</span>, <span class="at">vjust =</span> <span class="fl">0.5</span>, <span class="at">hjust=</span><span class="dv">1</span>))</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="do">## Grafico al lado</span></span>
+<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a><span class="do">## Primero vamos a solucionar lo de los sí y no</span></span>
+<span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a>datos1 <span class="ot">=</span> datos <span class="sc">%&gt;%</span> <span class="fu">mutate</span>(<span class="at">TA =</span> <span class="fu">ifelse</span>(HighBP<span class="sc">==</span><span class="dv">0</span>, <span class="st">"No"</span>, <span class="st">"Sí"</span>),</span>
+<span id="cb21-4"><a href="#cb21-4" aria-hidden="true" tabindex="-1"></a>                         <span class="at">CA =</span> <span class="fu">ifelse</span>(HighChol<span class="sc">==</span><span class="dv">0</span>, <span class="st">"No"</span>, <span class="st">"Sí"</span>))</span>
+<span id="cb21-5"><a href="#cb21-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-6"><a href="#cb21-6" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(datos1, <span class="fu">aes</span>(<span class="at">fill=</span>TA, <span class="at">x=</span>CA))<span class="sc">+</span> <span class="fu">geom_bar</span>(<span class="at">position =</span> <span class="st">"dodge"</span>)<span class="sc">+</span></span>
+<span id="cb21-7"><a href="#cb21-7" aria-hidden="true" tabindex="-1"></a><span class="fu">theme</span>(<span class="at">axis.text.x =</span> <span class="fu">element_text</span>(<span class="at">angle =</span> <span class="dv">90</span>, <span class="at">vjust =</span> <span class="fl">0.5</span>, <span class="at">hjust=</span><span class="dv">1</span>))</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
@@ -383,9 +424,7 @@ X-squared = 22557, df = 1, p-value &lt; 2.2e-16</code></pre>
 </div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="do">## Grafico de barras, pero apiladas</span></span>
-<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(datos1, <span class="fu">aes</span>(<span class="at">fill=</span>TA, <span class="at">x=</span>CA))<span class="sc">+</span> <span class="fu">geom_bar</span>(<span class="at">position =</span> <span class="st">"stack"</span>)<span class="sc">+</span></span>
-<span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a><span class="fu">theme</span>(<span class="at">axis.text.x =</span> <span class="fu">element_text</span>(<span class="at">angle =</span> <span class="dv">90</span>, <span class="at">vjust =</span> <span class="fl">0.5</span>, <span class="at">hjust=</span><span class="dv">1</span>))</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(datos1, <span class="fu">aes</span>(<span class="at">fill=</span>TA, <span class="at">x=</span>CA))<span class="sc">+</span> <span class="fu">geom_bar</span>(<span class="at">position =</span> <span class="st">"dodge"</span>)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
@@ -395,13 +434,25 @@ X-squared = 22557, df = 1, p-value &lt; 2.2e-16</code></pre>
 </div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="do">## Grafico de barras, pero apiladas con porcentaje</span></span>
-<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(datos1, <span class="fu">aes</span>(<span class="at">fill=</span>TA, <span class="at">x=</span>CA))<span class="sc">+</span> <span class="fu">geom_bar</span>(<span class="at">position =</span> <span class="st">"fill"</span>)<span class="sc">+</span></span>
-<span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a><span class="fu">theme</span>(<span class="at">axis.text.x =</span> <span class="fu">element_text</span>(<span class="at">angle =</span> <span class="dv">90</span>, <span class="at">vjust =</span> <span class="fl">0.5</span>, <span class="at">hjust=</span><span class="dv">1</span>))</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="do">## Grafico de barras, pero apiladas</span></span>
+<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(datos1, <span class="fu">aes</span>(<span class="at">fill=</span>TA, <span class="at">x=</span>CA))<span class="sc">+</span> <span class="fu">geom_bar</span>(<span class="at">position =</span> <span class="st">"stack"</span>)<span class="sc">+</span></span>
+<span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a><span class="fu">theme</span>(<span class="at">axis.text.x =</span> <span class="fu">element_text</span>(<span class="at">angle =</span> <span class="dv">90</span>, <span class="at">vjust =</span> <span class="fl">0.5</span>, <span class="at">hjust=</span><span class="dv">1</span>))</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
 <p><img src="06_Descriptiva_files/figure-html/unnamed-chunk-10-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="do">## Grafico de barras, pero apiladas con porcentaje</span></span>
+<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(datos1, <span class="fu">aes</span>(<span class="at">fill=</span>TA, <span class="at">x=</span>CA))<span class="sc">+</span> <span class="fu">geom_bar</span>(<span class="at">position =</span> <span class="st">"fill"</span>)<span class="sc">+</span></span>
+<span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a><span class="fu">theme</span>(<span class="at">axis.text.x =</span> <span class="fu">element_text</span>(<span class="at">angle =</span> <span class="dv">90</span>, <span class="at">vjust =</span> <span class="fl">0.5</span>, <span class="at">hjust=</span><span class="dv">1</span>))</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="06_Descriptiva_files/figure-html/unnamed-chunk-11-1.png" class="img-fluid figure-img" width="672"></p>
 </figure>
 </div>
 </div>
@@ -412,24 +463,13 @@ X-squared = 22557, df = 1, p-value &lt; 2.2e-16</code></pre>
 <p>We will take the variables GenHlt and Income.</p>
 <p>It is advisable to convert them into factors so that R recognizes them as ordinal categorical variables.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="do">## Grafico al lado</span></span>
-<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a><span class="do">## Primero vamos a solucionar lo de los sí y no</span></span>
-<span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a>datos1 <span class="ot">=</span> datos <span class="sc">%&gt;%</span> <span class="fu">mutate</span>(<span class="at">GenHlth =</span> <span class="fu">factor</span>(GenHlth),</span>
-<span id="cb23-4"><a href="#cb23-4" aria-hidden="true" tabindex="-1"></a>                         <span class="at">Income =</span> <span class="fu">factor</span>(Income))</span>
-<span id="cb23-5"><a href="#cb23-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb23-6"><a href="#cb23-6" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(datos1, <span class="fu">aes</span>(<span class="at">fill=</span>GenHlth, <span class="at">x=</span>Income))<span class="sc">+</span> <span class="fu">geom_bar</span>(<span class="at">position =</span> <span class="st">"dodge"</span>)<span class="sc">+</span></span>
-<span id="cb23-7"><a href="#cb23-7" aria-hidden="true" tabindex="-1"></a><span class="fu">theme</span>(<span class="at">axis.text.x =</span> <span class="fu">element_text</span>(<span class="at">angle =</span> <span class="dv">90</span>, <span class="at">vjust =</span> <span class="fl">0.5</span>, <span class="at">hjust=</span><span class="dv">1</span>))</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output-display">
-<div>
-<figure class="figure">
-<p><img src="06_Descriptiva_files/figure-html/unnamed-chunk-11-1.png" class="img-fluid figure-img" width="672"></p>
-</figure>
-</div>
-</div>
-</div>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(datos1, <span class="fu">aes</span>(<span class="at">fill=</span>GenHlth, <span class="at">x=</span>Income))<span class="sc">+</span> <span class="fu">geom_bar</span>(<span class="at">position =</span> <span class="st">"stack"</span>)<span class="sc">+</span></span>
-<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a><span class="fu">theme</span>(<span class="at">axis.text.x =</span> <span class="fu">element_text</span>(<span class="at">angle =</span> <span class="dv">90</span>, <span class="at">vjust =</span> <span class="fl">0.5</span>, <span class="at">hjust=</span><span class="dv">1</span>))</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="do">## Grafico al lado</span></span>
+<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a><span class="do">## Primero vamos a solucionar lo de los sí y no</span></span>
+<span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a>datos1 <span class="ot">=</span> datos <span class="sc">%&gt;%</span> <span class="fu">mutate</span>(<span class="at">GenHlth =</span> <span class="fu">factor</span>(GenHlth),</span>
+<span id="cb25-4"><a href="#cb25-4" aria-hidden="true" tabindex="-1"></a>                         <span class="at">Income =</span> <span class="fu">factor</span>(Income))</span>
+<span id="cb25-5"><a href="#cb25-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-6"><a href="#cb25-6" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(datos1, <span class="fu">aes</span>(<span class="at">fill=</span>GenHlth, <span class="at">x=</span>Income))<span class="sc">+</span> <span class="fu">geom_bar</span>(<span class="at">position =</span> <span class="st">"dodge"</span>)<span class="sc">+</span></span>
+<span id="cb25-7"><a href="#cb25-7" aria-hidden="true" tabindex="-1"></a><span class="fu">theme</span>(<span class="at">axis.text.x =</span> <span class="fu">element_text</span>(<span class="at">angle =</span> <span class="dv">90</span>, <span class="at">vjust =</span> <span class="fl">0.5</span>, <span class="at">hjust=</span><span class="dv">1</span>))</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
@@ -439,8 +479,8 @@ X-squared = 22557, df = 1, p-value &lt; 2.2e-16</code></pre>
 </div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(datos1, <span class="fu">aes</span>(<span class="at">fill=</span>GenHlth, <span class="at">x=</span>Income))<span class="sc">+</span> <span class="fu">geom_bar</span>(<span class="at">position =</span> <span class="st">"fill"</span>)<span class="sc">+</span></span>
-<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a><span class="fu">theme</span>(<span class="at">axis.text.x =</span> <span class="fu">element_text</span>(<span class="at">angle =</span> <span class="dv">90</span>, <span class="at">vjust =</span> <span class="fl">0.5</span>, <span class="at">hjust=</span><span class="dv">1</span>))</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(datos1, <span class="fu">aes</span>(<span class="at">fill=</span>GenHlth, <span class="at">x=</span>Income))<span class="sc">+</span> <span class="fu">geom_bar</span>(<span class="at">position =</span> <span class="st">"stack"</span>)<span class="sc">+</span></span>
+<span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a><span class="fu">theme</span>(<span class="at">axis.text.x =</span> <span class="fu">element_text</span>(<span class="at">angle =</span> <span class="dv">90</span>, <span class="at">vjust =</span> <span class="fl">0.5</span>, <span class="at">hjust=</span><span class="dv">1</span>))</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
@@ -449,17 +489,9 @@ X-squared = 22557, df = 1, p-value &lt; 2.2e-16</code></pre>
 </div>
 </div>
 </div>
-</section>
-<section id="ordinal-and-qualitative" class="level3" data-number="6.0.3">
-<h3 data-number="6.0.3" class="anchored" data-anchor-id="ordinal-and-qualitative"><span class="header-section-number">6.0.3</span> Ordinal and Qualitative</h3>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="do">## Grafico al lado</span></span>
-<span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a><span class="do">## Primero vamos a solucionar lo de los sí y no</span></span>
-<span id="cb26-3"><a href="#cb26-3" aria-hidden="true" tabindex="-1"></a>datos1 <span class="ot">=</span> datos <span class="sc">%&gt;%</span> <span class="fu">mutate</span>(<span class="at">GenHlth =</span> <span class="fu">factor</span>(GenHlth),</span>
-<span id="cb26-4"><a href="#cb26-4" aria-hidden="true" tabindex="-1"></a>                         <span class="at">PhysActivity =</span> <span class="fu">ifelse</span>(PhysActivity<span class="sc">==</span><span class="dv">0</span>, <span class="st">"No"</span>, <span class="st">"Sí"</span>))</span>
-<span id="cb26-5"><a href="#cb26-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb26-6"><a href="#cb26-6" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(datos1, <span class="fu">aes</span>(<span class="at">fill=</span>PhysActivity, <span class="at">x=</span>GenHlth))<span class="sc">+</span> <span class="fu">geom_bar</span>(<span class="at">position =</span> <span class="st">"dodge"</span>)<span class="sc">+</span></span>
-<span id="cb26-7"><a href="#cb26-7" aria-hidden="true" tabindex="-1"></a><span class="fu">theme</span>(<span class="at">axis.text.x =</span> <span class="fu">element_text</span>(<span class="at">angle =</span> <span class="dv">90</span>, <span class="at">vjust =</span> <span class="fl">0.5</span>, <span class="at">hjust=</span><span class="dv">1</span>))</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(datos1, <span class="fu">aes</span>(<span class="at">fill=</span>GenHlth, <span class="at">x=</span>Income))<span class="sc">+</span> <span class="fu">geom_bar</span>(<span class="at">position =</span> <span class="st">"fill"</span>)<span class="sc">+</span></span>
+<span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a><span class="fu">theme</span>(<span class="at">axis.text.x =</span> <span class="fu">element_text</span>(<span class="at">angle =</span> <span class="dv">90</span>, <span class="at">vjust =</span> <span class="fl">0.5</span>, <span class="at">hjust=</span><span class="dv">1</span>))</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
@@ -468,9 +500,17 @@ X-squared = 22557, df = 1, p-value &lt; 2.2e-16</code></pre>
 </div>
 </div>
 </div>
+</section>
+<section id="ordinal-and-qualitative" class="level3" data-number="6.0.3">
+<h3 data-number="6.0.3" class="anchored" data-anchor-id="ordinal-and-qualitative"><span class="header-section-number">6.0.3</span> Ordinal and Qualitative</h3>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(datos1, <span class="fu">aes</span>(<span class="at">fill=</span>PhysActivity, <span class="at">x=</span>GenHlth))<span class="sc">+</span> <span class="fu">geom_bar</span>(<span class="at">position =</span> <span class="st">"stack"</span>)<span class="sc">+</span></span>
-<span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a><span class="fu">theme</span>(<span class="at">axis.text.x =</span> <span class="fu">element_text</span>(<span class="at">angle =</span> <span class="dv">90</span>, <span class="at">vjust =</span> <span class="fl">0.5</span>, <span class="at">hjust=</span><span class="dv">1</span>))</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="do">## Grafico al lado</span></span>
+<span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a><span class="do">## Primero vamos a solucionar lo de los sí y no</span></span>
+<span id="cb28-3"><a href="#cb28-3" aria-hidden="true" tabindex="-1"></a>datos1 <span class="ot">=</span> datos <span class="sc">%&gt;%</span> <span class="fu">mutate</span>(<span class="at">GenHlth =</span> <span class="fu">factor</span>(GenHlth),</span>
+<span id="cb28-4"><a href="#cb28-4" aria-hidden="true" tabindex="-1"></a>                         <span class="at">PhysActivity =</span> <span class="fu">ifelse</span>(PhysActivity<span class="sc">==</span><span class="dv">0</span>, <span class="st">"No"</span>, <span class="st">"Sí"</span>))</span>
+<span id="cb28-5"><a href="#cb28-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb28-6"><a href="#cb28-6" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(datos1, <span class="fu">aes</span>(<span class="at">fill=</span>PhysActivity, <span class="at">x=</span>GenHlth))<span class="sc">+</span> <span class="fu">geom_bar</span>(<span class="at">position =</span> <span class="st">"dodge"</span>)<span class="sc">+</span></span>
+<span id="cb28-7"><a href="#cb28-7" aria-hidden="true" tabindex="-1"></a><span class="fu">theme</span>(<span class="at">axis.text.x =</span> <span class="fu">element_text</span>(<span class="at">angle =</span> <span class="dv">90</span>, <span class="at">vjust =</span> <span class="fl">0.5</span>, <span class="at">hjust=</span><span class="dv">1</span>))</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
@@ -480,12 +520,45 @@ X-squared = 22557, df = 1, p-value &lt; 2.2e-16</code></pre>
 </div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(datos1, <span class="fu">aes</span>(<span class="at">fill=</span>PhysActivity, <span class="at">x=</span>GenHlth))<span class="sc">+</span> <span class="fu">geom_bar</span>(<span class="at">position =</span> <span class="st">"fill"</span>)<span class="sc">+</span></span>
-<span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a><span class="fu">theme</span>(<span class="at">axis.text.x =</span> <span class="fu">element_text</span>(<span class="at">angle =</span> <span class="dv">90</span>, <span class="at">vjust =</span> <span class="fl">0.5</span>, <span class="at">hjust=</span><span class="dv">1</span>))</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(datos1, <span class="fu">aes</span>(<span class="at">x=</span>PhysActivity, <span class="at">fill=</span>GenHlth))<span class="sc">+</span> <span class="fu">geom_bar</span>(<span class="at">position =</span> <span class="st">"dodge"</span>)<span class="sc">+</span></span>
+<span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a><span class="fu">theme</span>(<span class="at">axis.text.x =</span> <span class="fu">element_text</span>(<span class="at">angle =</span> <span class="dv">90</span>, <span class="at">vjust =</span> <span class="fl">0.5</span>, <span class="at">hjust=</span><span class="dv">1</span>))</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
 <p><img src="06_Descriptiva_files/figure-html/unnamed-chunk-16-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(datos1, <span class="fu">aes</span>(<span class="at">fill=</span>PhysActivity, <span class="at">x=</span>GenHlth))<span class="sc">+</span> <span class="fu">geom_bar</span>(<span class="at">position =</span> <span class="st">"stack"</span>)<span class="sc">+</span></span>
+<span id="cb30-2"><a href="#cb30-2" aria-hidden="true" tabindex="-1"></a><span class="fu">theme</span>(<span class="at">axis.text.x =</span> <span class="fu">element_text</span>(<span class="at">angle =</span> <span class="dv">90</span>, <span class="at">vjust =</span> <span class="fl">0.5</span>, <span class="at">hjust=</span><span class="dv">1</span>))</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="06_Descriptiva_files/figure-html/unnamed-chunk-17-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(datos1, <span class="fu">aes</span>(<span class="at">fill=</span>PhysActivity, <span class="at">y=</span>GenHlth))<span class="sc">+</span> <span class="fu">geom_bar</span>(<span class="at">position =</span> <span class="st">"fill"</span>)<span class="sc">+</span></span>
+<span id="cb31-2"><a href="#cb31-2" aria-hidden="true" tabindex="-1"></a><span class="fu">theme</span>(<span class="at">axis.text.x =</span> <span class="fu">element_text</span>(<span class="at">angle =</span> <span class="dv">90</span>, <span class="at">vjust =</span> <span class="fl">0.5</span>, <span class="at">hjust=</span><span class="dv">1</span>))</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="06_Descriptiva_files/figure-html/unnamed-chunk-18-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb32"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(datos1, <span class="fu">aes</span>(<span class="at">x=</span>PhysActivity, <span class="at">fill=</span>GenHlth))<span class="sc">+</span> <span class="fu">geom_bar</span>(<span class="at">position =</span> <span class="st">"fill"</span>)<span class="sc">+</span></span>
+<span id="cb32-2"><a href="#cb32-2" aria-hidden="true" tabindex="-1"></a><span class="fu">theme</span>(<span class="at">axis.text.x =</span> <span class="fu">element_text</span>(<span class="at">angle =</span> <span class="dv">90</span>, <span class="at">vjust =</span> <span class="fl">0.5</span>, <span class="at">hjust=</span><span class="dv">1</span>))</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="06_Descriptiva_files/figure-html/unnamed-chunk-19-1.png" class="img-fluid figure-img" width="672"></p>
 </figure>
 </div>
 </div>
@@ -496,8 +569,8 @@ X-squared = 22557, df = 1, p-value &lt; 2.2e-16</code></pre>
 <p>You can calculate means, medians, and variances for each group of the qualitative variable.</p>
 <p>You can create boxplots and density plots for each group.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a>datos <span class="sc">%&gt;%</span> <span class="fu">group_by</span>(GenHlth) <span class="sc">%&gt;%</span> <span class="fu">summarise</span>(<span class="at">Media=</span><span class="fu">mean</span>(BMI), <span class="at">Mediana =</span><span class="fu">median</span>(BMI),</span>
-<span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">varianza =</span> <span class="fu">var</span>(BMI), <span class="at">Min=</span><span class="fu">min</span>(BMI), <span class="at">max=</span><span class="fu">max</span>(BMI))</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb33"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a>datos <span class="sc">%&gt;%</span> <span class="fu">group_by</span>(GenHlth) <span class="sc">%&gt;%</span> <span class="fu">summarise</span>(<span class="at">Media=</span><span class="fu">mean</span>(BMI), <span class="at">Mediana =</span><span class="fu">median</span>(BMI),</span>
+<span id="cb33-2"><a href="#cb33-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">varianza =</span> <span class="fu">var</span>(BMI), <span class="at">Min=</span><span class="fu">min</span>(BMI), <span class="at">max=</span><span class="fu">max</span>(BMI))</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 5 × 6
   GenHlth Media Mediana varianza   Min   max
@@ -510,51 +583,11 @@ X-squared = 22557, df = 1, p-value &lt; 2.2e-16</code></pre>
 </div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a>datos1 <span class="ot">=</span> datos <span class="sc">%&gt;%</span> <span class="fu">mutate</span>(<span class="at">GenHlth =</span> <span class="fu">factor</span>(GenHlth),</span>
-<span id="cb31-2"><a href="#cb31-2" aria-hidden="true" tabindex="-1"></a>                         <span class="at">PhysActivity =</span> <span class="fu">ifelse</span>(PhysActivity<span class="sc">==</span><span class="dv">0</span>, <span class="st">"No"</span>, <span class="st">"Sí"</span>))</span>
-<span id="cb31-3"><a href="#cb31-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb31-4"><a href="#cb31-4" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(datos1, <span class="fu">aes</span>(<span class="at">y=</span>BMI, <span class="at">x=</span>GenHlth))<span class="sc">+</span> <span class="fu">geom_boxplot</span>()<span class="sc">+</span></span>
-<span id="cb31-5"><a href="#cb31-5" aria-hidden="true" tabindex="-1"></a><span class="fu">theme</span>(<span class="at">axis.text.x =</span> <span class="fu">element_text</span>(<span class="at">angle =</span> <span class="dv">90</span>, <span class="at">vjust =</span> <span class="fl">0.5</span>, <span class="at">hjust=</span><span class="dv">1</span>))</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output-display">
-<div>
-<figure class="figure">
-<p><img src="06_Descriptiva_files/figure-html/unnamed-chunk-18-1.png" class="img-fluid figure-img" width="672"></p>
-</figure>
-</div>
-</div>
-</div>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb32"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a>datos1 <span class="ot">=</span> datos <span class="sc">%&gt;%</span> <span class="fu">mutate</span>(<span class="at">GenHlth =</span> <span class="fu">factor</span>(GenHlth),</span>
-<span id="cb32-2"><a href="#cb32-2" aria-hidden="true" tabindex="-1"></a>                         <span class="at">PhysActivity =</span> <span class="fu">ifelse</span>(PhysActivity<span class="sc">==</span><span class="dv">0</span>, <span class="st">"No"</span>, <span class="st">"Sí"</span>))</span>
-<span id="cb32-3"><a href="#cb32-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb32-4"><a href="#cb32-4" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(datos1, <span class="fu">aes</span>(<span class="at">y=</span>BMI, <span class="at">x=</span>GenHlth, <span class="at">color =</span> GenHlth))<span class="sc">+</span> <span class="fu">geom_boxplot</span>()<span class="sc">+</span></span>
-<span id="cb32-5"><a href="#cb32-5" aria-hidden="true" tabindex="-1"></a><span class="fu">theme</span>(<span class="at">axis.text.x =</span> <span class="fu">element_text</span>(<span class="at">angle =</span> <span class="dv">90</span>, <span class="at">vjust =</span> <span class="fl">0.5</span>, <span class="at">hjust=</span><span class="dv">1</span>))</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output-display">
-<div>
-<figure class="figure">
-<p><img src="06_Descriptiva_files/figure-html/unnamed-chunk-19-1.png" class="img-fluid figure-img" width="672"></p>
-</figure>
-</div>
-</div>
-</div>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb33"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a>datos1 <span class="ot">=</span> datos <span class="sc">%&gt;%</span> <span class="fu">mutate</span>(<span class="at">GenHlth =</span> <span class="fu">factor</span>(GenHlth),</span>
-<span id="cb33-2"><a href="#cb33-2" aria-hidden="true" tabindex="-1"></a>                         <span class="at">PhysActivity =</span> <span class="fu">ifelse</span>(PhysActivity<span class="sc">==</span><span class="dv">0</span>, <span class="st">"No"</span>, <span class="st">"Sí"</span>))</span>
-<span id="cb33-3"><a href="#cb33-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb33-4"><a href="#cb33-4" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(datos1, <span class="fu">aes</span>(<span class="at">x=</span>BMI, <span class="at">fill =</span> GenHlth))<span class="sc">+</span> <span class="fu">geom_density</span>(<span class="at">alpha=</span><span class="fl">0.3</span>)<span class="sc">+</span></span>
-<span id="cb33-5"><a href="#cb33-5" aria-hidden="true" tabindex="-1"></a><span class="fu">theme</span>(<span class="at">axis.text.x =</span> <span class="fu">element_text</span>(<span class="at">angle =</span> <span class="dv">90</span>, <span class="at">vjust =</span> <span class="fl">0.5</span>, <span class="at">hjust=</span><span class="dv">1</span>))</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output-display">
-<div>
-<figure class="figure">
-<p><img src="06_Descriptiva_files/figure-html/unnamed-chunk-20-1.png" class="img-fluid figure-img" width="672"></p>
-</figure>
-</div>
-</div>
-</div>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb34"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(datos1, <span class="fu">aes</span>(<span class="at">x=</span>BMI, <span class="at">fill =</span> GenHlth))<span class="sc">+</span> <span class="fu">geom_density</span>(<span class="at">alpha=</span><span class="fl">0.3</span>)<span class="sc">+</span></span>
-<span id="cb34-2"><a href="#cb34-2" aria-hidden="true" tabindex="-1"></a><span class="fu">theme</span>(<span class="at">axis.text.x =</span> <span class="fu">element_text</span>(<span class="at">angle =</span> <span class="dv">90</span>, <span class="at">vjust =</span> <span class="fl">0.5</span>, <span class="at">hjust=</span><span class="dv">1</span>))<span class="sc">+</span></span>
-<span id="cb34-3"><a href="#cb34-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">facet_wrap</span>(.<span class="sc">~</span>GenHlth, <span class="at">ncol=</span><span class="dv">1</span>)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb35"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a>datos1 <span class="ot">=</span> datos <span class="sc">%&gt;%</span> <span class="fu">mutate</span>(<span class="at">GenHlth =</span> <span class="fu">factor</span>(GenHlth),</span>
+<span id="cb35-2"><a href="#cb35-2" aria-hidden="true" tabindex="-1"></a>                         <span class="at">PhysActivity =</span> <span class="fu">ifelse</span>(PhysActivity<span class="sc">==</span><span class="dv">0</span>, <span class="st">"No"</span>, <span class="st">"Sí"</span>))</span>
+<span id="cb35-3"><a href="#cb35-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb35-4"><a href="#cb35-4" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(datos1, <span class="fu">aes</span>(<span class="at">y=</span>BMI, <span class="at">x=</span>GenHlth))<span class="sc">+</span> <span class="fu">geom_boxplot</span>()<span class="sc">+</span></span>
+<span id="cb35-5"><a href="#cb35-5" aria-hidden="true" tabindex="-1"></a><span class="fu">theme</span>(<span class="at">axis.text.x =</span> <span class="fu">element_text</span>(<span class="at">angle =</span> <span class="dv">90</span>, <span class="at">vjust =</span> <span class="fl">0.5</span>, <span class="at">hjust=</span><span class="dv">1</span>))</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
@@ -563,9 +596,57 @@ X-squared = 22557, df = 1, p-value &lt; 2.2e-16</code></pre>
 </div>
 </div>
 </div>
-</section>
-<section id="two-quantitative" class="level3" data-number="6.0.5">
-<h3 data-number="6.0.5" class="anchored" data-anchor-id="two-quantitative"><span class="header-section-number">6.0.5</span> Two Quantitative</h3>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb36"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(datos1, <span class="fu">aes</span>(<span class="at">y=</span>BMI, <span class="at">x=</span>GenHlth))<span class="sc">+</span> <span class="fu">geom_boxplot</span>()<span class="sc">+</span></span>
+<span id="cb36-2"><a href="#cb36-2" aria-hidden="true" tabindex="-1"></a><span class="fu">theme</span>(<span class="at">axis.text.x =</span> <span class="fu">element_text</span>(<span class="at">angle =</span> <span class="dv">90</span>, <span class="at">vjust =</span> <span class="fl">0.5</span>, <span class="at">hjust=</span><span class="dv">1</span>))<span class="sc">+</span><span class="fu">coord_cartesian</span>(<span class="at">ylim=</span><span class="fu">c</span>(<span class="dv">12</span>,<span class="dv">50</span>))</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="06_Descriptiva_files/figure-html/unnamed-chunk-22-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb37"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a>datos1 <span class="ot">=</span> datos <span class="sc">%&gt;%</span> <span class="fu">mutate</span>(<span class="at">GenHlth =</span> <span class="fu">factor</span>(GenHlth),</span>
+<span id="cb37-2"><a href="#cb37-2" aria-hidden="true" tabindex="-1"></a>                         <span class="at">PhysActivity =</span> <span class="fu">ifelse</span>(PhysActivity<span class="sc">==</span><span class="dv">0</span>, <span class="st">"No"</span>, <span class="st">"Sí"</span>))</span>
+<span id="cb37-3"><a href="#cb37-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb37-4"><a href="#cb37-4" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(datos1, <span class="fu">aes</span>(<span class="at">y=</span>BMI, <span class="at">x=</span>GenHlth, <span class="at">color =</span> GenHlth))<span class="sc">+</span> <span class="fu">geom_boxplot</span>()<span class="sc">+</span></span>
+<span id="cb37-5"><a href="#cb37-5" aria-hidden="true" tabindex="-1"></a><span class="fu">theme</span>(<span class="at">axis.text.x =</span> <span class="fu">element_text</span>(<span class="at">angle =</span> <span class="dv">90</span>, <span class="at">vjust =</span> <span class="fl">0.5</span>, <span class="at">hjust=</span><span class="dv">1</span>))</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="06_Descriptiva_files/figure-html/unnamed-chunk-23-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb38"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a>datos1 <span class="ot">=</span> datos <span class="sc">%&gt;%</span> <span class="fu">mutate</span>(<span class="at">GenHlth =</span> <span class="fu">factor</span>(GenHlth),</span>
+<span id="cb38-2"><a href="#cb38-2" aria-hidden="true" tabindex="-1"></a>                         <span class="at">PhysActivity =</span> <span class="fu">ifelse</span>(PhysActivity<span class="sc">==</span><span class="dv">0</span>, <span class="st">"No"</span>, <span class="st">"Sí"</span>))</span>
+<span id="cb38-3"><a href="#cb38-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb38-4"><a href="#cb38-4" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(datos1, <span class="fu">aes</span>(<span class="at">x=</span>BMI, <span class="at">fill =</span> GenHlth))<span class="sc">+</span> <span class="fu">geom_density</span>(<span class="at">alpha=</span><span class="fl">0.3</span>)<span class="sc">+</span></span>
+<span id="cb38-5"><a href="#cb38-5" aria-hidden="true" tabindex="-1"></a><span class="fu">theme</span>(<span class="at">axis.text.x =</span> <span class="fu">element_text</span>(<span class="at">angle =</span> <span class="dv">90</span>, <span class="at">vjust =</span> <span class="fl">0.5</span>, <span class="at">hjust=</span><span class="dv">1</span>))</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="06_Descriptiva_files/figure-html/unnamed-chunk-24-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb39"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(datos1, <span class="fu">aes</span>(<span class="at">x=</span>BMI, <span class="at">fill =</span> GenHlth))<span class="sc">+</span> <span class="fu">geom_density</span>(<span class="at">alpha=</span><span class="fl">0.3</span>)<span class="sc">+</span></span>
+<span id="cb39-2"><a href="#cb39-2" aria-hidden="true" tabindex="-1"></a><span class="fu">theme</span>(<span class="at">axis.text.x =</span> <span class="fu">element_text</span>(<span class="at">angle =</span> <span class="dv">90</span>, <span class="at">vjust =</span> <span class="fl">0.5</span>, <span class="at">hjust=</span><span class="dv">1</span>))<span class="sc">+</span></span>
+<span id="cb39-3"><a href="#cb39-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">facet_wrap</span>(.<span class="sc">~</span>GenHlth, <span class="at">ncol=</span><span class="dv">1</span>)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="06_Descriptiva_files/figure-html/unnamed-chunk-25-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
 </section>
 <section id="practice-questions" class="level2" data-number="6.1">
 <h2 data-number="6.1" class="anchored" data-anchor-id="practice-questions"><span class="header-section-number">6.1</span> Practice Questions</h2>
@@ -594,6 +675,331 @@ X-squared = 22557, df = 1, p-value &lt; 2.2e-16</code></pre>
 Calculate the odds ratio between no physical activity and diabetes.</li>
 </ul></li>
 <li><strong>Contingency Table Plot</strong> (2.5 points) Generate a <strong>graphical representation</strong> of the contingency table for diabetes vs no physical activity only for Woman with BMI less than 30.</li>
+</ol>
+<section id="two-quantitative" class="level3" data-number="6.1.1">
+<h3 data-number="6.1.1" class="anchored" data-anchor-id="two-quantitative"><span class="header-section-number">6.1.1</span> Two Quantitative</h3>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 26%">
+<col style="width: 73%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Variable</th>
+<th>Meaning (Biomedical context)</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>Inflammatory_Index</strong></td>
+<td>Composite score reflecting systemic inflammation; higher with obesity, sedentary lifestyle, and low fruit/vegetable intake.</td>
+</tr>
+<tr class="even">
+<td><strong>Insulin_Resistance_Score</strong></td>
+<td>Proxy for insulin resistance; increases with BMI, age, hypertension, and low physical activity.</td>
+</tr>
+<tr class="odd">
+<td><strong>Oxidative_Stress</strong></td>
+<td>Captures oxidative load from smoking, alcohol, and aging.</td>
+</tr>
+<tr class="even">
+<td><strong>Antioxidant_Intake</strong></td>
+<td>Represents dietary antioxidant exposure, mainly from fruits and vegetables.</td>
+</tr>
+<tr class="odd">
+<td><strong>Cardiometabolic_Risk</strong></td>
+<td>Integrates hypertension, cholesterol, age, and BMI as risk factors.</td>
+</tr>
+<tr class="even">
+<td><strong>Sleep_Quality_Score</strong></td>
+<td>Inverse measure of perceived health burden; lower when physical or mental health is poor.</td>
+</tr>
+<tr class="odd">
+<td><strong>Gut_Microbiome_Balance</strong></td>
+<td>Approximation of intestinal microbiota equilibrium; improved by diet and reduced alcohol consumption.</td>
+</tr>
+<tr class="even">
+<td><strong>Nutritional_Score</strong></td>
+<td>Overall nutritional quality combining diet, antioxidant intake, and BMI.</td>
+</tr>
+<tr class="odd">
+<td><strong>Inflammation_to_Antioxidant_Ratio</strong></td>
+<td>Balance indicator between inflammatory processes and dietary protection.</td>
+</tr>
+<tr class="even">
+<td><strong>Biological_Age</strong></td>
+<td>Approximation of physiological aging relative to metabolic and oxidative status.</td>
+</tr>
+</tbody>
+</table>
+<p>Scatter plot</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb40"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a><span class="do">## Vamos a seleccionar una muestra de tamaño 10000</span></span>
+<span id="cb40-2"><a href="#cb40-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-3"><a href="#cb40-3" aria-hidden="true" tabindex="-1"></a>data <span class="ot">&lt;-</span> datos <span class="sc">%&gt;%</span> </span>
+<span id="cb40-4"><a href="#cb40-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">sample_n</span>(<span class="at">size=</span><span class="dv">10000</span>)</span>
+<span id="cb40-5"><a href="#cb40-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-6"><a href="#cb40-6" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(datos, <span class="fu">aes</span>(<span class="at">x =</span> Antioxidant_Intake, <span class="at">y =</span>Nutritional_Score, <span class="at">color =</span> <span class="fu">factor</span>(Veggies))) <span class="sc">+</span></span>
+<span id="cb40-7"><a href="#cb40-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">alpha =</span> <span class="fl">0.7</span>, <span class="at">size =</span> <span class="dv">2</span>) <span class="sc">+</span></span>
+<span id="cb40-8"><a href="#cb40-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_color_manual</span>(<span class="at">values =</span> <span class="fu">c</span>(<span class="st">"#56B4E9"</span>, <span class="st">"#009E73"</span>), <span class="at">labels =</span> <span class="fu">c</span>(<span class="st">"No Veggies"</span>, <span class="st">"Consumes Veggies"</span>))  <span class="sc">+</span></span>
+<span id="cb40-9"><a href="#cb40-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>(<span class="at">base_size =</span> <span class="dv">14</span>) <span class="sc">+</span></span>
+<span id="cb40-10"><a href="#cb40-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">plot.title =</span> <span class="fu">element_text</span>(<span class="at">face =</span> <span class="st">"bold"</span>, <span class="at">hjust =</span> <span class="fl">0.5</span>))</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning: Removed 24776 rows containing missing values or values outside the scale range
+(`geom_point()`).</code></pre>
+</div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="06_Descriptiva_files/figure-html/unnamed-chunk-26-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>Interpretation:<br>
+- The <strong>Pearson correlation coefficient (r)</strong> quantifies the linear association between two variables.<br>
+- A positive value indicates that higher values of <span class="math inline">\(X\)</span> is associated with higher values of <span class="math inline">\(Y\)</span>.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb42"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb42-1"><a href="#cb42-1" aria-hidden="true" tabindex="-1"></a>cor_test <span class="ot">&lt;-</span> <span class="fu">cor.test</span>(datos<span class="sc">$</span>Antioxidant_Intake, datos<span class="sc">$</span>Nutritional_Score, <span class="at">method =</span> <span class="st">"pearson"</span>)</span>
+<span id="cb42-2"><a href="#cb42-2" aria-hidden="true" tabindex="-1"></a>cor_test</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+    Pearson's product-moment correlation
+
+data:  datos$Antioxidant_Intake and datos$Nutritional_Score
+t = 904.53, df = 228902, p-value &lt; 2.2e-16
+alternative hypothesis: true correlation is not equal to 0
+95 percent confidence interval:
+ 0.8830644 0.8848556
+sample estimates:
+      cor 
+0.8839632 </code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb44"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb44-1"><a href="#cb44-1" aria-hidden="true" tabindex="-1"></a>quant_vars <span class="ot">&lt;-</span> datos <span class="sc">%&gt;%</span></span>
+<span id="cb44-2"><a href="#cb44-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(Inflammatory_Index, Oxidative_Stress, Antioxidant_Intake, Cardiometabolic_Risk,</span>
+<span id="cb44-3"><a href="#cb44-3" aria-hidden="true" tabindex="-1"></a>         Sleep_Quality_Score, Gut_Microbiome_Balance, Nutritional_Score, Inflammation_to_Antioxidant_Ratio, Biological_Age)</span>
+<span id="cb44-4"><a href="#cb44-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb44-5"><a href="#cb44-5" aria-hidden="true" tabindex="-1"></a>corr_matrix <span class="ot">&lt;-</span> <span class="fu">cor</span>(quant_vars, <span class="at">use =</span> <span class="st">"pairwise.complete.obs"</span>)</span>
+<span id="cb44-6"><a href="#cb44-6" aria-hidden="true" tabindex="-1"></a><span class="fu">round</span>(corr_matrix, <span class="dv">2</span>)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>                                  Inflammatory_Index Oxidative_Stress
+Inflammatory_Index                              1.00             0.08
+Oxidative_Stress                                0.08             1.00
+Antioxidant_Intake                             -0.55            -0.04
+Cardiometabolic_Risk                            0.36             0.24
+Sleep_Quality_Score                            -0.37            -0.14
+Gut_Microbiome_Balance                         -0.75            -0.09
+Nutritional_Score                              -0.67            -0.05
+Inflammation_to_Antioxidant_Ratio               0.45             0.03
+Biological_Age                                  0.33             0.25
+                                  Antioxidant_Intake Cardiometabolic_Risk
+Inflammatory_Index                             -0.55                 0.36
+Oxidative_Stress                               -0.04                 0.24
+Antioxidant_Intake                              1.00                -0.06
+Cardiometabolic_Risk                           -0.06                 1.00
+Sleep_Quality_Score                             0.11                -0.23
+Gut_Microbiome_Balance                          0.76                -0.20
+Nutritional_Score                               0.88                -0.15
+Inflammation_to_Antioxidant_Ratio              -0.63                 0.08
+Biological_Age                                 -0.27                 0.55
+                                  Sleep_Quality_Score Gut_Microbiome_Balance
+Inflammatory_Index                              -0.37                  -0.75
+Oxidative_Stress                                -0.14                  -0.09
+Antioxidant_Intake                               0.11                   0.76
+Cardiometabolic_Risk                            -0.23                  -0.20
+Sleep_Quality_Score                              1.00                   0.17
+Gut_Microbiome_Balance                           0.17                   1.00
+Nutritional_Score                                0.14                   0.85
+Inflammation_to_Antioxidant_Ratio               -0.11                  -0.54
+Biological_Age                                  -0.16                  -0.27
+                                  Nutritional_Score
+Inflammatory_Index                            -0.67
+Oxidative_Stress                              -0.05
+Antioxidant_Intake                             0.88
+Cardiometabolic_Risk                          -0.15
+Sleep_Quality_Score                            0.14
+Gut_Microbiome_Balance                         0.85
+Nutritional_Score                              1.00
+Inflammation_to_Antioxidant_Ratio             -0.59
+Biological_Age                                -0.28
+                                  Inflammation_to_Antioxidant_Ratio
+Inflammatory_Index                                             0.45
+Oxidative_Stress                                               0.03
+Antioxidant_Intake                                            -0.63
+Cardiometabolic_Risk                                           0.08
+Sleep_Quality_Score                                           -0.11
+Gut_Microbiome_Balance                                        -0.54
+Nutritional_Score                                             -0.59
+Inflammation_to_Antioxidant_Ratio                              1.00
+Biological_Age                                                 0.19
+                                  Biological_Age
+Inflammatory_Index                          0.33
+Oxidative_Stress                            0.25
+Antioxidant_Intake                         -0.27
+Cardiometabolic_Risk                        0.55
+Sleep_Quality_Score                        -0.16
+Gut_Microbiome_Balance                     -0.27
+Nutritional_Score                          -0.28
+Inflammation_to_Antioxidant_Ratio           0.19
+Biological_Age                              1.00</code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb46"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb46-1"><a href="#cb46-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(GGally)</span>
+<span id="cb46-2"><a href="#cb46-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(corrplot)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>corrplot 0.95 loaded</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb48"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb48-1"><a href="#cb48-1" aria-hidden="true" tabindex="-1"></a><span class="fu">corrplot</span>(</span>
+<span id="cb48-2"><a href="#cb48-2" aria-hidden="true" tabindex="-1"></a>  corr_matrix,</span>
+<span id="cb48-3"><a href="#cb48-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">method =</span> <span class="st">"color"</span>,</span>
+<span id="cb48-4"><a href="#cb48-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">tl.col =</span> <span class="st">"black"</span>,</span>
+<span id="cb48-5"><a href="#cb48-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">tl.srt =</span> <span class="dv">45</span>,</span>
+<span id="cb48-6"><a href="#cb48-6" aria-hidden="true" tabindex="-1"></a>  <span class="at">addCoef.col =</span> <span class="st">"black"</span>,</span>
+<span id="cb48-7"><a href="#cb48-7" aria-hidden="true" tabindex="-1"></a>  <span class="at">number.cex =</span> <span class="fl">0.8</span>,</span>
+<span id="cb48-8"><a href="#cb48-8" aria-hidden="true" tabindex="-1"></a>  <span class="at">mar =</span> <span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">1</span>,<span class="dv">0</span>),</span>
+<span id="cb48-9"><a href="#cb48-9" aria-hidden="true" tabindex="-1"></a>  <span class="at">title =</span> <span class="st">"Correlation Matrix of Biomedical Variables"</span></span>
+<span id="cb48-10"><a href="#cb48-10" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="06_Descriptiva_files/figure-html/unnamed-chunk-29-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>More options of corrplot <a href="https://www.rpubs.com/cloud_wei/786861">here</a></p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb49"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb49-1"><a href="#cb49-1" aria-hidden="true" tabindex="-1"></a><span class="fu">corrplot</span>(corr_matrix, <span class="at">method =</span> <span class="st">'square'</span>, <span class="at">order =</span> <span class="st">'FPC'</span>, <span class="at">type =</span> <span class="st">'lower'</span>, <span class="at">diag =</span> <span class="cn">FALSE</span>)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="06_Descriptiva_files/figure-html/unnamed-chunk-30-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb50"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb50-1"><a href="#cb50-1" aria-hidden="true" tabindex="-1"></a><span class="fu">corrplot.mixed</span>(corr_matrix, <span class="at">order =</span> <span class="st">'AOE'</span>)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="06_Descriptiva_files/figure-html/unnamed-chunk-31-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb51"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb51-1"><a href="#cb51-1" aria-hidden="true" tabindex="-1"></a>data <span class="ot">&lt;-</span> datos <span class="sc">%&gt;%</span> </span>
+<span id="cb51-2"><a href="#cb51-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(Diabetes_012, HighBP, HighChol, CholCheck, Smoker,</span>
+<span id="cb51-3"><a href="#cb51-3" aria-hidden="true" tabindex="-1"></a>           Stroke, HeartDiseaseorAttack, PhysActivity, Fruits, Veggies,</span>
+<span id="cb51-4"><a href="#cb51-4" aria-hidden="true" tabindex="-1"></a>           HvyAlcoholConsump, AnyHealthcare, NoDocbcCost, Sex) <span class="sc">%&gt;%</span> </span>
+<span id="cb51-5"><a href="#cb51-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">Inflammatory_Index=</span><span class="fu">mean</span>(Inflammatory_Index, <span class="at">na.rm=</span><span class="cn">TRUE</span>),</span>
+<span id="cb51-6"><a href="#cb51-6" aria-hidden="true" tabindex="-1"></a>            <span class="at">BMI =</span> <span class="fu">mean</span>(BMI, <span class="at">na.rm=</span><span class="cn">TRUE</span>),</span>
+<span id="cb51-7"><a href="#cb51-7" aria-hidden="true" tabindex="-1"></a>            <span class="at">Oxidative_Stress=</span><span class="fu">mean</span>(Oxidative_Stress, <span class="at">na.rm=</span><span class="cn">TRUE</span>), </span>
+<span id="cb51-8"><a href="#cb51-8" aria-hidden="true" tabindex="-1"></a>            <span class="at">Antioxidant_Intake=</span><span class="fu">mean</span>(Antioxidant_Intake, <span class="at">na.rm=</span><span class="cn">TRUE</span>), </span>
+<span id="cb51-9"><a href="#cb51-9" aria-hidden="true" tabindex="-1"></a>            <span class="at">Cardiometabolic_Risk=</span><span class="fu">mean</span>(Cardiometabolic_Risk, <span class="at">na.rm=</span><span class="cn">TRUE</span>),</span>
+<span id="cb51-10"><a href="#cb51-10" aria-hidden="true" tabindex="-1"></a>            <span class="at">Sleep_Quality_Score=</span><span class="fu">mean</span>(Sleep_Quality_Score, <span class="at">na.rm=</span><span class="cn">TRUE</span>),</span>
+<span id="cb51-11"><a href="#cb51-11" aria-hidden="true" tabindex="-1"></a>            <span class="at">Gut_Microbiome_Balance=</span><span class="fu">mean</span>(Gut_Microbiome_Balance, <span class="at">na.rm=</span><span class="cn">TRUE</span>),</span>
+<span id="cb51-12"><a href="#cb51-12" aria-hidden="true" tabindex="-1"></a>            <span class="at">Nutritional_Score=</span><span class="fu">mean</span>(Nutritional_Score, <span class="at">na.rm=</span><span class="cn">TRUE</span>),</span>
+<span id="cb51-13"><a href="#cb51-13" aria-hidden="true" tabindex="-1"></a>            <span class="at">Inflammation_to_Antioxidant_Ratio=</span><span class="fu">mean</span>(Inflammatory_Index, <span class="at">na.rm=</span><span class="cn">TRUE</span>),</span>
+<span id="cb51-14"><a href="#cb51-14" aria-hidden="true" tabindex="-1"></a>            <span class="at">Biological_Age=</span><span class="fu">mean</span>(Biological_Age, <span class="at">na.rm=</span><span class="cn">TRUE</span>))</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>`summarise()` has grouped output by 'Diabetes_012', 'HighBP', 'HighChol',
+'CholCheck', 'Smoker', 'Stroke', 'HeartDiseaseorAttack', 'PhysActivity',
+'Fruits', 'Veggies', 'HvyAlcoholConsump', 'AnyHealthcare', 'NoDocbcCost'. You
+can override using the `.groups` argument.</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb53"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb53-1"><a href="#cb53-1" aria-hidden="true" tabindex="-1"></a>data <span class="ot">&lt;-</span> <span class="fu">na.exclude</span>(data)</span>
+<span id="cb53-2"><a href="#cb53-2" aria-hidden="true" tabindex="-1"></a>GGally<span class="sc">::</span><span class="fu">ggpairs</span>(</span>
+<span id="cb53-3"><a href="#cb53-3" aria-hidden="true" tabindex="-1"></a>  data,</span>
+<span id="cb53-4"><a href="#cb53-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">columns =</span> <span class="fu">c</span>(<span class="st">"Inflammatory_Index"</span>, <span class="st">"Oxidative_Stress"</span>, <span class="st">"BMI"</span>,</span>
+<span id="cb53-5"><a href="#cb53-5" aria-hidden="true" tabindex="-1"></a>              <span class="st">"Cardiometabolic_Risk"</span>,  <span class="st">"Biological_Age"</span>),</span>
+<span id="cb53-6"><a href="#cb53-6" aria-hidden="true" tabindex="-1"></a>  <span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">color =</span> <span class="fu">factor</span>(Veggies)),</span>
+<span id="cb53-7"><a href="#cb53-7" aria-hidden="true" tabindex="-1"></a>  <span class="at">upper =</span> <span class="fu">list</span>(<span class="at">continuous =</span> <span class="fu">wrap</span>(<span class="st">"cor"</span>, <span class="at">size =</span> <span class="dv">4</span>)),</span>
+<span id="cb53-8"><a href="#cb53-8" aria-hidden="true" tabindex="-1"></a>  <span class="at">lower =</span> <span class="fu">list</span>(<span class="at">continuous =</span> <span class="fu">wrap</span>(<span class="st">"points"</span>, <span class="at">alpha =</span> <span class="fl">0.6</span>, <span class="at">size =</span> <span class="fl">1.5</span>))</span>
+<span id="cb53-9"><a href="#cb53-9" aria-hidden="true" tabindex="-1"></a>) <span class="sc">+</span></span>
+<span id="cb53-10"><a href="#cb53-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_bw</span>(<span class="at">base_size =</span> <span class="dv">12</span>)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="06_Descriptiva_files/figure-html/unnamed-chunk-32-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="practice-2" class="level2" data-number="6.2">
+<h2 data-number="6.2" class="anchored" data-anchor-id="practice-2"><span class="header-section-number">6.2</span> Practice 2</h2>
+<p>** <em>1.Data Sampling (2.5 points)</em></p>
+<ul>
+<li>Load the dataset and select a random sample of <strong>2000 observations</strong>.</li>
+<li>Report how many complete cases remain after removing missing values.</li>
+<li>Briefly describe the selected variables (include at least one biomedical quantitative variable).</li>
+</ul>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb54"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb54-1"><a href="#cb54-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb54-2"><a href="#cb54-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(corrplot)</span>
+<span id="cb54-3"><a href="#cb54-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb54-4"><a href="#cb54-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Example loading (adjust to your local path)</span></span>
+<span id="cb54-5"><a href="#cb54-5" aria-hidden="true" tabindex="-1"></a><span class="co"># data &lt;- read.csv("diabetes_BRFSS2015.csv")</span></span>
+<span id="cb54-6"><a href="#cb54-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb54-7"><a href="#cb54-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Example simulated data (for illustration)</span></span>
+<span id="cb54-8"><a href="#cb54-8" aria-hidden="true" tabindex="-1"></a>datos <span class="ot">=</span> <span class="fu">read_csv</span>(<span class="st">"https://raw.githubusercontent.com/Cruzalirio/Unal-Enfermeria-/main/Datos/diabetes_BRFSS2015.csv"</span>)</span>
+<span id="cb54-9"><a href="#cb54-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb54-10"><a href="#cb54-10" aria-hidden="true" tabindex="-1"></a>sample_data <span class="ot">&lt;-</span> datos <span class="sc">%&gt;%</span> <span class="fu">sample_n</span>(<span class="dv">2000</span>) <span class="sc">%&gt;%</span> <span class="fu">na.omit</span>()</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>** <em>2. Boxplot Analysis (2.5 points)</em></p>
+<p>Create a boxplot comparing a biomedical variable by a categorical variable (e.g., Veggies, PhysicalActivity).</p>
+<p>Comment on whether the distributions differ between groups and what that might imply biologically.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb55"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb55-1"><a href="#cb55-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(sample_data, <span class="fu">aes</span>(<span class="at">x =</span> <span class="fu">factor</span>(Veggies), <span class="at">y =</span> BMI, <span class="at">fill =</span> <span class="fu">factor</span>(Veggies))) <span class="sc">+</span></span>
+<span id="cb55-2"><a href="#cb55-2" aria-hidden="true" tabindex="-1"></a><span class="fu">geom_boxplot</span>() <span class="sc">+</span></span>
+<span id="cb55-3"><a href="#cb55-3" aria-hidden="true" tabindex="-1"></a><span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"Vegetable Consumption (0=No, 1=Yes)"</span>,</span>
+<span id="cb55-4"><a href="#cb55-4" aria-hidden="true" tabindex="-1"></a><span class="at">y =</span> <span class="st">"Glucose Level (mg/dL)"</span>,</span>
+<span id="cb55-5"><a href="#cb55-5" aria-hidden="true" tabindex="-1"></a><span class="at">title =</span> <span class="st">"Boxplot of Glucose Level by Vegetable Consumption"</span>) <span class="sc">+</span></span>
+<span id="cb55-6"><a href="#cb55-6" aria-hidden="true" tabindex="-1"></a><span class="fu">theme_minimal</span>()</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="06_Descriptiva_files/figure-html/unnamed-chunk-33-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>** *3. Scatter Plot (2.5 points)**</p>
+<p>Make a scatter plot between two quantitative biomedical variables.</p>
+<p>Add a regression line and describe the observed trend.</p>
+<p>Discuss whether the relationship seems linear and if it has biological relevance</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb56"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb56-1"><a href="#cb56-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(sample_data, <span class="fu">aes</span>(<span class="at">x =</span> Inflammatory_Index, <span class="at">y =</span> BMI, <span class="at">color =</span> <span class="fu">factor</span>(Veggies))) <span class="sc">+</span></span>
+<span id="cb56-2"><a href="#cb56-2" aria-hidden="true" tabindex="-1"></a><span class="fu">geom_point</span>(<span class="at">alpha =</span> <span class="fl">0.7</span>) <span class="sc">+</span></span>
+<span id="cb56-3"><a href="#cb56-3" aria-hidden="true" tabindex="-1"></a><span class="fu">geom_smooth</span>(<span class="at">method =</span> <span class="st">"lm"</span>, <span class="at">se =</span> <span class="cn">FALSE</span>, <span class="at">color =</span> <span class="st">"black"</span>) <span class="sc">+</span></span>
+<span id="cb56-4"><a href="#cb56-4" aria-hidden="true" tabindex="-1"></a><span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Scatter plot: BMI vs Glucose Level"</span>,</span>
+<span id="cb56-5"><a href="#cb56-5" aria-hidden="true" tabindex="-1"></a><span class="at">x =</span> <span class="st">"Body Mass Index (BMI)"</span>,</span>
+<span id="cb56-6"><a href="#cb56-6" aria-hidden="true" tabindex="-1"></a><span class="at">y =</span> <span class="st">"Glucose Level (mg/dL)"</span>,</span>
+<span id="cb56-7"><a href="#cb56-7" aria-hidden="true" tabindex="-1"></a><span class="at">color =</span> <span class="st">"Vegetable Consumption"</span>) <span class="sc">+</span></span>
+<span id="cb56-8"><a href="#cb56-8" aria-hidden="true" tabindex="-1"></a><span class="fu">theme_minimal</span>()</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>`geom_smooth()` using formula = 'y ~ x'</code></pre>
+</div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="06_Descriptiva_files/figure-html/unnamed-chunk-34-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>** <em>4. Correlation Matrix (2.5 points)</em></p>
+<p>Select a plot between the following that you should replicate with the <code>sample data</code> as part of your report</p>
+<ol type="1">
+<li>Bubble plot<a href="https://r-graph-gallery.com/320-the-basis-of-bubble-plot.html">here</a></li>
+<li>Density 2d <a href="https://r-graph-gallery.com/2d-density-plot-with-ggplot2.html#hist">here</a></li>
+<li>Spider <a href="https://r-graph-gallery.com/142-basic-radar-chart.html">here</a></li>
 </ol>
 
 

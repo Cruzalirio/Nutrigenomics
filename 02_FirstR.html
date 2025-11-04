@@ -436,10 +436,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="cell">
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>datos <span class="ot">=</span> <span class="fu">read_csv</span>(<span class="st">"https://raw.githubusercontent.com/Cruzalirio/Unal-Enfermeria-/main/Datos/diabetes_BRFSS2015.csv"</span>)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
-<pre><code>Rows: 253680 Columns: 22
+<pre><code>Rows: 253680 Columns: 32
 ── Column specification ────────────────────────────────────────────────────────
 Delimiter: ","
-dbl (22): Diabetes_012, HighBP, HighChol, CholCheck, BMI, Smoker, Stroke, He...
+dbl (32): Diabetes_012, HighBP, HighChol, CholCheck, BMI, Smoker, Stroke, He...
 
 ℹ Use `spec()` to retrieve the full column specification for this data.
 ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.</code></pre>
@@ -447,7 +447,7 @@ dbl (22): Diabetes_012, HighBP, HighChol, CholCheck, BMI, Smoker, Stroke, He...
 <div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="do">### La función head me permite ver las primeras filas</span></span>
 <span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(datos)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 6 × 22
+<pre><code># A tibble: 6 × 32
   Diabetes_012 HighBP HighChol CholCheck   BMI Smoker Stroke
          &lt;dbl&gt;  &lt;dbl&gt;    &lt;dbl&gt;     &lt;dbl&gt; &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;
 1            0      1        1         1    40      1      0
@@ -456,10 +456,13 @@ dbl (22): Diabetes_012, HighBP, HighChol, CholCheck, BMI, Smoker, Stroke, He...
 4            0      1        0         1    27      0      0
 5            0      1        1         1    24      0      0
 6            0      1        1         1    25      1      0
-# ℹ 15 more variables: HeartDiseaseorAttack &lt;dbl&gt;, PhysActivity &lt;dbl&gt;,
+# ℹ 25 more variables: HeartDiseaseorAttack &lt;dbl&gt;, PhysActivity &lt;dbl&gt;,
 #   Fruits &lt;dbl&gt;, Veggies &lt;dbl&gt;, HvyAlcoholConsump &lt;dbl&gt;, AnyHealthcare &lt;dbl&gt;,
 #   NoDocbcCost &lt;dbl&gt;, GenHlth &lt;dbl&gt;, MentHlth &lt;dbl&gt;, PhysHlth &lt;dbl&gt;,
-#   DiffWalk &lt;dbl&gt;, Sex &lt;dbl&gt;, Age &lt;dbl&gt;, Education &lt;dbl&gt;, Income &lt;dbl&gt;</code></pre>
+#   DiffWalk &lt;dbl&gt;, Sex &lt;dbl&gt;, Age &lt;dbl&gt;, Education &lt;dbl&gt;, Income &lt;dbl&gt;,
+#   Inflammatory_Index &lt;dbl&gt;, Insulin_Resistance_Score &lt;dbl&gt;,
+#   Oxidative_Stress &lt;dbl&gt;, Antioxidant_Intake &lt;dbl&gt;,
+#   Cardiometabolic_Risk &lt;dbl&gt;, Sleep_Quality_Score &lt;dbl&gt;, …</code></pre>
 </div>
 <div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="do">## Seleccionar la variable Diabetes_012</span></span>
 <span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>datos <span class="sc">%&gt;%</span> <span class="fu">select</span>(Diabetes_012)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -501,7 +504,7 @@ dbl (22): Diabetes_012, HighBP, HighChol, CholCheck, BMI, Smoker, Stroke, He...
 <span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>datos <span class="sc">%&gt;%</span> <span class="fu">filter</span>(Sex<span class="sc">==</span><span class="dv">1</span>)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 111,706 × 22
+<pre><code># A tibble: 111,706 × 32
    Diabetes_012 HighBP HighChol CholCheck   BMI Smoker Stroke
           &lt;dbl&gt;  &lt;dbl&gt;    &lt;dbl&gt;     &lt;dbl&gt; &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;
  1            0      1        1         1    25      1      0
@@ -515,16 +518,18 @@ dbl (22): Diabetes_012, HighBP, HighChol, CholCheck, BMI, Smoker, Stroke, He...
  9            0      0        1         1    31      1      0
 10            0      1        0         1    33      1      0
 # ℹ 111,696 more rows
-# ℹ 15 more variables: HeartDiseaseorAttack &lt;dbl&gt;, PhysActivity &lt;dbl&gt;,
+# ℹ 25 more variables: HeartDiseaseorAttack &lt;dbl&gt;, PhysActivity &lt;dbl&gt;,
 #   Fruits &lt;dbl&gt;, Veggies &lt;dbl&gt;, HvyAlcoholConsump &lt;dbl&gt;, AnyHealthcare &lt;dbl&gt;,
 #   NoDocbcCost &lt;dbl&gt;, GenHlth &lt;dbl&gt;, MentHlth &lt;dbl&gt;, PhysHlth &lt;dbl&gt;,
-#   DiffWalk &lt;dbl&gt;, Sex &lt;dbl&gt;, Age &lt;dbl&gt;, Education &lt;dbl&gt;, Income &lt;dbl&gt;</code></pre>
+#   DiffWalk &lt;dbl&gt;, Sex &lt;dbl&gt;, Age &lt;dbl&gt;, Education &lt;dbl&gt;, Income &lt;dbl&gt;,
+#   Inflammatory_Index &lt;dbl&gt;, Insulin_Resistance_Score &lt;dbl&gt;,
+#   Oxidative_Stress &lt;dbl&gt;, Antioxidant_Intake &lt;dbl&gt;, …</code></pre>
 </div>
 <div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="do">## Filtrar las personas con de sexo femenino y BMI menor a 14</span></span>
 <span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>datos <span class="sc">%&gt;%</span> <span class="fu">filter</span>(Sex<span class="sc">==</span><span class="dv">1</span>, BMI<span class="sc">&lt;</span> <span class="dv">14</span>)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 14 × 22
+<pre><code># A tibble: 14 × 32
    Diabetes_012 HighBP HighChol CholCheck   BMI Smoker Stroke
           &lt;dbl&gt;  &lt;dbl&gt;    &lt;dbl&gt;     &lt;dbl&gt; &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;
  1            0      0        0         1    13      1      0
@@ -541,17 +546,20 @@ dbl (22): Diabetes_012, HighBP, HighChol, CholCheck, BMI, Smoker, Stroke, He...
 12            0      0        1         1    13      0      0
 13            0      0        0         1    13      0      0
 14            0      0        1         1    13      0      0
-# ℹ 15 more variables: HeartDiseaseorAttack &lt;dbl&gt;, PhysActivity &lt;dbl&gt;,
+# ℹ 25 more variables: HeartDiseaseorAttack &lt;dbl&gt;, PhysActivity &lt;dbl&gt;,
 #   Fruits &lt;dbl&gt;, Veggies &lt;dbl&gt;, HvyAlcoholConsump &lt;dbl&gt;, AnyHealthcare &lt;dbl&gt;,
 #   NoDocbcCost &lt;dbl&gt;, GenHlth &lt;dbl&gt;, MentHlth &lt;dbl&gt;, PhysHlth &lt;dbl&gt;,
-#   DiffWalk &lt;dbl&gt;, Sex &lt;dbl&gt;, Age &lt;dbl&gt;, Education &lt;dbl&gt;, Income &lt;dbl&gt;</code></pre>
+#   DiffWalk &lt;dbl&gt;, Sex &lt;dbl&gt;, Age &lt;dbl&gt;, Education &lt;dbl&gt;, Income &lt;dbl&gt;,
+#   Inflammatory_Index &lt;dbl&gt;, Insulin_Resistance_Score &lt;dbl&gt;,
+#   Oxidative_Stress &lt;dbl&gt;, Antioxidant_Intake &lt;dbl&gt;,
+#   Cardiometabolic_Risk &lt;dbl&gt;, Sleep_Quality_Score &lt;dbl&gt;, …</code></pre>
 </div>
 <div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="do">## Ordenar la base por BMI</span></span>
 <span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a><span class="do">## Notar que el menor BMI es de 12</span></span>
 <span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a>datos <span class="sc">%&gt;%</span> <span class="fu">arrange</span>(BMI)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 253,680 × 22
+<pre><code># A tibble: 253,680 × 32
    Diabetes_012 HighBP HighChol CholCheck   BMI Smoker Stroke
           &lt;dbl&gt;  &lt;dbl&gt;    &lt;dbl&gt;     &lt;dbl&gt; &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;
  1            0      0        0         1    12      0      0
@@ -565,16 +573,18 @@ dbl (22): Diabetes_012, HighBP, HighChol, CholCheck, BMI, Smoker, Stroke, He...
  9            0      0        1         1    13      1      0
 10            0      1        1         1    13      1      0
 # ℹ 253,670 more rows
-# ℹ 15 more variables: HeartDiseaseorAttack &lt;dbl&gt;, PhysActivity &lt;dbl&gt;,
+# ℹ 25 more variables: HeartDiseaseorAttack &lt;dbl&gt;, PhysActivity &lt;dbl&gt;,
 #   Fruits &lt;dbl&gt;, Veggies &lt;dbl&gt;, HvyAlcoholConsump &lt;dbl&gt;, AnyHealthcare &lt;dbl&gt;,
 #   NoDocbcCost &lt;dbl&gt;, GenHlth &lt;dbl&gt;, MentHlth &lt;dbl&gt;, PhysHlth &lt;dbl&gt;,
-#   DiffWalk &lt;dbl&gt;, Sex &lt;dbl&gt;, Age &lt;dbl&gt;, Education &lt;dbl&gt;, Income &lt;dbl&gt;</code></pre>
+#   DiffWalk &lt;dbl&gt;, Sex &lt;dbl&gt;, Age &lt;dbl&gt;, Education &lt;dbl&gt;, Income &lt;dbl&gt;,
+#   Inflammatory_Index &lt;dbl&gt;, Insulin_Resistance_Score &lt;dbl&gt;,
+#   Oxidative_Stress &lt;dbl&gt;, Antioxidant_Intake &lt;dbl&gt;, …</code></pre>
 </div>
 <div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="do">## Ordenar por BMI y luego por ingreso</span></span>
 <span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a>datos <span class="sc">%&gt;%</span> <span class="fu">arrange</span>(BMI, Income)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 253,680 × 22
+<pre><code># A tibble: 253,680 × 32
    Diabetes_012 HighBP HighChol CholCheck   BMI Smoker Stroke
           &lt;dbl&gt;  &lt;dbl&gt;    &lt;dbl&gt;     &lt;dbl&gt; &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;
  1            0      0        0         1    12      0      0
@@ -588,10 +598,12 @@ dbl (22): Diabetes_012, HighBP, HighChol, CholCheck, BMI, Smoker, Stroke, He...
  9            0      0        0         1    13      1      0
 10            0      0        0         1    13      0      0
 # ℹ 253,670 more rows
-# ℹ 15 more variables: HeartDiseaseorAttack &lt;dbl&gt;, PhysActivity &lt;dbl&gt;,
+# ℹ 25 more variables: HeartDiseaseorAttack &lt;dbl&gt;, PhysActivity &lt;dbl&gt;,
 #   Fruits &lt;dbl&gt;, Veggies &lt;dbl&gt;, HvyAlcoholConsump &lt;dbl&gt;, AnyHealthcare &lt;dbl&gt;,
 #   NoDocbcCost &lt;dbl&gt;, GenHlth &lt;dbl&gt;, MentHlth &lt;dbl&gt;, PhysHlth &lt;dbl&gt;,
-#   DiffWalk &lt;dbl&gt;, Sex &lt;dbl&gt;, Age &lt;dbl&gt;, Education &lt;dbl&gt;, Income &lt;dbl&gt;</code></pre>
+#   DiffWalk &lt;dbl&gt;, Sex &lt;dbl&gt;, Age &lt;dbl&gt;, Education &lt;dbl&gt;, Income &lt;dbl&gt;,
+#   Inflammatory_Index &lt;dbl&gt;, Insulin_Resistance_Score &lt;dbl&gt;,
+#   Oxidative_Stress &lt;dbl&gt;, Antioxidant_Intake &lt;dbl&gt;, …</code></pre>
 </div>
 </div>
 </section>
@@ -618,7 +630,7 @@ Next, we will get familiar with the <strong>ifelse</strong> and <strong>mutate</
 <span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a>datos <span class="sc">%&gt;%</span> <span class="fu">mutate</span>(<span class="at">ComeVegetales =</span> <span class="fu">ifelse</span>(Veggies<span class="sc">==</span><span class="dv">0</span>, <span class="st">"No come vegetales"</span>, <span class="st">"Sí come vegetales"</span>))</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 253,680 × 23
+<pre><code># A tibble: 253,680 × 33
    Diabetes_012 HighBP HighChol CholCheck   BMI Smoker Stroke
           &lt;dbl&gt;  &lt;dbl&gt;    &lt;dbl&gt;     &lt;dbl&gt; &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;
  1            0      1        1         1    40      1      0
@@ -632,11 +644,12 @@ Next, we will get familiar with the <strong>ifelse</strong> and <strong>mutate</
  9            2      1        1         1    30      1      0
 10            0      0        0         1    24      0      0
 # ℹ 253,670 more rows
-# ℹ 16 more variables: HeartDiseaseorAttack &lt;dbl&gt;, PhysActivity &lt;dbl&gt;,
+# ℹ 26 more variables: HeartDiseaseorAttack &lt;dbl&gt;, PhysActivity &lt;dbl&gt;,
 #   Fruits &lt;dbl&gt;, Veggies &lt;dbl&gt;, HvyAlcoholConsump &lt;dbl&gt;, AnyHealthcare &lt;dbl&gt;,
 #   NoDocbcCost &lt;dbl&gt;, GenHlth &lt;dbl&gt;, MentHlth &lt;dbl&gt;, PhysHlth &lt;dbl&gt;,
 #   DiffWalk &lt;dbl&gt;, Sex &lt;dbl&gt;, Age &lt;dbl&gt;, Education &lt;dbl&gt;, Income &lt;dbl&gt;,
-#   ComeVegetales &lt;chr&gt;</code></pre>
+#   Inflammatory_Index &lt;dbl&gt;, Insulin_Resistance_Score &lt;dbl&gt;,
+#   Oxidative_Stress &lt;dbl&gt;, Antioxidant_Intake &lt;dbl&gt;, …</code></pre>
 </div>
 </div>
 <p>The previous operations only display the result, but they are not saved in R’s workspace.<br>
