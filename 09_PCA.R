@@ -1,0 +1,168 @@
+# Introducción
+  
+  Este documento realiza un Análisis de Componentes Principales (PCA) sobre la unión de los archivos `anthropometrics.csv` y `vital_signs.csv` (solo `visit == 3`), tal como solicitaste. Se incluye:
+  
+  1. Matriz de correlaciones.
+2. Estandarización de las variables (explicación y efecto).
+3. Cálculo del PCA y extracción de los valores propios (autovalores/eigenvalues).
+4. Gráfico de sedimentación (scree plot).
+5. Círculo de correlaciones (variables en el plano de las dos primeras componentes).
+6. Biplot (individuos y variables).
+7. Gráficos de correlación entre cada variable y los componentes principales.
+
+Al final se muestran las tablas con los autovalores y la proporción de varianza explicada.
+
+> **Nota:** ajusta las rutas de los archivos si tu proyecto usa otra ubicación. El código aquí asume que los CSV están en `C:/Users/UIB/Downloads/AI4FoodDB/...` como en tu ejemplo.
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE, warning = FALSE, message = FALSE)
+library(tidyverse)
+library(factoextra)
+library(FactoMineR)
+library(corrplot)
+library(knitr)
+```
+
+## 0. Carga de datos y creación del objeto `Total`
+
+```{r load-data}
+anthropometrics <- read_csv("C:/Users/UIB/Downloads/AI4FoodDB/DS1_AnthropometricMeasurements/anthropometrics.csv")
+vital_signs <- read_csv("C:/Users/UIB/Downloads/AI4FoodDB/DS6_VitalSigns/vital_signs.csv")
+
+Total <- anthropometrics %>%
+  left_join(vital_signs, by = c("id", "visit")) %>%
+  filter(visit == 3) %>%
+  na.omit()
+
+# Conservamos id por separado y preparamos la matriz para PCA
+ids <- Total$id
+Total_pca <- Total %>% select(-id, -visit)  # quitar identificadores
+
+# Comprobar dimensiones
+cat("Dimensiones (filas, columnas):", dim(Total_pca)[1], ",", dim(Total_pca)[2], "\n")
+```
+
+# 1. Matriz de correlaciones
+
+```{r correlacion, echo=TRUE}
+# Matriz de correlación (usar solo variables numéricas)
+num_vars <- Total_pca %>% select(where(is.numeric))
+cor_mat <- cor(num_vars)
+
+# Mostrar la matriz (tabla reducida si es grande)
+kable(round(cor_mat, 3), caption = "Matriz de correlaciones (solo numéricas)")
+
+# Gráfico de corrplot
+corrplot::corrplot(cor_mat, method = "color", type = "upper", tl.cex = 0.8)
+```
+
+**Explicación rápida:** la matriz de correlación muestra la relación lineal entre pares de variables (–1 a 1). En PCA esto ayuda a ver redundancias y variables fuertemente correlacionadas que influyen en las componentes.
+
+# 2. Estandarización de los datos
+
+```{r estandarizacion}
+# En PCA se suele estandarizar (media 0, sd 1) cuando las variables están en distintas escalas
+scaled_data <- scale(num_vars)
+
+# Comprobación: medias ~0, desviaciones ~1
+colMeans(scaled_data) %>% round(3) %>% head() %>% knitr::kable(caption = "Medias tras estandarizar (deben acercarse a 0)")
+apply(scaled_data, 2, sd) %>% round(3) %>% head() %>% knitr::kable(caption = "Desviaciones estándar tras estandarizar (deben acercarse a 1)")
+```
+
+**Qué hace la estandarización y por qué:**
+  
+  Estandarizar (restar la media y dividir por la desviación estándar) sitúa todas las variables en la misma escala. Si no se estandariza, variables con unidades grandes (ej. peso en gramos) dominarán las componentes principales simplemente por su escala. Con `scale()` cada variable contribuye según su correlación, no según su magnitud.
+
+# 3. PCA y extracción de valores propios
+
+```{r pca-prcomp}
+# Usaremos prcomp con centered = TRUE y scale. = FALSE porque ya estandarizamos
+pca_res <- prcomp(scaled_data, center = TRUE, scale. = FALSE)
+
+# Autovalores: para prcomp, las sdev^2 son los eigenvalues
+eigenvalues <- (pca_res$sdev)^2
+var_explained <- eigenvalues / sum(eigenvalues)
+
+eigen_table <- tibble(PC = paste0("PC", 1:length(eigenvalues)),
+                      Eigenvalue = round(eigenvalues, 4),
+                      Variance = round(var_explained, 4),
+                      `Cumulative variance` = round(cumsum(var_explained), 4))
+
+kable(eigen_table, caption = "Valores propios (autovalues) y varianza explicada")
+```
+
+> Los valores propios (`Eigenvalue`) indican la varianza capturada por cada componente. Una regla práctica (Kaiser) sugiere conservar componentes con autovalor > 1 cuando se hace PCA sobre la matriz de correlación.
+
+# 4. Gráfico de sedimentación (Scree plot)
+
+```{r scree-plot}
+fviz_screeplot(pca_res, addlabels = TRUE, ylim = c(0, 50))
+```
+
+**Interpretación:** El gráfico muestra la varianza (en %) explicada por cada componente. Busca el "codo" o usa la varianza acumulada para decidir cuántas componentes retener.
+
+# 5. Círculo de correlaciones (variables)
+
+```{r correlation-circle}
+# Usando factoextra para el círculo de correlaciones
+fviz_pca_var(pca_res,
+             col.var = "contrib", # color por contribución
+             gradient.cols = c("blue", "yellow", "red"),
+             repel = TRUE,
+             labelsize = 4)
+```
+
+**Qué muestra:** cada vector representa la correlación entre la variable original y las componentes. Vectores largos y cerca del perímetro tienen alta correlación con las componentes; vectores cercanos al eje X o Y están correlacionados principalmente con la PC1 o PC2.
+
+# 6. Biplot de variables y individuos
+
+```{r biplot}
+# Biplot con factoextra
+fviz_pca_biplot(pca_res, repel = TRUE, label = "var", habillage = NULL, addEllipses = FALSE)
+
+# Si quieres ver individuos etiquetados por id
+ind_coords <- as.data.frame(pca_res$x) %>% mutate(id = ids)
+knitr::kable(head(ind_coords), caption = "Coordenadas de los primeros individuos en el espacio de PC")
+```
+
+# 7. Correlación entre variables y componentes principales
+
+```{r var-pc-correlations}
+# Correlaciones entre variables originales estandarizadas y las PCs
+pc_scores <- as.data.frame(pca_res$x) # coordenadas de individuos en PCs
+
+cor_var_pc <- cor(scaled_data, pc_scores)
+
+# Mostrar tabla resumida (correlaciones con las 4 primeras PCs)
+kable(round(cor_var_pc[, 1:4], 3), caption = "Correlaciones variable vs PC (primeras 4 PCs)")
+
+# Gráficos: para cada variable, barras con correlación frente a las primeras n PCs
+num_pcs_plot <- 6
+par(mfrow = c(ceiling(ncol(scaled_data)/2), 2), mar = c(4,4,2,1))
+for (i in seq_len(ncol(scaled_data))) {
+  barplot(cor_var_pc[i, 1:num_pcs_plot],
+          main = colnames(scaled_data)[i],
+          ylim = c(-1,1))
+  abline(h = 0, lty = 2)
+}
+par(mfrow = c(1,1))
+```
+
+# Resultados principales
+
+La tabla de **valores propios** se presentó arriba. Interpreta:
+  
+  * Componentes con autovalor > 1 (si las hay) suelen ser retenidas.
+* Usa la varianza acumulada (`Cumulative variance`) para decidir el número de componentes necesarias para explicar un % deseado (ej. 80–90%).
+
+# Guardar objetos (opcional)
+
+```{r save-objects, eval=FALSE}
+# saveRDS(pca_res, "pca_res_visit3.rds")
+# write_csv(eigen_table, "eigenvalues_visit3.csv")
+```
+
+---
+  
+  *Fin del documento.*
+  

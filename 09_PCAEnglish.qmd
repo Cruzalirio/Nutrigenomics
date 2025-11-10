@@ -1,0 +1,134 @@
+# Introduction
+
+This document performs a Principal Component Analysis (PCA) on the combined data from the `anthropometrics.csv` and `vital_signs.csv` files (only `visit == 3`), as requested. It includes:
+
+1. Correlation matrix.
+
+2. Standardization of variables (explanation and effect).
+
+3. PCA calculation and extraction of eigenvalues.
+
+4. Scree plot.
+
+5. Correlation circle (variables on the plane of the first two components).
+
+6. Biplot (individuals and variables).
+
+7. Correlation plots between each variable and the principal components.
+
+The tables with the eigenvalues and the proportion of variance explained are shown at the end.
+
+> **Note:** Adjust the file paths if your project uses a different location. The code here assumes that the CSV files are in `C:/Users/UIB/Downloads/AI4FoodDB/...` as in your example.
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE, warning = FALSE, message = FALSE)
+library(tidyverse)
+library(factoextra)
+library(FactoMineR)
+library(corrplot)
+library(knitr)
+```
+
+## 0. Data loading and creation of the `Total` object
+
+```{r load-data}
+anthropometrics <- read_csv("C:/Users/UIB/Downloads/AI4FoodDB/DS1_AnthropometricMeasurements/anthropometrics.csv")
+vital_signs <- read_csv("C:/Users/UIB/Downloads/AI4FoodDB/DS6_VitalSigns/vital_signs.csv")
+
+Total <- anthropometrics %>%
+  left_join(vital_signs, by = c("id", "visit")) %>%
+  filter(visit == 3) %>%
+  na.omit()
+
+# Conservamos id por separado y preparamos la matriz para PCA
+ids <- Total$id
+Total_pca <- Total %>% select(-id, -visit, -period)  # quitar identificadores
+
+# Comprobar dimensiones
+cat("Dimensiones (filas, columnas):", dim(Total_pca)[1], ",", dim(Total_pca)[2], "\n")
+```
+
+# 1. Correlation matrix
+
+```{r correlacion, echo=TRUE}
+# Matriz de correlación (usar solo variables numéricas)
+num_vars <- Total_pca %>% select(where(is.numeric))
+cor_mat <- cor(num_vars)
+
+# Mostrar la matriz (tabla reducida si es grande)
+kable(round(cor_mat, 3), caption = "Matriz de correlaciones (solo numéricas)")
+
+# Gráfico de corrplot
+corrplot::corrplot(cor_mat, method = "color", type = "upper", tl.cex = 0.8)
+```
+
+**Quick Explanation:** The correlation matrix shows the linear relationship between pairs of variables (-1 to 1). In PCA, this helps to identify redundancies and strongly correlated variables that influence the components.
+
+#2. Data Standardization
+
+```{r estandarizacion}
+# En PCA se suele estandarizar (media 0, sd 1) cuando las variables están en distintas escalas
+scaled_data <- scale(num_vars)
+
+```
+
+**What standardization does and why:**
+
+Standardizing (subtracting the mean and dividing by the standard deviation) places all variables on the same scale. Without standardization, variables with large units (e.g., weight in grams) will dominate the principal components simply because of their scale. With `scale()`, each variable contributes according to its correlation, not its magnitude.
+
+# 3. PCA and Eigenvalue Extraction
+
+```{r pca-prcomp}
+# Usaremos prcomp con centered = TRUE y scale. = FALSE porque ya estandarizamos
+pca_res <- prcomp(scaled_data, center = TRUE, scale. = FALSE)
+
+# Autovalores: para prcomp, las sdev^2 son los eigenvalues
+eigenvalues <- (pca_res$sdev)^2
+var_explained <- eigenvalues / sum(eigenvalues)
+
+eigen_table <- tibble(PC = paste0("PC", 1:length(eigenvalues)),
+                      Eigenvalue = round(eigenvalues, 4),
+                      Variance = round(var_explained, 4),
+                      `Cumulative variance` = round(cumsum(var_explained), 4))
+
+kable(eigen_table, caption = "Valores propios (autovalues) y varianza explicada")
+```
+Eigenvalues indicate the variance captured by each component. A rule of thumb (Kaiser) suggests keeping components with eigenvalues greater than 1 when performing PCA on the correlation matrix.
+
+# 4. Scree plot
+
+```{r scree-plot}
+fviz_screeplot(pca_res, addlabels = TRUE, ylim = c(0, 50))
+```
+
+**Interpretation:** The graph shows the variance (in %) explained by each component. Look for the "elbow" or use the cumulative variance to decide how many components to retain.
+
+# 5. Circle of Correlations (Variables)
+
+```{r correlation-circle}
+# Usando factoextra para el círculo de correlaciones
+fviz_pca_var(pca_res,
+             col.var = "contrib", # color por contribución
+             gradient.cols = c("blue", "yellow", "red"),
+             repel = TRUE,
+             labelsize = 4)
+```
+
+**What it shows:** Each vector represents the correlation between the original variable and its components. Long vectors and those close to the perimeter have a high correlation with the components; vectors close to the X or Y axis are primarily correlated with PC1 or PC2.
+
+# 6. Biplot of variables and individuals
+
+```{r biplot}
+# Biplot con factoextra
+fviz_pca_biplot(pca_res, repel = TRUE, label = "var", addEllipses = FALSE)
+
+# Si quieres ver individuos etiquetados por id
+ind_coords <- as.data.frame(pca_res$x) %>% mutate(id = ids)
+knitr::kable(head(ind_coords), caption = "Coordenadas de los primeros individuos en el espacio de PC")
+```
+# 7. Correlation between variables and principal components
+
+```{r var-pc-correlations}
+var <- get_pca_var(pca_res)
+corrplot(var$cos2[,1:11], is.corr=FALSE)
+```

@@ -250,6 +250,16 @@
     ]
   },
   {
+    "objectID": "09_PCAEnglish.html",
+    "href": "09_PCAEnglish.html",
+    "title": "9  Introduction",
+    "section": "",
+    "text": "9.1 0. Data loading and creation of the Total object\nThis document performs a Principal Component Analysis (PCA) on the combined data from the anthropometrics.csv and vital_signs.csv files (only visit == 3), as requested. It includes:\nThe tables with the eigenvalues and the proportion of variance explained are shown at the end.\nanthropometrics &lt;- read_csv(\"C:/Users/UIB/Downloads/AI4FoodDB/DS1_AnthropometricMeasurements/anthropometrics.csv\")\nvital_signs &lt;- read_csv(\"C:/Users/UIB/Downloads/AI4FoodDB/DS6_VitalSigns/vital_signs.csv\")\n\nTotal &lt;- anthropometrics %&gt;%\n  left_join(vital_signs, by = c(\"id\", \"visit\")) %&gt;%\n  filter(visit == 3) %&gt;%\n  na.omit()\n\n# Conservamos id por separado y preparamos la matriz para PCA\nids &lt;- Total$id\nTotal_pca &lt;- Total %&gt;% select(-id, -visit, -period)  # quitar identificadores\n\n# Comprobar dimensiones\ncat(\"Dimensiones (filas, columnas):\", dim(Total_pca)[1], \",\", dim(Total_pca)[2], \"\\n\")\n\nDimensiones (filas, columnas): 92 , 11",
+    "crumbs": [
+      "<span class='chapter-number'>9</span>  <span class='chapter-title'>Introduction</span>"
+    ]
+  },
+  {
     "objectID": "referencias.html",
     "href": "referencias.html",
     "title": "References",

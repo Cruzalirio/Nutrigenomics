@@ -28,6 +28,7 @@ book:
     - 06_Descriptiva.qmd
     - 07_Descriptiva2.qmd
     - 08_Practica_AI4FoodDB.qmd
+    - 09_PCAEnglish.qmd
     - referencias.qmd
 
 bibliography: referencias.bib
