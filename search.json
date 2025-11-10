@@ -252,11 +252,101 @@
   {
     "objectID": "09_PCAEnglish.html",
     "href": "09_PCAEnglish.html",
-    "title": "9  Introduction",
+    "title": "9  Principal component Analysis",
     "section": "",
-    "text": "9.1 0. Data loading and creation of the Total object\nThis document performs a Principal Component Analysis (PCA) on the combined data from the anthropometrics.csv and vital_signs.csv files (only visit == 3), as requested. It includes:\nThe tables with the eigenvalues and the proportion of variance explained are shown at the end.\nanthropometrics &lt;- read_csv(\"C:/Users/UIB/Downloads/AI4FoodDB/DS1_AnthropometricMeasurements/anthropometrics.csv\")\nvital_signs &lt;- read_csv(\"C:/Users/UIB/Downloads/AI4FoodDB/DS6_VitalSigns/vital_signs.csv\")\n\nTotal &lt;- anthropometrics %&gt;%\n  left_join(vital_signs, by = c(\"id\", \"visit\")) %&gt;%\n  filter(visit == 3) %&gt;%\n  na.omit()\n\n# Conservamos id por separado y preparamos la matriz para PCA\nids &lt;- Total$id\nTotal_pca &lt;- Total %&gt;% select(-id, -visit, -period)  # quitar identificadores\n\n# Comprobar dimensiones\ncat(\"Dimensiones (filas, columnas):\", dim(Total_pca)[1], \",\", dim(Total_pca)[2], \"\\n\")\n\nDimensiones (filas, columnas): 92 , 11",
+    "text": "9.1 Introduction\nPrincipal Component Analysis (PCA) is a multivariate statistical method designed to transform a set of possibly correlated variables into a new set of orthogonal (uncorrelated) variables called principal components. Each principal component represents a linear combination of the original variables and is constructed in such a way that it captures as much of the total variance in the data as possible. The first principal component accounts for the maximum amount of variability, the second captures the next highest amount under the constraint of being orthogonal to the first, and so on.\nThe primary purpose of PCA is dimensionality reduction: by retaining only the first few components, one can approximate the original data while minimizing information loss. This facilitates visualization, pattern recognition, and noise reduction, especially in high-dimensional datasets where interpretation is otherwise difficult. The method assumes that the most meaningful structure of the data lies in the directions of greatest variance, thus replacing the original coordinate system with one defined by these new axes of variation.\nMathematically, PCA can be obtained through the eigendecomposition of the covariance or correlation matrix of the variables, or equivalently through singular value decomposition of the data matrix. The resulting eigenvalues indicate the amount of variance explained by each component, and the corresponding eigenvectors define the loadings that relate components to the original variables. Interpreting PCA typically involves analyzing the loadings to understand which variables contribute most to each component, and the scores to explore how observations are positioned within the new reduced space.\nIn applied research, PCA serves as both an exploratory and a preprocessing tool. It reveals latent structures, mitigates multicollinearity, and prepares data for further modeling. As Jolliffe (2002) notes, PCA is not only a method of reduction but also a lens through which the essential geometry of multivariate data becomes interpretable.\nReference:\nJolliffe, I. T. (2002). Principal Component Analysis (2nd ed.). Springer Series in Statistics.",
     "crumbs": [
-      "<span class='chapter-number'>9</span>  <span class='chapter-title'>Introduction</span>"
+      "<span class='chapter-number'>9</span>  <span class='chapter-title'>Principal component Analysis</span>"
+    ]
+  },
+  {
+    "objectID": "09_PCAEnglish.html#example",
+    "href": "09_PCAEnglish.html#example",
+    "title": "9  Principal component Analysis",
+    "section": "9.2 Example",
+    "text": "9.2 Example\nThis document performs a Principal Component Analysis (PCA) on the combined data from the anthropometrics.csv and vital_signs.csv files (only visit == 3), as requested. It includes:\n\nCorrelation matrix.\nStandardization of variables (explanation and effect).\nPCA calculation and extraction of eigenvalues.\nScree plot.\nCorrelation circle (variables on the plane of the first two components).\nBiplot (individuals and variables).\nCorrelation plots between each variable and the principal components.\n\nThe tables with the eigenvalues and the proportion of variance explained are shown at the end.\n\nNote: Adjust the file paths if your project uses a different location. The code here assumes that the CSV files are in C:/Users/UIB/Downloads/AI4FoodDB/... as in your example.",
+    "crumbs": [
+      "<span class='chapter-number'>9</span>  <span class='chapter-title'>Principal component Analysis</span>"
+    ]
+  },
+  {
+    "objectID": "09_PCAEnglish.html#data-loading-and-creation-of-the-total-object",
+    "href": "09_PCAEnglish.html#data-loading-and-creation-of-the-total-object",
+    "title": "9  Principal component Analysis",
+    "section": "9.3 0. Data loading and creation of the Total object",
+    "text": "9.3 0. Data loading and creation of the Total object\n\nanthropometrics &lt;- read_csv(\"C:/Users/UIB/Downloads/AI4FoodDB/DS1_AnthropometricMeasurements/anthropometrics.csv\")\nvital_signs &lt;- read_csv(\"C:/Users/UIB/Downloads/AI4FoodDB/DS6_VitalSigns/vital_signs.csv\")\n\nTotal &lt;- anthropometrics %&gt;%\n  left_join(vital_signs, by = c(\"id\", \"visit\")) %&gt;%\n  filter(visit == 3) %&gt;%\n  na.omit()\n\n# Conservamos id por separado y preparamos la matriz para PCA\nids &lt;- Total$id\nTotal_pca &lt;- Total %&gt;% select(-id, -visit, -period)  # quitar identificadores\n\n# Comprobar dimensiones\ncat(\"Dimensiones (filas, columnas):\", dim(Total_pca)[1], \",\", dim(Total_pca)[2], \"\\n\")\n\nDimensiones (filas, columnas): 92 , 11",
+    "crumbs": [
+      "<span class='chapter-number'>9</span>  <span class='chapter-title'>Principal component Analysis</span>"
+    ]
+  },
+  {
+    "objectID": "09_PCAEnglish.html#correlation-matrix",
+    "href": "09_PCAEnglish.html#correlation-matrix",
+    "title": "9  Principal component Analysis",
+    "section": "9.4 1. Correlation matrix",
+    "text": "9.4 1. Correlation matrix\n\n# Matriz de correlación (usar solo variables numéricas)\nnum_vars &lt;- Total_pca %&gt;% select(where(is.numeric))\ncor_mat &lt;- cor(num_vars)\n\n# Mostrar la matriz (tabla reducida si es grande)\nkable(round(cor_mat, 3), caption = \"Matriz de correlaciones (solo numéricas)\")\n\n\nMatriz de correlaciones (solo numéricas)\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\ncurrent_weight_kg\nbmi_kg_m2\nfat_mass_perc\nmuscle_mass_perc\nvisceral_fat_level\nbasal_metabolism\nwaist_cm\nhip_cm\nsystolic_blood_pressure_mmhg\ndyastolic_blood_pressure_mmhg\nheart_rate_bpm\n\n\n\n\ncurrent_weight_kg\n1.000\n0.682\n-0.177\n0.271\n0.702\n0.932\n0.749\n0.537\n0.416\n0.249\n-0.139\n\n\nbmi_kg_m2\n0.682\n1.000\n0.426\n-0.231\n0.653\n0.442\n0.694\n0.722\n0.335\n0.305\n0.027\n\n\nfat_mass_perc\n-0.177\n0.426\n1.000\n-0.779\n-0.095\n-0.474\n0.030\n0.492\n-0.116\n0.081\n0.288\n\n\nmuscle_mass_perc\n0.271\n-0.231\n-0.779\n1.000\n0.122\n0.497\n0.025\n-0.353\n0.152\n-0.148\n-0.226\n\n\nvisceral_fat_level\n0.702\n0.653\n-0.095\n0.122\n1.000\n0.681\n0.788\n0.374\n0.535\n0.283\n-0.163\n\n\nbasal_metabolism\n0.932\n0.442\n-0.474\n0.497\n0.681\n1.000\n0.650\n0.293\n0.427\n0.148\n-0.207\n\n\nwaist_cm\n0.749\n0.694\n0.030\n0.025\n0.788\n0.650\n1.000\n0.437\n0.500\n0.334\n-0.094\n\n\nhip_cm\n0.537\n0.722\n0.492\n-0.353\n0.374\n0.293\n0.437\n1.000\n0.145\n0.173\n0.001\n\n\nsystolic_blood_pressure_mmhg\n0.416\n0.335\n-0.116\n0.152\n0.535\n0.427\n0.500\n0.145\n1.000\n0.540\n-0.066\n\n\ndyastolic_blood_pressure_mmhg\n0.249\n0.305\n0.081\n-0.148\n0.283\n0.148\n0.334\n0.173\n0.540\n1.000\n0.121\n\n\nheart_rate_bpm\n-0.139\n0.027\n0.288\n-0.226\n-0.163\n-0.207\n-0.094\n0.001\n-0.066\n0.121\n1.000\n\n\n\n\n# Gráfico de corrplot\ncorrplot::corrplot(cor_mat, method = \"color\", type = \"upper\", tl.cex = 0.8)\n\n\n\n\n\n\n\n\nQuick Explanation: The correlation matrix shows the linear relationship between pairs of variables (-1 to 1). In PCA, this helps to identify redundancies and strongly correlated variables that influence the components.",
+    "crumbs": [
+      "<span class='chapter-number'>9</span>  <span class='chapter-title'>Principal component Analysis</span>"
+    ]
+  },
+  {
+    "objectID": "09_PCAEnglish.html#data-standardization",
+    "href": "09_PCAEnglish.html#data-standardization",
+    "title": "9  Principal component Analysis",
+    "section": "9.5 2. Data Standardization",
+    "text": "9.5 2. Data Standardization\n\n# En PCA se suele estandarizar (media 0, sd 1) cuando las variables están en distintas escalas\nscaled_data &lt;- scale(num_vars)\n\nWhat standardization does and why:\nStandardizing (subtracting the mean and dividing by the standard deviation) places all variables on the same scale. Without standardization, variables with large units (e.g., weight in grams) will dominate the principal components simply because of their scale. With scale(), each variable contributes according to its correlation, not its magnitude.",
+    "crumbs": [
+      "<span class='chapter-number'>9</span>  <span class='chapter-title'>Principal component Analysis</span>"
+    ]
+  },
+  {
+    "objectID": "09_PCAEnglish.html#pca-and-eigenvalue-extraction",
+    "href": "09_PCAEnglish.html#pca-and-eigenvalue-extraction",
+    "title": "9  Principal component Analysis",
+    "section": "9.6 3. PCA and Eigenvalue Extraction",
+    "text": "9.6 3. PCA and Eigenvalue Extraction\n\n# Usaremos prcomp con centered = TRUE y scale. = FALSE porque ya estandarizamos\npca_res &lt;- prcomp(scaled_data, center = TRUE, scale. = FALSE)\n\n# Autovalores: para prcomp, las sdev^2 son los eigenvalues\neigenvalues &lt;- (pca_res$sdev)^2\nvar_explained &lt;- eigenvalues / sum(eigenvalues)\n\neigen_table &lt;- tibble(PC = paste0(\"PC\", 1:length(eigenvalues)),\n                      Eigenvalue = round(eigenvalues, 4),\n                      Variance = round(var_explained, 4),\n                      `Cumulative variance` = round(cumsum(var_explained), 4))\n\nkable(eigen_table, caption = \"Valores propios (autovalues) y varianza explicada\")\n\n\nValores propios (autovalues) y varianza explicada\n\n\nPC\nEigenvalue\nVariance\nCumulative variance\n\n\n\n\nPC1\n4.6175\n0.4198\n0.4198\n\n\nPC2\n2.6415\n0.2401\n0.6599\n\n\nPC3\n1.2381\n0.1126\n0.7725\n\n\nPC4\n0.8604\n0.0782\n0.8507\n\n\nPC5\n0.5131\n0.0466\n0.8973\n\n\nPC6\n0.3885\n0.0353\n0.9326\n\n\nPC7\n0.2564\n0.0233\n0.9560\n\n\nPC8\n0.2143\n0.0195\n0.9754\n\n\nPC9\n0.1673\n0.0152\n0.9906\n\n\nPC10\n0.0933\n0.0085\n0.9991\n\n\nPC11\n0.0096\n0.0009\n1.0000\n\n\n\n\n\nEigenvalues indicate the variance captured by each component. A rule of thumb (Kaiser) suggests keeping components with eigenvalues greater than 1 when performing PCA on the correlation matrix.",
+    "crumbs": [
+      "<span class='chapter-number'>9</span>  <span class='chapter-title'>Principal component Analysis</span>"
+    ]
+  },
+  {
+    "objectID": "09_PCAEnglish.html#scree-plot",
+    "href": "09_PCAEnglish.html#scree-plot",
+    "title": "9  Principal component Analysis",
+    "section": "9.7 4. Scree plot",
+    "text": "9.7 4. Scree plot\n\nfviz_screeplot(pca_res, addlabels = TRUE, ylim = c(0, 50))\n\n\n\n\n\n\n\n\nInterpretation: The graph shows the variance (in %) explained by each component. Look for the “elbow” or use the cumulative variance to decide how many components to retain.",
+    "crumbs": [
+      "<span class='chapter-number'>9</span>  <span class='chapter-title'>Principal component Analysis</span>"
+    ]
+  },
+  {
+    "objectID": "09_PCAEnglish.html#circle-of-correlations-variables",
+    "href": "09_PCAEnglish.html#circle-of-correlations-variables",
+    "title": "9  Principal component Analysis",
+    "section": "9.8 5. Circle of Correlations (Variables)",
+    "text": "9.8 5. Circle of Correlations (Variables)\n\n# Usando factoextra para el círculo de correlaciones\nfviz_pca_var(pca_res,\n             col.var = \"contrib\", # color por contribución\n             gradient.cols = c(\"blue\", \"yellow\", \"red\"),\n             repel = TRUE,\n             labelsize = 4)\n\n\n\n\n\n\n\n\nWhat it shows: Each vector represents the correlation between the original variable and its components. Long vectors and those close to the perimeter have a high correlation with the components; vectors close to the X or Y axis are primarily correlated with PC1 or PC2.",
+    "crumbs": [
+      "<span class='chapter-number'>9</span>  <span class='chapter-title'>Principal component Analysis</span>"
+    ]
+  },
+  {
+    "objectID": "09_PCAEnglish.html#biplot-of-variables-and-individuals",
+    "href": "09_PCAEnglish.html#biplot-of-variables-and-individuals",
+    "title": "9  Principal component Analysis",
+    "section": "9.9 6. Biplot of variables and individuals",
+    "text": "9.9 6. Biplot of variables and individuals\n\n# Biplot con factoextra\nfviz_pca_biplot(pca_res, repel = TRUE, label = \"var\", addEllipses = FALSE)\n\n\n\n\n\n\n\n# Si quieres ver individuos etiquetados por id\nind_coords &lt;- as.data.frame(pca_res$x) %&gt;% mutate(id = ids)\nknitr::kable(head(ind_coords), caption = \"Coordenadas de los primeros individuos en el espacio de PC\")\n\n\nCoordenadas de los primeros individuos en el espacio de PC\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nPC1\nPC2\nPC3\nPC4\nPC5\nPC6\nPC7\nPC8\nPC9\nPC10\nPC11\nid\n\n\n\n\n-1.5401359\n-1.9131536\n-0.0344751\n0.1928440\n0.1762209\n0.4407151\n0.4673128\n-0.1282716\n-0.2597347\n0.0769033\n-0.0963708\nA4F_10021\n\n\n-0.2509518\n-0.2057822\n-0.9151979\n0.2166586\n-0.3115131\n0.3785732\n-0.8326386\n-0.0830880\n0.4746012\n-0.1547623\n-0.1198479\nA4F_10141\n\n\n1.9722411\n0.3200554\n2.8509748\n0.3617572\n-0.9454229\n0.3223597\n0.4048971\n-0.2190433\n-0.4905496\n-0.0574429\n-0.0353668\nA4F_10355\n\n\n-0.0312034\n-3.6068621\n-0.2228999\n0.0622806\n1.4382317\n0.1154289\n-0.3118100\n0.5411452\n0.3253870\n-0.3754036\n0.0318862\nA4F_10660\n\n\n-2.1811906\n-2.1808570\n-0.5420183\n0.7819907\n-1.1832932\n1.2032446\n-0.1709386\n0.2185507\n-0.5299048\n0.0519529\n-0.2068859\nA4F_10709\n\n\n-2.1365103\n0.0618556\n-0.2218383\n-0.5944327\n1.2803436\n0.1415652\n-0.6171622\n-0.9103554\n-0.3581852\n-0.2886566\n-0.1312384\nA4F_13368",
+    "crumbs": [
+      "<span class='chapter-number'>9</span>  <span class='chapter-title'>Principal component Analysis</span>"
+    ]
+  },
+  {
+    "objectID": "09_PCAEnglish.html#correlation-between-variables-and-principal-components",
+    "href": "09_PCAEnglish.html#correlation-between-variables-and-principal-components",
+    "title": "9  Principal component Analysis",
+    "section": "9.10 7. Correlation between variables and principal components",
+    "text": "9.10 7. Correlation between variables and principal components\n\nvar &lt;- get_pca_var(pca_res)\ncorrplot(var$cos2[,1:11], is.corr=FALSE)",
+    "crumbs": [
+      "<span class='chapter-number'>9</span>  <span class='chapter-title'>Principal component Analysis</span>"
     ]
   },
   {
