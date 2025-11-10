@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>9&nbsp; Introduction – Design of Experimental Studies and Statistics Applied to Nutrigenomics</title>
+<title>9&nbsp; Principal component Analysis – Design of Experimental Studies and Statistics Applied to Nutrigenomics</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -118,7 +118,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Alternar barra lateral" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./09_PCAEnglish.html"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Introduction</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./09_PCAEnglish.html"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Principal component Analysis</span></a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Alternar barra lateral" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Buscar" onclick="window.quartoOpenSearch();">
@@ -202,7 +202,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./09_PCAEnglish.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Introduction</span></span></a>
+ <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Principal component Analysis</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
@@ -221,13 +221,16 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">Tabla de contenidos</h2>
    
   <ul>
-  <li><a href="#data-loading-and-creation-of-the-total-object" id="toc-data-loading-and-creation-of-the-total-object" class="nav-link active" data-scroll-target="#data-loading-and-creation-of-the-total-object"><span class="header-section-number">9.1</span> 0. Data loading and creation of the <code>Total</code> object</a></li>
-  <li><a href="#correlation-matrix" id="toc-correlation-matrix" class="nav-link" data-scroll-target="#correlation-matrix"><span class="header-section-number">10</span> 1. Correlation matrix</a></li>
-  <li><a href="#pca-and-eigenvalue-extraction" id="toc-pca-and-eigenvalue-extraction" class="nav-link" data-scroll-target="#pca-and-eigenvalue-extraction"><span class="header-section-number">11</span> 3. PCA and Eigenvalue Extraction</a></li>
-  <li><a href="#scree-plot" id="toc-scree-plot" class="nav-link" data-scroll-target="#scree-plot"><span class="header-section-number">12</span> 4. Scree plot</a></li>
-  <li><a href="#circle-of-correlations-variables" id="toc-circle-of-correlations-variables" class="nav-link" data-scroll-target="#circle-of-correlations-variables"><span class="header-section-number">13</span> 5. Circle of Correlations (Variables)</a></li>
-  <li><a href="#biplot-of-variables-and-individuals" id="toc-biplot-of-variables-and-individuals" class="nav-link" data-scroll-target="#biplot-of-variables-and-individuals"><span class="header-section-number">14</span> 6. Biplot of variables and individuals</a></li>
-  <li><a href="#correlation-between-variables-and-principal-components" id="toc-correlation-between-variables-and-principal-components" class="nav-link" data-scroll-target="#correlation-between-variables-and-principal-components"><span class="header-section-number">15</span> 7. Correlation between variables and principal components</a></li>
+  <li><a href="#introduction" id="toc-introduction" class="nav-link active" data-scroll-target="#introduction"><span class="header-section-number">9.1</span> Introduction</a></li>
+  <li><a href="#example" id="toc-example" class="nav-link" data-scroll-target="#example"><span class="header-section-number">9.2</span> Example</a></li>
+  <li><a href="#data-loading-and-creation-of-the-total-object" id="toc-data-loading-and-creation-of-the-total-object" class="nav-link" data-scroll-target="#data-loading-and-creation-of-the-total-object"><span class="header-section-number">9.3</span> 0. Data loading and creation of the <code>Total</code> object</a></li>
+  <li><a href="#correlation-matrix" id="toc-correlation-matrix" class="nav-link" data-scroll-target="#correlation-matrix"><span class="header-section-number">9.4</span> 1. Correlation matrix</a></li>
+  <li><a href="#data-standardization" id="toc-data-standardization" class="nav-link" data-scroll-target="#data-standardization"><span class="header-section-number">9.5</span> 2. Data Standardization</a></li>
+  <li><a href="#pca-and-eigenvalue-extraction" id="toc-pca-and-eigenvalue-extraction" class="nav-link" data-scroll-target="#pca-and-eigenvalue-extraction"><span class="header-section-number">9.6</span> 3. PCA and Eigenvalue Extraction</a></li>
+  <li><a href="#scree-plot" id="toc-scree-plot" class="nav-link" data-scroll-target="#scree-plot"><span class="header-section-number">9.7</span> 4. Scree plot</a></li>
+  <li><a href="#circle-of-correlations-variables" id="toc-circle-of-correlations-variables" class="nav-link" data-scroll-target="#circle-of-correlations-variables"><span class="header-section-number">9.8</span> 5. Circle of Correlations (Variables)</a></li>
+  <li><a href="#biplot-of-variables-and-individuals" id="toc-biplot-of-variables-and-individuals" class="nav-link" data-scroll-target="#biplot-of-variables-and-individuals"><span class="header-section-number">9.9</span> 6. Biplot of variables and individuals</a></li>
+  <li><a href="#correlation-between-variables-and-principal-components" id="toc-correlation-between-variables-and-principal-components" class="nav-link" data-scroll-target="#correlation-between-variables-and-principal-components"><span class="header-section-number">9.10</span> 7. Correlation between variables and principal components</a></li>
   </ul>
 <div class="toc-actions"><ul><li><a href="https://github.com/Cruzalirio/Nutrigenomics/edit/main/09_PCAEnglish.qmd" class="toc-action"><i class="bi bi-github"></i>Editar esta página</a></li><li><a href="https://github.com/Cruzalirio/Nutrigenomics/issues/new" class="toc-action"><i class="bi empty"></i>Informar de un problema</a></li></ul></div></nav>
     </div>
@@ -236,7 +239,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Introduction</span></h1>
+<h1 class="title"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Principal component Analysis</span></h1>
 </div>
 
 
@@ -253,6 +256,17 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
+<section id="introduction" class="level2" data-number="9.1">
+<h2 data-number="9.1" class="anchored" data-anchor-id="introduction"><span class="header-section-number">9.1</span> Introduction</h2>
+<p>Principal Component Analysis (PCA) is a multivariate statistical method designed to transform a set of possibly correlated variables into a new set of orthogonal (uncorrelated) variables called principal components. Each principal component represents a linear combination of the original variables and is constructed in such a way that it captures as much of the total variance in the data as possible. The first principal component accounts for the maximum amount of variability, the second captures the next highest amount under the constraint of being orthogonal to the first, and so on.</p>
+<p>The primary purpose of PCA is dimensionality reduction: by retaining only the first few components, one can approximate the original data while minimizing information loss. This facilitates visualization, pattern recognition, and noise reduction, especially in high-dimensional datasets where interpretation is otherwise difficult. The method assumes that the most meaningful structure of the data lies in the directions of greatest variance, thus replacing the original coordinate system with one defined by these new axes of variation.</p>
+<p>Mathematically, PCA can be obtained through the eigendecomposition of the covariance or correlation matrix of the variables, or equivalently through singular value decomposition of the data matrix. The resulting eigenvalues indicate the amount of variance explained by each component, and the corresponding eigenvectors define the loadings that relate components to the original variables. Interpreting PCA typically involves analyzing the loadings to understand which variables contribute most to each component, and the scores to explore how observations are positioned within the new reduced space.</p>
+<p>In applied research, PCA serves as both an exploratory and a preprocessing tool. It reveals latent structures, mitigates multicollinearity, and prepares data for further modeling. As Jolliffe (2002) notes, PCA is not only a method of reduction but also a lens through which the essential geometry of multivariate data becomes interpretable.</p>
+<p>Reference:<br>
+Jolliffe, I. T. (2002). <em>Principal Component Analysis</em> (2nd ed.). Springer Series in Statistics.</p>
+</section>
+<section id="example" class="level2" data-number="9.2">
+<h2 data-number="9.2" class="anchored" data-anchor-id="example"><span class="header-section-number">9.2</span> Example</h2>
 <p>This document performs a Principal Component Analysis (PCA) on the combined data from the <code>anthropometrics.csv</code> and <code>vital_signs.csv</code> files (only <code>visit == 3</code>), as requested. It includes:</p>
 <ol type="1">
 <li><p>Correlation matrix.</p></li>
@@ -267,8 +281,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <blockquote class="blockquote">
 <p><strong>Note:</strong> Adjust the file paths if your project uses a different location. The code here assumes that the CSV files are in <code>C:/Users/UIB/Downloads/AI4FoodDB/...</code> as in your example.</p>
 </blockquote>
-<section id="data-loading-and-creation-of-the-total-object" class="level2" data-number="9.1">
-<h2 data-number="9.1" class="anchored" data-anchor-id="data-loading-and-creation-of-the-total-object"><span class="header-section-number">9.1</span> 0. Data loading and creation of the <code>Total</code> object</h2>
+</section>
+<section id="data-loading-and-creation-of-the-total-object" class="level2" data-number="9.3">
+<h2 data-number="9.3" class="anchored" data-anchor-id="data-loading-and-creation-of-the-total-object"><span class="header-section-number">9.3</span> 0. Data loading and creation of the <code>Total</code> object</h2>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>anthropometrics <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">"C:/Users/UIB/Downloads/AI4FoodDB/DS1_AnthropometricMeasurements/anthropometrics.csv"</span>)</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>vital_signs <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">"C:/Users/UIB/Downloads/AI4FoodDB/DS6_VitalSigns/vital_signs.csv"</span>)</span>
@@ -289,8 +304,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 </section>
-<section id="correlation-matrix" class="level1" data-number="10">
-<h1 data-number="10"><span class="header-section-number">10</span> 1. Correlation matrix</h1>
+<section id="correlation-matrix" class="level2" data-number="9.4">
+<h2 data-number="9.4" class="anchored" data-anchor-id="correlation-matrix"><span class="header-section-number">9.4</span> 1. Correlation matrix</h2>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Matriz de correlación (usar solo variables numéricas)</span></span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>num_vars <span class="ot">&lt;-</span> Total_pca <span class="sc">%&gt;%</span> <span class="fu">select</span>(<span class="fu">where</span>(is.numeric))</span>
@@ -500,7 +515,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 <p><strong>Quick Explanation:</strong> The correlation matrix shows the linear relationship between pairs of variables (-1 to 1). In PCA, this helps to identify redundancies and strongly correlated variables that influence the components.</p>
-<p>#2. Data Standardization</p>
+</section>
+<section id="data-standardization" class="level2" data-number="9.5">
+<h2 data-number="9.5" class="anchored" data-anchor-id="data-standardization"><span class="header-section-number">9.5</span> 2. Data Standardization</h2>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># En PCA se suele estandarizar (media 0, sd 1) cuando las variables están en distintas escalas</span></span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>scaled_data <span class="ot">&lt;-</span> <span class="fu">scale</span>(num_vars)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -508,8 +525,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p><strong>What standardization does and why:</strong></p>
 <p>Standardizing (subtracting the mean and dividing by the standard deviation) places all variables on the same scale. Without standardization, variables with large units (e.g., weight in grams) will dominate the principal components simply because of their scale. With <code>scale()</code>, each variable contributes according to its correlation, not its magnitude.</p>
 </section>
-<section id="pca-and-eigenvalue-extraction" class="level1" data-number="11">
-<h1 data-number="11"><span class="header-section-number">11</span> 3. PCA and Eigenvalue Extraction</h1>
+<section id="pca-and-eigenvalue-extraction" class="level2" data-number="9.6">
+<h2 data-number="9.6" class="anchored" data-anchor-id="pca-and-eigenvalue-extraction"><span class="header-section-number">9.6</span> 3. PCA and Eigenvalue Extraction</h2>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Usaremos prcomp con centered = TRUE y scale. = FALSE porque ya estandarizamos</span></span>
 <span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>pca_res <span class="ot">&lt;-</span> <span class="fu">prcomp</span>(scaled_data, <span class="at">center =</span> <span class="cn">TRUE</span>, <span class="at">scale. =</span> <span class="cn">FALSE</span>)</span>
@@ -608,8 +625,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 <p>Eigenvalues indicate the variance captured by each component. A rule of thumb (Kaiser) suggests keeping components with eigenvalues greater than 1 when performing PCA on the correlation matrix.</p>
 </section>
-<section id="scree-plot" class="level1" data-number="12">
-<h1 data-number="12"><span class="header-section-number">12</span> 4. Scree plot</h1>
+<section id="scree-plot" class="level2" data-number="9.7">
+<h2 data-number="9.7" class="anchored" data-anchor-id="scree-plot"><span class="header-section-number">9.7</span> 4. Scree plot</h2>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">fviz_screeplot</span>(pca_res, <span class="at">addlabels =</span> <span class="cn">TRUE</span>, <span class="at">ylim =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">50</span>))</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
@@ -622,8 +639,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 <p><strong>Interpretation:</strong> The graph shows the variance (in %) explained by each component. Look for the “elbow” or use the cumulative variance to decide how many components to retain.</p>
 </section>
-<section id="circle-of-correlations-variables" class="level1" data-number="13">
-<h1 data-number="13"><span class="header-section-number">13</span> 5. Circle of Correlations (Variables)</h1>
+<section id="circle-of-correlations-variables" class="level2" data-number="9.8">
+<h2 data-number="9.8" class="anchored" data-anchor-id="circle-of-correlations-variables"><span class="header-section-number">9.8</span> 5. Circle of Correlations (Variables)</h2>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Usando factoextra para el círculo de correlaciones</span></span>
 <span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="fu">fviz_pca_var</span>(pca_res,</span>
@@ -641,8 +658,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 <p><strong>What it shows:</strong> Each vector represents the correlation between the original variable and its components. Long vectors and those close to the perimeter have a high correlation with the components; vectors close to the X or Y axis are primarily correlated with PC1 or PC2.</p>
 </section>
-<section id="biplot-of-variables-and-individuals" class="level1" data-number="14">
-<h1 data-number="14"><span class="header-section-number">14</span> 6. Biplot of variables and individuals</h1>
+<section id="biplot-of-variables-and-individuals" class="level2" data-number="9.9">
+<h2 data-number="9.9" class="anchored" data-anchor-id="biplot-of-variables-and-individuals"><span class="header-section-number">9.9</span> 6. Biplot of variables and individuals</h2>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Biplot con factoextra</span></span>
 <span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="fu">fviz_pca_biplot</span>(pca_res, <span class="at">repel =</span> <span class="cn">TRUE</span>, <span class="at">label =</span> <span class="st">"var"</span>, <span class="at">addEllipses =</span> <span class="cn">FALSE</span>)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -779,8 +796,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 </section>
-<section id="correlation-between-variables-and-principal-components" class="level1" data-number="15">
-<h1 data-number="15"><span class="header-section-number">15</span> 7. Correlation between variables and principal components</h1>
+<section id="correlation-between-variables-and-principal-components" class="level2" data-number="9.10">
+<h2 data-number="9.10" class="anchored" data-anchor-id="correlation-between-variables-and-principal-components"><span class="header-section-number">9.10</span> 7. Correlation between variables and principal components</h2>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>var <span class="ot">&lt;-</span> <span class="fu">get_pca_var</span>(pca_res)</span>
 <span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="fu">corrplot</span>(var<span class="sc">$</span>cos2[,<span class="dv">1</span><span class="sc">:</span><span class="dv">11</span>], <span class="at">is.corr=</span><span class="cn">FALSE</span>)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>

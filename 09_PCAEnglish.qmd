@@ -1,4 +1,20 @@
-# Introduction
+# Principal component Analysis
+
+## Introduction
+
+Principal Component Analysis (PCA) is a multivariate statistical method designed to transform a set of possibly correlated variables into a new set of orthogonal (uncorrelated) variables called principal components. Each principal component represents a linear combination of the original variables and is constructed in such a way that it captures as much of the total variance in the data as possible. The first principal component accounts for the maximum amount of variability, the second captures the next highest amount under the constraint of being orthogonal to the first, and so on. 
+
+The primary purpose of PCA is dimensionality reduction: by retaining only the first few components, one can approximate the original data while minimizing information loss. This facilitates visualization, pattern recognition, and noise reduction, especially in high-dimensional datasets where interpretation is otherwise difficult. The method assumes that the most meaningful structure of the data lies in the directions of greatest variance, thus replacing the original coordinate system with one defined by these new axes of variation.
+
+Mathematically, PCA can be obtained through the eigendecomposition of the covariance or correlation matrix of the variables, or equivalently through singular value decomposition of the data matrix. The resulting eigenvalues indicate the amount of variance explained by each component, and the corresponding eigenvectors define the loadings that relate components to the original variables. Interpreting PCA typically involves analyzing the loadings to understand which variables contribute most to each component, and the scores to explore how observations are positioned within the new reduced space.
+
+In applied research, PCA serves as both an exploratory and a preprocessing tool. It reveals latent structures, mitigates multicollinearity, and prepares data for further modeling. As Jolliffe (2002) notes, PCA is not only a method of reduction but also a lens through which the essential geometry of multivariate data becomes interpretable.
+
+Reference:  
+Jolliffe, I. T. (2002). *Principal Component Analysis* (2nd ed.). Springer Series in Statistics.
+
+
+## Example
 
 This document performs a Principal Component Analysis (PCA) on the combined data from the `anthropometrics.csv` and `vital_signs.csv` files (only `visit == 3`), as requested. It includes:
 
@@ -48,7 +64,7 @@ Total_pca <- Total %>% select(-id, -visit, -period)  # quitar identificadores
 cat("Dimensiones (filas, columnas):", dim(Total_pca)[1], ",", dim(Total_pca)[2], "\n")
 ```
 
-# 1. Correlation matrix
+## 1. Correlation matrix
 
 ```{r correlacion, echo=TRUE}
 # Matriz de correlación (usar solo variables numéricas)
@@ -64,7 +80,7 @@ corrplot::corrplot(cor_mat, method = "color", type = "upper", tl.cex = 0.8)
 
 **Quick Explanation:** The correlation matrix shows the linear relationship between pairs of variables (-1 to 1). In PCA, this helps to identify redundancies and strongly correlated variables that influence the components.
 
-#2. Data Standardization
+## 2. Data Standardization
 
 ```{r estandarizacion}
 # En PCA se suele estandarizar (media 0, sd 1) cuando las variables están en distintas escalas
@@ -76,7 +92,7 @@ scaled_data <- scale(num_vars)
 
 Standardizing (subtracting the mean and dividing by the standard deviation) places all variables on the same scale. Without standardization, variables with large units (e.g., weight in grams) will dominate the principal components simply because of their scale. With `scale()`, each variable contributes according to its correlation, not its magnitude.
 
-# 3. PCA and Eigenvalue Extraction
+## 3. PCA and Eigenvalue Extraction
 
 ```{r pca-prcomp}
 # Usaremos prcomp con centered = TRUE y scale. = FALSE porque ya estandarizamos
@@ -95,7 +111,7 @@ kable(eigen_table, caption = "Valores propios (autovalues) y varianza explicada"
 ```
 Eigenvalues indicate the variance captured by each component. A rule of thumb (Kaiser) suggests keeping components with eigenvalues greater than 1 when performing PCA on the correlation matrix.
 
-# 4. Scree plot
+## 4. Scree plot
 
 ```{r scree-plot}
 fviz_screeplot(pca_res, addlabels = TRUE, ylim = c(0, 50))
@@ -103,7 +119,7 @@ fviz_screeplot(pca_res, addlabels = TRUE, ylim = c(0, 50))
 
 **Interpretation:** The graph shows the variance (in %) explained by each component. Look for the "elbow" or use the cumulative variance to decide how many components to retain.
 
-# 5. Circle of Correlations (Variables)
+## 5. Circle of Correlations (Variables)
 
 ```{r correlation-circle}
 # Usando factoextra para el círculo de correlaciones
@@ -116,7 +132,7 @@ fviz_pca_var(pca_res,
 
 **What it shows:** Each vector represents the correlation between the original variable and its components. Long vectors and those close to the perimeter have a high correlation with the components; vectors close to the X or Y axis are primarily correlated with PC1 or PC2.
 
-# 6. Biplot of variables and individuals
+## 6. Biplot of variables and individuals
 
 ```{r biplot}
 # Biplot con factoextra
@@ -126,7 +142,7 @@ fviz_pca_biplot(pca_res, repel = TRUE, label = "var", addEllipses = FALSE)
 ind_coords <- as.data.frame(pca_res$x) %>% mutate(id = ids)
 knitr::kable(head(ind_coords), caption = "Coordenadas de los primeros individuos en el espacio de PC")
 ```
-# 7. Correlation between variables and principal components
+## 7. Correlation between variables and principal components
 
 ```{r var-pc-correlations}
 var <- get_pca_var(pca_res)
