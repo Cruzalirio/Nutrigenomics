@@ -65,7 +65,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./referencias.html" rel="next">
+<link href="./08_Practica_AI4FoodDB.html" rel="next">
 <link href="./06_Descriptiva.html" rel="prev">
 <link href="./Figures/atlas.jpeg" rel="icon" type="image/jpeg">
 <script src="site_libs/quarto-html/quarto.js" type="module"></script>
@@ -220,6 +220,12 @@ window.Quarto = {
   <div class="sidebar-item-container"> 
   <a href="./07_Descriptiva2.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Two or More Quantitative</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./08_Practica_AI4FoodDB.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Objetivo general</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
@@ -593,7 +599,7 @@ can override using the `.groups` argument.</code></pre>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
 <span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(corrplot)</span>
-<span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">2000081</span>)</span>
 <span id="cb23-4"><a href="#cb23-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Example loading (adjust to your local path)</span></span>
 <span id="cb23-5"><a href="#cb23-5" aria-hidden="true" tabindex="-1"></a><span class="co"># data &lt;- read.csv("diabetes_BRFSS2015.csv")</span></span>
 <span id="cb23-6"><a href="#cb23-6" aria-hidden="true" tabindex="-1"></a></span>
@@ -606,12 +612,13 @@ can override using the `.groups` argument.</code></pre>
 <p>Create a boxplot comparing a biomedical variable by a categorical variable (e.g., Veggies, PhysicalActivity).</p>
 <p>Comment on whether the distributions differ between groups and what that might imply biologically.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(sample_data, <span class="fu">aes</span>(<span class="at">x =</span> <span class="fu">factor</span>(Veggies), <span class="at">y =</span> BMI, <span class="at">fill =</span> <span class="fu">factor</span>(Veggies))) <span class="sc">+</span></span>
+<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(sample_data, <span class="fu">aes</span>(<span class="at">x =</span> <span class="fu">factor</span>(Veggies), <span class="at">y =</span> Inflammatory_Index, <span class="at">fill =</span> <span class="fu">factor</span>(Smoker))) <span class="sc">+</span></span>
 <span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a><span class="fu">geom_boxplot</span>() <span class="sc">+</span></span>
-<span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a><span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"Vegetable Consumption (0=No, 1=Yes)"</span>,</span>
-<span id="cb24-4"><a href="#cb24-4" aria-hidden="true" tabindex="-1"></a><span class="at">y =</span> <span class="st">"Glucose Level (mg/dL)"</span>,</span>
-<span id="cb24-5"><a href="#cb24-5" aria-hidden="true" tabindex="-1"></a><span class="at">title =</span> <span class="st">"Boxplot of Glucose Level by Vegetable Consumption"</span>) <span class="sc">+</span></span>
-<span id="cb24-6"><a href="#cb24-6" aria-hidden="true" tabindex="-1"></a><span class="fu">theme_minimal</span>()</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">facet_wrap</span>(.<span class="sc">~</span><span class="fu">factor</span>(Diabetes_012))<span class="sc">+</span></span>
+<span id="cb24-4"><a href="#cb24-4" aria-hidden="true" tabindex="-1"></a><span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"Vegetable Consumption (0=No, 1=Yes)"</span>,</span>
+<span id="cb24-5"><a href="#cb24-5" aria-hidden="true" tabindex="-1"></a><span class="at">y =</span> <span class="st">"Glucose Level (mg/dL)"</span>,</span>
+<span id="cb24-6"><a href="#cb24-6" aria-hidden="true" tabindex="-1"></a><span class="at">title =</span> <span class="st">"Boxplot of Glucose Level by Vegetable Consumption"</span>) <span class="sc">+</span></span>
+<span id="cb24-7"><a href="#cb24-7" aria-hidden="true" tabindex="-1"></a><span class="fu">theme_minimal</span>()</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
@@ -1061,8 +1068,8 @@ can override using the `.groups` argument.</code></pre>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./referencias.html" class="pagination-link" aria-label="References">
-        <span class="nav-page-text">References</span> <i class="bi bi-arrow-right-short"></i>
+      <a href="./08_Practica_AI4FoodDB.html" class="pagination-link" aria-label="Objetivo general">
+        <span class="nav-page-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Objetivo general</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>

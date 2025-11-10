@@ -6,9 +6,8 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="author" content="Alirio Cruz">
 
-<title>Design of Experimental Studies and Statistics Applied to Nutrigenomics</title>
+<title>8&nbsp; Objetivo general – Design of Experimental Studies and Statistics Applied to Nutrigenomics</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -21,6 +20,41 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
 </style>
 
 
@@ -31,7 +65,8 @@ ul.task-list li input[type="checkbox"] {
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./01_TypesStudies.html" rel="next">
+<link href="./referencias.html" rel="next">
+<link href="./07_Descriptiva2.html" rel="prev">
 <link href="./Figures/atlas.jpeg" rel="icon" type="image/jpeg">
 <script src="site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
@@ -83,7 +118,7 @@ ul.task-list li input[type="checkbox"] {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Alternar barra lateral" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./index.html"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Introduction</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./08_Practica_AI4FoodDB.html"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Objetivo general</span></a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Alternar barra lateral" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Buscar" onclick="window.quartoOpenSearch();">
@@ -118,7 +153,7 @@ ul.task-list li input[type="checkbox"] {
     <ul class="list-unstyled mt-1">
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./index.html" class="sidebar-item-text sidebar-link active">
+  <a href="./index.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Introduction</span></span></a>
   </div>
 </li>
@@ -160,7 +195,7 @@ ul.task-list li input[type="checkbox"] {
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./08_Practica_AI4FoodDB.html" class="sidebar-item-text sidebar-link">
+  <a href="./08_Practica_AI4FoodDB.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Objetivo general</span></span></a>
   </div>
 </li>
@@ -180,48 +215,35 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">Tabla de contenidos</h2>
    
   <ul>
-  <li><a href="#introduction" id="toc-introduction" class="nav-link active" data-scroll-target="#introduction"><span class="header-section-number">0.1</span> Introduction</a>
-  <ul class="collapse">
-  <li><a href="#course-overview" id="toc-course-overview" class="nav-link" data-scroll-target="#course-overview"><span class="header-section-number">0.1.1</span> 📘 Course Overview</a></li>
-  <li><a href="#topics" id="toc-topics" class="nav-link" data-scroll-target="#topics"><span class="header-section-number">0.1.2</span> Topics</a></li>
-  <li><a href="#evaluation-criteria" id="toc-evaluation-criteria" class="nav-link" data-scroll-target="#evaluation-criteria"><span class="header-section-number">0.1.3</span> Evaluation Criteria</a></li>
-  </ul></li>
-  <li><a href="#description-of-the-evaluation-components" id="toc-description-of-the-evaluation-components" class="nav-link" data-scroll-target="#description-of-the-evaluation-components"><span class="header-section-number">0.2</span> Description of the Evaluation Components</a>
-  <ul class="collapse">
-  <li><a href="#expositive-seminar-30" id="toc-expositive-seminar-30" class="nav-link" data-scroll-target="#expositive-seminar-30"><span class="header-section-number">0.2.1</span> 1. Expositive Seminar (30%)</a></li>
-  <li><a href="#practices-25" id="toc-practices-25" class="nav-link" data-scroll-target="#practices-25"><span class="header-section-number">0.2.2</span> 2. Practices (25%)</a></li>
-  <li><a href="#final-exam-45" id="toc-final-exam-45" class="nav-link" data-scroll-target="#final-exam-45"><span class="header-section-number">0.2.3</span> 3. Final Exam (45%)</a></li>
-  </ul></li>
-  <li><a href="#course-schedule" id="toc-course-schedule" class="nav-link" data-scroll-target="#course-schedule"><span class="header-section-number">0.3</span> Course Schedule</a></li>
-  <li><a href="#additional-notes" id="toc-additional-notes" class="nav-link" data-scroll-target="#additional-notes"><span class="header-section-number">0.4</span> Additional Notes</a></li>
+  <li><a href="#asignaciones-individuales" id="toc-asignaciones-individuales" class="nav-link active" data-scroll-target="#asignaciones-individuales"><span class="header-section-number">8.0.1</span> <strong>Asignaciones individuales</strong></a></li>
+  <li><a href="#estructura-de-la-práctica-entregable-15112025" id="toc-estructura-de-la-práctica-entregable-15112025" class="nav-link" data-scroll-target="#estructura-de-la-práctica-entregable-15112025"><span class="header-section-number">8.0.2</span> <strong>Estructura de la práctica (entregable 15/11/2025)</strong></a></li>
+  <li><a href="#actividad-de-revisión-13-de-noviembre" id="toc-actividad-de-revisión-13-de-noviembre" class="nav-link" data-scroll-target="#actividad-de-revisión-13-de-noviembre"><span class="header-section-number">8.0.3</span> 🧾 <strong>Actividad de revisión — 13 de noviembre</strong></a></li>
+  <li><a href="#seminario-de-exposición-4-de-diciembre" id="toc-seminario-de-exposición-4-de-diciembre" class="nav-link" data-scroll-target="#seminario-de-exposición-4-de-diciembre"><span class="header-section-number">8.0.4</span> 🎤 <strong>Seminario de exposición — 4 de diciembre</strong></a></li>
+  <li><a href="#evaluación" id="toc-evaluación" class="nav-link" data-scroll-target="#evaluación"><span class="header-section-number">8.0.5</span> 🧮 <strong>Evaluación</strong></a></li>
+  <li><a href="#reconocimiento-de-los-datos-1" id="toc-reconocimiento-de-los-datos-1" class="nav-link" data-scroll-target="#reconocimiento-de-los-datos-1"><span class="header-section-number">9</span> 1. Reconocimiento de los datos</a></li>
+  <li><a href="#metodología-y-fuentes-1" id="toc-metodología-y-fuentes-1" class="nav-link" data-scroll-target="#metodología-y-fuentes-1"><span class="header-section-number">10</span> 2. Metodología y fuentes</a></li>
+  <li><a href="#análisis-descriptivo-y-bivariado-1" id="toc-análisis-descriptivo-y-bivariado-1" class="nav-link" data-scroll-target="#análisis-descriptivo-y-bivariado-1"><span class="header-section-number">11</span> 3. Análisis descriptivo y bivariado</a></li>
+  <li><a href="#tratamiento-de-medidas-repetidas-1" id="toc-tratamiento-de-medidas-repetidas-1" class="nav-link" data-scroll-target="#tratamiento-de-medidas-repetidas-1"><span class="header-section-number">12</span> 4. Tratamiento de medidas repetidas</a></li>
+  <li><a href="#análisis-de-componentes-principales-acp-1" id="toc-análisis-de-componentes-principales-acp-1" class="nav-link" data-scroll-target="#análisis-de-componentes-principales-acp-1"><span class="header-section-number">13</span> 5. Análisis de Componentes Principales (ACP)</a></li>
+  <li><a href="#análisis-de-clustering-1" id="toc-análisis-de-clustering-1" class="nav-link" data-scroll-target="#análisis-de-clustering-1"><span class="header-section-number">14</span> 6. Análisis de Clustering</a></li>
+  <li><a href="#conclusiones-1" id="toc-conclusiones-1" class="nav-link" data-scroll-target="#conclusiones-1"><span class="header-section-number">15</span> 7. Conclusiones</a></li>
+  <li><a href="#referencias" id="toc-referencias" class="nav-link" data-scroll-target="#referencias"><span class="header-section-number">16</span> 8. Referencias</a></li>
   </ul>
-<div class="toc-actions"><ul><li><a href="https://github.com/Cruzalirio/Nutrigenomics/edit/main/index.qmd" class="toc-action"><i class="bi bi-github"></i>Editar esta página</a></li><li><a href="https://github.com/Cruzalirio/Nutrigenomics/issues/new" class="toc-action"><i class="bi empty"></i>Informar de un problema</a></li></ul></div></nav>
+<div class="toc-actions"><ul><li><a href="https://github.com/Cruzalirio/Nutrigenomics/edit/main/08_Practica_AI4FoodDB.qmd" class="toc-action"><i class="bi bi-github"></i>Editar esta página</a></li><li><a href="https://github.com/Cruzalirio/Nutrigenomics/issues/new" class="toc-action"><i class="bi empty"></i>Informar de un problema</a></li></ul></div></nav>
     </div>
 <!-- main -->
 <main class="content column-body" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Design of Experimental Studies and Statistics Applied to Nutrigenomics</h1>
+<h1 class="title"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Objetivo general</span></h1>
 </div>
 
 
 
 <div class="quarto-title-meta column-body">
 
-    <div>
-    <div class="quarto-title-meta-heading">Autor/a</div>
-    <div class="quarto-title-meta-contents">
-             <p>Alirio Cruz </p>
-          </div>
-  </div>
     
-    <div>
-    <div class="quarto-title-meta-heading">Fecha de publicación</div>
-    <div class="quarto-title-meta-contents">
-      <p class="date">10 de noviembre de 2025</p>
-    </div>
-  </div>
   
     
   </div>
@@ -231,246 +253,278 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-
-<section id="introduction" class="level2" data-number="0.1">
-<h2 data-number="0.1" class="anchored" data-anchor-id="introduction"><span class="header-section-number">0.1</span> Introduction</h2><p><img src="Figures/atlas.jpeg" title="Design of Experimental Studies and Statistics Applied to Nutrigenomics" class="quarto-cover-image nolightbox img-fluid"></p>
-<p>Welcome to the repository for the course Design of Experimental Studies and Applied Statistics in Nutrigenomics — part of the Master’s in Nutrigenomics program.</p>
-<p>This repository contains all teaching materials, examples, datasets, and R scripts used throughout the course.<br>
-The course is fully reproducible and designed to be explored as a Quarto Book published via <strong>GitHub Pages</strong>.</p>
-<hr>
-<section id="course-overview" class="level3" data-number="0.1.1">
-<h3 data-number="0.1.1" class="anchored" data-anchor-id="course-overview"><span class="header-section-number">0.1.1</span> 📘 Course Overview</h3>
-<p>This course introduces the statistical foundations of experimental design and applied data analysis in the context of nutrigenomics.<br>
-Students will learn to manage, visualize, and analyze omics, clinical, and dietary data using <strong>R</strong> and reproducible workflows.</p>
-</section>
-<section id="topics" class="level3" data-number="0.1.2">
-<h3 data-number="0.1.2" class="anchored" data-anchor-id="topics"><span class="header-section-number">0.1.2</span> Topics</h3>
-<ol type="1">
-<li><strong>Introduction to Nutrigenomics</strong> — study design and data types<br>
-</li>
-<li><strong>Measures of Association</strong><br>
-</li>
-<li><strong>Data Reading and Cleaning in R</strong><br>
-</li>
-<li><strong>Multivariate Descriptive Statistics</strong><br>
-</li>
-<li><strong>Dimensionality Reduction and Clustering</strong><br>
-</li>
-<li><strong>Introduction to Systematic Reviews</strong></li>
-</ol>
-<p>Each topic includes lectures, practical labs, and problem sets.</p>
-</section>
-<section id="evaluation-criteria" class="level3" data-number="0.1.3">
-<h3 data-number="0.1.3" class="anchored" data-anchor-id="evaluation-criteria"><span class="header-section-number">0.1.3</span> Evaluation Criteria</h3>
-<p>The evaluation of the course Design of Experimental Studies and Applied Statistics in Nutrigenomics will be based on three main activities, each contributing to the final grade as described below.</p>
+<p>Analizar e integrar información clínica, antropométrica, y molecular proveniente del estudio AI4FoodDB, aplicando herramientas estadísticas descriptivas y multivariantes (PCA, clustering) para explorar patrones de variación y relaciones entre variables de distintos dominios biológicos y de estilo de vida.</p>
+<p>El estudio <strong>AI4FoodDB, <a href="https://github.com/AI4Food/AI4FoodDB?tab=readme-ov-file#datasets">acá el enlace</a></strong> (Romero-Tapiador et al., 2023; Lacruz-Pleguezuelos et al., 2025) contiene información de una intervención nutricional en 100 participantes con sobrepeso u obesidad.<br>
+Los datasets relevantes son:</p>
 <table class="caption-top table">
 <colgroup>
-<col style="width: 23%">
-<col style="width: 10%">
-<col style="width: 16%">
-<col style="width: 19%">
-<col style="width: 30%">
+<col style="width: 33%">
+<col style="width: 33%">
+<col style="width: 33%">
 </colgroup>
 <thead>
 <tr class="header">
-<th><strong>Evaluation activity</strong></th>
-<th><strong>Weight</strong></th>
-<th><strong>Recoverable</strong></th>
-<th><strong>Validation mark</strong></th>
-<th><strong>Improvement of qualification</strong></th>
+<th>Dataset</th>
+<th>Tipo de datos</th>
+<th>Ejemplos de variables</th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
-<td>Expositive seminar</td>
-<td>30%</td>
-<td>No</td>
-<td>–</td>
-<td>No</td>
+<td>DS1</td>
+<td>Antropometría</td>
+<td>Peso, IMC, circunferencia de cintura</td>
 </tr>
 <tr class="even">
-<td>Practices (R exercises)</td>
-<td>25%</td>
-<td>No</td>
-<td>–</td>
-<td>No</td>
+<td>DS2</td>
+<td>Lifestyle &amp; Health</td>
+<td>Tabaquismo, alcohol, medicamentos</td>
 </tr>
 <tr class="odd">
-<td>Final exam</td>
-<td>45%</td>
-<td>Yes</td>
-<td>4</td>
-<td>No</td>
+<td>DS4</td>
+<td>Biomarcadores</td>
+<td>Proteínas plasmáticas, glucosa, colesterol</td>
+</tr>
+<tr class="even">
+<td>DS7</td>
+<td>Actividad física (IPAQ)</td>
+<td>Minutos de actividad moderada/vigorosa, pasos</td>
+</tr>
+<tr class="odd">
+<td>DS8</td>
+<td>Sueño (Oviedo Sleep Questionnaire)</td>
+<td>Latencia, eficiencia, duración del sueño</td>
 </tr>
 </tbody>
 </table>
-<hr>
+<section id="asignaciones-individuales" class="level3" data-number="8.0.1">
+<h3 data-number="8.0.1" class="anchored" data-anchor-id="asignaciones-individuales"><span class="header-section-number">8.0.1</span> <strong>Asignaciones individuales</strong></h3>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 25%">
+<col style="width: 25%">
+<col style="width: 25%">
+<col style="width: 25%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Estudiante</th>
+<th>Dataset secundario</th>
+<th>Variables complementarias</th>
+<th>Tareas principales</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>Sofía</strong></td>
+<td>DS1 – Antropometría</td>
+<td>4 variables antropométricas</td>
+<td>ACP + Clustering con proteínas + gráficos bivariados</td>
+</tr>
+<tr class="even">
+<td><strong>Louie</strong></td>
+<td>DS2 – Lifestyle</td>
+<td>4 variables de estilo de vida</td>
+<td>ACP + Clustering + análisis de relación clínica</td>
+</tr>
+<tr class="odd">
+<td><strong>Cyntia</strong></td>
+<td>DS8 – Sueño</td>
+<td>4 variables del OSQ</td>
+<td>ACP + Clustering + relación sueño-proteómica</td>
+</tr>
+<tr class="even">
+<td><strong>Carmen</strong></td>
+<td>DS7 – Actividad física (IPAQ)</td>
+<td>4 variables de actividad</td>
+<td>ACP + Clustering + relación actividad-proteómica</td>
+</tr>
+</tbody>
+</table>
 </section>
+<section id="estructura-de-la-práctica-entregable-15112025" class="level3" data-number="8.0.2">
+<h3 data-number="8.0.2" class="anchored" data-anchor-id="estructura-de-la-práctica-entregable-15112025"><span class="header-section-number">8.0.2</span> <strong>Estructura de la práctica (entregable 15/11/2025)</strong></h3>
+<p>Cada estudiante debe entregar un documento en formato <code>.qmd</code> (R Markdown) o <code>.html</code> generado desde RStudio, con las siguientes secciones:</p>
+<section id="reconocimiento-de-los-datos" class="level4" data-number="8.0.2.1">
+<h4 data-number="8.0.2.1" class="anchored" data-anchor-id="reconocimiento-de-los-datos"><span class="header-section-number">8.0.2.1</span> 1. <strong>Reconocimiento de los datos</strong></h4>
+<ul>
+<li><p>Descripción del estudio AI4FoodDB y del tipo de datos analizados.</p></li>
+<li><p>Identificación del número de individuos, variables y momentos de medición.</p></li>
+<li><p>Tabla resumen de variables seleccionadas (10 proteínas + 4 variables del dataset complementario): Unidades, valores mínimos, máximos y número de datos faltantes</p></li>
+</ul>
 </section>
-<section id="description-of-the-evaluation-components" class="level2" data-number="0.2">
-<h2 data-number="0.2" class="anchored" data-anchor-id="description-of-the-evaluation-components"><span class="header-section-number">0.2</span> Description of the Evaluation Components</h2>
-<section id="expositive-seminar-30" class="level3" data-number="0.2.1">
-<h3 data-number="0.2.1" class="anchored" data-anchor-id="expositive-seminar-30"><span class="header-section-number">0.2.1</span> 1. Expositive Seminar (30%)</h3>
+<section id="metodología-y-fuentes" class="level4" data-number="8.0.2.2">
+<h4 data-number="8.0.2.2" class="anchored" data-anchor-id="metodología-y-fuentes"><span class="header-section-number">8.0.2.2</span> 2. <strong>Metodología y fuentes</strong></h4>
 <ul>
-<li><strong>Format:</strong> Group presentation in pairs or groups of three.<br>
-</li>
-<li><strong>Objective:</strong> To present and discuss a specific topic related to experimental design, statistical modeling, or data analysis applied to nutrigenomics.<br>
-</li>
-<li><strong>Evaluation criteria:</strong> Clarity, scientific accuracy, statistical interpretation, and ability to engage in discussion.<br>
-</li>
-<li><strong>Date:</strong> <strong>December 4, 2025</strong> (final class session).<br>
-</li>
-<li><strong>Deliverables:</strong>
+<li>Explicación de cómo se tomaron los datos (según documentación AI4FoodDB).</li>
+</ul>
+</section>
+<section id="análisis-descriptivo-y-bivariado" class="level4" data-number="8.0.2.3">
+<h4 data-number="8.0.2.3" class="anchored" data-anchor-id="análisis-descriptivo-y-bivariado"><span class="header-section-number">8.0.2.3</span> 3. <strong>Análisis descriptivo y bivariado</strong></h4>
 <ul>
-<li>15-minute oral presentation.</li>
-<li>Accompanying Quarto or R Markdown document with code and figures (submitted through the GitHub repository).</li>
+<li><p>Dos <strong>gráficas bivariadas</strong> que exploren relaciones entre:</p>
+<ul>
+<li><p>(a) una proteína y una variable complementaria</p></li>
+<li><p>(b) dos proteínas o dos variables complementarias.</p></li>
 </ul></li>
+<li><p>Un <strong>corrplot</strong> entre las 14 variables, junto a un parrafo de análisis</p></li>
 </ul>
 </section>
-<section id="practices-25" class="level3" data-number="0.2.2">
-<h3 data-number="0.2.2" class="anchored" data-anchor-id="practices-25"><span class="header-section-number">0.2.2</span> 2. Practices (25%)</h3>
+<section id="tratamiento-de-medidas-repetidas" class="level4" data-number="8.0.2.4">
+<h4 data-number="8.0.2.4" class="anchored" data-anchor-id="tratamiento-de-medidas-repetidas"><span class="header-section-number">8.0.2.4</span> 4. <strong>Tratamiento de medidas repetidas</strong></h4>
 <ul>
-<li><strong>Format:</strong> Individual R exercises completed during the practical sessions (marked below as <em>Practices</em>).<br>
-</li>
-<li><strong>Objective:</strong> To apply the statistical techniques discussed in class using real or synthetic omics, clinical, and dietary datasets.<br>
-</li>
-<li><strong>Submission:</strong> Each student must upload the corresponding <code>.R</code> or <code>.qmd</code> file to their personal GitHub fork or send it through the course platform.</li>
+<li>Comparar estrategias:</li>
 </ul>
+<pre><code>-  a) analizar por separado los dos momentos de medición,
+
+-   b) calcular diferencias (Δ = post – pre).
+
+    Justificar la elección.</code></pre>
 </section>
-<section id="final-exam-45" class="level3" data-number="0.2.3">
-<h3 data-number="0.2.3" class="anchored" data-anchor-id="final-exam-45"><span class="header-section-number">0.2.3</span> 3. Final Exam (45%)</h3>
+<section id="análisis-de-componentes-principales-acp" class="level4" data-number="8.0.2.5">
+<h4 data-number="8.0.2.5" class="anchored" data-anchor-id="análisis-de-componentes-principales-acp"><span class="header-section-number">8.0.2.5</span> 5. <strong>Análisis de componentes principales (ACP)</strong></h4>
 <ul>
-<li><strong>Format:</strong> Individual written and computational test.<br>
-</li>
-<li><strong>Objective:</strong> To assess conceptual understanding and practical skills in the design and analysis of studies in nutrigenomics.<br>
-</li>
-<li><strong>Date:</strong> <strong>January 21, 2026</strong><br>
-</li>
-<li><strong>Recovery Exam:</strong> <strong>February 13, 2026</strong><br>
-</li>
-<li><strong>Minimum mark required for validation:</strong> 4 (out of 10).</li>
+<li><p>Realizar un ACP con las 14 variables.</p></li>
+<li><p>Interpretar los dos primeros componentes: ¿qué patrones o correlaciones destacan?</p></li>
+<li><p>Graficar el biplot e interpretar por grupos o por momento temporal.</p></li>
 </ul>
-<hr>
+</section>
+<section id="análisis-de-clustering" class="level4" data-number="8.0.2.6">
+<h4 data-number="8.0.2.6" class="anchored" data-anchor-id="análisis-de-clustering"><span class="header-section-number">8.0.2.6</span> 6. <strong>Análisis de clustering</strong></h4>
+<ul>
+<li><p>Aplicar <strong>k-means o clustering jerárquico</strong>.</p></li>
+<li><p>Justificar el número de clusters elegido.</p></li>
+</ul>
+<pre><code>Mostrar dendrograma o gráfico de dispersión por cluster.</code></pre>
+</section>
+<section id="conclusiones" class="level4" data-number="8.0.2.7">
+<h4 data-number="8.0.2.7" class="anchored" data-anchor-id="conclusiones"><span class="header-section-number">8.0.2.7</span> 7. <strong>Conclusiones</strong></h4>
+<ul>
+<li><p>Resumen interpretativo de los patrones hallados.</p></li>
+<li><p>Posibles hipótesis biológicas o de estilo de vida que se desprenden.</p></li>
+</ul>
 </section>
 </section>
-<section id="course-schedule" class="level2" data-number="0.3">
-<h2 data-number="0.3" class="anchored" data-anchor-id="course-schedule"><span class="header-section-number">0.3</span> Course Schedule</h2>
+<section id="actividad-de-revisión-13-de-noviembre" class="level3" data-number="8.0.3">
+<h3 data-number="8.0.3" class="anchored" data-anchor-id="actividad-de-revisión-13-de-noviembre"><span class="header-section-number">8.0.3</span> 🧾 <strong>Actividad de revisión — 13 de noviembre</strong></h3>
+<ul>
+<li><p>Revisión conjunta en clase del avance del <code>.qmd</code>.</p></li>
+<li><p>Revisión del código de lectura y depuración de datos.</p></li>
+<li><p>Discusión sobre el manejo de medidas repetidas y escalado de variables.</p></li>
+<li><p>Feedback individual del profesor.</p></li>
+</ul>
+</section>
+<section id="seminario-de-exposición-4-de-diciembre" class="level3" data-number="8.0.4">
+<h3 data-number="8.0.4" class="anchored" data-anchor-id="seminario-de-exposición-4-de-diciembre"><span class="header-section-number">8.0.4</span> 🎤 <strong>Seminario de exposición — 4 de diciembre</strong></h3>
+<p>Cada estudiante tendrá <strong>15 minutos</strong> para presentar:</p>
+<ol type="1">
+<li><p>Breve introducción del estudio y su subset de datos.</p></li>
+<li><p>Principales hallazgos (gráficas, ACP, clustering).</p></li>
+<li><p>Discusión biológica o interpretativa.</p></li>
+<li><p>Limitaciones del análisis.</p></li>
+</ol>
+</section>
+<section id="evaluación" class="level3" data-number="8.0.5">
+<h3 data-number="8.0.5" class="anchored" data-anchor-id="evaluación"><span class="header-section-number">8.0.5</span> 🧮 <strong>Evaluación</strong></h3>
 <table class="caption-top table">
-<colgroup>
-<col style="width: 21%">
-<col style="width: 24%">
-<col style="width: 27%">
-<col style="width: 26%">
-</colgroup>
 <thead>
 <tr class="header">
-<th><strong>Session</strong></th>
-<th><strong>Date</strong></th>
-<th><strong>Type</strong></th>
-<th><strong>Description</strong></th>
+<th>Criterio</th>
+<th>Ponderación</th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
-<td>01</td>
-<td>21/10/2025</td>
-<td>Lecture</td>
-<td>Introduction to Nutrigenomics and Experimental Design. Installation of R and Rstudio</td>
+<td>Limpieza y preparación de datos</td>
+<td>15%</td>
 </tr>
 <tr class="even">
-<td>02</td>
-<td>23/10/2025</td>
-<td>Lecture</td>
-<td>Study Designs: Observational and Experimental</td>
+<td>Claridad y justificación metodológica</td>
+<td>20%</td>
 </tr>
 <tr class="odd">
-<td>03</td>
-<td>27/10/2025</td>
-<td>Lecture</td>
-<td>Measures of Association - RR - OR</td>
+<td>Gráficas e interpretación bivariada</td>
+<td>15%</td>
 </tr>
 <tr class="even">
-<td>04</td>
-<td>28/10/2025</td>
-<td>Practice 1</td>
-<td>Measures of Association - RR - OR</td>
+<td>ACP (ejecución e interpretación)</td>
+<td>20%</td>
 </tr>
 <tr class="odd">
-<td>05</td>
-<td>30/10/2025</td>
-<td>Lecture</td>
-<td>Data Management and Cleaning</td>
+<td>Clustering y análisis interpretativo</td>
+<td>15%</td>
 </tr>
 <tr class="even">
-<td>06</td>
-<td>03/11/2025</td>
-<td>Lecture</td>
-<td>Correlation and Bivariate Association</td>
-</tr>
-<tr class="odd">
-<td>07</td>
-<td>04/11/2025</td>
-<td>Practice 2</td>
-<td>Exploratory Data Analysis in R</td>
-</tr>
-<tr class="even">
-<td>08</td>
-<td>06/11/2025</td>
-<td>Lecture</td>
-<td>Multivariate Descriptive Analysis</td>
-</tr>
-<tr class="odd">
-<td>09</td>
-<td>10/11/2025</td>
-<td>Lecture</td>
-<td>Principal Components Analysis</td>
-</tr>
-<tr class="even">
-<td>10</td>
-<td>11/11/2025</td>
-<td>Lecture</td>
-<td>Clustering Analysis</td>
-</tr>
-<tr class="odd">
-<td>11</td>
-<td>13/11/2025</td>
-<td>Practice 3</td>
-<td>Applied Case Study in Nutrigenomics in R</td>
-</tr>
-<tr class="even">
-<td>12</td>
-<td>01/12/2025</td>
-<td>Lecture</td>
-<td>Introduction to Systematic Reviews</td>
-</tr>
-<tr class="odd">
-<td>13</td>
-<td>02/12/2025</td>
-<td>Lecture</td>
-<td>Synthesis and Preparation for Expositive Seminar</td>
-</tr>
-<tr class="even">
-<td>14</td>
-<td>04/12/2025</td>
-<td>Seminar</td>
-<td><strong>Final Expositive Seminar (Group Presentation)</strong></td>
+<td>Redacción y presentación final</td>
+<td>15%</td>
 </tr>
 </tbody>
 </table>
-<hr>
 </section>
-<section id="additional-notes" class="level2" data-number="0.4">
-<h2 data-number="0.4" class="anchored" data-anchor-id="additional-notes"><span class="header-section-number">0.4</span> Additional Notes</h2>
-<ul>
-<li>Attendance to all lectures and practices is <strong>strongly recommended</strong>.</li>
-<li>All R scripts and datasets will be available in the GitHub repository under <code>/scripts</code> and <code>/data</code>.</li>
-<li>Students are encouraged to collaborate during practice sessions but must submit <strong>individual code</strong> unless otherwise specified.</li>
-<li>The <strong>seminar</strong> is designed to promote teamwork and critical discussion of applied methods in nutrigenomics.</li>
-</ul>
-<hr>
+<section id="reconocimiento-de-los-datos-1" class="level1" data-number="9">
+<h1 data-number="9"><span class="header-section-number">9</span> 1. Reconocimiento de los datos</h1>
+<p>Describa brevemente el estudio <strong>AI4FoodDB</strong> y el tipo de datos analizados.<br>
+Cargue el dataset asignado (por ejemplo DS4 + DS1, DS2, DS7 o DS8 según su asignación).</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Ejemplo de lectura (ajuste ruta y variables según corresponda)</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="co"># DS4 &lt;- read.csv("ruta/DS4_Biomarkers.csv")</span></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="co"># DS1 &lt;- read.csv("ruta/DS1_Anthropometric.csv")</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Resuma el número de individuos, variables y momentos de medición.</p>
+</section>
+<section id="metodología-y-fuentes-1" class="level1" data-number="10">
+<h1 data-number="10"><span class="header-section-number">10</span> 2. Metodología y fuentes</h1>
+<p>Explique cómo se tomaron los datos según la documentación del estudio (instrumentos, duración, tipo de variable). Justifique la selección de sus variables (10 proteínas + 4 del dataset complementario).</p>
+</section>
+<section id="análisis-descriptivo-y-bivariado-1" class="level1" data-number="11">
+<h1 data-number="11"><span class="header-section-number">11</span> 3. Análisis descriptivo y bivariado</h1>
+<p>Calcule estadísticas descriptivas (media, sd, min, max) y realice <strong>dos gráficas bivariadas</strong>.<br>
+Una entre una proteína y una variable clínica, y otra entre dos proteínas o dos variables de estilo de vida.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Ejemplo</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="co"># summary(DS4[, c("ProteinA", "ProteinB")])</span></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="co"># plot(DS4$ProteinA, DS1$BMI)</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Incluya un <strong>corrplot</strong> entre las 14 variables seleccionadas.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># library(corrplot)</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="co"># corrplot(cor(datos_combinados, use="pairwise.complete.obs"), method="color")</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="tratamiento-de-medidas-repetidas-1" class="level1" data-number="12">
+<h1 data-number="12"><span class="header-section-number">12</span> 4. Tratamiento de medidas repetidas</h1>
+<p>Describa cómo maneja las medidas repetidas (dos momentos por individuo): - Analizar por separado cada momento, o - Calcular diferencias (Δ = post – pre).</p>
+<p>Justifique su decisión y muestre un ejemplo de cálculo.</p>
+</section>
+<section id="análisis-de-componentes-principales-acp-1" class="level1" data-number="13">
+<h1 data-number="13"><span class="header-section-number">13</span> 5. Análisis de Componentes Principales (ACP)</h1>
+<p>Realice un ACP con las 14 variables.<br>
+Interprete los dos primeros componentes y grafique el biplot.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co"># library(FactoMineR)</span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="co"># library(factoextra)</span></span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a><span class="co"># pca &lt;- PCA(datos_combinados, scale.unit = TRUE, graph = FALSE)</span></span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a><span class="co"># fviz_pca_biplot(pca, repel = TRUE)</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="análisis-de-clustering-1" class="level1" data-number="14">
+<h1 data-number="14"><span class="header-section-number">14</span> 6. Análisis de Clustering</h1>
+<p>Aplique <strong>k-means</strong> o <strong>clustering jerárquico</strong>, justifique el número de clusters y muestre el gráfico correspondiente.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co"># set.seed(123)</span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="co"># km &lt;- kmeans(scale(datos_combinados), centers = 3)</span></span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a><span class="co"># fviz_cluster(km, data = scale(datos_combinados))</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="conclusiones-1" class="level1" data-number="15">
+<h1 data-number="15"><span class="header-section-number">15</span> 7. Conclusiones</h1>
+<p>Redacte un resumen interpretativo de los patrones encontrados y posibles implicaciones biológicas o de estilo de vida.</p>
+</section>
+<section id="referencias" class="level1" data-number="16">
+<h1 data-number="16"><span class="header-section-number">16</span> 8. Referencias</h1>
 <blockquote class="blockquote">
-<p><em>“Design is not just about data collection; it is about asking questions the data can truly answer.”</em><br>
-— Course motto</p>
+<p>Romero-Tapiador, S., et al.&nbsp;(2023). <em>AI4FoodDB: A Database for Personalized e-Health Nutrition and Lifestyle through Wearable Devices and Artificial Intelligence.</em> Database, baad049.<br>
+Lacruz-Pleguezuelos, B., et al.&nbsp;(2025). <em>AI4Food, a feasibility study for the implementation of automated devices in the nutritional advice and follow up within a weight loss intervention.</em> Clinical Nutrition, 48, 80–89.</p>
 </blockquote>
 
 
@@ -878,10 +932,13 @@ Students will learn to manage, visualize, and analyze omics, clinical, and dieta
   </script>
 <nav class="page-navigation column-body">
   <div class="nav-page nav-page-previous">
+      <a href="./07_Descriptiva2.html" class="pagination-link" aria-label="Two or More Quantitative">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Two or More Quantitative</span></span>
+      </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./01_TypesStudies.html" class="pagination-link" aria-label="Overview">
-        <span class="nav-page-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Overview</span></span> <i class="bi bi-arrow-right-short"></i>
+      <a href="./referencias.html" class="pagination-link" aria-label="References">
+        <span class="nav-page-text">References</span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>
@@ -893,7 +950,7 @@ Students will learn to manage, visualize, and analyze omics, clinical, and dieta
 </div>   
     <div class="nav-footer-center">
       &nbsp;
-    <div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/Cruzalirio/Nutrigenomics/edit/main/index.qmd" class="toc-action"><i class="bi bi-github"></i>Editar esta página</a></li><li><a href="https://github.com/Cruzalirio/Nutrigenomics/issues/new" class="toc-action"><i class="bi empty"></i>Informar de un problema</a></li></ul></div></div>
+    <div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/Cruzalirio/Nutrigenomics/edit/main/08_Practica_AI4FoodDB.qmd" class="toc-action"><i class="bi bi-github"></i>Editar esta página</a></li><li><a href="https://github.com/Cruzalirio/Nutrigenomics/issues/new" class="toc-action"><i class="bi empty"></i>Informar de un problema</a></li></ul></div></div>
     <div class="nav-footer-right">
 <p>This book has been created with <a href="https://quarto.org/">Quarto</a>.</p>
 </div>
