@@ -130,7 +130,7 @@ GGally::ggpairs(
 ```{r setup, message=FALSE, warning=FALSE}
 library(tidyverse)
 library(corrplot)
-
+set.seed(2000081)
 # Example loading (adjust to your local path)
 # data <- read.csv("diabetes_BRFSS2015.csv")
 
@@ -148,8 +148,9 @@ Create a boxplot comparing a biomedical variable by a categorical variable (e.g.
 Comment on whether the distributions differ between groups and what that might imply biologically.
 
 ```{r}
-ggplot(sample_data, aes(x = factor(Veggies), y = BMI, fill = factor(Veggies))) +
+ggplot(sample_data, aes(x = factor(Veggies), y = Inflammatory_Index, fill = factor(Smoker))) +
 geom_boxplot() +
+  facet_wrap(.~factor(Diabetes_012))+
 labs(x = "Vegetable Consumption (0=No, 1=Yes)",
 y = "Glucose Level (mg/dL)",
 title = "Boxplot of Glucose Level by Vegetable Consumption") +
