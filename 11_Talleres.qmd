@@ -1,0 +1,285 @@
+# Principal component Analysis
+
+## Introduction
+
+Principal Component Analysis (PCA) is a multivariate statistical method designed to transform a set of possibly correlated variables into a new set of orthogonal (uncorrelated) variables called principal components. Each principal component represents a linear combination of the original variables and is constructed in such a way that it captures as much of the total variance in the data as possible. The first principal component accounts for the maximum amount of variability, the second captures the next highest amount under the constraint of being orthogonal to the first, and so on. 
+
+The primary purpose of PCA is dimensionality reduction: by retaining only the first few components, one can approximate the original data while minimizing information loss. This facilitates visualization, pattern recognition, and noise reduction, especially in high-dimensional datasets where interpretation is otherwise difficult. The method assumes that the most meaningful structure of the data lies in the directions of greatest variance, thus replacing the original coordinate system with one defined by these new axes of variation.
+
+Mathematically, PCA can be obtained through the eigendecomposition of the covariance or correlation matrix of the variables, or equivalently through singular value decomposition of the data matrix. The resulting eigenvalues indicate the amount of variance explained by each component, and the corresponding eigenvectors define the loadings that relate components to the original variables. Interpreting PCA typically involves analyzing the loadings to understand which variables contribute most to each component, and the scores to explore how observations are positioned within the new reduced space.
+
+In applied research, PCA serves as both an exploratory and a preprocessing tool. It reveals latent structures, mitigates multicollinearity, and prepares data for further modeling. As Jolliffe (2002) notes, PCA is not only a method of reduction but also a lens through which the essential geometry of multivariate data becomes interpretable.
+
+Reference:  
+Jolliffe, I. T. (2002). *Principal Component Analysis* (2nd ed.). Springer Series in Statistics.
+
+
+## Example
+
+This document performs a Principal Component Analysis (PCA) on the combined data from the `anthropometrics.csv` and `vital_signs.csv` files (only `visit == 3`), as requested. It includes:
+
+1. Correlation matrix.
+
+2. Standardization of variables (explanation and effect).
+
+3. PCA calculation and extraction of eigenvalues.
+
+4. Scree plot.
+
+5. Correlation circle (variables on the plane of the first two components).
+
+6. Biplot (individuals and variables).
+
+7. Correlation plots between each variable and the principal components.
+
+The tables with the eigenvalues and the proportion of variance explained are shown at the end.
+
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE, warning = FALSE, message = FALSE)
+library(tidyverse)
+library(factoextra)
+library(FactoMineR)
+library(corrplot)
+library(knitr)
+library(VIM)   
+library(ComplexHeatmap)
+library(circlize)
+```
+
+## 0. Data loading and creation of the `Total` object
+
+```{r load-data}
+anthropometrics <- read_csv("C:/Users/UIB/Downloads/AI4FoodDB/DS1_AnthropometricMeasurements/anthropometrics.csv")
+lifestyle <- read_csv("C:/Users/UIB/Downloads/AI4FoodDB/DS2_LifestyleHealth/lifestyle.csv")
+biomarkers <- read_csv("C:/Users/UIB/Downloads/AI4FoodDB/DS4_Biomarkers/biomarkers.csv")
+
+
+Total <- anthropometrics %>%
+  full_join(biomarkers, by = c("id", "visit")) %>%
+  full_join(lifestyle, by = c("id")) 
+
+```
+
+
+```{r}
+# 1️⃣ Función para limpiar valores "<x"
+clean_numeric <- function(x) {
+  x <- trimws(x)  # quitar espacios
+  x <- ifelse(grepl("^<", x),
+              as.numeric(sub("<", "", x)) / 2,  # reemplazar <x por x/2
+              x)
+  suppressWarnings(as.numeric(x))  # convertir a numérico (NA si no se puede)
+}
+
+# 3️⃣ Detectar variables que deberían ser numéricas pero están como character
+# 4️⃣ Excluir las columnas de identificación
+# 3️⃣ Detectar columnas de texto que contienen números con "<"
+char_vars <- names(Total)[sapply(Total, is.character)]
+
+```
+
+```{r}
+char_vars <- setdiff(char_vars, c("id", "visit", "defecation", "alcohol",
+                                  "exercise", "categorical_score"))
+
+# 5️⃣ Convertir solo las columnas problemáticas
+Total <- Total %>%
+  mutate(across(all_of(char_vars), clean_numeric))
+
+# 5️⃣ Promediar por individuo y visita
+Total_mean <- Total %>%
+  group_by(id) %>%
+  summarise(across(where(is.numeric), ~ mean(.x, na.rm = TRUE)), .groups = "drop")
+```
+
+
+```{r, message=FALSE}
+# 1️⃣ Separar variables de identificación
+id_vars <- Total_mean %>% select(id, visit)
+num_vars <- Total_mean %>% select(-id, -visit, -period, 
+                                  -cigarettes_day, -cigars_day, -pipe_day,
+                                  -others_psychological)
+
+# 2️⃣ Aplicar imputación por kNN (por defecto k = 5)
+set.seed(123)
+num_imputed <- VIM::kNN(num_vars, k = 5, imp_var = FALSE)
+
+# 3️⃣ Reconstruir el dataset completo
+Total_imputed <- bind_cols(id_vars, num_imputed)
+
+# 4️⃣ Revisar resultado
+#summary(Total_imputed)
+```
+
+
+```{r}
+# Conservamos id por separado y preparamos la matriz para PCA
+ids <- Total_imputed$id
+Total_pca <- num_imputed
+
+# Comprobar dimensiones
+cat("Dimensiones (filas, columnas):", dim(Total_pca)[1], ",", dim(Total_pca)[2], "\n")
+```
+
+
+## 1. Correlation matrix
+
+```{r correlacion, echo=TRUE}
+# Matriz de correlación (usar solo variables numéricas)
+num_vars <- Total_pca %>% select(where(is.numeric))
+cor_mat <- cor(num_vars, use = "pairwise.complete.obs")
+
+# Mostrar la matriz (tabla reducida si es grande)
+kable(round(cor_mat, 3), caption = "Matriz de correlaciones (solo numéricas)")
+
+```
+
+```{r}
+corrplot(cor_mat,
+         method = "color",
+         tl.pos = "n",    # sin etiquetas
+         cl.cex = 0.7,    # tamaño de escala de color
+         col = colorRampPalette(c("blue", "white", "red"))(200))
+```
+
+
+```{r}
+corrplot(cor_mat,
+         method = "color",
+         type = "full",
+         order = "hclust",  # agrupa por similitud
+         addrect = 1,       # dibuja 4 grupos, puedes cambiarlo
+         tl.pos = "n",
+         col = colorRampPalette(c("blue", "white", "red"))(200))
+```
+
+```{r}
+# Matriz de correlación (usar solo variables numéricas)
+num_vars <- Total %>% select(where(is.numeric))
+cor_mat <- cor(num_vars, use = "pairwise.complete.obs")
+cor_mat[is.na(cor_mat)] = 0
+corrplot(cor_mat,
+         method = "color",
+         type = "full",
+         order = "hclust",  # agrupa por similitud
+         addrect = 1,       # dibuja 4 grupos, puedes cambiarlo
+         tl.pos = "n",
+         col = colorRampPalette(c("blue", "white", "red"))(200))
+```
+
+
+
+```{r}
+Heatmap(cor_mat,
+        name = "Correlation",
+        col = colorRamp2(c(-1, 0, 1), c("blue", "white", "red")),
+        show_row_names = FALSE,
+        show_column_names = FALSE,
+        cluster_rows = TRUE,
+        cluster_columns = TRUE)
+```
+
+
+```{r}
+
+varsBio <- names(biomarkers)[1:5][names(biomarkers)[1:5]%in% colnames(cor_mat)]
+
+
+cor_with_biomarkers <- cor_mat[,varsBio]
+cor_strength_to_biomarkers <- data.frame(
+  variable = rownames(cor_with_biomarkers),
+  mean_abs_corr = apply(abs(cor_with_biomarkers), 1, mean, na.rm = TRUE)
+)
+
+top_related <- cor_strength_to_biomarkers %>%
+  filter(!variable %in% varsBio) %>%
+  arrange(desc(mean_abs_corr)) %>%
+  slice(1:10) %>%
+  pull(variable)
+
+top_related
+
+```
+```{r}
+selected_vars <- c(varsBio, top_related)
+corrplot(cor_mat[selected_vars, selected_vars],
+         method = "color",
+         order = "hclust",
+         addrect = 2,
+         tl.cex = 0.7,
+         col = colorRampPalette(c("blue", "white", "red"))(200))
+```
+
+
+**Quick Explanation:** The correlation matrix shows the linear relationship between pairs of variables (-1 to 1). In PCA, this helps to identify redundancies and strongly correlated variables that influence the components.
+
+## 2. Data Standardization
+
+
+```{r estandarizacion}
+# En PCA se suele estandarizar (media 0, sd 1) cuando las variables están en distintas escalas
+scaled_data <- scale(num_vars[selected_vars])
+
+```
+
+**What standardization does and why:**
+
+Standardizing (subtracting the mean and dividing by the standard deviation) places all variables on the same scale. Without standardization, variables with large units (e.g., weight in grams) will dominate the principal components simply because of their scale. With `scale()`, each variable contributes according to its correlation, not its magnitude.
+
+## 3. PCA and Eigenvalue Extraction
+
+```{r pca-prcomp}
+# Usaremos prcomp con centered = TRUE y scale. = FALSE porque ya estandarizamos
+pca_res <- prcomp(scaled_data, center = TRUE, scale. = FALSE)
+
+# Autovalores: para prcomp, las sdev^2 son los eigenvalues
+eigenvalues <- (pca_res$sdev)^2
+var_explained <- eigenvalues / sum(eigenvalues)
+
+eigen_table <- tibble(PC = paste0("PC", 1:length(eigenvalues)),
+                      Eigenvalue = round(eigenvalues, 4),
+                      Variance = round(var_explained, 4),
+                      `Cumulative variance` = round(cumsum(var_explained), 4))
+
+kable(eigen_table, caption = "Valores propios (autovalues) y varianza explicada")
+```
+Eigenvalues indicate the variance captured by each component. A rule of thumb (Kaiser) suggests keeping components with eigenvalues greater than 1 when performing PCA on the correlation matrix.
+
+## 4. Scree plot
+
+```{r scree-plot}
+fviz_screeplot(pca_res, addlabels = TRUE, ncp=20)
+```
+
+**Interpretation:** The graph shows the variance (in %) explained by each component. Look for the "elbow" or use the cumulative variance to decide how many components to retain.
+
+## 5. Circle of Correlations (Variables)
+
+```{r correlation-circle}
+# Usando factoextra para el círculo de correlaciones
+fviz_pca_var(pca_res,
+             col.var = "contrib", # color por contribución
+             gradient.cols = c("blue", "yellow", "red"),
+             repel = TRUE,
+             labelsize = 4)
+```
+
+**What it shows:** Each vector represents the correlation between the original variable and its components. Long vectors and those close to the perimeter have a high correlation with the components; vectors close to the X or Y axis are primarily correlated with PC1 or PC2.
+
+## 6. Biplot of variables and individuals
+
+```{r biplot}
+# Biplot con factoextra
+fviz_pca_biplot(pca_res, repel = TRUE, label = "var", addEllipses = FALSE)
+
+# Si quieres ver individuos etiquetados por id
+ind_coords <- as.data.frame(pca_res$x) 
+knitr::kable(head(ind_coords), caption = "Coordenadas de los primeros individuos en el espacio de PC")
+```
+## 7. Correlation between variables and principal components
+
+```{r var-pc-correlations}
+var <- get_pca_var(pca_res)
+corrplot(var$cos2[,1:11], is.corr=FALSE)
+```
