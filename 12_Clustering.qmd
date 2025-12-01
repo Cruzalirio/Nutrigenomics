@@ -1,38 +1,54 @@
-## Principal component Analysis (joint some databases)
+# Introduction to Clustering
 
-Principal Component Analysis (PCA) is a multivariate statistical method designed to transform a set of possibly correlated variables into a new set of orthogonal (uncorrelated) variables called principal components. Each principal component represents a linear combination of the original variables and is constructed in such a way that it captures as much of the total variance in the data as possible. The first principal component accounts for the maximum amount of variability, the second captures the next highest amount under the constraint of being orthogonal to the first, and so on. 
+Clustering is a data analysis technique whose objective is to group similar observations into clusters, such that:
 
-The primary purpose of PCA is dimensionality reduction: by retaining only the first few components, one can approximate the original data while minimizing information loss. This facilitates visualization, pattern recognition, and noise reduction, especially in high-dimensional datasets where interpretation is otherwise difficult. The method assumes that the most meaningful structure of the data lies in the directions of greatest variance, thus replacing the original coordinate system with one defined by these new axes of variation.
+- Individuals within the same group are as similar as possible (high internal homogeneity).
 
-Mathematically, PCA can be obtained through the eigendecomposition of the covariance or correlation matrix of the variables, or equivalently through singular value decomposition of the data matrix. The resulting eigenvalues indicate the amount of variance explained by each component, and the corresponding eigenvectors define the loadings that relate components to the original variables. Interpreting PCA typically involves analyzing the loadings to understand which variables contribute most to each component, and the scores to explore how observations are positioned within the new reduced space.
+- Individuals from different groups are as different as possible (high external heterogeneity).
 
-In applied research, PCA serves as both an exploratory and a preprocessing tool. It reveals latent structures, mitigates multicollinearity, and prepares data for further modeling. As Jolliffe (2002) notes, PCA is not only a method of reduction but also a lens through which the essential geometry of multivariate data becomes interpretable.
+In other words, clustering seeks to discover hidden structures in the data without the need for prior labeling (unsupervised learning).
 
-Reference:  
-Jolliffe, I. T. (2002). *Principal Component Analysis* (2nd ed.). Springer Series in Statistics.
+## Common Types of Clustering
 
+1. Hierarchical Clustering: constructs a hierarchy of groups represented by a dendrogram. It can be:
 
-## Example
+- Agglomerative: each observation starts in its own cluster and they are progressively joined together.
 
-This document performs a Principal Component Analysis (PCA) on the combined data from the `anthropometrics.csv` and `vital_signs.csv` files (only `visit == 3`), as requested. It includes:
+- Divisive: it starts with a single cluster that is then divided.
 
-1. Correlation matrix.
+2. **Partition-based clustering**: for example, K-means, which divides the data into a fixed number of clusters, optimizing the internal distance.
 
-2. Standardization of variables (explanation and effect).
+## Distance between individuals
 
-3. PCA calculation and extraction of eigenvalues.
+The **distance between individuals** is a numerical measure of how different two observations are.
 
-4. Scree plot.
+The most common are:
 
-5. Correlation circle (variables on the plane of the first two components).
+- Euclidean distance:
+\[
+d(x_i, x_j) = \sqrt{\sum_{k=1}^p (x_{ik} - x_{jk})^2}
+\]
 
-6. Biplot (individuals and variables).
+- Manhattan distance:
 
-7. Correlation plots between each variable and the principal components.
+\[
+d(x_i, x_j) = \sum_{k=1}^p |x_{ik} - x_{jk}|
+\]
 
-The tables with the eigenvalues and the proportion of variance explained are shown at the end.
+Where \(x_i, x_j\) are vectors of the variables of individuals \(i\) and \(j\).
 
-> **Note:** Adjust the file paths if your project uses a different location. The code here assumes that the CSV files are in `C:/Users/UIB/Downloads/AI4FoodDB/...` as in your example.
+## Distance between clusters
+
+In hierarchical clustering, the **distance between clusters** is defined according to a **linkage method**, such as:
+
+- **Single linkage**: minimum distance between elements of both clusters.
+
+- **Complete linkage**: maximum distance between elements of both clusters.
+
+- **Average linkage**: average of all pairwise distances.
+
+- **Ward**: minimizes the total variance within each cluster.
+
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE, warning = FALSE, message = FALSE)
@@ -44,6 +60,7 @@ library(knitr)
 library(VIM)   
 library(ComplexHeatmap)
 library(circlize)
+library(cluster)
 ```
 
 ## 0. Data loading and creation of the `Total` object
@@ -66,20 +83,6 @@ Total <- anthropometrics %>%
 
 ```
 
-Vamos a tomar de los porcentajes, el maximo
-Y del BMI el promedio
-
-```{r}
-Total_resum = Total %>% 
-  group_by(id) %>% 
-  summarise(fat_mass_perc = max(fat_mass_perc, na.rm=TRUE),
-            bmi_kg_m2 = mean(bmi_kg_m2, na.rm=TRUE),
-            baso_10e3_ul = mean(baso_10e3_ul, na.rm=TRUE),
-            meancurrent_weight_kg = mean(current_weight_kg, na.rm=TRUE),
-            sdweight = sd(current_weight_kg, na.rm=TRUE))
-```
-
-
 
 ```{r}
 # 1️⃣ Función para limpiar valores "<x"
@@ -95,6 +98,7 @@ clean_numeric <- function(x) {
 # 4️⃣ Excluir las columnas de identificación
 # 3️⃣ Detectar columnas de texto que contienen números con "<"
 char_vars <- names(Total)[sapply(Total, is.character)]
+char_vars
 ```
 
 ```{r}
@@ -112,7 +116,7 @@ Total_mean <- Total %>%
 ```
 
 
-```{r, message=FALSE}
+```{r, output=FALSE}
 # 1️⃣ Separar variables de identificación
 id_vars <- Total_mean %>% select(id, visit)
 num_vars <- Total_mean %>% select(-id, -visit, -period, 
@@ -132,172 +136,61 @@ Total_imputed <- bind_cols(id_vars, num_imputed)
 
 
 ```{r}
-# Conservamos id por separado y preparamos la matriz para PCA
-ids <- Total$id
-Total_pca <- num_imputed
-
-# Comprobar dimensiones
-cat("Dimensiones (filas, columnas):", dim(Total_pca)[1], ",", dim(Total_pca)[2], "\n")
+num_scaled <- scale(num_imputed)
+dim(num_scaled)
 ```
 
 
-## 1. Correlation matrix
+## 1. Distance matrix
+
+
+We calculate Euclidean distances between individuals, which quantify how far apart they are in multidimensional space.
+
 
 ```{r correlacion, echo=TRUE}
-# Matriz de correlación (usar solo variables numéricas)
-num_vars <- Total_pca %>% select(where(is.numeric))
-cor_mat <- cor(num_vars, use = "pairwise.complete.obs")
+dist_matrix <- as.matrix(dist(num_scaled, method = "euclidean"))
 
-# Mostrar la matriz (tabla reducida si es grande)
-kable(round(cor_mat, 3), caption = "Matriz de correlaciones (solo numéricas)")
-
-```
-
-```{r}
-corrplot(cor_mat,
-         method = "color",
-         tl.pos = "n",    # sin etiquetas
-         cl.cex = 0.7,    # tamaño de escala de color
-         col = colorRampPalette(c("blue", "white", "red"))(200))
-```
-
-
-```{r}
-corrplot(cor_mat,
-         method = "color",
-         type = "full",
-         order = "hclust",  # agrupa por similitud
-         addrect = 1,       # dibuja 4 grupos, puedes cambiarlo
-         tl.pos = "n",
-         col = colorRampPalette(c("blue", "white", "red"))(200))
-```
-
-```{r}
-# Matriz de correlación (usar solo variables numéricas)
-num_vars <- Total %>% select(where(is.numeric))
-cor_mat <- cor(num_vars, use = "pairwise.complete.obs")
-cor_mat[is.na(cor_mat)] = 0
-corrplot(cor_mat,
-         method = "color",
-         type = "full",
-         order = "hclust",  # agrupa por similitud
-         addrect = 1,       # dibuja 4 grupos, puedes cambiarlo
-         tl.pos = "n",
-         col = colorRampPalette(c("blue", "white", "red"))(200))
-```
-
-
-
-```{r}
-Heatmap(cor_mat,
-        name = "Correlation",
-        col = colorRamp2(c(-1, 0, 1), c("blue", "white", "red")),
+# Heatmap de las distancias
+Heatmap(dist_matrix,
+        name = "Distance",
         show_row_names = FALSE,
-        show_column_names = FALSE,
+        show_column_names = TRUE,
         cluster_rows = TRUE,
-        cluster_columns = TRUE)
+        cluster_columns = TRUE,
+        column_names_gp = gpar(fontsize = 8),
+        col = colorRamp2(c(min(dist_matrix), mean(dist_matrix), max(dist_matrix)), 
+                         c("blue", "white", "red")),
+        heatmap_legend_param = list(title = "Distance"))
+
 ```
 
+## Dendrograma
+
+hclust performs hierarchical clustering, merging individuals step by step according to Ward's criterion, which minimizes the total within-cluster variance.
+
+The dendrogram visualizes the merging process: the height of each merge indicates the distance between clusters.
 
 ```{r}
-
-varsBio <- names(biomarkers)[1:5][names(biomarkers)[1:5]%in% colnames(cor_mat)]
-
-
-cor_with_biomarkers <- cor_mat[,varsBio]
-cor_strength_to_biomarkers <- data.frame(
-  variable = rownames(cor_with_biomarkers),
-  mean_abs_corr = apply(abs(cor_with_biomarkers), 1, mean, na.rm = TRUE)
-)
-
-top_related <- cor_strength_to_biomarkers %>%
-  filter(!variable %in% varsBio) %>%
-  arrange(desc(mean_abs_corr)) %>%
-  slice(1:15) %>%
-  pull(variable)
-
-top_related
-
+dist_matrix = dist(num_scaled, method = "euclidean")
+hc <- hclust(dist_matrix, method = "ward.D2")
+plot(hc, labels = FALSE, hang = -1, main = "Dendrograma jerárquico (Ward.D2)")
 ```
 ```{r}
-selected_vars <- c(varsBio, top_related)
-corrplot(cor_mat[selected_vars, selected_vars],
-         method = "color",
-         order = "hclust",
-         addrect = 2,
-         tl.cex = 0.7,
-         col = colorRampPalette(c("blue", "white", "red"))(200))
+k <- 3
+clusters <- cutree(hc, k = k)
+table(clusters)
+```
+```{r}
+plot(hc, labels = FALSE, hang = -1, main = "Dendrograma con rectángulos (k=3)")
+rect.hclust(hc, k = k, border = "red")
+```
+```{r}
+sil <- silhouette(clusters, dist_matrix)
+mean_sil <- mean(sil[, 3])
+cat("Silhouette promedio (k=", k, "): ", round(mean_sil, 4), "\n", sep="")
 ```
 
-
-**Quick Explanation:** The correlation matrix shows the linear relationship between pairs of variables (-1 to 1). In PCA, this helps to identify redundancies and strongly correlated variables that influence the components.
-
-## 2. Data Standardization
-
-
-```{r estandarizacion}
-# En PCA se suele estandarizar (media 0, sd 1) cuando las variables están en distintas escalas
-scaled_data <- scale(Total_pca[names(Total_pca)%in%selected_vars])
-
+```{r}
+plot(sil, main = paste0("Silhouette (k=", k, ")"))
 ```
 
-**What standardization does and why:**
-
-Standardizing (subtracting the mean and dividing by the standard deviation) places all variables on the same scale. Without standardization, variables with large units (e.g., weight in grams) will dominate the principal components simply because of their scale. With `scale()`, each variable contributes according to its correlation, not its magnitude.
-
-## 3. PCA and Eigenvalue Extraction
-
-```{r pca-prcomp}
-# Usaremos prcomp con centered = TRUE y scale. = FALSE porque ya estandarizamos
-pca_res <- prcomp(scaled_data, center = TRUE, scale. = FALSE)
-
-# Autovalores: para prcomp, las sdev^2 son los eigenvalues
-eigenvalues <- (pca_res$sdev)^2
-var_explained <- eigenvalues / sum(eigenvalues)
-
-eigen_table <- tibble(PC = paste0("PC", 1:length(eigenvalues)),
-                      Eigenvalue = round(eigenvalues, 4),
-                      Variance = round(var_explained, 4),
-                      `Cumulative variance` = round(cumsum(var_explained), 4))
-
-kable(eigen_table, caption = "Valores propios (autovalues) y varianza explicada")
-```
-Eigenvalues indicate the variance captured by each component. A rule of thumb (Kaiser) suggests keeping components with eigenvalues greater than 1 when performing PCA on the correlation matrix.
-
-## 4. Scree plot
-
-```{r scree-plot}
-fviz_screeplot(pca_res, addlabels = TRUE, ncp=20)
-```
-
-**Interpretation:** The graph shows the variance (in %) explained by each component. Look for the "elbow" or use the cumulative variance to decide how many components to retain.
-
-## 5. Circle of Correlations (Variables)
-
-```{r correlation-circle}
-# Usando factoextra para el círculo de correlaciones
-fviz_pca_var(pca_res,
-             col.var = "contrib", # color por contribución
-             gradient.cols = c("blue", "yellow", "red"),
-             repel = TRUE,
-             labelsize = 4)
-```
-
-**What it shows:** Each vector represents the correlation between the original variable and its components. Long vectors and those close to the perimeter have a high correlation with the components; vectors close to the X or Y axis are primarily correlated with PC1 or PC2.
-
-## 6. Biplot of variables and individuals
-
-```{r biplot}
-# Biplot con factoextra
-fviz_pca_biplot(pca_res, repel = TRUE, label = "var", addEllipses = FALSE)
-
-# Si quieres ver individuos etiquetados por id
-ind_coords <- as.data.frame(pca_res$x) 
-knitr::kable(head(ind_coords), caption = "Coordenadas de los primeros individuos en el espacio de PC")
-```
-## 7. Correlation between variables and principal components
-
-```{r var-pc-correlations}
-var <- get_pca_var(pca_res)
-corrplot(var$cos2[,1:11], is.corr=FALSE)
-```

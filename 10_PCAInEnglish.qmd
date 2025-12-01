@@ -112,7 +112,7 @@ Total_mean <- Total %>%
 ```
 
 
-```{r, message=FALSE}
+```{r, output=FALSE}
 # 1️⃣ Separar variables de identificación
 id_vars <- Total_mean %>% select(id, visit)
 num_vars <- Total_mean %>% select(-id, -visit, -period, 

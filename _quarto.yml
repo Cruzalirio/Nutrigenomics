@@ -30,6 +30,7 @@ book:
     - 08_Practica_AI4FoodDB.qmd
     - 09_PCAEnglish.qmd
     - 10_PCAInEnglish.qmd
+    - 12_Clustering.qmd
     - referencias.qmd
 
 bibliography: referencias.bib
