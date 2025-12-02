@@ -194,3 +194,71 @@ cat("Silhouette promedio (k=", k, "): ", round(mean_sil, 4), "\n", sep="")
 plot(sil, main = paste0("Silhouette (k=", k, ")"))
 ```
 
+
+## Elbow's Graph
+
+```{r}
+kmax = 30
+wss <- numeric(kmax) # dentro de suma de cuadrados
+for (k in 1:kmax) {
+km <- kmeans(num_scaled, centers = k, nstart = 25)
+wss[k] <- km$tot.withinss
+}
+
+plot(1:kmax, wss, type = "b", pch = 19,
+xlab = "Número de clusters (k)",
+ylab = "Total within-cluster sum of squares (WSS)",
+main = "Método del codo (Elbow Method)")
+```
+
+## K medias method
+
+K-means is an unsupervised clustering algorithm widely used to partition a dataset into a predetermined number of groups, denoted by k. The method aims to assign each observation to one of the k clusters such that the within-cluster variation is minimized. More precisely, k-means minimizes the total within-cluster sum of squares, which measures how close the observations in each cluster are to the corresponding cluster centroid.
+
+The algorithm proceeds iteratively in three main steps:
+
+1. Initialization: Select k initial centroids, typically using random draws or algorithms such as k-means++.
+
+2. Assignment step: Each observation is assigned to the nearest centroid according to a chosen distance metric, usually Euclidean distance.
+
+3. Update step: New centroids are computed as the mean of all observations assigned to each cluster.
+
+These two steps (assignment and update) are repeated until convergence, which occurs when cluster memberships no longer change or when the reduction in within-cluster variation becomes negligible.
+
+Because the choice of k strongly influences the results, it is common practice to inspect different values of k and use diagnostic tools such as the elbow method or the silhouette coefficient to evaluate the quality of the clustering solution. K-means performs best when clusters are compact, roughly spherical, and have similar sizes, and when variables are properly scaled.
+
+```{r}
+set.seed(123)
+km3 <- kmeans(num_scaled, centers = 3, nstart = 25)
+
+km3$cluster
+table(km3$cluster)
+```
+
+## Sillohuete graph
+
+The *silhouette index* is a commonly used metric to evaluate the quality of a clustering solution. It measures how well each observation fits within its assigned cluster compared to other clusters.
+
+For each observation *i*:
+
+- \(a(i)\): the average distance between observation *i* and all other points in the same cluster (within-cluster cohesion).
+- \(b(i)\): the smallest average distance between observation *i\) and all points in any other cluster (separation from the nearest alternative cluster).
+
+The silhouette value for observation *i* is defined as:
+
+\[
+s(i) = \frac{b(i) - a(i)}{\max\{a(i), b(i)\}}.
+\]
+
+The silhouette ranges from –1 to 1. Values close to **1** indicate that the observation is well matched to its cluster, values near **0** suggest overlapping clusters, and negative values indicate potential misclassification. The **average silhouette index** across all observations provides an overall measure of clustering quality and is commonly used to compare solutions with different numbers of clusters.
+
+
+```{r}
+dist_matrix <- dist(num_scaled)
+sil_km <- silhouette(km3$cluster, dist_matrix)
+
+mean_sil_km <- mean(sil_km[, 3])
+cat("Silhouette promedio k-means (k=3): ", round(mean_sil_km, 4), "\n", sep="")
+plot(sil_km, main = "Silhouette para k-means (k=3)")
+```
+

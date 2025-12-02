@@ -239,6 +239,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#data-loading-and-creation-of-the-total-object" id="toc-data-loading-and-creation-of-the-total-object" class="nav-link" data-scroll-target="#data-loading-and-creation-of-the-total-object"><span class="header-section-number">11.4</span> 0. Data loading and creation of the <code>Total</code> object</a></li>
   <li><a href="#distance-matrix" id="toc-distance-matrix" class="nav-link" data-scroll-target="#distance-matrix"><span class="header-section-number">11.5</span> 1. Distance matrix</a></li>
   <li><a href="#dendrograma" id="toc-dendrograma" class="nav-link" data-scroll-target="#dendrograma"><span class="header-section-number">11.6</span> Dendrograma</a></li>
+  <li><a href="#elbows-graph" id="toc-elbows-graph" class="nav-link" data-scroll-target="#elbows-graph"><span class="header-section-number">11.7</span> Elbow’s Graph</a></li>
+  <li><a href="#k-medias-method" id="toc-k-medias-method" class="nav-link" data-scroll-target="#k-medias-method"><span class="header-section-number">11.8</span> K medias method</a></li>
+  <li><a href="#sillohuete-graph" id="toc-sillohuete-graph" class="nav-link" data-scroll-target="#sillohuete-graph"><span class="header-section-number">11.9</span> Sillohuete graph</a></li>
   </ul>
 <div class="toc-actions"><ul><li><a href="https://github.com/Cruzalirio/Nutrigenomics/edit/main/12_Clustering.qmd" class="toc-action"><i class="bi bi-github"></i>Editar esta página</a></li><li><a href="https://github.com/Cruzalirio/Nutrigenomics/issues/new" class="toc-action"><i class="bi empty"></i>Informar de un problema</a></li></ul></div></nav>
     </div>
@@ -466,6 +469,88 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div>
 <figure class="figure">
 <p><img src="12_Clustering_files/figure-html/unnamed-chunk-9-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="elbows-graph" class="level2" data-number="11.7">
+<h2 data-number="11.7" class="anchored" data-anchor-id="elbows-graph"><span class="header-section-number">11.7</span> Elbow’s Graph</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>kmax <span class="ot">=</span> <span class="dv">30</span></span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>wss <span class="ot">&lt;-</span> <span class="fu">numeric</span>(kmax) <span class="co"># dentro de suma de cuadrados</span></span>
+<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (k <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span>kmax) {</span>
+<span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a>km <span class="ot">&lt;-</span> <span class="fu">kmeans</span>(num_scaled, <span class="at">centers =</span> k, <span class="at">nstart =</span> <span class="dv">25</span>)</span>
+<span id="cb16-5"><a href="#cb16-5" aria-hidden="true" tabindex="-1"></a>wss[k] <span class="ot">&lt;-</span> km<span class="sc">$</span>tot.withinss</span>
+<span id="cb16-6"><a href="#cb16-6" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb16-7"><a href="#cb16-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-8"><a href="#cb16-8" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(<span class="dv">1</span><span class="sc">:</span>kmax, wss, <span class="at">type =</span> <span class="st">"b"</span>, <span class="at">pch =</span> <span class="dv">19</span>,</span>
+<span id="cb16-9"><a href="#cb16-9" aria-hidden="true" tabindex="-1"></a><span class="at">xlab =</span> <span class="st">"Número de clusters (k)"</span>,</span>
+<span id="cb16-10"><a href="#cb16-10" aria-hidden="true" tabindex="-1"></a><span class="at">ylab =</span> <span class="st">"Total within-cluster sum of squares (WSS)"</span>,</span>
+<span id="cb16-11"><a href="#cb16-11" aria-hidden="true" tabindex="-1"></a><span class="at">main =</span> <span class="st">"Método del codo (Elbow Method)"</span>)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="12_Clustering_files/figure-html/unnamed-chunk-10-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="k-medias-method" class="level2" data-number="11.8">
+<h2 data-number="11.8" class="anchored" data-anchor-id="k-medias-method"><span class="header-section-number">11.8</span> K medias method</h2>
+<p>K-means is an unsupervised clustering algorithm widely used to partition a dataset into a predetermined number of groups, denoted by k. The method aims to assign each observation to one of the k clusters such that the within-cluster variation is minimized. More precisely, k-means minimizes the total within-cluster sum of squares, which measures how close the observations in each cluster are to the corresponding cluster centroid.</p>
+<p>The algorithm proceeds iteratively in three main steps:</p>
+<ol type="1">
+<li><p>Initialization: Select k initial centroids, typically using random draws or algorithms such as k-means++.</p></li>
+<li><p>Assignment step: Each observation is assigned to the nearest centroid according to a chosen distance metric, usually Euclidean distance.</p></li>
+<li><p>Update step: New centroids are computed as the mean of all observations assigned to each cluster.</p></li>
+</ol>
+<p>These two steps (assignment and update) are repeated until convergence, which occurs when cluster memberships no longer change or when the reduction in within-cluster variation becomes negligible.</p>
+<p>Because the choice of k strongly influences the results, it is common practice to inspect different values of k and use diagnostic tools such as the elbow method or the silhouette coefficient to evaluate the quality of the clustering solution. K-means performs best when clusters are compact, roughly spherical, and have similar sizes, and when variables are properly scaled.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">123</span>)</span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>km3 <span class="ot">&lt;-</span> <span class="fu">kmeans</span>(num_scaled, <span class="at">centers =</span> <span class="dv">3</span>, <span class="at">nstart =</span> <span class="dv">25</span>)</span>
+<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a>km3<span class="sc">$</span>cluster</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>  [1] 1 3 2 3 3 3 3 3 3 1 3 3 3 2 2 3 3 3 3 3 2 2 3 2 1 2 2 3 3 3 1 1 1 2 2 3 2
+ [38] 3 3 1 2 2 3 3 3 3 1 2 2 3 3 3 2 1 3 3 3 1 1 2 3 3 3 2 3 3 2 1 2 2 1 2 3 2
+ [75] 2 2 2 2 3 1 3 1 3 1 2 3 3 3 2 2 3 3 3 2 1 3 1 3 3 2</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="fu">table</span>(km3<span class="sc">$</span>cluster)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+ 1  2  3 
+18 32 50 </code></pre>
+</div>
+</div>
+</section>
+<section id="sillohuete-graph" class="level2" data-number="11.9">
+<h2 data-number="11.9" class="anchored" data-anchor-id="sillohuete-graph"><span class="header-section-number">11.9</span> Sillohuete graph</h2>
+<p>The <em>silhouette index</em> is a commonly used metric to evaluate the quality of a clustering solution. It measures how well each observation fits within its assigned cluster compared to other clusters.</p>
+<p>For each observation <em>i</em>:</p>
+<ul>
+<li>(a(i)): the average distance between observation <em>i</em> and all other points in the same cluster (within-cluster cohesion).</li>
+<li>(b(i)): the smallest average distance between observation *i) and all points in any other cluster (separation from the nearest alternative cluster).</li>
+</ul>
+<p>The silhouette value for observation <em>i</em> is defined as:</p>
+<p>[ s(i) = . ]</p>
+<p>The silhouette ranges from –1 to 1. Values close to <strong>1</strong> indicate that the observation is well matched to its cluster, values near <strong>0</strong> suggest overlapping clusters, and negative values indicate potential misclassification. The <strong>average silhouette index</strong> across all observations provides an overall measure of clustering quality and is commonly used to compare solutions with different numbers of clusters.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>dist_matrix <span class="ot">&lt;-</span> <span class="fu">dist</span>(num_scaled)</span>
+<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a>sil_km <span class="ot">&lt;-</span> <span class="fu">silhouette</span>(km3<span class="sc">$</span>cluster, dist_matrix)</span>
+<span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-4"><a href="#cb21-4" aria-hidden="true" tabindex="-1"></a>mean_sil_km <span class="ot">&lt;-</span> <span class="fu">mean</span>(sil_km[, <span class="dv">3</span>])</span>
+<span id="cb21-5"><a href="#cb21-5" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(<span class="st">"Silhouette promedio k-means (k=3): "</span>, <span class="fu">round</span>(mean_sil_km, <span class="dv">4</span>), <span class="st">"</span><span class="sc">\n</span><span class="st">"</span>, <span class="at">sep=</span><span class="st">""</span>)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Silhouette promedio k-means (k=3): 0.0511</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(sil_km, <span class="at">main =</span> <span class="st">"Silhouette para k-means (k=3)"</span>)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="12_Clustering_files/figure-html/unnamed-chunk-12-1.png" class="img-fluid figure-img" width="672"></p>
 </figure>
 </div>
 </div>
