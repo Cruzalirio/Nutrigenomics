@@ -1,0 +1,92 @@
+## Contexto
+
+Se dispone de dos conjuntos de datos procedentes de un mismo estudio, con mediciones repetidas por individuo (`id`) y visita (`visit`).
+
+### DS9_EmotionalState  
+Archivo: **DASS-21.csv**
+
+Variables disponibles:
+- id  
+- visit  
+- depression_score  
+- stress_score  
+- anxiety_score  
+- total_score  
+
+### DS10_AdditionalInformation  
+Archivo: **SUS.csv**
+
+Variables disponibles:
+- id  
+- visit  
+- positive_score  
+- negative_score  
+- sum  
+- total_score  
+
+Un mismo individuo puede aparecer con distinto número de visitas en cada archivo.
+
+---
+
+## Preparación de datos
+
+1. Seleccionar exclusivamente las variables indicadas en cada archivo.
+2. Unir ambos conjuntos de datos por `id` y `visit`.
+3. Si las visitas no coinciden entre archivos para un mismo individuo, calcular el **promedio por individuo** de cada variable.
+4. El conjunto final debe contener **una sola fila por individuo**.
+
+---
+
+## Preprocesado
+
+1. Eliminar `id` y `visit` del análisis multivariante.
+2. Trabajar únicamente con variables cuantitativas.
+3. Estandarizar las variables antes de cualquier análisis multivariante.
+
+---
+
+## Correlaciones
+
+1. Calcular la matriz de correlaciones de **Pearson** entre todas las variables cuantitativas.
+2. Calcular la matriz de correlaciones de **Spearman**.
+3. Identificar un par de variables cuya relación cambie de forma apreciable entre Pearson y Spearman.
+4. Justificar la diferencia usando únicamente argumentos estadísticos (linealidad, rangos, valores extremos).
+
+---
+
+## Gráficas
+
+1. Construir un scatterplot entre:
+   - `total_score` del DASS-21  
+   - una variable del SUS que muestre alta asociación con él.
+2. Interpretar la relación observada sin utilizar modelos formales.
+
+---
+
+## PCA
+
+1. Aplicar un PCA sobre las variables cuantitativas estandarizadas.
+2. Indicar el porcentaje de varianza explicada por las dos primeras componentes.
+3. Representar el biplot de las dos primeras componentes.
+4. Identificar qué bloque de variables domina la primera componente:
+   - síntomas emocionales (DASS-21),  
+   - percepción subjetiva (SUS).
+
+---
+
+## Interpretación integrada
+
+1. Describir la estructura multivariante observada en el PCA.
+2. Indicar si las variables de DASS-21 y SUS parecen medir dimensiones diferenciadas o parcialmente solapadas.
+3. Relacionar esta conclusión con los resultados de las correlaciones.
+
+---
+
+## Criterios de evaluación
+
+- Correcta integración de los datos.
+- Uso adecuado de correlaciones y PCA.
+- Interpretación estadística clara y coherente.
+- Consistencia entre correlaciones, gráficas y PCA.
+
+

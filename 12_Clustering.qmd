@@ -198,7 +198,7 @@ plot(sil, main = paste0("Silhouette (k=", k, ")"))
 ## Elbow's Graph
 
 ```{r}
-kmax = 30
+kmax = 10
 wss <- numeric(kmax) # dentro de suma de cuadrados
 for (k in 1:kmax) {
 km <- kmeans(num_scaled, centers = k, nstart = 25)
@@ -254,11 +254,32 @@ The silhouette ranges from –1 to 1. Values close to **1** indicate that the ob
 
 
 ```{r}
+
+set.seed(123)
+km3 <- kmeans(num_scaled, centers = 2, nstart = 25)
 dist_matrix <- dist(num_scaled)
 sil_km <- silhouette(km3$cluster, dist_matrix)
 
 mean_sil_km <- mean(sil_km[, 3])
-cat("Silhouette promedio k-means (k=3): ", round(mean_sil_km, 4), "\n", sep="")
+cat("Silhouette promedio k-means (k=10): ", round(mean_sil_km, 4), "\n", sep="")
 plot(sil_km, main = "Silhouette para k-means (k=3)")
+```
+## NbCLust
+
+
+```{r}
+library(NbClust)
+
+ACPgrupos <- princomp(num_scaled[,1:99])
+##ACPgrupos$scores
+
+diss_matrix <-  dist(ACPgrupos$scores[,1:10], method = "euclidean", diag = FALSE)
+
+res <- NbClust(ACPgrupos$scores[,1:10], diss = diss_matrix, distance = NULL, min.nc = 2, max.nc = 10,
+               method = "complete", index = "alllong")
+res$All.index
+res$Best.nc
+res$All.CriticalValues
+res$Best.partition
 ```
 
