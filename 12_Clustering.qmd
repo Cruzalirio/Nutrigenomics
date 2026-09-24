@@ -66,12 +66,12 @@ library(cluster)
 ## 0. Data loading and creation of the `Total` object
 
 ```{r load-data}
-anthropometrics <- read_csv("C:/Users/UIB/Downloads/AI4FoodDB/DS1_AnthropometricMeasurements/anthropometrics.csv")
-vital_signs <- read_csv("C:/Users/UIB/Downloads/AI4FoodDB/DS6_VitalSigns/vital_signs.csv")
-lifestyle <- read_csv("C:/Users/UIB/Downloads/AI4FoodDB/DS2_LifestyleHealth/lifestyle.csv")
-biomarkers <- read_csv("C:/Users/UIB/Downloads/AI4FoodDB/DS4_Biomarkers/biomarkers.csv")
-OSQ <- read_csv("C:/Users/UIB/Downloads/AI4FoodDB/DS8_SleepActivity/OviedoSleepQuestionnaire.csv")
-IPAQ <- read_csv("C:/Users/UIB/Downloads/AI4FoodDB/DS7_PhysicalActivity/IPAQ.csv")
+anthropometrics <- read_csv("data/AI4FoodDB/DS1_AnthropometricMeasurements/anthropometrics.csv")
+vital_signs <- read_csv("data/AI4FoodDB/DS6_VitalSigns/vital_signs.csv")
+lifestyle <- read_csv("data/AI4FoodDB/DS2_LifestyleHealth/lifestyle.csv")
+biomarkers <- read_csv("data/AI4FoodDB/DS4_Biomarkers/biomarkers.csv")
+OSQ <- read_csv("data/AI4FoodDB/DS8_SleepActivity/OviedoSleepQuestionnaire.csv")
+IPAQ <- read_csv("data/AI4FoodDB/DS7_PhysicalActivity/IPAQ.csv")
 
 
 Total <- anthropometrics %>%

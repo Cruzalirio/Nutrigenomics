@@ -1,0 +1,2 @@
+timestamp,full_sleep_breathing_rate,full_sleep_standard_deviation,full_sleep_signal_to_noise,deep_sleep_breathing_rate,deep_sleep_standard_deviation,deep_sleep_signal_to_noise,light_sleep_breathing_rate,light_sleep_standard_deviation,light_sleep_signal_to_noise,rem_sleep_breathing_rate,rem_sleep_standard_deviation,rem_sleep_signal_to_noise
+2022-06-01 05:21:00+02:00,18.0,0.6,11.61,18.0,0.6,11.61,16.2,1.8,10.94,15.8,1.8,3.9

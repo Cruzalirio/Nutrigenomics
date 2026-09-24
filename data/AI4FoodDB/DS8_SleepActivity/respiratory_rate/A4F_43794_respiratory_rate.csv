@@ -1,0 +1,8 @@
+timestamp,full_sleep_breathing_rate,full_sleep_standard_deviation,full_sleep_signal_to_noise,deep_sleep_breathing_rate,deep_sleep_standard_deviation,deep_sleep_signal_to_noise,light_sleep_breathing_rate,light_sleep_standard_deviation,light_sleep_signal_to_noise,rem_sleep_breathing_rate,rem_sleep_standard_deviation,rem_sleep_signal_to_noise
+2022-06-01 07:42:00+02:00,14.8,1.2,7.81,15.0,0.5,3.42,14.8,1.2,7.81,15.4,2.1,4.68
+2022-06-02 05:35:30+02:00,15.6,0.7,6.38,15.6,0.7,6.38,15.4,1.6,9.08,15.6,1.6,6.39
+2022-06-03 08:19:30+02:00,13.6,0.9,6.98,13.6,0.9,6.98,14.0,1.7,14.18,14.6,2.0,7.45
+2022-06-04 08:11:00+02:00,14.6,1.0,7.36,14.6,1.0,7.36,14.2,1.4,10.87,14.6,2.4,3.89
+2022-06-05 05:58:30+02:00,14.0,1.1,4.77,14.0,1.1,4.77,14.4,1.6,8.34,13.4,1.5,3.22
+2022-06-06 08:47:30+02:00,13.6,0.9,11.85,13.6,0.9,11.85,13.4,1.0,7.93,13.6,0.5,2.77
+2022-06-07 09:29:00+02:00,14.2,1.2,10.67,14.2,1.2,10.67,13.8,2.2,11.99,14.2,1.7,4.82

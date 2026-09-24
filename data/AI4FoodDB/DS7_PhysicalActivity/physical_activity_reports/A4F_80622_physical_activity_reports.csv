@@ -1,0 +1,5 @@
+timestamp,activity_name,average_heart_rate,duration,active_duration,calories,steps,sedentary_minutes,_lightly_active_minutes,fairly_active_minutes,very_active_minutes,out_of_range_minutes,out_of_range_minimum_heart_rate,out_of_range_maximum_heart_rate,out_of_range_calories,fat_burn_minutes,fat_burn_minimum_heart_rate,fat_burn_maximum_heart_rate,fat_burn_calories,cardio_minutes,cardio_minimum_heart_rate,cardio_maximum_heart_rate,cardio_calories,peak_minutes,peak_minimum_heart_rate,peak_maximum_heart_rate,peak_calories
+2022-05-18 21:43:23+02:00,Martial Arts,67,0.25,0.18,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+2022-05-19 13:56:19+02:00,Swim,NA,17.07,17.07,59,NA,7,10,0,0,0,0,0,0,7,NA,NA,NA,2,NA,NA,NA,0,0,0,0
+2022-05-20 12:44:26+02:00,Swim,NA,19.63,19.63,46,NA,12,7,0,0,0,0,0,0,7,NA,NA,NA,1,NA,NA,NA,0,0,0,0
+2022-05-25 15:52:04+02:00,Swim,NA,21.33,21.33,84,NA,7,2,9,3,0,0,0,0,10,NA,NA,NA,3,NA,NA,NA,0,0,0,0

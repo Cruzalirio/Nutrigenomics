@@ -1,0 +1,7 @@
+timestamp,activity_name,average_heart_rate,duration,active_duration,calories,steps,sedentary_minutes,_lightly_active_minutes,fairly_active_minutes,very_active_minutes,out_of_range_minutes,out_of_range_minimum_heart_rate,out_of_range_maximum_heart_rate,out_of_range_calories,fat_burn_minutes,fat_burn_minimum_heart_rate,fat_burn_maximum_heart_rate,fat_burn_calories,cardio_minutes,cardio_minimum_heart_rate,cardio_maximum_heart_rate,cardio_calories,peak_minutes,peak_minimum_heart_rate,peak_maximum_heart_rate,peak_calories
+2022-05-23 20:17:40+02:00,Swim,NA,46.07,46.07,171,NA,13,11,19,3,0,0,0,0,39,NA,NA,NA,3,NA,NA,NA,0,0,0,0
+2022-05-28 14:01:41+02:00,Walk,115,16.2,16.2,107,1553,0,1,0,15,1,30,107,6.96,15,107,131,100.44,0,0,0,0,0,0,0,0
+2022-05-28 15:57:44+02:00,Walk,109,37.53,37.53,216,2779,0,4,16,18,14,30,107,84.69,23,107,131,130.82,0,0,0,0,0,0,0,0
+2022-05-28 16:55:45+02:00,Walk,110,69.98,69.98,399,5132,0,4,39,27,15,30,107,87.55,54,107,131,311.14,0,0,0,0,0,0,0,0
+2022-05-30 20:27:27+02:00,Swim,NA,34.15,34.15,158,NA,8,13,7,6,0,0,0,0,25,NA,NA,NA,5,NA,NA,NA,0,0,0,0
+2022-06-01 20:35:13+02:00,Swim,NA,29.02,29.02,131,NA,7,1,15,6,0,0,0,0,21,NA,NA,NA,5,NA,NA,NA,0,0,0,0

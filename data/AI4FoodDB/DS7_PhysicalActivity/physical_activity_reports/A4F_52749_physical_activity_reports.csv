@@ -1,0 +1,9 @@
+timestamp,activity_name,average_heart_rate,duration,active_duration,calories,steps,sedentary_minutes,_lightly_active_minutes,fairly_active_minutes,very_active_minutes,out_of_range_minutes,out_of_range_minimum_heart_rate,out_of_range_maximum_heart_rate,out_of_range_calories,fat_burn_minutes,fat_burn_minimum_heart_rate,fat_burn_maximum_heart_rate,fat_burn_calories,cardio_minutes,cardio_minimum_heart_rate,cardio_maximum_heart_rate,cardio_calories,peak_minutes,peak_minimum_heart_rate,peak_maximum_heart_rate,peak_calories
+2022-06-09 08:08:34+02:00,Yoga,81,18.08,18.08,42,0,14,4,0,0,18,30,104,40.07,0,0,0,0,0,0,0,0,0,0,0,0
+2022-06-09 20:56:34+02:00,Walk,102,16.22,16.22,130,1551,0,0,2,14,11,30,104,86.84,5,104,129,43.3,0,0,0,0,0,0,0,0
+2022-06-10 08:16:11+02:00,Yoga,86,18.18,18.18,57,11,10,8,0,0,15,30,104,39.95,3,104,128,16.27,0,0,0,0,0,0,0,0
+2022-06-12 21:02:27+02:00,Swim,NA,17.07,17.07,48,NA,12,5,0,0,0,0,0,0,4,NA,NA,NA,1,NA,NA,NA,0,0,0,0
+2022-06-15 07:24:45+02:00,Yoga,83,18.22,18.22,50,14,11,7,0,0,16,30,104,39.47,2,104,129,9.81,0,0,0,0,0,0,0,0
+2022-06-15 15:38:30+02:00,Walk,114,19.63,19.63,171,1973,0,0,1,19,0,0,0,0,20,104,129,171.3,0,0,0,0,0,0,0,0
+2022-06-16 07:51:06+02:00,Yoga,79,18.13,18.13,34,5,16,2,0,0,18,30,104,33.02,0,0,0,0,0,0,0,0,0,0,0,0
+2022-06-17 08:00:54+02:00,Yoga,74,18.03,18.03,30,5,17,1,0,0,18,30,104,29.55,0,0,0,0,0,0,0,0,0,0,0,0

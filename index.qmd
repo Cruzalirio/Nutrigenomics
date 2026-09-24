@@ -7,7 +7,7 @@ The course is fully reproducible and designed to be explored as a Quarto Book pu
 
 ---
 
-### 📘 Course Overview
+### Course Overview
 
 This course introduces the statistical foundations of experimental design and applied data analysis in the context of nutrigenomics.  
 Students will learn to manage, visualize, and analyze omics, clinical, and dietary data using **R** and reproducible workflows.
@@ -42,7 +42,7 @@ The evaluation of the course Design of Experimental Studies and Applied Statisti
 - **Format:** Group presentation in pairs or groups of three.  
 - **Objective:** To present and discuss a specific topic related to experimental design, statistical modeling, or data analysis applied to nutrigenomics.  
 - **Evaluation criteria:** Clarity, scientific accuracy, statistical interpretation, and ability to engage in discussion.  
-- **Date:** **December 4, 2025** (final class session).  
+- **Date:** **December 4, 2026** (final class session).  
 - **Deliverables:**
   - 15-minute oral presentation.
   - Accompanying Quarto or R Markdown document with code and figures (submitted through the GitHub repository).
@@ -57,30 +57,30 @@ The evaluation of the course Design of Experimental Studies and Applied Statisti
 
 - **Format:** Individual written and computational test.  
 - **Objective:** To assess conceptual understanding and practical skills in the design and analysis of studies in nutrigenomics.  
-- **Date:** **January 21, 2026**  
-- **Recovery Exam:** **February 13, 2026**  
+- **Date:** **January 18, 2027**  
+- **Recovery Exam:** **February 11, 2027**  
 - **Minimum mark required for validation:** 4 (out of 10).
 
 ---
 
 ## Course Schedule
 
-| **Session** | **Date**       | **Type**         | **Description** |
-|--------------|----------------|------------------|-----------------|
-| 01 | 21/10/2025 | Lecture | Introduction to Nutrigenomics and Experimental Design. Installation of R and Rstudio |
-| 02 | 23/10/2025 | Lecture | Study Designs: Observational and Experimental |
-| 03 | 27/10/2025 | Lecture | Measures of Association - RR - OR |
-| 04 | 28/10/2025 | Practice 1 | Measures of Association - RR - OR|
-| 05 | 30/10/2025 | Lecture | Data Management and Cleaning |
-| 06 | 03/11/2025 | Lecture | Correlation and Bivariate Association|
-| 07 | 04/11/2025 | Practice 2 |Exploratory Data Analysis in R|
-| 08 | 06/11/2025 | Lecture | Multivariate Descriptive Analysis |
-| 09 | 10/11/2025 | Lecture | Principal Components Analysis|
-| 10 | 11/11/2025 | Lecture | Clustering Analysis  |
-| 11 | 13/11/2025 | Practice 3 | Applied Case Study in Nutrigenomics in R|
-| 12 | 01/12/2025 | Lecture | Introduction to Systematic Reviews |
-| 13 | 02/12/2025 | Lecture | Synthesis and Preparation for Expositive Seminar |
-| 14 | 04/12/2025 | Seminar | **Final Expositive Seminar (Group Presentation)** |
+| **Session** | **Date**       | **Type**         | **Description** | **Responsible**|
+|--------------|----------------|------------------|-----------------|-----------------|
+| 01 | 27/10/2026 | Lecture | Introduction to Nutrigenomics and Experimental Design. Installation of R and Rstudio | Irene|
+| 02 | 29/10/2026 | Lecture | Study Designs: Observational and Experimental | Irene|
+| 03 | 02/11/2026 | Lecture | Measures of Association - RR - OR | Ricardo|
+| 04 | 03/11/2026 | Practice 1 | Measures of Association - RR - OR| Ricardo|
+| 05 | 05/11/2026 | Lecture | Data Management and Cleaning | Alirio|
+| 06 | 09/11/2026 | Lecture | Correlation and Bivariate Association| Alirio|
+| 07 | 10/11/2026 | Practice 2 |Exploratory Data Analysis in R| Alirio|
+| 08 | 12/11/2026 | Lecture | Multivariate Descriptive Analysis | Alirio|
+| 09 | 16/11/2026 | Lecture | Principal Components Analysis| Alirio|
+| 10 | 17/11/2026 | Lecture | Clustering Analysis  | Alirio|
+| 11 | 19/11/2026 | Practice 3 | Applied Case Study in Nutrigenomics in R| Alirio|
+| 12 | 14/12/2026 | Lecture | Introduction to Systematic Reviews | Alirio|
+| 13 | 15/12/2026 | Lecture | Synthesis and Preparation for Expositive Seminar | Alirio|
+| 14 | 17/12/2026 | Seminar | **Final Expositive Seminar (Group Presentation)** | Alirio|
 
 ---
 

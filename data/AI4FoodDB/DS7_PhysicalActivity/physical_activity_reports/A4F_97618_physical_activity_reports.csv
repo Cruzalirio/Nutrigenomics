@@ -1,0 +1,10 @@
+timestamp,activity_name,average_heart_rate,duration,active_duration,calories,steps,sedentary_minutes,_lightly_active_minutes,fairly_active_minutes,very_active_minutes,out_of_range_minutes,out_of_range_minimum_heart_rate,out_of_range_maximum_heart_rate,out_of_range_calories,fat_burn_minutes,fat_burn_minimum_heart_rate,fat_burn_maximum_heart_rate,fat_burn_calories,cardio_minutes,cardio_minimum_heart_rate,cardio_maximum_heart_rate,cardio_calories,peak_minutes,peak_minimum_heart_rate,peak_maximum_heart_rate,peak_calories
+2022-06-07 20:51:23+02:00,Walk,120,22.2,22.2,216,2235,0,0,0,22,9,30,109,76.56,6,109,132,57.42,7,132,160,82.06,0,0,0,0
+2022-06-08 19:13:28+02:00,Walk,108,17.07,17.07,128,1747,0,0,3,14,14,30,110,107.18,3,110,132,21.29,0,0,0,0,0,0,0,0
+2022-06-08 20:54:10+02:00,Walk,116,23.95,23.95,209,2218,0,0,2,22,8,30,110,75.12,15,110,132,134.21,0,0,0,0,0,0,0,0
+2022-06-12 20:28:24+02:00,Walk,104,45.23,45.23,306,3394,0,4,22,19,39,30,109,263.16,6,109,132,43.3,0,0,0,0,0,0,0,0
+2022-06-12 21:50:20+02:00,Walk,97,15.35,15.35,109,1351,0,1,3,11,15,30,109,109.09,0,0,0,0,0,0,0,0,0,0,0,0
+2022-06-13 18:09:08+02:00,Walk,130,21.33,21.33,218,2128,0,0,0,21,2,30,110,17.7,7,110,132,73.21,12,132,161,126.8,0,0,0,0
+2022-06-15 13:07:48+02:00,Walk,114,24.82,24.82,194,2074,0,2,5,18,9,30,112,72.01,15,112,134,122.25,0,0,0,0,0,0,0,0
+2022-06-19 20:44:22+02:00,Walk,97,17.92,17.92,129,1700,0,1,4,12,17,30,110,129.07,0,0,0,0,0,0,0,0,0,0,0,0
+2022-06-19 21:44:43+02:00,Walk,99,19.82,19.82,153,2044,0,1,3,16,19,30,110,152.64,0,0,0,0,0,0,0,0,0,0,0,0

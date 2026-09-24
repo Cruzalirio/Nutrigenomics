@@ -48,8 +48,8 @@ library(knitr)
 ## 0. Data loading and creation of the `Total` object
 
 ```{r load-data}
-anthropometrics <- read_csv("C:/Users/UIB/Downloads/AI4FoodDB/DS1_AnthropometricMeasurements/anthropometrics.csv")
-vital_signs <- read_csv("C:/Users/UIB/Downloads/AI4FoodDB/DS6_VitalSigns/vital_signs.csv")
+anthropometrics <- read_csv("data/AI4FoodDB/DS1_AnthropometricMeasurements/anthropometrics.csv")
+vital_signs <- read_csv("data/AI4FoodDB/DS6_VitalSigns/vital_signs.csv")
 
 Total <- anthropometrics %>%
   left_join(vital_signs, by = c("id", "visit")) %>%

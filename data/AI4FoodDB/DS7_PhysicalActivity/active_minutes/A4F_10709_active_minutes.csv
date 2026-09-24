@@ -1,0 +1,5 @@
+timestamp,fat_burn_minutes,cardio_minutes,peak_minutes,sedentary_minutes,lightly_active_minutes,moderately_active_minutes,very_active_minutes
+2022-05-25 00:00:00+02:00,1,0,0,224,229,36,17
+2022-05-26 00:00:00+02:00,1,0,0,173,205,80,39
+2022-05-29 00:00:00+02:00,6,0,0,94,170,90,41
+2022-06-02 00:00:00+02:00,35,0,0,259,215,105,95
