@@ -2,20 +2,23 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="es" xml:lang="es"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.9.38">
+<meta name="generator" content="quarto-1.10.18">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>8&nbsp; Objetivo general – Design of Experimental Studies and Statistics Applied to Nutrigenomics</title>
+<title>8&nbsp; Practice of Bivariate Analysis – Design of Experimental Studies and Statistics Applied to Nutrigenomics</title>
 <style>
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
 */
-code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
-div.columns{display: flex; gap: min(4vw, 1.5em);}
-div.column{flex: auto; overflow-x: auto;}
+div.columns{display: flex; gap: 1.5em;}
+div.column{flex: auto;}
+@media screen {
+div.columns{gap: min(4vw, 1.5em);}
+div.column{overflow-x: auto;}
+}
 div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
 ul.task-list{list-style: none;}
 ul.task-list li input[type="checkbox"] {
@@ -77,10 +80,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="site_libs/quarto-html/anchor.min.js"></script>
 <link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-15634bcf2e68342d4ad2dfa704d543f6.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-64a204ab8560d761af7679ceaba22944.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-9e3e5b9121e68b3f077afb32f2c64d95.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-631496449bf32ff9b0bb69a6bfd9195d.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
@@ -121,7 +124,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Alternar barra lateral" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./08_Practica_AI4FoodDB.html"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Objetivo general</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./08_Practica_AI4FoodDB.html"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Practice of Bivariate Analysis</span></a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Alternar barra lateral" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Buscar" onclick="window.quartoOpenSearch();">
@@ -193,13 +196,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./07_Descriptiva2.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Two or More Quantitative</span></span></a>
+ <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Multivariate Descriptive Statistics</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./08_Practica_AI4FoodDB.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Objetivo general</span></span></a>
+ <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Practice of Bivariate Analysis</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
@@ -236,19 +239,30 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">Tabla de contenidos</h2>
    
   <ul>
-  <li><a href="#asignaciones-individuales" id="toc-asignaciones-individuales" class="nav-link active" data-scroll-target="#asignaciones-individuales"><span class="header-section-number">8.0.1</span> <strong>Asignaciones individuales</strong></a></li>
-  <li><a href="#estructura-de-la-práctica-entregable-15112025" id="toc-estructura-de-la-práctica-entregable-15112025" class="nav-link" data-scroll-target="#estructura-de-la-práctica-entregable-15112025"><span class="header-section-number">8.0.2</span> <strong>Estructura de la práctica (entregable 15/11/2025)</strong></a></li>
-  <li><a href="#actividad-de-revisión-13-de-noviembre" id="toc-actividad-de-revisión-13-de-noviembre" class="nav-link" data-scroll-target="#actividad-de-revisión-13-de-noviembre"><span class="header-section-number">8.0.3</span> 🧾 <strong>Actividad de revisión — 13 de noviembre</strong></a></li>
-  <li><a href="#seminario-de-exposición-4-de-diciembre" id="toc-seminario-de-exposición-4-de-diciembre" class="nav-link" data-scroll-target="#seminario-de-exposición-4-de-diciembre"><span class="header-section-number">8.0.4</span> 🎤 <strong>Seminario de exposición — 4 de diciembre</strong></a></li>
-  <li><a href="#evaluación" id="toc-evaluación" class="nav-link" data-scroll-target="#evaluación"><span class="header-section-number">8.0.5</span> 🧮 <strong>Evaluación</strong></a></li>
-  <li><a href="#reconocimiento-de-los-datos-1" id="toc-reconocimiento-de-los-datos-1" class="nav-link" data-scroll-target="#reconocimiento-de-los-datos-1"><span class="header-section-number">9</span> 1. Reconocimiento de los datos</a></li>
-  <li><a href="#metodología-y-fuentes-1" id="toc-metodología-y-fuentes-1" class="nav-link" data-scroll-target="#metodología-y-fuentes-1"><span class="header-section-number">10</span> 2. Metodología y fuentes</a></li>
-  <li><a href="#análisis-descriptivo-y-bivariado-1" id="toc-análisis-descriptivo-y-bivariado-1" class="nav-link" data-scroll-target="#análisis-descriptivo-y-bivariado-1"><span class="header-section-number">11</span> 3. Análisis descriptivo y bivariado</a></li>
-  <li><a href="#tratamiento-de-medidas-repetidas-1" id="toc-tratamiento-de-medidas-repetidas-1" class="nav-link" data-scroll-target="#tratamiento-de-medidas-repetidas-1"><span class="header-section-number">12</span> 4. Tratamiento de medidas repetidas</a></li>
-  <li><a href="#análisis-de-componentes-principales-acp-1" id="toc-análisis-de-componentes-principales-acp-1" class="nav-link" data-scroll-target="#análisis-de-componentes-principales-acp-1"><span class="header-section-number">13</span> 5. Análisis de Componentes Principales (ACP)</a></li>
-  <li><a href="#análisis-de-clustering-1" id="toc-análisis-de-clustering-1" class="nav-link" data-scroll-target="#análisis-de-clustering-1"><span class="header-section-number">14</span> 6. Análisis de Clustering</a></li>
-  <li><a href="#conclusiones-1" id="toc-conclusiones-1" class="nav-link" data-scroll-target="#conclusiones-1"><span class="header-section-number">15</span> 7. Conclusiones</a></li>
-  <li><a href="#referencias" id="toc-referencias" class="nav-link" data-scroll-target="#referencias"><span class="header-section-number">16</span> 8. Referencias</a></li>
+  <li><a href="#individual-assignments" id="toc-individual-assignments" class="nav-link active" data-scroll-target="#individual-assignments"><span class="header-section-number">8.1</span> Individual Assignments</a></li>
+  <li><a href="#practical-assignment-structure" id="toc-practical-assignment-structure" class="nav-link" data-scroll-target="#practical-assignment-structure"><span class="header-section-number">8.2</span> Practical Assignment Structure</a>
+  <ul class="collapse">
+  <li><a href="#data-exploration" id="toc-data-exploration" class="nav-link" data-scroll-target="#data-exploration"><span class="header-section-number">8.2.1</span> 1. Data Exploration</a></li>
+  <li><a href="#methodology-and-data-sources" id="toc-methodology-and-data-sources" class="nav-link" data-scroll-target="#methodology-and-data-sources"><span class="header-section-number">8.2.2</span> 2. Methodology and Data Sources</a></li>
+  <li><a href="#descriptive-and-bivariate-analysis" id="toc-descriptive-and-bivariate-analysis" class="nav-link" data-scroll-target="#descriptive-and-bivariate-analysis"><span class="header-section-number">8.2.3</span> 3. Descriptive and Bivariate Analysis</a></li>
+  <li><a href="#handling-repeated-measurements" id="toc-handling-repeated-measurements" class="nav-link" data-scroll-target="#handling-repeated-measurements"><span class="header-section-number">8.2.4</span> 4. Handling Repeated Measurements</a></li>
+  <li><a href="#principal-component-analysis-pca" id="toc-principal-component-analysis-pca" class="nav-link" data-scroll-target="#principal-component-analysis-pca"><span class="header-section-number">8.2.5</span> 5. Principal Component Analysis (PCA)</a></li>
+  <li><a href="#clustering-analysis" id="toc-clustering-analysis" class="nav-link" data-scroll-target="#clustering-analysis"><span class="header-section-number">8.2.6</span> 6. Clustering Analysis</a></li>
+  <li><a href="#conclusions" id="toc-conclusions" class="nav-link" data-scroll-target="#conclusions"><span class="header-section-number">8.2.7</span> 7. Conclusions</a></li>
+  <li><a href="#references" id="toc-references" class="nav-link" data-scroll-target="#references"><span class="header-section-number">8.2.8</span> 8. References</a></li>
+  </ul></li>
+  <li><a href="#data-exploration-initial-instructions" id="toc-data-exploration-initial-instructions" class="nav-link" data-scroll-target="#data-exploration-initial-instructions"><span class="header-section-number">9</span> Data Exploration: Initial Instructions</a></li>
+  <li><a href="#methodology-and-data-sources-1" id="toc-methodology-and-data-sources-1" class="nav-link" data-scroll-target="#methodology-and-data-sources-1"><span class="header-section-number">10</span> Methodology and Data Sources</a></li>
+  <li><a href="#descriptive-and-bivariate-analysis-1" id="toc-descriptive-and-bivariate-analysis-1" class="nav-link" data-scroll-target="#descriptive-and-bivariate-analysis-1"><span class="header-section-number">11</span> Descriptive and Bivariate Analysis</a></li>
+  <li><a href="#handling-repeated-measurements-1" id="toc-handling-repeated-measurements-1" class="nav-link" data-scroll-target="#handling-repeated-measurements-1"><span class="header-section-number">12</span> Handling Repeated Measurements</a></li>
+  <li><a href="#principal-component-analysis-pca-1" id="toc-principal-component-analysis-pca-1" class="nav-link" data-scroll-target="#principal-component-analysis-pca-1"><span class="header-section-number">13</span> Principal Component Analysis (PCA)</a></li>
+  <li><a href="#clustering-analysis-1" id="toc-clustering-analysis-1" class="nav-link" data-scroll-target="#clustering-analysis-1"><span class="header-section-number">14</span> Clustering Analysis</a></li>
+  <li><a href="#conclusions-1" id="toc-conclusions-1" class="nav-link" data-scroll-target="#conclusions-1"><span class="header-section-number">15</span> Conclusions</a>
+  <ul class="collapse">
+  <li><a href="#review-session-13-november" id="toc-review-session-13-november" class="nav-link" data-scroll-target="#review-session-13-november"><span class="header-section-number">15.1</span> Review Session — 13 November</a></li>
+  <li><a href="#student-presentation-seminar-4-december" id="toc-student-presentation-seminar-4-december" class="nav-link" data-scroll-target="#student-presentation-seminar-4-december"><span class="header-section-number">15.2</span> Student Presentation Seminar — 4 December</a></li>
+  <li><a href="#assessment-criteria" id="toc-assessment-criteria" class="nav-link" data-scroll-target="#assessment-criteria"><span class="header-section-number">15.3</span> Assessment Criteria</a></li>
+  </ul></li>
   </ul>
 <div class="toc-actions"><ul><li><a href="https://github.com/Cruzalirio/Nutrigenomics/edit/main/08_Practica_AI4FoodDB.qmd" class="toc-action"><i class="bi bi-github"></i>Editar esta página</a></li><li><a href="https://github.com/Cruzalirio/Nutrigenomics/issues/new" class="toc-action"><i class="bi empty"></i>Informar sobre problema</a></li></ul></div></nav>
     </div>
@@ -257,7 +271,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Objetivo general</span></h1>
+<h1 class="title"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Practice of Bivariate Analysis</span></h1>
 </div>
 
 
@@ -274,281 +288,162 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
-<p>Analizar e integrar información clínica, antropométrica, y molecular proveniente del estudio AI4FoodDB, aplicando herramientas estadísticas descriptivas y multivariantes (PCA, clustering) para explorar patrones de variación y relaciones entre variables de distintos dominios biológicos y de estilo de vida.</p>
-<p>El estudio <strong>AI4FoodDB, <a href="https://github.com/AI4Food/AI4FoodDB?tab=readme-ov-file#datasets">acá el enlace</a></strong> (Romero-Tapiador et al., 2023; Lacruz-Pleguezuelos et al., 2025) contiene información de una intervención nutricional en 100 participantes con sobrepeso u obesidad.<br>
-Los datasets relevantes son:</p>
-<table class="caption-top table">
-<colgroup>
-<col style="width: 33%">
-<col style="width: 33%">
-<col style="width: 33%">
-</colgroup>
-<thead>
-<tr class="header">
-<th>Dataset</th>
-<th>Tipo de datos</th>
-<th>Ejemplos de variables</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>DS1</td>
-<td>Antropometría</td>
-<td>Peso, IMC, circunferencia de cintura</td>
-</tr>
-<tr class="even">
-<td>DS2</td>
-<td>Lifestyle &amp; Health</td>
-<td>Tabaquismo, alcohol, medicamentos</td>
-</tr>
-<tr class="odd">
-<td>DS4</td>
-<td>Biomarcadores</td>
-<td>Proteínas plasmáticas, glucosa, colesterol</td>
-</tr>
-<tr class="even">
-<td>DS7</td>
-<td>Actividad física (IPAQ)</td>
-<td>Minutos de actividad moderada/vigorosa, pasos</td>
-</tr>
-<tr class="odd">
-<td>DS8</td>
-<td>Sueño (Oviedo Sleep Questionnaire)</td>
-<td>Latencia, eficiencia, duración del sueño</td>
-</tr>
-</tbody>
-</table>
-<section id="asignaciones-individuales" class="level3" data-number="8.0.1">
-<h3 data-number="8.0.1" class="anchored" data-anchor-id="asignaciones-individuales"><span class="header-section-number">8.0.1</span> <strong>Asignaciones individuales</strong></h3>
-<table class="caption-top table">
-<colgroup>
-<col style="width: 25%">
-<col style="width: 25%">
-<col style="width: 25%">
-<col style="width: 25%">
-</colgroup>
-<thead>
-<tr class="header">
-<th>Estudiante</th>
-<th>Dataset secundario</th>
-<th>Variables complementarias</th>
-<th>Tareas principales</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td><strong>Sofía</strong></td>
-<td>DS1 – Antropometría</td>
-<td>4 variables antropométricas</td>
-<td>ACP + Clustering con proteínas + gráficos bivariados</td>
-</tr>
-<tr class="even">
-<td><strong>Louie</strong></td>
-<td>DS2 – Lifestyle</td>
-<td>4 variables de estilo de vida</td>
-<td>ACP + Clustering + análisis de relación clínica</td>
-</tr>
-<tr class="odd">
-<td><strong>Cyntia</strong></td>
-<td>DS8 – Sueño</td>
-<td>4 variables del OSQ</td>
-<td>ACP + Clustering + relación sueño-proteómica</td>
-</tr>
-<tr class="even">
-<td><strong>Carmen</strong></td>
-<td>DS7 – Actividad física (IPAQ)</td>
-<td>4 variables de actividad</td>
-<td>ACP + Clustering + relación actividad-proteómica</td>
-</tr>
-</tbody>
-</table>
+<p>To analyse and integrate clinical, anthropometric, and molecular data from the AI4FoodDB study using descriptive and multivariate statistical methods, including principal component analysis (PCA) and clustering, to investigate patterns of variation and associations among variables from different biological and lifestyle domains.</p>
+<p>The AI4FoodDB study (https://github.com/AI4Food/AI4FoodDB?tab=readme-ov-file#datasets; Romero-Tapiador et al., 2023; Lacruz-Pleguezuelos et al., 2025) includes data from a nutritional intervention involving 100 participants with overweight or obesity.</p>
+<p>The relevant datasets are:</p>
+<p>Dataset | Data type | Examples of variables DS1 | Anthropometry | Weight, BMI, waist circumference DS2 | Lifestyle and health | Smoking, alcohol consumption, medication use DS4 | Biomarkers | Plasma proteins, glucose, cholesterol DS7 | Physical activity (IPAQ) | Minutes of moderate-to-vigorous activity, step counts DS8 | Sleep (Oviedo Sleep Questionnaire) | Sleep latency, efficiency, and duration</p>
+<section id="individual-assignments" class="level2" data-number="8.1">
+<h2 data-number="8.1" class="anchored" data-anchor-id="individual-assignments"><span class="header-section-number">8.1</span> Individual Assignments</h2>
+<p>Student | Secondary dataset | Complementary variables | Main tasks Student 1 | DS1 – Anthropometry | Four anthropometric variables | PCA and clustering incorporating protein data, plus bivariate plots Student 2 | DS2 – Lifestyle | Four lifestyle variables | PCA, clustering, and analysis of clinical associations Student 3 | DS8 – Sleep | Four Oviedo Sleep Questionnaire (OSQ) variables | PCA, clustering, and analysis of sleep–proteomics associations Student 4 | DS7 – Physical activity (IPAQ) | Four physical activity variables | PCA, clustering, and analysis of physical activity–proteomics associations</p>
 </section>
-<section id="estructura-de-la-práctica-entregable-15112025" class="level3" data-number="8.0.2">
-<h3 data-number="8.0.2" class="anchored" data-anchor-id="estructura-de-la-práctica-entregable-15112025"><span class="header-section-number">8.0.2</span> <strong>Estructura de la práctica (entregable 15/11/2025)</strong></h3>
-<p>Cada estudiante debe entregar un documento en formato <code>.qmd</code> (R Markdown) o <code>.html</code> generado desde RStudio, con las siguientes secciones:</p>
-<section id="reconocimiento-de-los-datos" class="level4" data-number="8.0.2.1">
-<h4 data-number="8.0.2.1" class="anchored" data-anchor-id="reconocimiento-de-los-datos"><span class="header-section-number">8.0.2.1</span> 1. <strong>Reconocimiento de los datos</strong></h4>
+<section id="practical-assignment-structure" class="level2" data-number="8.2">
+<h2 data-number="8.2" class="anchored" data-anchor-id="practical-assignment-structure"><span class="header-section-number">8.2</span> Practical Assignment Structure</h2>
+<p>Submission deadline: 15 November 2025</p>
+<p>Each student must submit a report in Quarto Markdown (.qmd) format or an HTML report generated in RStudio. The report must include the following sections.</p>
+<section id="data-exploration" class="level3" data-number="8.2.1">
+<h3 data-number="8.2.1" class="anchored" data-anchor-id="data-exploration"><span class="header-section-number">8.2.1</span> 1. Data Exploration</h3>
 <ul>
-<li><p>Descripción del estudio AI4FoodDB y del tipo de datos analizados.</p></li>
-<li><p>Identificación del número de individuos, variables y momentos de medición.</p></li>
-<li><p>Tabla resumen de variables seleccionadas (10 proteínas + 4 variables del dataset complementario): Unidades, valores mínimos, máximos y número de datos faltantes</p></li>
+<li>Briefly describe the AI4FoodDB study and the type of data analysed.</li>
+<li>Report the numbers of participants, variables, and measurement time points.</li>
+<li>Provide a summary table of the selected variables (10 proteins and four variables from the complementary dataset), including measurement units, minimum and maximum values, and the number of missing observations.</li>
 </ul>
 </section>
-<section id="metodología-y-fuentes" class="level4" data-number="8.0.2.2">
-<h4 data-number="8.0.2.2" class="anchored" data-anchor-id="metodología-y-fuentes"><span class="header-section-number">8.0.2.2</span> 2. <strong>Metodología y fuentes</strong></h4>
+<section id="methodology-and-data-sources" class="level3" data-number="8.2.2">
+<h3 data-number="8.2.2" class="anchored" data-anchor-id="methodology-and-data-sources"><span class="header-section-number">8.2.2</span> 2. Methodology and Data Sources</h3>
 <ul>
-<li>Explicación de cómo se tomaron los datos (según documentación AI4FoodDB).</li>
+<li>Explain how the data were collected, based on the documentation provided by AI4FoodDB.</li>
+<li>Describe the instruments used, the duration of data collection where applicable, and the types of variables.</li>
+<li>Justify the selection of the 10 proteins and four complementary variables.</li>
 </ul>
 </section>
-<section id="análisis-descriptivo-y-bivariado" class="level4" data-number="8.0.2.3">
-<h4 data-number="8.0.2.3" class="anchored" data-anchor-id="análisis-descriptivo-y-bivariado"><span class="header-section-number">8.0.2.3</span> 3. <strong>Análisis descriptivo y bivariado</strong></h4>
+<section id="descriptive-and-bivariate-analysis" class="level3" data-number="8.2.3">
+<h3 data-number="8.2.3" class="anchored" data-anchor-id="descriptive-and-bivariate-analysis"><span class="header-section-number">8.2.3</span> 3. Descriptive and Bivariate Analysis</h3>
 <ul>
-<li><p>Dos <strong>gráficas bivariadas</strong> que exploren relaciones entre:</p>
-<ul>
-<li><p>(a) una proteína y una variable complementaria</p></li>
-<li><p>(b) dos proteínas o dos variables complementarias.</p></li>
-</ul></li>
-<li><p>Un <strong>corrplot</strong> entre las 14 variables, junto a un parrafo de análisis</p></li>
+<li>Calculate descriptive statistics, including the mean, standard deviation, minimum, and maximum.</li>
+<li>Produce two bivariate plots to investigate relationships between:
+<ol type="a">
+<li>one protein and one complementary variable; and</li>
+<li>either two proteins or two complementary variables.</li>
+</ol></li>
+<li>Include a correlation plot (corrplot) for the 14 selected variables and provide a brief interpretation of the main patterns observed.</li>
 </ul>
 </section>
-<section id="tratamiento-de-medidas-repetidas" class="level4" data-number="8.0.2.4">
-<h4 data-number="8.0.2.4" class="anchored" data-anchor-id="tratamiento-de-medidas-repetidas"><span class="header-section-number">8.0.2.4</span> 4. <strong>Tratamiento de medidas repetidas</strong></h4>
-<ul>
-<li>Comparar estrategias:</li>
-</ul>
-<pre><code>-  a) analizar por separado los dos momentos de medición,
-
--   b) calcular diferencias (Δ = post – pre).
-
-    Justificar la elección.</code></pre>
+<section id="handling-repeated-measurements" class="level3" data-number="8.2.4">
+<h3 data-number="8.2.4" class="anchored" data-anchor-id="handling-repeated-measurements"><span class="header-section-number">8.2.4</span> 4. Handling Repeated Measurements</h3>
+<p>Compare the following approaches for handling the two measurements collected from each participant: (a) analyse the two measurement time points separately; or (b) calculate within-participant differences (Δ = post-intervention − pre-intervention).</p>
+<p>Justify the selected approach and provide an example of the calculation. Discuss the implications of the choice for the subsequent analyses.</p>
 </section>
-<section id="análisis-de-componentes-principales-acp" class="level4" data-number="8.0.2.5">
-<h4 data-number="8.0.2.5" class="anchored" data-anchor-id="análisis-de-componentes-principales-acp"><span class="header-section-number">8.0.2.5</span> 5. <strong>Análisis de componentes principales (ACP)</strong></h4>
+<section id="principal-component-analysis-pca" class="level3" data-number="8.2.5">
+<h3 data-number="8.2.5" class="anchored" data-anchor-id="principal-component-analysis-pca"><span class="header-section-number">8.2.5</span> 5. Principal Component Analysis (PCA)</h3>
 <ul>
-<li><p>Realizar un ACP con las 14 variables.</p></li>
-<li><p>Interpretar los dos primeros componentes: ¿qué patrones o correlaciones destacan?</p></li>
-<li><p>Graficar el biplot e interpretar por grupos o por momento temporal.</p></li>
+<li>Perform PCA using the 14 selected variables.</li>
+<li>Interpret the first two principal components, identifying the main patterns of variation and associations among variables.</li>
+<li>Produce a PCA biplot and interpret the results by participant groups and/or measurement time point, as appropriate.</li>
 </ul>
 </section>
-<section id="análisis-de-clustering" class="level4" data-number="8.0.2.6">
-<h4 data-number="8.0.2.6" class="anchored" data-anchor-id="análisis-de-clustering"><span class="header-section-number">8.0.2.6</span> 6. <strong>Análisis de clustering</strong></h4>
+<section id="clustering-analysis" class="level3" data-number="8.2.6">
+<h3 data-number="8.2.6" class="anchored" data-anchor-id="clustering-analysis"><span class="header-section-number">8.2.6</span> 6. Clustering Analysis</h3>
 <ul>
-<li><p>Aplicar <strong>k-means o clustering jerárquico</strong>.</p></li>
-<li><p>Justificar el número de clusters elegido.</p></li>
-</ul>
-<pre><code>Mostrar dendrograma o gráfico de dispersión por cluster.</code></pre>
-</section>
-<section id="conclusiones" class="level4" data-number="8.0.2.7">
-<h4 data-number="8.0.2.7" class="anchored" data-anchor-id="conclusiones"><span class="header-section-number">8.0.2.7</span> 7. <strong>Conclusiones</strong></h4>
-<ul>
-<li><p>Resumen interpretativo de los patrones hallados.</p></li>
-<li><p>Posibles hipótesis biológicas o de estilo de vida que se desprenden.</p></li>
+<li>Apply either k-means clustering or hierarchical clustering.</li>
+<li>Justify the selected number of clusters using appropriate criteria.</li>
+<li>Present a dendrogram or a scatter plot showing cluster membership, as appropriate, and interpret the resulting groups.</li>
 </ul>
 </section>
-</section>
-<section id="actividad-de-revisión-13-de-noviembre" class="level3" data-number="8.0.3">
-<h3 data-number="8.0.3" class="anchored" data-anchor-id="actividad-de-revisión-13-de-noviembre"><span class="header-section-number">8.0.3</span> 🧾 <strong>Actividad de revisión — 13 de noviembre</strong></h3>
+<section id="conclusions" class="level3" data-number="8.2.7">
+<h3 data-number="8.2.7" class="anchored" data-anchor-id="conclusions"><span class="header-section-number">8.2.7</span> 7. Conclusions</h3>
 <ul>
-<li><p>Revisión conjunta en clase del avance del <code>.qmd</code>.</p></li>
-<li><p>Revisión del código de lectura y depuración de datos.</p></li>
-<li><p>Discusión sobre el manejo de medidas repetidas y escalado de variables.</p></li>
-<li><p>Feedback individual del profesor.</p></li>
+<li>Summarise and interpret the main patterns identified in the analysis.</li>
+<li>Discuss potential biological or lifestyle-related hypotheses suggested by the results, while distinguishing exploratory findings from established evidence.</li>
 </ul>
 </section>
-<section id="seminario-de-exposición-4-de-diciembre" class="level3" data-number="8.0.4">
-<h3 data-number="8.0.4" class="anchored" data-anchor-id="seminario-de-exposición-4-de-diciembre"><span class="header-section-number">8.0.4</span> 🎤 <strong>Seminario de exposición — 4 de diciembre</strong></h3>
-<p>Cada estudiante tendrá <strong>15 minutos</strong> para presentar:</p>
+<section id="references" class="level3" data-number="8.2.8">
+<h3 data-number="8.2.8" class="anchored" data-anchor-id="references"><span class="header-section-number">8.2.8</span> 8. References</h3>
+<p>Romero-Tapiador, S., et al.&nbsp;(2023). “AI4FoodDB: A Database for Personalized e-Health Nutrition and Lifestyle through Wearable Devices and Artificial Intelligence.” Database, baad049.</p>
+<p>Lacruz-Pleguezuelos, B., et al.&nbsp;(2025). “AI4Food, a feasibility study for the implementation of automated devices in the nutritional advice and follow up within a weight loss intervention.” Clinical Nutrition, 48, 80–89.</p>
+</section>
+</section>
+<section id="data-exploration-initial-instructions" class="level1" data-number="9">
+<h1 data-number="9"><span class="header-section-number">9</span> Data Exploration: Initial Instructions</h1>
+<p>Briefly describe the AI4FoodDB study and the type of data analysed. Load the dataset assigned to you (for example, DS4 together with DS1, DS2, DS7, or DS8, according to your assignment).</p>
+<p>Example R code for loading data (adapt the file paths and variable names as needed):</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Example: adapt paths and variable names as required</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="co"># DS4 &lt;- read.csv("path/DS4_Biomarkers.csv")</span></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="co"># DS1 &lt;- read.csv("path/DS1_Anthropometric.csv")</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<p>Summarise the numbers of participants, variables, and measurement time points.</p>
+</section>
+<section id="methodology-and-data-sources-1" class="level1" data-number="10">
+<h1 data-number="10"><span class="header-section-number">10</span> Methodology and Data Sources</h1>
+<p>Using the study documentation, explain how the data were collected, including the instruments used, the data collection period where relevant, and the nature of each variable. Justify the selection of the 10 proteins and four variables from the complementary dataset.</p>
+</section>
+<section id="descriptive-and-bivariate-analysis-1" class="level1" data-number="11">
+<h1 data-number="11"><span class="header-section-number">11</span> Descriptive and Bivariate Analysis</h1>
+<p>Calculate descriptive statistics (mean, standard deviation, minimum, and maximum) and produce two bivariate plots. One plot should show the relationship between a protein and a clinical or complementary variable; the other should show the relationship between two proteins or between two lifestyle variables.</p>
+<p>Example R code:</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Example</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="co"># summary(DS4[, c("ProteinA", "ProteinB")])</span></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="co"># plot(DS4$ProteinA, DS1$BMI)</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<p>Include a correlation plot (corrplot) for the 14 selected variables.</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># library(corrplot)</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="co"># corrplot(cor(combined_data, use = "pairwise.complete.obs"), method = "color")</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+</section>
+<section id="handling-repeated-measurements-1" class="level1" data-number="12">
+<h1 data-number="12"><span class="header-section-number">12</span> Handling Repeated Measurements</h1>
+<p>Describe how you will handle the repeated measurements collected at two time points for each participant. Consider either analysing each time point separately or calculating within-participant differences (Δ = post-intervention − pre-intervention).</p>
+<p>Justify your decision and provide an example of the calculation.</p>
+</section>
+<section id="principal-component-analysis-pca-1" class="level1" data-number="13">
+<h1 data-number="13"><span class="header-section-number">13</span> Principal Component Analysis (PCA)</h1>
+<p>Perform PCA using the 14 selected variables. Interpret the first two principal components and produce a biplot.</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co"># library(FactoMineR)</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="co"># library(factoextra)</span></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="co"># pca &lt;- PCA(combined_data, scale.unit = TRUE, graph = FALSE)</span></span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a><span class="co"># fviz_pca_biplot(pca, repel = TRUE)</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+</section>
+<section id="clustering-analysis-1" class="level1" data-number="14">
+<h1 data-number="14"><span class="header-section-number">14</span> Clustering Analysis</h1>
+<p>Apply k-means or hierarchical clustering, justify the selected number of clusters, and present the corresponding visualisation.</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># set.seed(123)</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="co"># km &lt;- kmeans(scale(combined_data), centers = 3)</span></span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="co"># fviz_cluster(km, data = scale(combined_data))</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+</section>
+<section id="conclusions-1" class="level1" data-number="15">
+<h1 data-number="15"><span class="header-section-number">15</span> Conclusions</h1>
+<p>Provide an interpretive summary of the patterns identified and discuss their potential biological or lifestyle-related implications.</p>
+<section id="review-session-13-november" class="level2" data-number="15.1">
+<h2 data-number="15.1" class="anchored" data-anchor-id="review-session-13-november"><span class="header-section-number">15.1</span> Review Session — 13 November</h2>
+<ul>
+<li>In-class review of each student’s progress on the .qmd report.</li>
+<li>Review of the data-import and data-cleaning code.</li>
+<li>Discussion of approaches to repeated measurements and variable scaling.</li>
+<li>Individual feedback from the instructor.</li>
+</ul>
+</section>
+<section id="student-presentation-seminar-4-december" class="level2" data-number="15.2">
+<h2 data-number="15.2" class="anchored" data-anchor-id="student-presentation-seminar-4-december"><span class="header-section-number">15.2</span> Student Presentation Seminar — 4 December</h2>
+<p>Each student will have 15 minutes to present:</p>
 <ol type="1">
-<li><p>Breve introducción del estudio y su subset de datos.</p></li>
-<li><p>Principales hallazgos (gráficas, ACP, clustering).</p></li>
-<li><p>Discusión biológica o interpretativa.</p></li>
-<li><p>Limitaciones del análisis.</p></li>
+<li>A brief introduction to the study and the assigned data subset.</li>
+<li>The main findings, supported by plots, PCA, and clustering results.</li>
+<li>A biological or broader interpretative discussion.</li>
+<li>Limitations of the analysis.</li>
 </ol>
 </section>
-<section id="evaluación" class="level3" data-number="8.0.5">
-<h3 data-number="8.0.5" class="anchored" data-anchor-id="evaluación"><span class="header-section-number">8.0.5</span> 🧮 <strong>Evaluación</strong></h3>
-<table class="caption-top table">
-<thead>
-<tr class="header">
-<th>Criterio</th>
-<th>Ponderación</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>Limpieza y preparación de datos</td>
-<td>15%</td>
-</tr>
-<tr class="even">
-<td>Claridad y justificación metodológica</td>
-<td>20%</td>
-</tr>
-<tr class="odd">
-<td>Gráficas e interpretación bivariada</td>
-<td>15%</td>
-</tr>
-<tr class="even">
-<td>ACP (ejecución e interpretación)</td>
-<td>20%</td>
-</tr>
-<tr class="odd">
-<td>Clustering y análisis interpretativo</td>
-<td>15%</td>
-</tr>
-<tr class="even">
-<td>Redacción y presentación final</td>
-<td>15%</td>
-</tr>
-</tbody>
-</table>
-</section>
-<section id="reconocimiento-de-los-datos-1" class="level1" data-number="9">
-<h1 data-number="9"><span class="header-section-number">9</span> 1. Reconocimiento de los datos</h1>
-<p>Describa brevemente el estudio <strong>AI4FoodDB</strong> y el tipo de datos analizados.<br>
-Cargue el dataset asignado (por ejemplo DS4 + DS1, DS2, DS7 o DS8 según su asignación).</p>
-<div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Ejemplo de lectura (ajuste ruta y variables según corresponda)</span></span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="co"># DS4 &lt;- read.csv("ruta/DS4_Biomarkers.csv")</span></span>
-<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="co"># DS1 &lt;- read.csv("ruta/DS1_Anthropometric.csv")</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
-</div>
-<p>Resuma el número de individuos, variables y momentos de medición.</p>
-</section>
-<section id="metodología-y-fuentes-1" class="level1" data-number="10">
-<h1 data-number="10"><span class="header-section-number">10</span> 2. Metodología y fuentes</h1>
-<p>Explique cómo se tomaron los datos según la documentación del estudio (instrumentos, duración, tipo de variable). Justifique la selección de sus variables (10 proteínas + 4 del dataset complementario).</p>
-</section>
-<section id="análisis-descriptivo-y-bivariado-1" class="level1" data-number="11">
-<h1 data-number="11"><span class="header-section-number">11</span> 3. Análisis descriptivo y bivariado</h1>
-<p>Calcule estadísticas descriptivas (media, sd, min, max) y realice <strong>dos gráficas bivariadas</strong>.<br>
-Una entre una proteína y una variable clínica, y otra entre dos proteínas o dos variables de estilo de vida.</p>
-<div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Ejemplo</span></span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="co"># summary(DS4[, c("ProteinA", "ProteinB")])</span></span>
-<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="co"># plot(DS4$ProteinA, DS1$BMI)</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
-</div>
-<p>Incluya un <strong>corrplot</strong> entre las 14 variables seleccionadas.</p>
-<div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># library(corrplot)</span></span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="co"># corrplot(cor(datos_combinados, use="pairwise.complete.obs"), method="color")</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
-</div>
-</section>
-<section id="tratamiento-de-medidas-repetidas-1" class="level1" data-number="12">
-<h1 data-number="12"><span class="header-section-number">12</span> 4. Tratamiento de medidas repetidas</h1>
-<p>Describa cómo maneja las medidas repetidas (dos momentos por individuo): - Analizar por separado cada momento, o - Calcular diferencias (Δ = post – pre).</p>
-<p>Justifique su decisión y muestre un ejemplo de cálculo.</p>
-</section>
-<section id="análisis-de-componentes-principales-acp-1" class="level1" data-number="13">
-<h1 data-number="13"><span class="header-section-number">13</span> 5. Análisis de Componentes Principales (ACP)</h1>
-<p>Realice un ACP con las 14 variables.<br>
-Interprete los dos primeros componentes y grafique el biplot.</p>
-<div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co"># library(FactoMineR)</span></span>
-<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="co"># library(factoextra)</span></span>
-<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a><span class="co"># pca &lt;- PCA(datos_combinados, scale.unit = TRUE, graph = FALSE)</span></span>
-<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a><span class="co"># fviz_pca_biplot(pca, repel = TRUE)</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
-</div>
-</section>
-<section id="análisis-de-clustering-1" class="level1" data-number="14">
-<h1 data-number="14"><span class="header-section-number">14</span> 6. Análisis de Clustering</h1>
-<p>Aplique <strong>k-means</strong> o <strong>clustering jerárquico</strong>, justifique el número de clusters y muestre el gráfico correspondiente.</p>
-<div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co"># set.seed(123)</span></span>
-<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="co"># km &lt;- kmeans(scale(datos_combinados), centers = 3)</span></span>
-<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a><span class="co"># fviz_cluster(km, data = scale(datos_combinados))</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
-</div>
-</section>
-<section id="conclusiones-1" class="level1" data-number="15">
-<h1 data-number="15"><span class="header-section-number">15</span> 7. Conclusiones</h1>
-<p>Redacte un resumen interpretativo de los patrones encontrados y posibles implicaciones biológicas o de estilo de vida.</p>
-</section>
-<section id="referencias" class="level1" data-number="16">
-<h1 data-number="16"><span class="header-section-number">16</span> 8. Referencias</h1>
-<blockquote class="blockquote">
-<p>Romero-Tapiador, S., et al.&nbsp;(2023). <em>AI4FoodDB: A Database for Personalized e-Health Nutrition and Lifestyle through Wearable Devices and Artificial Intelligence.</em> Database, baad049.<br>
-Lacruz-Pleguezuelos, B., et al.&nbsp;(2025). <em>AI4Food, a feasibility study for the implementation of automated devices in the nutritional advice and follow up within a weight loss intervention.</em> Clinical Nutrition, 48, 80–89.</p>
-</blockquote>
+<section id="assessment-criteria" class="level2" data-number="15.3">
+<h2 data-number="15.3" class="anchored" data-anchor-id="assessment-criteria"><span class="header-section-number">15.3</span> Assessment Criteria</h2>
+<p>Criterion | Weight Data cleaning and preparation | 15% Methodological clarity and justification | 20% Bivariate plots and interpretation | 15% PCA: implementation and interpretation | 20% Clustering and interpretative analysis | 15% Writing quality and final presentation | 15%</p>
 
 
+</section>
 </section>
 
 </main> <!-- /main -->
@@ -954,8 +849,8 @@ Lacruz-Pleguezuelos, B., et al.&nbsp;(2025). <em>AI4Food, a feasibility study fo
   </script>
 <nav class="page-navigation column-body">
   <div class="nav-page nav-page-previous">
-      <a href="./07_Descriptiva2.html" class="pagination-link" aria-label="Two or More Quantitative">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Two or More Quantitative</span></span>
+      <a href="./07_Descriptiva2.html" class="pagination-link" aria-label="Multivariate Descriptive Statistics">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Multivariate Descriptive Statistics</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
