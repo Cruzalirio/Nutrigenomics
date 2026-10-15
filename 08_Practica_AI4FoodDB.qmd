@@ -2,7 +2,7 @@
 
 To analyse and integrate clinical, anthropometric, and molecular data from the AI4FoodDB study using descriptive and multivariate statistical methods, including principal component analysis (PCA) and clustering, to investigate patterns of variation and associations among variables from different biological and lifestyle domains.
 
-The AI4FoodDB study (https://github.com/AI4Food/AI4FoodDB?tab=readme-ov-file#datasets; Romero-Tapiador et al., 2023; Lacruz-Pleguezuelos et al., 2025) includes data from a nutritional intervention involving 100 participants with overweight or obesity.
+The [AI4FoodDB study](https://github.com/AI4Food/AI4FoodDB?tab=readme-ov-file#datasets) (Romero-Tapiador et al., 2023; Lacruz-Pleguezuelos et al., 2025) includes data from a nutritional intervention involving 100 participants with overweight or obesity.
 
 The relevant datasets are:
 
