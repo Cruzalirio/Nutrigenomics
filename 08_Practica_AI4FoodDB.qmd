@@ -1,190 +1,184 @@
-# Objetivo general
+#  Practice of Bivariate Analysis
 
-Analizar e integrar información clínica, antropométrica, y molecular proveniente del estudio AI4FoodDB, aplicando herramientas estadísticas descriptivas y multivariantes (PCA, clustering) para explorar patrones de variación y relaciones entre variables de distintos dominios biológicos y de estilo de vida.
+To analyse and integrate clinical, anthropometric, and molecular data from the AI4FoodDB study using descriptive and multivariate statistical methods, including principal component analysis (PCA) and clustering, to investigate patterns of variation and associations among variables from different biological and lifestyle domains.
 
-El estudio **AI4FoodDB, [acá el enlace](https://github.com/AI4Food/AI4FoodDB?tab=readme-ov-file#datasets)** (Romero-Tapiador et al., 2023; Lacruz-Pleguezuelos et al., 2025) contiene información de una intervención nutricional en 100 participantes con sobrepeso u obesidad.\
-Los datasets relevantes son:
+The AI4FoodDB study (https://github.com/AI4Food/AI4FoodDB?tab=readme-ov-file#datasets; Romero-Tapiador et al., 2023; Lacruz-Pleguezuelos et al., 2025) includes data from a nutritional intervention involving 100 participants with overweight or obesity.
 
-| Dataset | Tipo de datos | Ejemplos de variables |
-|------------------------|------------------------|------------------------|
-| DS1 | Antropometría | Peso, IMC, circunferencia de cintura |
-| DS2 | Lifestyle & Health | Tabaquismo, alcohol, medicamentos |
-| DS4 | Biomarcadores | Proteínas plasmáticas, glucosa, colesterol |
-| DS7 | Actividad física (IPAQ) | Minutos de actividad moderada/vigorosa, pasos |
-| DS8 | Sueño (Oviedo Sleep Questionnaire) | Latencia, eficiencia, duración del sueño |
+The relevant datasets are:
 
-### **Asignaciones individuales**
+Dataset | Data type | Examples of variables
+DS1 | Anthropometry | Weight, BMI, waist circumference
+DS2 | Lifestyle and health | Smoking, alcohol consumption, medication use
+DS4 | Biomarkers | Plasma proteins, glucose, cholesterol
+DS7 | Physical activity (IPAQ) | Minutes of moderate-to-vigorous activity, step counts
+DS8 | Sleep (Oviedo Sleep Questionnaire) | Sleep latency, efficiency, and duration
 
-| Estudiante | Dataset secundario | Variables complementarias | Tareas principales |
-|------------------|------------------|------------------|------------------|
-| **Sofía** | DS1 – Antropometría | 4 variables antropométricas | ACP + Clustering con proteínas + gráficos bivariados |
-| **Louie** | DS2 – Lifestyle | 4 variables de estilo de vida | ACP + Clustering + análisis de relación clínica |
-| **Cyntia** | DS8 – Sueño | 4 variables del OSQ | ACP + Clustering + relación sueño-proteómica |
-| **Carmen** | DS7 – Actividad física (IPAQ) | 4 variables de actividad | ACP + Clustering + relación actividad-proteómica |
 
-### **Estructura de la práctica (entregable 15/11/2025)**
+## Individual Assignments
 
-Cada estudiante debe entregar un documento en formato `.qmd` (R Markdown) o `.html` generado desde RStudio, con las siguientes secciones:
+Student | Secondary dataset | Complementary variables | Main tasks
+Student 1 | DS1 – Anthropometry | Four anthropometric variables | PCA and clustering incorporating protein data, plus bivariate plots
+Student 2 | DS2 – Lifestyle | Four lifestyle variables | PCA, clustering, and analysis of clinical associations
+Student 3 | DS8 – Sleep | Four Oviedo Sleep Questionnaire (OSQ) variables | PCA, clustering, and analysis of sleep–proteomics associations
+Student 4 | DS7 – Physical activity (IPAQ) | Four physical activity variables | PCA, clustering, and analysis of physical activity–proteomics associations
 
-#### 1. **Reconocimiento de los datos**
 
--   Descripción del estudio AI4FoodDB y del tipo de datos analizados.
+## Practical Assignment Structure
+Submission deadline: 15 November 2025
 
--   Identificación del número de individuos, variables y momentos de medición.
+Each student must submit a report in Quarto Markdown (.qmd) format or an HTML report generated in RStudio. The report must include the following sections.
 
--   Tabla resumen de variables seleccionadas (10 proteínas + 4 variables del dataset complementario): Unidades, valores mínimos, máximos y número de datos faltantes
+### 1. Data Exploration
 
-#### 2. **Metodología y fuentes**
+- Briefly describe the AI4FoodDB study and the type of data analysed.
+- Report the numbers of participants, variables, and measurement time points.
+- Provide a summary table of the selected variables (10 proteins and four variables from the complementary dataset), including measurement units, minimum and maximum values, and the number of missing observations.
 
--   Explicación de cómo se tomaron los datos (según documentación AI4FoodDB).
+### 2. Methodology and Data Sources
 
-#### 3. **Análisis descriptivo y bivariado**
+- Explain how the data were collected, based on the documentation provided by AI4FoodDB.
+- Describe the instruments used, the duration of data collection where applicable, and the types of variables.
+- Justify the selection of the 10 proteins and four complementary variables.
 
--   Dos **gráficas bivariadas** que exploren relaciones entre:
+### 3. Descriptive and Bivariate Analysis
 
-    -   \(a\) una proteína y una variable complementaria
+- Calculate descriptive statistics, including the mean, standard deviation, minimum, and maximum.
+- Produce two bivariate plots to investigate relationships between:
+  (a) one protein and one complementary variable; and
+  (b) either two proteins or two complementary variables.
+- Include a correlation plot (corrplot) for the 14 selected variables and provide a brief interpretation of the main patterns observed.
 
-    -   \(b\) dos proteínas o dos variables complementarias.
+### 4. Handling Repeated Measurements
 
--   Un **corrplot** entre las 14 variables, junto a un parrafo de análisis
+Compare the following approaches for handling the two measurements collected from each participant:
+(a) analyse the two measurement time points separately; or
+(b) calculate within-participant differences (Δ = post-intervention − pre-intervention).
 
-#### 4. **Tratamiento de medidas repetidas**
+Justify the selected approach and provide an example of the calculation. Discuss the implications of the choice for the subsequent analyses.
 
--   Comparar estrategias:
+### 5. Principal Component Analysis (PCA)
 
-```         
--  a) analizar por separado los dos momentos de medición,
+- Perform PCA using the 14 selected variables.
+- Interpret the first two principal components, identifying the main patterns of variation and associations among variables.
+- Produce a PCA biplot and interpret the results by participant groups and/or measurement time point, as appropriate.
 
--   b) calcular diferencias (Δ = post – pre).
+### 6. Clustering Analysis
 
-    Justificar la elección.
-```
+- Apply either k-means clustering or hierarchical clustering.
+- Justify the selected number of clusters using appropriate criteria.
+- Present a dendrogram or a scatter plot showing cluster membership, as appropriate, and interpret the resulting groups.
 
-#### 5. **Análisis de componentes principales (ACP)**
+### 7. Conclusions
 
--   Realizar un ACP con las 14 variables.
+- Summarise and interpret the main patterns identified in the analysis.
+- Discuss potential biological or lifestyle-related hypotheses suggested by the results, while distinguishing exploratory findings from established evidence.
 
--   Interpretar los dos primeros componentes: ¿qué patrones o correlaciones destacan?
+### 8. References
 
--   Graficar el biplot e interpretar por grupos o por momento temporal.
+Romero-Tapiador, S., et al. (2023). “AI4FoodDB: A Database for Personalized e-Health Nutrition and Lifestyle through Wearable Devices and Artificial Intelligence.” Database, baad049.
 
-#### 6. **Análisis de clustering**
+Lacruz-Pleguezuelos, B., et al. (2025). “AI4Food, a feasibility study for the implementation of automated devices in the nutritional advice and follow up within a weight loss intervention.” Clinical Nutrition, 48, 80–89.
 
--   Aplicar **k-means o clustering jerárquico**.
 
--   Justificar el número de clusters elegido.
+# Data Exploration: Initial Instructions
 
-```         
-Mostrar dendrograma o gráfico de dispersión por cluster.
-```
+Briefly describe the AI4FoodDB study and the type of data analysed. Load the dataset assigned to you (for example, DS4 together with DS1, DS2, DS7, or DS8, according to your assignment).
 
-#### 7. **Conclusiones**
-
--   Resumen interpretativo de los patrones hallados.
-
--   Posibles hipótesis biológicas o de estilo de vida que se desprenden.
-
-### 🧾 **Actividad de revisión — 13 de noviembre**
-
--   Revisión conjunta en clase del avance del `.qmd`.
-
--   Revisión del código de lectura y depuración de datos.
-
--   Discusión sobre el manejo de medidas repetidas y escalado de variables.
-
--   Feedback individual del profesor.
-
-### 🎤 **Seminario de exposición — 4 de diciembre**
-
-Cada estudiante tendrá **15 minutos** para presentar:
-
-1.  Breve introducción del estudio y su subset de datos.
-
-2.  Principales hallazgos (gráficas, ACP, clustering).
-
-3.  Discusión biológica o interpretativa.
-
-4.  Limitaciones del análisis.
-
-### 🧮 **Evaluación**
-
-| Criterio                              | Ponderación |
-|---------------------------------------|-------------|
-| Limpieza y preparación de datos       | 15%         |
-| Claridad y justificación metodológica | 20%         |
-| Gráficas e interpretación bivariada   | 15%         |
-| ACP (ejecución e interpretación)      | 20%         |
-| Clustering y análisis interpretativo  | 15%         |
-| Redacción y presentación final        | 15%         |
-
-# 1. Reconocimiento de los datos
-
-Describa brevemente el estudio **AI4FoodDB** y el tipo de datos analizados.\
-Cargue el dataset asignado (por ejemplo DS4 + DS1, DS2, DS7 o DS8 según su asignación).
+Example R code for loading data (adapt the file paths and variable names as needed):
 
 ```{r load-data}
-# Ejemplo de lectura (ajuste ruta y variables según corresponda)
-# DS4 <- read.csv("ruta/DS4_Biomarkers.csv")
-# DS1 <- read.csv("ruta/DS1_Anthropometric.csv")
+# Example: adapt paths and variable names as required
+# DS4 <- read.csv("path/DS4_Biomarkers.csv")
+# DS1 <- read.csv("path/DS1_Anthropometric.csv")
 ```
 
-Resuma el número de individuos, variables y momentos de medición.
+Summarise the numbers of participants, variables, and measurement time points.
 
-# 2. Metodología y fuentes
 
-Explique cómo se tomaron los datos según la documentación del estudio (instrumentos, duración, tipo de variable). Justifique la selección de sus variables (10 proteínas + 4 del dataset complementario).
+# Methodology and Data Sources
 
-# 3. Análisis descriptivo y bivariado
+Using the study documentation, explain how the data were collected, including the instruments used, the data collection period where relevant, and the nature of each variable. Justify the selection of the 10 proteins and four variables from the complementary dataset.
 
-Calcule estadísticas descriptivas (media, sd, min, max) y realice **dos gráficas bivariadas**.\
-Una entre una proteína y una variable clínica, y otra entre dos proteínas o dos variables de estilo de vida.
+
+# Descriptive and Bivariate Analysis
+
+Calculate descriptive statistics (mean, standard deviation, minimum, and maximum) and produce two bivariate plots. One plot should show the relationship between a protein and a clinical or complementary variable; the other should show the relationship between two proteins or between two lifestyle variables.
+
+Example R code:
 
 ```{r descriptives}
-# Ejemplo
+# Example
 # summary(DS4[, c("ProteinA", "ProteinB")])
 # plot(DS4$ProteinA, DS1$BMI)
 ```
 
-Incluya un **corrplot** entre las 14 variables seleccionadas.
+Include a correlation plot (corrplot) for the 14 selected variables.
 
 ```{r corrplot, message=FALSE}
 # library(corrplot)
-# corrplot(cor(datos_combinados, use="pairwise.complete.obs"), method="color")
+# corrplot(cor(combined_data, use = "pairwise.complete.obs"), method = "color")
 ```
 
-# 4. Tratamiento de medidas repetidas
 
-Describa cómo maneja las medidas repetidas (dos momentos por individuo): - Analizar por separado cada momento, o - Calcular diferencias (Δ = post – pre).
+# Handling Repeated Measurements
 
-Justifique su decisión y muestre un ejemplo de cálculo.
+Describe how you will handle the repeated measurements collected at two time points for each participant. Consider either analysing each time point separately or calculating within-participant differences (Δ = post-intervention − pre-intervention).
 
-# 5. Análisis de Componentes Principales (ACP)
+Justify your decision and provide an example of the calculation.
 
-Realice un ACP con las 14 variables.\
-Interprete los dos primeros componentes y grafique el biplot.
+
+# Principal Component Analysis (PCA)
+
+Perform PCA using the 14 selected variables. Interpret the first two principal components and produce a biplot.
 
 ```{r pca, message=FALSE}
 # library(FactoMineR)
 # library(factoextra)
-# pca <- PCA(datos_combinados, scale.unit = TRUE, graph = FALSE)
+# pca <- PCA(combined_data, scale.unit = TRUE, graph = FALSE)
 # fviz_pca_biplot(pca, repel = TRUE)
 ```
 
-# 6. Análisis de Clustering
 
-Aplique **k-means** o **clustering jerárquico**, justifique el número de clusters y muestre el gráfico correspondiente.
+# Clustering Analysis
+
+Apply k-means or hierarchical clustering, justify the selected number of clusters, and present the corresponding visualisation.
 
 ```{r cluster, message=FALSE}
 # set.seed(123)
-# km <- kmeans(scale(datos_combinados), centers = 3)
-# fviz_cluster(km, data = scale(datos_combinados))
+# km <- kmeans(scale(combined_data), centers = 3)
+# fviz_cluster(km, data = scale(combined_data))
 ```
 
-# 7. Conclusiones
 
-Redacte un resumen interpretativo de los patrones encontrados y posibles implicaciones biológicas o de estilo de vida.
+# Conclusions
 
-# 8. Referencias
+Provide an interpretive summary of the patterns identified and discuss their potential biological or lifestyle-related implications.
 
-> Romero-Tapiador, S., et al. (2023). *AI4FoodDB: A Database for Personalized e-Health Nutrition and Lifestyle through Wearable Devices and Artificial Intelligence.* Database, baad049.\
-> Lacruz-Pleguezuelos, B., et al. (2025). *AI4Food, a feasibility study for the implementation of automated devices in the nutritional advice and follow up within a weight loss intervention.* Clinical Nutrition, 48, 80–89.
+
+## Review Session — 13 November
+
+- In-class review of each student's progress on the .qmd report.
+- Review of the data-import and data-cleaning code.
+- Discussion of approaches to repeated measurements and variable scaling.
+- Individual feedback from the instructor.
+
+
+## Student Presentation Seminar — 4 December
+
+Each student will have 15 minutes to present:
+
+1. A brief introduction to the study and the assigned data subset.
+2. The main findings, supported by plots, PCA, and clustering results.
+3. A biological or broader interpretative discussion.
+4. Limitations of the analysis.
+
+
+## Assessment Criteria
+
+Criterion | Weight
+Data cleaning and preparation | 15%
+Methodological clarity and justification | 20%
+Bivariate plots and interpretation | 15%
+PCA: implementation and interpretation | 20%
+Clustering and interpretative analysis | 15%
+Writing quality and final presentation | 15%

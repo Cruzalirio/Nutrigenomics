@@ -1,7 +1,4 @@
-
-
-
-## Two or More Quantitative
+## Multivariate Descriptive Statistics
 
 | Variable | Meaning (Biomedical context) |
 |-----------|------------------------------|

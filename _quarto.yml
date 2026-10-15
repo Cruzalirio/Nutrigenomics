@@ -35,6 +35,11 @@ book:
 
 bibliography: referencias.bib
 
+execute:
+  echo: true
+  warning: true
+  message: true
+
 format:
   html:
     sidebar:
