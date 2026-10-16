@@ -35,25 +35,30 @@ book:
 
 bibliography: referencias.bib
 
-execute:
-  echo: true
-  warning: true
-  message: true
-
 format:
   html:
-    sidebar:
-      float: true  # Keeps sidebar floating on scroll
-      width: 300px  # Customize width if needed
-    page-layout: full
-    theme: cosmo
-    lang: es 
-  # pdf:
-  #   documentclass: scrreprt
-  #   linkcolor: blue
-  #   lang: es
+    theme:
+      light: cosmo
+      dark: darkly
 
-website:
-  sidebar:
-    style: "floating"
-    search: true
+    toc: true
+    toc-depth: 3
+
+    code-copy: true
+    code-fold: true
+
+    smooth-scroll: true
+
+    grid:
+      sidebar-width: 180px
+      body-width: 900px
+      margin-width: 180px
+
+execute:
+  echo: true
+  warning: false
+  message: false
+
+lang: es
+
+editor: visual
