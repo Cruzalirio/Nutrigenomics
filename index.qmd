@@ -2,87 +2,87 @@
 
 Welcome to the repository for the course Design of Experimental Studies and Applied Statistics in Nutrigenomics — part of the Master’s in Nutrigenomics program.
 
-This repository contains all teaching materials, examples, datasets, and R scripts used throughout the course.  
+This repository contains all teaching materials, examples, datasets, and R scripts used throughout the course.\
 The course is fully reproducible and designed to be explored as a Quarto Book published via **GitHub Pages**.
 
----
+------------------------------------------------------------------------
 
 ### Course Overview
 
-This course introduces the statistical foundations of experimental design and applied data analysis in the context of nutrigenomics.  
+This course introduces the statistical foundations of experimental design and applied data analysis in the context of nutrigenomics.\
 Students will learn to manage, visualize, and analyze omics, clinical, and dietary data using **R** and reproducible workflows.
 
 ### Topics
-1. **Introduction to Nutrigenomics** — study design and data types  
-2. **Measures of Association**  
-3. **Data Reading and Cleaning in R**  
-4. **Multivariate Descriptive Statistics**  
-5. **Dimensionality Reduction and Clustering**  
-6. **Introduction to Systematic Reviews**
+
+1.  **Introduction to Nutrigenomics** — study design and data types\
+2.  **Measures of Association**\
+3.  **Data Reading and Cleaning in R**\
+4.  **Multivariate Descriptive Statistics**\
+5.  **Dimensionality Reduction and Clustering**\
+6.  **Introduction to Systematic Reviews**
 
 Each topic includes lectures, practical labs, and problem sets.
-
 
 ### Evaluation Criteria
 
 The evaluation of the course Design of Experimental Studies and Applied Statistics in Nutrigenomics will be based on three main activities, each contributing to the final grade as described below.
 
 | **Evaluation activity** | **Weight** | **Recoverable** | **Validation mark** | **Improvement of qualification** |
-|--------------------------|------------|------------------|----------------------|----------------------------------|
-| Expositive seminar       | 30%        | No               | –                    | No                               |
-| Practices (R exercises)  | 25%        | No               | –                    | No                               |
-| Final exam               | 45%        | Yes              | 4                    | No                               |
+|--------------|--------------|--------------|--------------|------------------|
+| Expositive seminar | 30% | No | – | No |
+| Practices (R exercises) | 25% | No | – | No |
+| Final exam | 45% | Yes | 4 | No |
 
----
+------------------------------------------------------------------------
 
 ## Description of the Evaluation Components
 
 ### 1. Expositive Seminar (30%)
 
-- **Format:** Group presentation in pairs or groups of three.  
-- **Objective:** To present and discuss a specific topic related to experimental design, statistical modeling, or data analysis applied to nutrigenomics.  
-- **Evaluation criteria:** Clarity, scientific accuracy, statistical interpretation, and ability to engage in discussion.  
-- **Date:** **December 4, 2026** (final class session).  
+- **Format:** Group presentation in pairs or groups of three.\
+- **Objective:** To present and discuss a specific topic related to experimental design, statistical modeling, or data analysis applied to nutrigenomics.\
+- **Evaluation criteria:** Clarity, scientific accuracy, statistical interpretation, and ability to engage in discussion.\
+- **Date:** **December 17, 2026** (final class session).\
 - **Deliverables:**
   - 15-minute oral presentation.
   - Accompanying Quarto or R Markdown document with code and figures (submitted through the GitHub repository).
 
 ### 2. Practices (25%)
 
-- **Format:** Individual R exercises completed during the practical sessions (marked below as *Practices*).  
-- **Objective:** To apply the statistical techniques discussed in class using real or synthetic omics, clinical, and dietary datasets.  
+- **Format:** Individual R exercises completed during the practical sessions (marked below as *Practices*).\
+- **Objective:** To apply the statistical techniques discussed in class using real or synthetic omics, clinical, and dietary datasets.\
 - **Submission:** Each student must upload the corresponding `.R` or `.qmd` file to their personal GitHub fork or send it through the course platform.
 
 ### 3. Final Exam (45%)
 
-- **Format:** Individual written and computational test.  
-- **Objective:** To assess conceptual understanding and practical skills in the design and analysis of studies in nutrigenomics.  
-- **Date:** **January 18, 2027**  
-- **Recovery Exam:** **February 11, 2027**  
+- **Format:** Individual written and computational test.\
+- **Objective:** To assess conceptual understanding and practical skills in the design and analysis of studies in nutrigenomics.\
+- **Date:** **January 18, 2027**\
+- **Recovery Exam:** **February 11, 2027**\
 - **Minimum mark required for validation:** 4 (out of 10).
 
----
+------------------------------------------------------------------------
 
 ## Course Schedule
 
-| **Session** | **Date**       | **Type**         | **Description** | **Responsible**|
-|--------------|----------------|------------------|-----------------|-----------------|
-| 01 | 27/10/2026 | Lecture | Introduction to Nutrigenomics and Experimental Design. Installation of R and Rstudio | Irene|
-| 02 | 29/10/2026 | Lecture | Study Designs: Observational and Experimental | Irene|
-| 03 | 02/11/2026 | Lecture | Measures of Association - RR - OR | Ricardo|
-| 04 | 03/11/2026 | Practice 1 | Measures of Association - RR - OR| Ricardo|
-| 05 | 05/11/2026 | Lecture | Data Management and Cleaning | Alirio|
-| 06 | 09/11/2026 | Lecture | Correlation and Bivariate Association| Alirio|
-| 07 | 10/11/2026 | Practice 2 |Exploratory Data Analysis in R| Alirio|
-| 08 | 12/11/2026 | Lecture | Multivariate Descriptive Analysis | Alirio|
-| 09 | 16/11/2026 | Lecture | Principal Components Analysis| Alirio|
-| 10 | 17/11/2026 | Lecture | Clustering Analysis  | Alirio|
-| 11 | 19/11/2026 | Practice 3 | Applied Case Study in Nutrigenomics in R| Alirio|
-| 12 | 14/12/2026 | Lecture | Introduction to Systematic Reviews | Alirio|
-| 13 | 15/12/2026 | Lecture | Synthesis and Preparation for Expositive Seminar | Alirio|
-| 14 | 17/12/2026 | Seminar | **Final Expositive Seminar (Group Presentation)** | Alirio|
+| **Session** | **Date** | **Type** | **Description** | **Responsible** |
+|---------------|---------------|---------------|---------------|---------------|
+| 01 | 27/10/2026 | Lecture | Introduction to Nutrigenomics and Experimental Design. Installation of R and Rstudio | Irene |
+| 02 | 29/10/2026 | Lecture | Study Designs: Observational and Experimental | Irene |
+| 03 | 02/11/2026 | Lecture | Measures of Association - RR - OR | Ricardo |
+| 04 | 03/11/2026 | Practice 1 | Measures of Association - RR - OR | Ricardo |
+| 05 | 05/11/2026 | Lecture | Data Management and Cleaning | Alirio |
+| 06 | 09/11/2026 | Lecture | Correlation and Bivariate Association | Alirio |
+| 07 | 10/11/2026 | Practice 2 | Exploratory Data Analysis in R | Alirio |
+| 08 | 12/11/2026 | Lecture | Multivariate Descriptive Analysis | Alirio |
+| 09 | 16/11/2026 | Lecture | Principal Components Analysis | Alirio |
+| 10 | 17/11/2026 | Lecture | Clustering Analysis | Alirio |
+| 11 | 19/11/2026 | Practice 3 | Applied Case Study in Nutrigenomics in R | Alirio |
+| 12 | 14/12/2026 | Lecture | Introduction to Systematic Reviews | Alirio |
+| 13 | 15/12/2026 | Lecture | Synthesis and Preparation for Expositive Seminar | Alirio |
+| 14 | 17/12/2026 | Seminar | **Final Expositive Seminar (Group Presentation)** | Alirio |
 
----
+------------------------------------------------------------------------
 
 ## Additional Notes
 
@@ -91,7 +91,7 @@ The evaluation of the course Design of Experimental Studies and Applied Statisti
 - Students are encouraged to collaborate during practice sessions but must submit **individual code** unless otherwise specified.
 - The **seminar** is designed to promote teamwork and critical discussion of applied methods in nutrigenomics.
 
----
+------------------------------------------------------------------------
 
-> *“Design is not just about data collection; it is about asking questions the data can truly answer.”*  
+> *“Design is not just about data collection; it is about asking questions the data can truly answer.”*\
 > — Course motto
