@@ -28,7 +28,7 @@ Each topic includes lectures, practical labs, and problem sets.
 The evaluation of the course Design of Experimental Studies and Applied Statistics in Nutrigenomics will be based on three main activities, each contributing to the final grade as described below.
 
 | **Evaluation activity** | **Weight** | **Recoverable** | **Validation mark** | **Improvement of qualification** |
-|--------------|--------------|--------------|--------------|------------------|
+|----|----|----|----|----|
 | Expositive seminar | 30% | No | – | No |
 | Practices (R exercises) | 25% | No | – | No |
 | Final exam | 45% | Yes | 4 | No |
@@ -66,7 +66,7 @@ The evaluation of the course Design of Experimental Studies and Applied Statisti
 ## Course Schedule
 
 | **Session** | **Date** | **Type** | **Description** | **Responsible** |
-|---------------|---------------|---------------|---------------|---------------|
+|----|----|----|----|----|
 | 01 | 27/10/2026 | Lecture | Introduction to Nutrigenomics and Experimental Design. Installation of R and Rstudio | Irene |
 | 02 | 29/10/2026 | Lecture | Study Designs: Observational and Experimental | Irene |
 | 03 | 02/11/2026 | Lecture | Measures of Association - RR - OR | Ricardo |

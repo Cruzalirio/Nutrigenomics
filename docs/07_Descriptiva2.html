@@ -612,70 +612,21 @@ sample estimates:
 <span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(Inflammatory_Index, Oxidative_Stress, Antioxidant_Intake, Cardiometabolic_Risk,</span>
 <span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>         Sleep_Quality_Score, Gut_Microbiome_Balance, Nutritional_Score, Inflammation_to_Antioxidant_Ratio, Biological_Age)</span>
 <span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>corr_matrix <span class="ot">&lt;-</span> <span class="fu">cor</span>(quant_vars, <span class="at">use =</span> <span class="st">"pairwise.complete.obs"</span>)</span>
-<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a><span class="fu">round</span>(corr_matrix, <span class="dv">2</span>)</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(quant_vars) <span class="ot">&lt;-</span> <span class="fu">substr</span>(<span class="fu">names</span>(quant_vars), <span class="dv">1</span>,<span class="dv">4</span>)</span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a>corr_matrix <span class="ot">&lt;-</span> <span class="fu">cor</span>(quant_vars, <span class="at">use =</span> <span class="st">"pairwise.complete.obs"</span>)</span>
+<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a><span class="fu">round</span>(corr_matrix, <span class="dv">2</span>)</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 <div class="cell-output cell-output-stdout">
-<pre><code>                                  Inflammatory_Index Oxidative_Stress
-Inflammatory_Index                              1.00             0.08
-Oxidative_Stress                                0.08             1.00
-Antioxidant_Intake                             -0.55            -0.04
-Cardiometabolic_Risk                            0.36             0.24
-Sleep_Quality_Score                            -0.37            -0.14
-Gut_Microbiome_Balance                         -0.75            -0.09
-Nutritional_Score                              -0.67            -0.05
-Inflammation_to_Antioxidant_Ratio               0.45             0.03
-Biological_Age                                  0.33             0.25
-                                  Antioxidant_Intake Cardiometabolic_Risk
-Inflammatory_Index                             -0.55                 0.36
-Oxidative_Stress                               -0.04                 0.24
-Antioxidant_Intake                              1.00                -0.06
-Cardiometabolic_Risk                           -0.06                 1.00
-Sleep_Quality_Score                             0.11                -0.23
-Gut_Microbiome_Balance                          0.76                -0.20
-Nutritional_Score                               0.88                -0.15
-Inflammation_to_Antioxidant_Ratio              -0.63                 0.08
-Biological_Age                                 -0.27                 0.55
-                                  Sleep_Quality_Score Gut_Microbiome_Balance
-Inflammatory_Index                              -0.37                  -0.75
-Oxidative_Stress                                -0.14                  -0.09
-Antioxidant_Intake                               0.11                   0.76
-Cardiometabolic_Risk                            -0.23                  -0.20
-Sleep_Quality_Score                              1.00                   0.17
-Gut_Microbiome_Balance                           0.17                   1.00
-Nutritional_Score                                0.14                   0.85
-Inflammation_to_Antioxidant_Ratio               -0.11                  -0.54
-Biological_Age                                  -0.16                  -0.27
-                                  Nutritional_Score
-Inflammatory_Index                            -0.67
-Oxidative_Stress                              -0.05
-Antioxidant_Intake                             0.88
-Cardiometabolic_Risk                          -0.15
-Sleep_Quality_Score                            0.14
-Gut_Microbiome_Balance                         0.85
-Nutritional_Score                              1.00
-Inflammation_to_Antioxidant_Ratio             -0.59
-Biological_Age                                -0.28
-                                  Inflammation_to_Antioxidant_Ratio
-Inflammatory_Index                                             0.45
-Oxidative_Stress                                               0.03
-Antioxidant_Intake                                            -0.63
-Cardiometabolic_Risk                                           0.08
-Sleep_Quality_Score                                           -0.11
-Gut_Microbiome_Balance                                        -0.54
-Nutritional_Score                                             -0.59
-Inflammation_to_Antioxidant_Ratio                              1.00
-Biological_Age                                                 0.19
-                                  Biological_Age
-Inflammatory_Index                          0.33
-Oxidative_Stress                            0.25
-Antioxidant_Intake                         -0.27
-Cardiometabolic_Risk                        0.55
-Sleep_Quality_Score                        -0.16
-Gut_Microbiome_Balance                     -0.27
-Nutritional_Score                          -0.28
-Inflammation_to_Antioxidant_Ratio           0.19
-Biological_Age                              1.00</code></pre>
+<pre><code>      Infl  Oxid  Anti  Card  Slee  Gut_  Nutr  Infl  Biol
+Infl  1.00  0.08 -0.55  0.36 -0.37 -0.75 -0.67  0.45  0.33
+Oxid  0.08  1.00 -0.04  0.24 -0.14 -0.09 -0.05  0.03  0.25
+Anti -0.55 -0.04  1.00 -0.06  0.11  0.76  0.88 -0.63 -0.27
+Card  0.36  0.24 -0.06  1.00 -0.23 -0.20 -0.15  0.08  0.55
+Slee -0.37 -0.14  0.11 -0.23  1.00  0.17  0.14 -0.11 -0.16
+Gut_ -0.75 -0.09  0.76 -0.20  0.17  1.00  0.85 -0.54 -0.27
+Nutr -0.67 -0.05  0.88 -0.15  0.14  0.85  1.00 -0.59 -0.28
+Infl  0.45  0.03 -0.63  0.08 -0.11 -0.54 -0.59  1.00  0.19
+Biol  0.33  0.25 -0.27  0.55 -0.16 -0.27 -0.28  0.19  1.00</code></pre>
 </div>
 </div>
 <div class="cell">
@@ -752,7 +703,7 @@ Biological_Age                              1.00</code></pre>
 <span id="cb12-15"><a href="#cb12-15" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb12-16"><a href="#cb12-16" aria-hidden="true" tabindex="-1"></a>data <span class="ot">&lt;-</span> <span class="fu">na.exclude</span>(data)</span>
 <span id="cb12-17"><a href="#cb12-17" aria-hidden="true" tabindex="-1"></a>GGally<span class="sc">::</span><span class="fu">ggpairs</span>(</span>
-<span id="cb12-18"><a href="#cb12-18" aria-hidden="true" tabindex="-1"></a>  data,</span>
+<span id="cb12-18"><a href="#cb12-18" aria-hidden="true" tabindex="-1"></a>  datos <span class="sc">|&gt;</span> <span class="fu">sample_n</span>(<span class="dv">1000</span>),</span>
 <span id="cb12-19"><a href="#cb12-19" aria-hidden="true" tabindex="-1"></a>  <span class="at">columns =</span> <span class="fu">c</span>(<span class="st">"Inflammatory_Index"</span>, <span class="st">"Oxidative_Stress"</span>, <span class="st">"BMI"</span>,</span>
 <span id="cb12-20"><a href="#cb12-20" aria-hidden="true" tabindex="-1"></a>              <span class="st">"Cardiometabolic_Risk"</span>,  <span class="st">"Biological_Age"</span>),</span>
 <span id="cb12-21"><a href="#cb12-21" aria-hidden="true" tabindex="-1"></a>  <span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">color =</span> <span class="fu">factor</span>(Veggies)),</span>
@@ -769,6 +720,23 @@ Biological_Age                              1.00</code></pre>
 </div>
 </div>
 </div>
+<div class="cell">
+<details class="code-fold">
+<summary>Código</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>data <span class="ot">&lt;-</span> datos <span class="sc">%&gt;%</span> </span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(Diabetes_012, HighBP, HighChol, CholCheck, Smoker, Sex) <span class="sc">%&gt;%</span> </span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">Inflammatory_Index=</span><span class="fu">mean</span>(Inflammatory_Index, <span class="at">na.rm=</span><span class="cn">TRUE</span>),</span>
+<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a>            <span class="at">BMI =</span> <span class="fu">mean</span>(BMI, <span class="at">na.rm=</span><span class="cn">TRUE</span>),</span>
+<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a>            <span class="at">Oxidative_Stress=</span><span class="fu">mean</span>(Oxidative_Stress, <span class="at">na.rm=</span><span class="cn">TRUE</span>), </span>
+<span id="cb13-6"><a href="#cb13-6" aria-hidden="true" tabindex="-1"></a>            <span class="at">Antioxidant_Intake=</span><span class="fu">mean</span>(Antioxidant_Intake, <span class="at">na.rm=</span><span class="cn">TRUE</span>), </span>
+<span id="cb13-7"><a href="#cb13-7" aria-hidden="true" tabindex="-1"></a>            <span class="at">Cardiometabolic_Risk=</span><span class="fu">mean</span>(Cardiometabolic_Risk, <span class="at">na.rm=</span><span class="cn">TRUE</span>),</span>
+<span id="cb13-8"><a href="#cb13-8" aria-hidden="true" tabindex="-1"></a>            <span class="at">Sleep_Quality_Score=</span><span class="fu">mean</span>(Sleep_Quality_Score, <span class="at">na.rm=</span><span class="cn">TRUE</span>),</span>
+<span id="cb13-9"><a href="#cb13-9" aria-hidden="true" tabindex="-1"></a>            <span class="at">Gut_Microbiome_Balance=</span><span class="fu">mean</span>(Gut_Microbiome_Balance, <span class="at">na.rm=</span><span class="cn">TRUE</span>),</span>
+<span id="cb13-10"><a href="#cb13-10" aria-hidden="true" tabindex="-1"></a>            <span class="at">Nutritional_Score=</span><span class="fu">mean</span>(Nutritional_Score, <span class="at">na.rm=</span><span class="cn">TRUE</span>),</span>
+<span id="cb13-11"><a href="#cb13-11" aria-hidden="true" tabindex="-1"></a>            <span class="at">Inflammation_to_Antioxidant_Ratio=</span><span class="fu">mean</span>(Inflammatory_Index, <span class="at">na.rm=</span><span class="cn">TRUE</span>),</span>
+<span id="cb13-12"><a href="#cb13-12" aria-hidden="true" tabindex="-1"></a>            <span class="at">Biological_Age=</span><span class="fu">mean</span>(Biological_Age, <span class="at">na.rm=</span><span class="cn">TRUE</span>))</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+</div>
 </section>
 <section id="practice-2" class="level2" data-number="7.1">
 <h2 data-number="7.1" class="anchored" data-anchor-id="practice-2"><span class="header-section-number">7.1</span> Practice 2</h2>
@@ -781,16 +749,16 @@ Biological_Age                              1.00</code></pre>
 <div class="cell">
 <details class="code-fold">
 <summary>Código</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
-<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(corrplot)</span>
-<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">2000081</span>)</span>
-<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Example loading (adjust to your local path)</span></span>
-<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a><span class="co"># data &lt;- read.csv("diabetes_BRFSS2015.csv")</span></span>
-<span id="cb13-6"><a href="#cb13-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb13-7"><a href="#cb13-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Example simulated data (for illustration)</span></span>
-<span id="cb13-8"><a href="#cb13-8" aria-hidden="true" tabindex="-1"></a>datos <span class="ot">=</span> <span class="fu">read_csv</span>(<span class="st">"https://raw.githubusercontent.com/Cruzalirio/Unal-Enfermeria-/main/Datos/diabetes_BRFSS2015.csv"</span>)</span>
-<span id="cb13-9"><a href="#cb13-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb13-10"><a href="#cb13-10" aria-hidden="true" tabindex="-1"></a>sample_data <span class="ot">&lt;-</span> datos <span class="sc">%&gt;%</span> <span class="fu">sample_n</span>(<span class="dv">2000</span>) <span class="sc">%&gt;%</span> <span class="fu">na.omit</span>()</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(corrplot)</span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">2000081</span>)</span>
+<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Example loading (adjust to your local path)</span></span>
+<span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a><span class="co"># data &lt;- read.csv("diabetes_BRFSS2015.csv")</span></span>
+<span id="cb14-6"><a href="#cb14-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-7"><a href="#cb14-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Example simulated data (for illustration)</span></span>
+<span id="cb14-8"><a href="#cb14-8" aria-hidden="true" tabindex="-1"></a>datos <span class="ot">=</span> <span class="fu">read_csv</span>(<span class="st">"https://raw.githubusercontent.com/Cruzalirio/Unal-Enfermeria-/main/Datos/diabetes_BRFSS2015.csv"</span>)</span>
+<span id="cb14-9"><a href="#cb14-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-10"><a href="#cb14-10" aria-hidden="true" tabindex="-1"></a>sample_data <span class="ot">&lt;-</span> datos <span class="sc">%&gt;%</span> <span class="fu">sample_n</span>(<span class="dv">2000</span>) <span class="sc">%&gt;%</span> <span class="fu">na.omit</span>()</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 </div>
 <p>** <em>2. Boxplot Analysis (2.5 points)</em></p>
@@ -799,18 +767,18 @@ Biological_Age                              1.00</code></pre>
 <div class="cell">
 <details class="code-fold">
 <summary>Código</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(sample_data, <span class="fu">aes</span>(<span class="at">x =</span> <span class="fu">factor</span>(Veggies), <span class="at">y =</span> Inflammatory_Index, <span class="at">fill =</span> <span class="fu">factor</span>(Smoker))) <span class="sc">+</span></span>
-<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a><span class="fu">geom_boxplot</span>() <span class="sc">+</span></span>
-<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">facet_wrap</span>(.<span class="sc">~</span><span class="fu">factor</span>(Diabetes_012))<span class="sc">+</span></span>
-<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a><span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"Vegetable Consumption (0=No, 1=Yes)"</span>,</span>
-<span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a><span class="at">y =</span> <span class="st">"Glucose Level (mg/dL)"</span>,</span>
-<span id="cb14-6"><a href="#cb14-6" aria-hidden="true" tabindex="-1"></a><span class="at">title =</span> <span class="st">"Boxplot of Glucose Level by Vegetable Consumption"</span>) <span class="sc">+</span></span>
-<span id="cb14-7"><a href="#cb14-7" aria-hidden="true" tabindex="-1"></a><span class="fu">theme_minimal</span>()</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(sample_data, <span class="fu">aes</span>(<span class="at">x =</span> <span class="fu">factor</span>(Veggies), <span class="at">y =</span> Inflammatory_Index, <span class="at">fill =</span> <span class="fu">factor</span>(Smoker))) <span class="sc">+</span></span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a><span class="fu">geom_boxplot</span>() <span class="sc">+</span></span>
+<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">facet_wrap</span>(.<span class="sc">~</span><span class="fu">factor</span>(Diabetes_012))<span class="sc">+</span></span>
+<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a><span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"Vegetable Consumption (0=No, 1=Yes)"</span>,</span>
+<span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a><span class="at">y =</span> <span class="st">"Glucose Level (mg/dL)"</span>,</span>
+<span id="cb15-6"><a href="#cb15-6" aria-hidden="true" tabindex="-1"></a><span class="at">title =</span> <span class="st">"Boxplot of Glucose Level by Vegetable Consumption"</span>) <span class="sc">+</span></span>
+<span id="cb15-7"><a href="#cb15-7" aria-hidden="true" tabindex="-1"></a><span class="fu">theme_minimal</span>()</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="07_Descriptiva2_files/figure-html/unnamed-chunk-10-1.png" class="img-fluid figure-img" width="672"></p>
+<p><img src="07_Descriptiva2_files/figure-html/unnamed-chunk-11-1.png" class="img-fluid figure-img" width="672"></p>
 </figure>
 </div>
 </div>
@@ -821,19 +789,19 @@ Biological_Age                              1.00</code></pre>
 <div class="cell">
 <details class="code-fold">
 <summary>Código</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(sample_data, <span class="fu">aes</span>(<span class="at">x =</span> Inflammatory_Index, <span class="at">y =</span> BMI, <span class="at">color =</span> <span class="fu">factor</span>(Veggies))) <span class="sc">+</span></span>
-<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a><span class="fu">geom_point</span>(<span class="at">alpha =</span> <span class="fl">0.7</span>) <span class="sc">+</span></span>
-<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a><span class="fu">geom_smooth</span>(<span class="at">method =</span> <span class="st">"lm"</span>, <span class="at">se =</span> <span class="cn">FALSE</span>, <span class="at">color =</span> <span class="st">"black"</span>) <span class="sc">+</span></span>
-<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a><span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Scatter plot: BMI vs Glucose Level"</span>,</span>
-<span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a><span class="at">x =</span> <span class="st">"Body Mass Index (BMI)"</span>,</span>
-<span id="cb15-6"><a href="#cb15-6" aria-hidden="true" tabindex="-1"></a><span class="at">y =</span> <span class="st">"Glucose Level (mg/dL)"</span>,</span>
-<span id="cb15-7"><a href="#cb15-7" aria-hidden="true" tabindex="-1"></a><span class="at">color =</span> <span class="st">"Vegetable Consumption"</span>) <span class="sc">+</span></span>
-<span id="cb15-8"><a href="#cb15-8" aria-hidden="true" tabindex="-1"></a><span class="fu">theme_minimal</span>()</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(sample_data, <span class="fu">aes</span>(<span class="at">x =</span> Inflammatory_Index, <span class="at">y =</span> BMI, <span class="at">color =</span> <span class="fu">factor</span>(Veggies))) <span class="sc">+</span></span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a><span class="fu">geom_point</span>(<span class="at">alpha =</span> <span class="fl">0.7</span>) <span class="sc">+</span></span>
+<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a><span class="fu">geom_smooth</span>(<span class="at">method =</span> <span class="st">"lm"</span>, <span class="at">se =</span> <span class="cn">FALSE</span>, <span class="at">color =</span> <span class="st">"black"</span>) <span class="sc">+</span></span>
+<span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a><span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Scatter plot: BMI vs Glucose Level"</span>,</span>
+<span id="cb16-5"><a href="#cb16-5" aria-hidden="true" tabindex="-1"></a><span class="at">x =</span> <span class="st">"Body Mass Index (BMI)"</span>,</span>
+<span id="cb16-6"><a href="#cb16-6" aria-hidden="true" tabindex="-1"></a><span class="at">y =</span> <span class="st">"Glucose Level (mg/dL)"</span>,</span>
+<span id="cb16-7"><a href="#cb16-7" aria-hidden="true" tabindex="-1"></a><span class="at">color =</span> <span class="st">"Vegetable Consumption"</span>) <span class="sc">+</span></span>
+<span id="cb16-8"><a href="#cb16-8" aria-hidden="true" tabindex="-1"></a><span class="fu">theme_minimal</span>()</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="07_Descriptiva2_files/figure-html/unnamed-chunk-11-1.png" class="img-fluid figure-img" width="672"></p>
+<p><img src="07_Descriptiva2_files/figure-html/unnamed-chunk-12-1.png" class="img-fluid figure-img" width="672"></p>
 </figure>
 </div>
 </div>
@@ -845,6 +813,36 @@ Biological_Age                              1.00</code></pre>
 <li>Density 2d <a href="https://r-graph-gallery.com/2d-density-plot-with-ggplot2.html#hist">here</a></li>
 <li>Spider <a href="https://r-graph-gallery.com/142-basic-radar-chart.html">here</a></li>
 </ol>
+<div class="cell">
+<details class="code-fold">
+<summary>Código</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>dataGrafica <span class="ot">&lt;-</span> datos <span class="sc">|&gt;</span>  </span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">Vegetal =</span> <span class="fu">ifelse</span>(Veggies <span class="sc">==</span><span class="dv">0</span>, <span class="st">"No"</span>, <span class="st">"Sí"</span>),</span>
+<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a>         <span class="at">Frutas =</span> <span class="fu">ifelse</span>(Fruits <span class="sc">==</span><span class="dv">0</span>, <span class="st">"No"</span>, <span class="st">"Sí"</span>))</span>
+<span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a>dataGrafica <span class="sc">|&gt;</span> <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x=</span>Vegetal, <span class="at">fill =</span> Frutas))<span class="sc">+</span></span>
+<span id="cb17-5"><a href="#cb17-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_bar</span>()<span class="sc">+</span><span class="fu">scale_fill_hue</span>(<span class="at">c =</span> <span class="dv">40</span>)</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="07_Descriptiva2_files/figure-html/unnamed-chunk-13-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+<details class="code-fold">
+<summary>Código</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>dataGrafica <span class="sc">|&gt;</span> <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x=</span>Vegetal, <span class="at">fill =</span> Frutas))<span class="sc">+</span></span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_bar</span>(<span class="at">position =</span> <span class="st">"fill"</span>)<span class="sc">+</span><span class="fu">scale_fill_grey</span>()<span class="sc">+</span></span>
+<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_bw</span>()<span class="sc">+</span> <span class="fu">ylab</span>(<span class="st">"Porcentaje"</span>)</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="07_Descriptiva2_files/figure-html/unnamed-chunk-13-2.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
 
 
 </section>

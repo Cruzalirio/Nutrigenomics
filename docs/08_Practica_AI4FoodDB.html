@@ -407,17 +407,18 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">Tabla de contenidos</h2>
    
   <ul>
-  <li><a href="#individual-assignments" id="toc-individual-assignments" class="nav-link active" data-scroll-target="#individual-assignments"><span class="header-section-number">8.1</span> Individual Assignments</a></li>
-  <li><a href="#practical-assignment-structure" id="toc-practical-assignment-structure" class="nav-link" data-scroll-target="#practical-assignment-structure"><span class="header-section-number">8.2</span> Practical Assignment Structure</a>
+  <li><a href="#datasets" id="toc-datasets" class="nav-link active" data-scroll-target="#datasets"><span class="header-section-number">8.0.1</span> Datasets</a></li>
+  <li><a href="#individual-assignments" id="toc-individual-assignments" class="nav-link" data-scroll-target="#individual-assignments"><span class="header-section-number">8.0.2</span> Individual Assignments</a></li>
+  <li><a href="#practical-assignment-structure" id="toc-practical-assignment-structure" class="nav-link" data-scroll-target="#practical-assignment-structure"><span class="header-section-number">8.1</span> Practical Assignment Structure</a>
   <ul class="collapse">
-  <li><a href="#data-exploration" id="toc-data-exploration" class="nav-link" data-scroll-target="#data-exploration"><span class="header-section-number">8.2.1</span> 1. Data Exploration</a></li>
-  <li><a href="#methodology-and-data-sources" id="toc-methodology-and-data-sources" class="nav-link" data-scroll-target="#methodology-and-data-sources"><span class="header-section-number">8.2.2</span> 2. Methodology and Data Sources</a></li>
-  <li><a href="#descriptive-and-bivariate-analysis" id="toc-descriptive-and-bivariate-analysis" class="nav-link" data-scroll-target="#descriptive-and-bivariate-analysis"><span class="header-section-number">8.2.3</span> 3. Descriptive and Bivariate Analysis</a></li>
-  <li><a href="#handling-repeated-measurements" id="toc-handling-repeated-measurements" class="nav-link" data-scroll-target="#handling-repeated-measurements"><span class="header-section-number">8.2.4</span> 4. Handling Repeated Measurements</a></li>
-  <li><a href="#principal-component-analysis-pca" id="toc-principal-component-analysis-pca" class="nav-link" data-scroll-target="#principal-component-analysis-pca"><span class="header-section-number">8.2.5</span> 5. Principal Component Analysis (PCA)</a></li>
-  <li><a href="#clustering-analysis" id="toc-clustering-analysis" class="nav-link" data-scroll-target="#clustering-analysis"><span class="header-section-number">8.2.6</span> 6. Clustering Analysis</a></li>
-  <li><a href="#conclusions" id="toc-conclusions" class="nav-link" data-scroll-target="#conclusions"><span class="header-section-number">8.2.7</span> 7. Conclusions</a></li>
-  <li><a href="#references" id="toc-references" class="nav-link" data-scroll-target="#references"><span class="header-section-number">8.2.8</span> 8. References</a></li>
+  <li><a href="#data-exploration" id="toc-data-exploration" class="nav-link" data-scroll-target="#data-exploration"><span class="header-section-number">8.1.1</span> 1. Data Exploration</a></li>
+  <li><a href="#methodology-and-data-sources" id="toc-methodology-and-data-sources" class="nav-link" data-scroll-target="#methodology-and-data-sources"><span class="header-section-number">8.1.2</span> 2. Methodology and Data Sources</a></li>
+  <li><a href="#descriptive-and-bivariate-analysis" id="toc-descriptive-and-bivariate-analysis" class="nav-link" data-scroll-target="#descriptive-and-bivariate-analysis"><span class="header-section-number">8.1.3</span> 3. Descriptive and Bivariate Analysis</a></li>
+  <li><a href="#handling-repeated-measurements" id="toc-handling-repeated-measurements" class="nav-link" data-scroll-target="#handling-repeated-measurements"><span class="header-section-number">8.1.4</span> 4. Handling Repeated Measurements</a></li>
+  <li><a href="#principal-component-analysis-pca" id="toc-principal-component-analysis-pca" class="nav-link" data-scroll-target="#principal-component-analysis-pca"><span class="header-section-number">8.1.5</span> 5. Principal Component Analysis (PCA)</a></li>
+  <li><a href="#clustering-analysis" id="toc-clustering-analysis" class="nav-link" data-scroll-target="#clustering-analysis"><span class="header-section-number">8.1.6</span> 6. Clustering Analysis</a></li>
+  <li><a href="#conclusions" id="toc-conclusions" class="nav-link" data-scroll-target="#conclusions"><span class="header-section-number">8.1.7</span> 7. Conclusions</a></li>
+  <li><a href="#references" id="toc-references" class="nav-link" data-scroll-target="#references"><span class="header-section-number">8.1.8</span> 8. References</a></li>
   </ul></li>
   <li><a href="#data-exploration-initial-instructions" id="toc-data-exploration-initial-instructions" class="nav-link" data-scroll-target="#data-exploration-initial-instructions"><span class="header-section-number">9</span> Data Exploration: Initial Instructions</a></li>
   <li><a href="#methodology-and-data-sources-1" id="toc-methodology-and-data-sources-1" class="nav-link" data-scroll-target="#methodology-and-data-sources-1"><span class="header-section-number">10</span> Methodology and Data Sources</a></li>
@@ -460,33 +461,117 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>To analyse and integrate clinical, anthropometric, and molecular data from the AI4FoodDB study using descriptive and multivariate statistical methods, including principal component analysis (PCA) and clustering, to investigate patterns of variation and associations among variables from different biological and lifestyle domains.</p>
 <p>The <a href="https://github.com/AI4Food/AI4FoodDB?tab=readme-ov-file#datasets">AI4FoodDB study</a> (Romero-Tapiador et al., 2023; Lacruz-Pleguezuelos et al., 2025) includes data from a nutritional intervention involving 100 participants with overweight or obesity.</p>
 <p>The relevant datasets are:</p>
-<p>Dataset | Data type | Examples of variables DS1 | Anthropometry | Weight, BMI, waist circumference DS2 | Lifestyle and health | Smoking, alcohol consumption, medication use DS4 | Biomarkers | Plasma proteins, glucose, cholesterol DS7 | Physical activity (IPAQ) | Minutes of moderate-to-vigorous activity, step counts DS8 | Sleep (Oviedo Sleep Questionnaire) | Sleep latency, efficiency, and duration</p>
-<section id="individual-assignments" class="level2" data-number="8.1">
-<h2 data-number="8.1" class="anchored" data-anchor-id="individual-assignments"><span class="header-section-number">8.1</span> Individual Assignments</h2>
-<p>Student | Secondary dataset | Complementary variables | Main tasks Student 1 | DS1 – Anthropometry | Four anthropometric variables | PCA and clustering incorporating protein data, plus bivariate plots Student 2 | DS2 – Lifestyle | Four lifestyle variables | PCA, clustering, and analysis of clinical associations Student 3 | DS8 – Sleep | Four Oviedo Sleep Questionnaire (OSQ) variables | PCA, clustering, and analysis of sleep–proteomics associations Student 4 | DS7 – Physical activity (IPAQ) | Four physical activity variables | PCA, clustering, and analysis of physical activity–proteomics associations</p>
+<section id="datasets" class="level3" data-number="8.0.1">
+<h3 data-number="8.0.1" class="anchored" data-anchor-id="datasets"><span class="header-section-number">8.0.1</span> Datasets</h3>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 33%">
+<col style="width: 33%">
+<col style="width: 33%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Dataset</th>
+<th>Data type</th>
+<th>Examples of variables</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>DS1</td>
+<td>Anthropometry</td>
+<td>Weight, BMI, waist circumference</td>
+</tr>
+<tr class="even">
+<td>DS2</td>
+<td>Lifestyle and health</td>
+<td>Smoking, alcohol consumption, medication use</td>
+</tr>
+<tr class="odd">
+<td>DS4</td>
+<td>Biomarkers</td>
+<td>Plasma proteins, glucose, cholesterol</td>
+</tr>
+<tr class="even">
+<td>DS7</td>
+<td>Physical activity (IPAQ)</td>
+<td>Minutes of moderate-to-vigorous activity, step counts</td>
+</tr>
+<tr class="odd">
+<td>DS8</td>
+<td>Sleep (Oviedo Sleep Questionnaire)</td>
+<td>Sleep latency, efficiency, and duration</td>
+</tr>
+</tbody>
+</table>
 </section>
-<section id="practical-assignment-structure" class="level2" data-number="8.2">
-<h2 data-number="8.2" class="anchored" data-anchor-id="practical-assignment-structure"><span class="header-section-number">8.2</span> Practical Assignment Structure</h2>
+<section id="individual-assignments" class="level3" data-number="8.0.2">
+<h3 data-number="8.0.2" class="anchored" data-anchor-id="individual-assignments"><span class="header-section-number">8.0.2</span> Individual Assignments</h3>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 25%">
+<col style="width: 25%">
+<col style="width: 25%">
+<col style="width: 25%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Student</th>
+<th>Secondary dataset</th>
+<th>Complementary variables</th>
+<th>Main tasks</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Student 1</td>
+<td>DS1 – Anthropometry</td>
+<td>Four anthropometric variables</td>
+<td>PCA and clustering incorporating protein data, plus bivariate plots</td>
+</tr>
+<tr class="even">
+<td>Student 2</td>
+<td>DS2 – Lifestyle</td>
+<td>Four lifestyle variables</td>
+<td>PCA, clustering, and analysis of clinical associations</td>
+</tr>
+<tr class="odd">
+<td>Student 3</td>
+<td>DS8 – Sleep</td>
+<td>Four Oviedo Sleep Questionnaire (OSQ) variables</td>
+<td>PCA, clustering, and analysis of sleep–proteomics associations</td>
+</tr>
+<tr class="even">
+<td>Student 4</td>
+<td>DS7 – Physical activity (IPAQ)</td>
+<td>Four physical activity variables</td>
+<td>PCA, clustering, and analysis of physical activity–proteomics associations</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="practical-assignment-structure" class="level2" data-number="8.1">
+<h2 data-number="8.1" class="anchored" data-anchor-id="practical-assignment-structure"><span class="header-section-number">8.1</span> Practical Assignment Structure</h2>
 <p>Submission deadline: 15 November 2025</p>
 <p>Each student must submit a report in Quarto Markdown (.qmd) format or an HTML report generated in RStudio. The report must include the following sections.</p>
-<section id="data-exploration" class="level3" data-number="8.2.1">
-<h3 data-number="8.2.1" class="anchored" data-anchor-id="data-exploration"><span class="header-section-number">8.2.1</span> 1. Data Exploration</h3>
+<section id="data-exploration" class="level3" data-number="8.1.1">
+<h3 data-number="8.1.1" class="anchored" data-anchor-id="data-exploration"><span class="header-section-number">8.1.1</span> 1. Data Exploration</h3>
 <ul>
 <li>Briefly describe the AI4FoodDB study and the type of data analysed.</li>
 <li>Report the numbers of participants, variables, and measurement time points.</li>
 <li>Provide a summary table of the selected variables (10 proteins and four variables from the complementary dataset), including measurement units, minimum and maximum values, and the number of missing observations.</li>
 </ul>
 </section>
-<section id="methodology-and-data-sources" class="level3" data-number="8.2.2">
-<h3 data-number="8.2.2" class="anchored" data-anchor-id="methodology-and-data-sources"><span class="header-section-number">8.2.2</span> 2. Methodology and Data Sources</h3>
+<section id="methodology-and-data-sources" class="level3" data-number="8.1.2">
+<h3 data-number="8.1.2" class="anchored" data-anchor-id="methodology-and-data-sources"><span class="header-section-number">8.1.2</span> 2. Methodology and Data Sources</h3>
 <ul>
 <li>Explain how the data were collected, based on the documentation provided by AI4FoodDB.</li>
 <li>Describe the instruments used, the duration of data collection where applicable, and the types of variables.</li>
 <li>Justify the selection of the 10 proteins and four complementary variables.</li>
 </ul>
 </section>
-<section id="descriptive-and-bivariate-analysis" class="level3" data-number="8.2.3">
-<h3 data-number="8.2.3" class="anchored" data-anchor-id="descriptive-and-bivariate-analysis"><span class="header-section-number">8.2.3</span> 3. Descriptive and Bivariate Analysis</h3>
+<section id="descriptive-and-bivariate-analysis" class="level3" data-number="8.1.3">
+<h3 data-number="8.1.3" class="anchored" data-anchor-id="descriptive-and-bivariate-analysis"><span class="header-section-number">8.1.3</span> 3. Descriptive and Bivariate Analysis</h3>
 <ul>
 <li>Calculate descriptive statistics, including the mean, standard deviation, minimum, and maximum.</li>
 <li>Produce two bivariate plots to investigate relationships between:
@@ -497,36 +582,36 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li>Include a correlation plot (corrplot) for the 14 selected variables and provide a brief interpretation of the main patterns observed.</li>
 </ul>
 </section>
-<section id="handling-repeated-measurements" class="level3" data-number="8.2.4">
-<h3 data-number="8.2.4" class="anchored" data-anchor-id="handling-repeated-measurements"><span class="header-section-number">8.2.4</span> 4. Handling Repeated Measurements</h3>
+<section id="handling-repeated-measurements" class="level3" data-number="8.1.4">
+<h3 data-number="8.1.4" class="anchored" data-anchor-id="handling-repeated-measurements"><span class="header-section-number">8.1.4</span> 4. Handling Repeated Measurements</h3>
 <p>Compare the following approaches for handling the two measurements collected from each participant: (a) analyse the two measurement time points separately; or (b) calculate within-participant differences (Δ = post-intervention − pre-intervention).</p>
 <p>Justify the selected approach and provide an example of the calculation. Discuss the implications of the choice for the subsequent analyses.</p>
 </section>
-<section id="principal-component-analysis-pca" class="level3" data-number="8.2.5">
-<h3 data-number="8.2.5" class="anchored" data-anchor-id="principal-component-analysis-pca"><span class="header-section-number">8.2.5</span> 5. Principal Component Analysis (PCA)</h3>
+<section id="principal-component-analysis-pca" class="level3" data-number="8.1.5">
+<h3 data-number="8.1.5" class="anchored" data-anchor-id="principal-component-analysis-pca"><span class="header-section-number">8.1.5</span> 5. Principal Component Analysis (PCA)</h3>
 <ul>
 <li>Perform PCA using the 14 selected variables.</li>
 <li>Interpret the first two principal components, identifying the main patterns of variation and associations among variables.</li>
 <li>Produce a PCA biplot and interpret the results by participant groups and/or measurement time point, as appropriate.</li>
 </ul>
 </section>
-<section id="clustering-analysis" class="level3" data-number="8.2.6">
-<h3 data-number="8.2.6" class="anchored" data-anchor-id="clustering-analysis"><span class="header-section-number">8.2.6</span> 6. Clustering Analysis</h3>
+<section id="clustering-analysis" class="level3" data-number="8.1.6">
+<h3 data-number="8.1.6" class="anchored" data-anchor-id="clustering-analysis"><span class="header-section-number">8.1.6</span> 6. Clustering Analysis</h3>
 <ul>
 <li>Apply either k-means clustering or hierarchical clustering.</li>
 <li>Justify the selected number of clusters using appropriate criteria.</li>
 <li>Present a dendrogram or a scatter plot showing cluster membership, as appropriate, and interpret the resulting groups.</li>
 </ul>
 </section>
-<section id="conclusions" class="level3" data-number="8.2.7">
-<h3 data-number="8.2.7" class="anchored" data-anchor-id="conclusions"><span class="header-section-number">8.2.7</span> 7. Conclusions</h3>
+<section id="conclusions" class="level3" data-number="8.1.7">
+<h3 data-number="8.1.7" class="anchored" data-anchor-id="conclusions"><span class="header-section-number">8.1.7</span> 7. Conclusions</h3>
 <ul>
 <li>Summarise and interpret the main patterns identified in the analysis.</li>
 <li>Discuss potential biological or lifestyle-related hypotheses suggested by the results, while distinguishing exploratory findings from established evidence.</li>
 </ul>
 </section>
-<section id="references" class="level3" data-number="8.2.8">
-<h3 data-number="8.2.8" class="anchored" data-anchor-id="references"><span class="header-section-number">8.2.8</span> 8. References</h3>
+<section id="references" class="level3" data-number="8.1.8">
+<h3 data-number="8.1.8" class="anchored" data-anchor-id="references"><span class="header-section-number">8.1.8</span> 8. References</h3>
 <p>Romero-Tapiador, S., et al.&nbsp;(2023). “AI4FoodDB: A Database for Personalized e-Health Nutrition and Lifestyle through Wearable Devices and Artificial Intelligence.” Database, baad049.</p>
 <p>Lacruz-Pleguezuelos, B., et al.&nbsp;(2025). “AI4Food, a feasibility study for the implementation of automated devices in the nutritional advice and follow up within a weight loss intervention.” Clinical Nutrition, 48, 80–89.</p>
 </section>

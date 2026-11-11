@@ -58,6 +58,7 @@ quant_vars <- datos %>%
   select(Inflammatory_Index, Oxidative_Stress, Antioxidant_Intake, Cardiometabolic_Risk,
          Sleep_Quality_Score, Gut_Microbiome_Balance, Nutritional_Score, Inflammation_to_Antioxidant_Ratio, Biological_Age)
 
+names(quant_vars) <- substr(names(quant_vars), 1,4)
 corr_matrix <- cor(quant_vars, use = "pairwise.complete.obs")
 round(corr_matrix, 2)
 ```
@@ -103,7 +104,7 @@ data <- datos %>%
 
 data <- na.exclude(data)
 GGally::ggpairs(
-  data,
+  datos |> sample_n(1000),
   columns = c("Inflammatory_Index", "Oxidative_Stress", "BMI",
               "Cardiometabolic_Risk",  "Biological_Age"),
   mapping = aes(color = factor(Veggies)),
@@ -111,6 +112,20 @@ GGally::ggpairs(
   lower = list(continuous = wrap("points", alpha = 0.6, size = 1.5))
 ) +
   theme_bw(base_size = 12)
+```
+```{r}
+data <- datos %>% 
+  group_by(Diabetes_012, HighBP, HighChol, CholCheck, Smoker, Sex) %>% 
+  summarise(Inflammatory_Index=mean(Inflammatory_Index, na.rm=TRUE),
+            BMI = mean(BMI, na.rm=TRUE),
+            Oxidative_Stress=mean(Oxidative_Stress, na.rm=TRUE), 
+            Antioxidant_Intake=mean(Antioxidant_Intake, na.rm=TRUE), 
+            Cardiometabolic_Risk=mean(Cardiometabolic_Risk, na.rm=TRUE),
+            Sleep_Quality_Score=mean(Sleep_Quality_Score, na.rm=TRUE),
+            Gut_Microbiome_Balance=mean(Gut_Microbiome_Balance, na.rm=TRUE),
+            Nutritional_Score=mean(Nutritional_Score, na.rm=TRUE),
+            Inflammation_to_Antioxidant_Ratio=mean(Inflammatory_Index, na.rm=TRUE),
+            Biological_Age=mean(Biological_Age, na.rm=TRUE))
 ```
 
 
@@ -179,4 +194,19 @@ Select a plot between the following that you should replicate with the `sample d
 1. Bubble plot[here](https://r-graph-gallery.com/320-the-basis-of-bubble-plot.html)
 2. Density 2d [here](https://r-graph-gallery.com/2d-density-plot-with-ggplot2.html#hist)
 3. Spider [here](https://r-graph-gallery.com/142-basic-radar-chart.html)
+
+```{r}
+dataGrafica <- datos |>  
+  mutate(Vegetal = ifelse(Veggies ==0, "No", "Sí"),
+         Frutas = ifelse(Fruits ==0, "No", "Sí"))
+dataGrafica |> ggplot(aes(x=Vegetal, fill = Frutas))+
+  geom_bar()+scale_fill_hue(c = 40)
+
+
+dataGrafica |> ggplot(aes(x=Vegetal, fill = Frutas))+
+  geom_bar(position = "fill")+scale_fill_grey()+
+  theme_bw()+ ylab("Porcentaje")
+```
+
+
 

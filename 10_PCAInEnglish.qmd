@@ -1,6 +1,6 @@
 ## Principal component Analysis (joint some databases)
 
-Principal Component Analysis (PCA) is a multivariate statistical method designed to transform a set of possibly correlated variables into a new set of orthogonal (uncorrelated) variables called principal components. Each principal component represents a linear combination of the original variables and is constructed in such a way that it captures as much of the total variance in the data as possible. The first principal component accounts for the maximum amount of variability, the second captures the next highest amount under the constraint of being orthogonal to the first, and so on. 
+Principal Component Analysis (PCA) is a multivariate statistical method designed to transform a set of possibly correlated variables into a new set of orthogonal (uncorrelated) variables called principal components. Each principal component represents a linear combination of the original variables and is constructed in such a way that it captures as much of the total variance in the data as possible. The first principal component accounts for the maximum amount of variability, the second captures the next highest amount under the constraint of being orthogonal to the first, and so on.
 
 The primary purpose of PCA is dimensionality reduction: by retaining only the first few components, one can approximate the original data while minimizing information loss. This facilitates visualization, pattern recognition, and noise reduction, especially in high-dimensional datasets where interpretation is otherwise difficult. The method assumes that the most meaningful structure of the data lies in the directions of greatest variance, thus replacing the original coordinate system with one defined by these new axes of variation.
 
@@ -8,27 +8,26 @@ Mathematically, PCA can be obtained through the eigendecomposition of the covari
 
 In applied research, PCA serves as both an exploratory and a preprocessing tool. It reveals latent structures, mitigates multicollinearity, and prepares data for further modeling. As Jolliffe (2002) notes, PCA is not only a method of reduction but also a lens through which the essential geometry of multivariate data becomes interpretable.
 
-Reference:  
+Reference:\
 Jolliffe, I. T. (2002). *Principal Component Analysis* (2nd ed.). Springer Series in Statistics.
-
 
 ## Example
 
 This document performs a Principal Component Analysis (PCA) on the combined data from the `anthropometrics.csv` and `vital_signs.csv` files (only `visit == 3`), as requested. It includes:
 
-1. Correlation matrix.
+1.  Correlation matrix.
 
-2. Standardization of variables (explanation and effect).
+2.  Standardization of variables (explanation and effect).
 
-3. PCA calculation and extraction of eigenvalues.
+3.  PCA calculation and extraction of eigenvalues.
 
-4. Scree plot.
+4.  Scree plot.
 
-5. Correlation circle (variables on the plane of the first two components).
+5.  Correlation circle (variables on the plane of the first two components).
 
-6. Biplot (individuals and variables).
+6.  Biplot (individuals and variables).
 
-7. Correlation plots between each variable and the principal components.
+7.  Correlation plots between each variable and the principal components.
 
 The tables with the eigenvalues and the proportion of variance explained are shown at the end.
 
@@ -66,8 +65,7 @@ Total <- anthropometrics %>%
 
 ```
 
-Vamos a tomar de los porcentajes, el maximo
-Y del BMI el promedio
+Vamos a tomar de los porcentajes, el maximo Y del BMI el promedio
 
 ```{r}
 Total_resum = Total %>% 
@@ -78,8 +76,6 @@ Total_resum = Total %>%
             meancurrent_weight_kg = mean(current_weight_kg, na.rm=TRUE),
             sdweight = sd(current_weight_kg, na.rm=TRUE))
 ```
-
-
 
 ```{r}
 # 1️⃣ Función para limpiar valores "<x"
@@ -111,7 +107,6 @@ Total_mean <- Total %>%
   summarise(across(where(is.numeric), ~ mean(.x, na.rm = TRUE)), .groups = "drop")
 ```
 
-
 ```{r, output=FALSE}
 # 1️⃣ Separar variables de identificación
 id_vars <- Total_mean %>% select(id, visit)
@@ -130,7 +125,6 @@ Total_imputed <- bind_cols(id_vars, num_imputed)
 #summary(Total_imputed)
 ```
 
-
 ```{r}
 # Conservamos id por separado y preparamos la matriz para PCA
 ids <- Total$id
@@ -139,7 +133,6 @@ Total_pca <- num_imputed
 # Comprobar dimensiones
 cat("Dimensiones (filas, columnas):", dim(Total_pca)[1], ",", dim(Total_pca)[2], "\n")
 ```
-
 
 ## 1. Correlation matrix
 
@@ -160,7 +153,6 @@ corrplot(cor_mat,
          cl.cex = 0.7,    # tamaño de escala de color
          col = colorRampPalette(c("blue", "white", "red"))(200))
 ```
-
 
 ```{r}
 corrplot(cor_mat,
@@ -186,8 +178,6 @@ corrplot(cor_mat,
          col = colorRampPalette(c("blue", "white", "red"))(200))
 ```
 
-
-
 ```{r}
 Heatmap(cor_mat,
         name = "Correlation",
@@ -197,7 +187,6 @@ Heatmap(cor_mat,
         cluster_rows = TRUE,
         cluster_columns = TRUE)
 ```
-
 
 ```{r}
 
@@ -219,6 +208,7 @@ top_related <- cor_strength_to_biomarkers %>%
 top_related
 
 ```
+
 ```{r}
 selected_vars <- c(varsBio, top_related)
 corrplot(cor_mat[selected_vars, selected_vars],
@@ -229,11 +219,9 @@ corrplot(cor_mat[selected_vars, selected_vars],
          col = colorRampPalette(c("blue", "white", "red"))(200))
 ```
 
-
 **Quick Explanation:** The correlation matrix shows the linear relationship between pairs of variables (-1 to 1). In PCA, this helps to identify redundancies and strongly correlated variables that influence the components.
 
 ## 2. Data Standardization
-
 
 ```{r estandarizacion}
 # En PCA se suele estandarizar (media 0, sd 1) cuando las variables están en distintas escalas
@@ -262,6 +250,7 @@ eigen_table <- tibble(PC = paste0("PC", 1:length(eigenvalues)),
 
 kable(eigen_table, caption = "Valores propios (autovalues) y varianza explicada")
 ```
+
 Eigenvalues indicate the variance captured by each component. A rule of thumb (Kaiser) suggests keeping components with eigenvalues greater than 1 when performing PCA on the correlation matrix.
 
 ## 4. Scree plot
@@ -295,6 +284,7 @@ fviz_pca_biplot(pca_res, repel = TRUE, label = "var", addEllipses = FALSE)
 ind_coords <- as.data.frame(pca_res$x) 
 knitr::kable(head(ind_coords), caption = "Coordenadas de los primeros individuos en el espacio de PC")
 ```
+
 ## 7. Correlation between variables and principal components
 
 ```{r var-pc-correlations}
