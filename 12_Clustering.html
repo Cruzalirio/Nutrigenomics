@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>11&nbsp; Introduction to Clustering – Design of Experimental Studies and Statistics Applied to Nutrigenomics</title>
+<title>10&nbsp; Introduction to Clustering – Design of Experimental Studies and Statistics Applied to Nutrigenomics</title>
 <style>
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
@@ -71,7 +71,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./referencias.html" rel="next">
+<link href="./08_Practica_AI4FoodDB.html" rel="next">
 <link href="./10_PCAInEnglish.html" rel="prev">
 <link href="./Figures/atlas.jpeg" rel="icon" type="image/jpeg">
 <script src="site_libs/quarto-html/quarto.js" type="module"></script>
@@ -291,7 +291,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Alternar barra lateral" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./12_Clustering.html"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Introduction to Clustering</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./12_Clustering.html"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Introduction to Clustering</span></a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Alternar barra lateral" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Buscar" onclick="window.quartoOpenSearch();">
@@ -369,26 +369,26 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./08_Practica_AI4FoodDB.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Practice of Bivariate Analysis</span></span></a>
-  </div>
-</li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
   <a href="./09_PCAEnglish.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Principal component Analysis</span></span></a>
+ <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Principal component Analysis</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./10_PCAInEnglish.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Principal component Analysis (joint some databases)</span></span></a>
+ <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Principal component Analysis (joint some databases)</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./12_Clustering.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Introduction to Clustering</span></span></a>
+ <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Introduction to Clustering</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./08_Practica_AI4FoodDB.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Final Practice of Multivariate Analysis</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
@@ -407,16 +407,16 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">Tabla de contenidos</h2>
    
   <ul>
-  <li><a href="#common-types-of-clustering" id="toc-common-types-of-clustering" class="nav-link active" data-scroll-target="#common-types-of-clustering"><span class="header-section-number">11.1</span> Common Types of Clustering</a></li>
-  <li><a href="#distance-between-individuals" id="toc-distance-between-individuals" class="nav-link" data-scroll-target="#distance-between-individuals"><span class="header-section-number">11.2</span> Distance between individuals</a></li>
-  <li><a href="#distance-between-clusters" id="toc-distance-between-clusters" class="nav-link" data-scroll-target="#distance-between-clusters"><span class="header-section-number">11.3</span> Distance between clusters</a></li>
-  <li><a href="#data-loading-and-creation-of-the-total-object" id="toc-data-loading-and-creation-of-the-total-object" class="nav-link" data-scroll-target="#data-loading-and-creation-of-the-total-object"><span class="header-section-number">11.4</span> 0. Data loading and creation of the <code>Total</code> object</a></li>
-  <li><a href="#distance-matrix" id="toc-distance-matrix" class="nav-link" data-scroll-target="#distance-matrix"><span class="header-section-number">11.5</span> 1. Distance matrix</a></li>
-  <li><a href="#dendrograma" id="toc-dendrograma" class="nav-link" data-scroll-target="#dendrograma"><span class="header-section-number">11.6</span> Dendrograma</a></li>
-  <li><a href="#elbows-graph" id="toc-elbows-graph" class="nav-link" data-scroll-target="#elbows-graph"><span class="header-section-number">11.7</span> Elbow’s Graph</a></li>
-  <li><a href="#k-medias-method" id="toc-k-medias-method" class="nav-link" data-scroll-target="#k-medias-method"><span class="header-section-number">11.8</span> K medias method</a></li>
-  <li><a href="#sillohuete-graph" id="toc-sillohuete-graph" class="nav-link" data-scroll-target="#sillohuete-graph"><span class="header-section-number">11.9</span> Sillohuete graph</a></li>
-  <li><a href="#nbclust" id="toc-nbclust" class="nav-link" data-scroll-target="#nbclust"><span class="header-section-number">11.10</span> NbCLust</a></li>
+  <li><a href="#common-types-of-clustering" id="toc-common-types-of-clustering" class="nav-link active" data-scroll-target="#common-types-of-clustering"><span class="header-section-number">10.1</span> Common Types of Clustering</a></li>
+  <li><a href="#distance-between-individuals" id="toc-distance-between-individuals" class="nav-link" data-scroll-target="#distance-between-individuals"><span class="header-section-number">10.2</span> Distance between individuals</a></li>
+  <li><a href="#distance-between-clusters" id="toc-distance-between-clusters" class="nav-link" data-scroll-target="#distance-between-clusters"><span class="header-section-number">10.3</span> Distance between clusters</a></li>
+  <li><a href="#data-loading-and-creation-of-the-total-object" id="toc-data-loading-and-creation-of-the-total-object" class="nav-link" data-scroll-target="#data-loading-and-creation-of-the-total-object"><span class="header-section-number">10.4</span> 0. Data loading and creation of the <code>Total</code> object</a></li>
+  <li><a href="#distance-matrix" id="toc-distance-matrix" class="nav-link" data-scroll-target="#distance-matrix"><span class="header-section-number">10.5</span> 1. Distance matrix</a></li>
+  <li><a href="#dendrograma" id="toc-dendrograma" class="nav-link" data-scroll-target="#dendrograma"><span class="header-section-number">10.6</span> Dendrograma</a></li>
+  <li><a href="#elbows-graph" id="toc-elbows-graph" class="nav-link" data-scroll-target="#elbows-graph"><span class="header-section-number">10.7</span> Elbow’s Graph</a></li>
+  <li><a href="#k-medias-method" id="toc-k-medias-method" class="nav-link" data-scroll-target="#k-medias-method"><span class="header-section-number">10.8</span> K medias method</a></li>
+  <li><a href="#sillohuete-graph" id="toc-sillohuete-graph" class="nav-link" data-scroll-target="#sillohuete-graph"><span class="header-section-number">10.9</span> Sillohuete graph</a></li>
+  <li><a href="#nbclust" id="toc-nbclust" class="nav-link" data-scroll-target="#nbclust"><span class="header-section-number">10.10</span> NbCLust</a></li>
   </ul>
 <div class="toc-actions"><ul><li><a href="https://github.com/Cruzalirio/Nutrigenomics/edit/main/12_Clustering.qmd" class="toc-action"><i class="bi bi-github"></i>Editar esta página</a></li><li><a href="https://github.com/Cruzalirio/Nutrigenomics/issues/new" class="toc-action"><i class="bi empty"></i>Informar sobre problema</a></li></ul></div></nav>
     </div>
@@ -426,7 +426,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Introduction to Clustering</span></h1>
+<h1 class="title"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Introduction to Clustering</span></h1>
 </div>
 
 
@@ -449,8 +449,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li><p>Individuals from different groups are as different as possible (high external heterogeneity).</p></li>
 </ul>
 <p>In other words, clustering seeks to discover hidden structures in the data without the need for prior labeling (unsupervised learning).</p>
-<section id="common-types-of-clustering" class="level2" data-number="11.1">
-<h2 data-number="11.1" class="anchored" data-anchor-id="common-types-of-clustering"><span class="header-section-number">11.1</span> Common Types of Clustering</h2>
+<section id="common-types-of-clustering" class="level2" data-number="10.1">
+<h2 data-number="10.1" class="anchored" data-anchor-id="common-types-of-clustering"><span class="header-section-number">10.1</span> Common Types of Clustering</h2>
 <ol type="1">
 <li>Hierarchical Clustering: constructs a hierarchy of groups represented by a dendrogram. It can be:</li>
 </ol>
@@ -462,8 +462,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li><strong>Partition-based clustering</strong>: for example, K-means, which divides the data into a fixed number of clusters, optimizing the internal distance.</li>
 </ol>
 </section>
-<section id="distance-between-individuals" class="level2" data-number="11.2">
-<h2 data-number="11.2" class="anchored" data-anchor-id="distance-between-individuals"><span class="header-section-number">11.2</span> Distance between individuals</h2>
+<section id="distance-between-individuals" class="level2" data-number="10.2">
+<h2 data-number="10.2" class="anchored" data-anchor-id="distance-between-individuals"><span class="header-section-number">10.2</span> Distance between individuals</h2>
 <p>The <strong>distance between individuals</strong> is a numerical measure of how different two observations are.</p>
 <p>The most common are:</p>
 <ul>
@@ -473,8 +473,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>[ d(x_i, x_j) = <em>{k=1}^p |x</em>{ik} - x_{jk}| ]</p>
 <p>Where (x_i, x_j) are vectors of the variables of individuals (i) and (j).</p>
 </section>
-<section id="distance-between-clusters" class="level2" data-number="11.3">
-<h2 data-number="11.3" class="anchored" data-anchor-id="distance-between-clusters"><span class="header-section-number">11.3</span> Distance between clusters</h2>
+<section id="distance-between-clusters" class="level2" data-number="10.3">
+<h2 data-number="10.3" class="anchored" data-anchor-id="distance-between-clusters"><span class="header-section-number">10.3</span> Distance between clusters</h2>
 <p>In hierarchical clustering, the <strong>distance between clusters</strong> is defined according to a <strong>linkage method</strong>, such as:</p>
 <ul>
 <li><p><strong>Single linkage</strong>: minimum distance between elements of both clusters.</p></li>
@@ -483,8 +483,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li><p><strong>Ward</strong>: minimizes the total variance within each cluster.</p></li>
 </ul>
 </section>
-<section id="data-loading-and-creation-of-the-total-object" class="level2" data-number="11.4">
-<h2 data-number="11.4" class="anchored" data-anchor-id="data-loading-and-creation-of-the-total-object"><span class="header-section-number">11.4</span> 0. Data loading and creation of the <code>Total</code> object</h2>
+<section id="data-loading-and-creation-of-the-total-object" class="level2" data-number="10.4">
+<h2 data-number="10.4" class="anchored" data-anchor-id="data-loading-and-creation-of-the-total-object"><span class="header-section-number">10.4</span> 0. Data loading and creation of the <code>Total</code> object</h2>
 <div class="cell">
 <details class="code-fold">
 <summary>Código</summary>
@@ -583,8 +583,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 </section>
-<section id="distance-matrix" class="level2" data-number="11.5">
-<h2 data-number="11.5" class="anchored" data-anchor-id="distance-matrix"><span class="header-section-number">11.5</span> 1. Distance matrix</h2>
+<section id="distance-matrix" class="level2" data-number="10.5">
+<h2 data-number="10.5" class="anchored" data-anchor-id="distance-matrix"><span class="header-section-number">10.5</span> 1. Distance matrix</h2>
 <p>We calculate Euclidean distances between individuals, which quantify how far apart they are in multidimensional space.</p>
 <div class="cell">
 <details class="code-fold">
@@ -612,8 +612,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 </section>
-<section id="dendrograma" class="level2" data-number="11.6">
-<h2 data-number="11.6" class="anchored" data-anchor-id="dendrograma"><span class="header-section-number">11.6</span> Dendrograma</h2>
+<section id="dendrograma" class="level2" data-number="10.6">
+<h2 data-number="10.6" class="anchored" data-anchor-id="dendrograma"><span class="header-section-number">10.6</span> Dendrograma</h2>
 <p>hclust performs hierarchical clustering, merging individuals step by step according to Ward’s criterion, which minimizes the total within-cluster variance.</p>
 <p>The dendrogram visualizes the merging process: the height of each merge indicates the distance between clusters.</p>
 <div class="cell">
@@ -683,8 +683,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 </section>
-<section id="elbows-graph" class="level2" data-number="11.7">
-<h2 data-number="11.7" class="anchored" data-anchor-id="elbows-graph"><span class="header-section-number">11.7</span> Elbow’s Graph</h2>
+<section id="elbows-graph" class="level2" data-number="10.7">
+<h2 data-number="10.7" class="anchored" data-anchor-id="elbows-graph"><span class="header-section-number">10.7</span> Elbow’s Graph</h2>
 <div class="cell">
 <details class="code-fold">
 <summary>Código</summary>
@@ -709,8 +709,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 </section>
-<section id="k-medias-method" class="level2" data-number="11.8">
-<h2 data-number="11.8" class="anchored" data-anchor-id="k-medias-method"><span class="header-section-number">11.8</span> K medias method</h2>
+<section id="k-medias-method" class="level2" data-number="10.8">
+<h2 data-number="10.8" class="anchored" data-anchor-id="k-medias-method"><span class="header-section-number">10.8</span> K medias method</h2>
 <p>K-means is an unsupervised clustering algorithm widely used to partition a dataset into a predetermined number of groups, denoted by k. The method aims to assign each observation to one of the k clusters such that the within-cluster variation is minimized. More precisely, k-means minimizes the total within-cluster sum of squares, which measures how close the observations in each cluster are to the corresponding cluster centroid.</p>
 <p>The algorithm proceeds iteratively in three main steps:</p>
 <ol type="1">
@@ -744,8 +744,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 </section>
-<section id="sillohuete-graph" class="level2" data-number="11.9">
-<h2 data-number="11.9" class="anchored" data-anchor-id="sillohuete-graph"><span class="header-section-number">11.9</span> Sillohuete graph</h2>
+<section id="sillohuete-graph" class="level2" data-number="10.9">
+<h2 data-number="10.9" class="anchored" data-anchor-id="sillohuete-graph"><span class="header-section-number">10.9</span> Sillohuete graph</h2>
 <p>The <em>silhouette index</em> is a commonly used metric to evaluate the quality of a clustering solution. It measures how well each observation fits within its assigned cluster compared to other clusters.</p>
 <p>For each observation <em>i</em>:</p>
 <ul>
@@ -782,8 +782,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 </section>
-<section id="nbclust" class="level2" data-number="11.10">
-<h2 data-number="11.10" class="anchored" data-anchor-id="nbclust"><span class="header-section-number">11.10</span> NbCLust</h2>
+<section id="nbclust" class="level2" data-number="10.10">
+<h2 data-number="10.10" class="anchored" data-anchor-id="nbclust"><span class="header-section-number">10.10</span> NbCLust</h2>
 <div class="cell">
 <details class="code-fold">
 <summary>Código</summary>
@@ -1352,12 +1352,12 @@ Value_Index      0.544</code></pre>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
       <a href="./10_PCAInEnglish.html" class="pagination-link" aria-label="Principal component Analysis (joint some databases)">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Principal component Analysis (joint some databases)</span></span>
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Principal component Analysis (joint some databases)</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./referencias.html" class="pagination-link" aria-label="References">
-        <span class="nav-page-text">References</span> <i class="bi bi-arrow-right-short"></i>
+      <a href="./08_Practica_AI4FoodDB.html" class="pagination-link" aria-label="Final Practice of Multivariate Analysis">
+        <span class="nav-page-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Final Practice of Multivariate Analysis</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>

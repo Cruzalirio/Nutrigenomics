@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>10&nbsp; Principal component Analysis (joint some databases) – Design of Experimental Studies and Statistics Applied to Nutrigenomics</title>
+<title>9&nbsp; Principal component Analysis (joint some databases) – Design of Experimental Studies and Statistics Applied to Nutrigenomics</title>
 <style>
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
@@ -291,7 +291,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Alternar barra lateral" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./10_PCAInEnglish.html"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Principal component Analysis (joint some databases)</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./10_PCAInEnglish.html"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Principal component Analysis (joint some databases)</span></a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Alternar barra lateral" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Buscar" onclick="window.quartoOpenSearch();">
@@ -369,26 +369,26 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./08_Practica_AI4FoodDB.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Practice of Bivariate Analysis</span></span></a>
-  </div>
-</li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
   <a href="./09_PCAEnglish.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Principal component Analysis</span></span></a>
+ <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Principal component Analysis</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./10_PCAInEnglish.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Principal component Analysis (joint some databases)</span></span></a>
+ <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Principal component Analysis (joint some databases)</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./12_Clustering.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Introduction to Clustering</span></span></a>
+ <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Introduction to Clustering</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./08_Practica_AI4FoodDB.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Final Practice of Multivariate Analysis</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
@@ -407,15 +407,15 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">Tabla de contenidos</h2>
    
   <ul>
-  <li><a href="#example" id="toc-example" class="nav-link active" data-scroll-target="#example"><span class="header-section-number">10.1</span> Example</a></li>
-  <li><a href="#data-loading-and-creation-of-the-total-object" id="toc-data-loading-and-creation-of-the-total-object" class="nav-link" data-scroll-target="#data-loading-and-creation-of-the-total-object"><span class="header-section-number">10.2</span> 0. Data loading and creation of the <code>Total</code> object</a></li>
-  <li><a href="#correlation-matrix" id="toc-correlation-matrix" class="nav-link" data-scroll-target="#correlation-matrix"><span class="header-section-number">10.3</span> 1. Correlation matrix</a></li>
-  <li><a href="#data-standardization" id="toc-data-standardization" class="nav-link" data-scroll-target="#data-standardization"><span class="header-section-number">10.4</span> 2. Data Standardization</a></li>
-  <li><a href="#pca-and-eigenvalue-extraction" id="toc-pca-and-eigenvalue-extraction" class="nav-link" data-scroll-target="#pca-and-eigenvalue-extraction"><span class="header-section-number">10.5</span> 3. PCA and Eigenvalue Extraction</a></li>
-  <li><a href="#scree-plot" id="toc-scree-plot" class="nav-link" data-scroll-target="#scree-plot"><span class="header-section-number">10.6</span> 4. Scree plot</a></li>
-  <li><a href="#circle-of-correlations-variables" id="toc-circle-of-correlations-variables" class="nav-link" data-scroll-target="#circle-of-correlations-variables"><span class="header-section-number">10.7</span> 5. Circle of Correlations (Variables)</a></li>
-  <li><a href="#biplot-of-variables-and-individuals" id="toc-biplot-of-variables-and-individuals" class="nav-link" data-scroll-target="#biplot-of-variables-and-individuals"><span class="header-section-number">10.8</span> 6. Biplot of variables and individuals</a></li>
-  <li><a href="#correlation-between-variables-and-principal-components" id="toc-correlation-between-variables-and-principal-components" class="nav-link" data-scroll-target="#correlation-between-variables-and-principal-components"><span class="header-section-number">10.9</span> 7. Correlation between variables and principal components</a></li>
+  <li><a href="#example" id="toc-example" class="nav-link active" data-scroll-target="#example"><span class="header-section-number">9.1</span> Example</a></li>
+  <li><a href="#data-loading-and-creation-of-the-total-object" id="toc-data-loading-and-creation-of-the-total-object" class="nav-link" data-scroll-target="#data-loading-and-creation-of-the-total-object"><span class="header-section-number">9.2</span> 0. Data loading and creation of the <code>Total</code> object</a></li>
+  <li><a href="#correlation-matrix" id="toc-correlation-matrix" class="nav-link" data-scroll-target="#correlation-matrix"><span class="header-section-number">9.3</span> 1. Correlation matrix</a></li>
+  <li><a href="#data-standardization" id="toc-data-standardization" class="nav-link" data-scroll-target="#data-standardization"><span class="header-section-number">9.4</span> 2. Data Standardization</a></li>
+  <li><a href="#pca-and-eigenvalue-extraction" id="toc-pca-and-eigenvalue-extraction" class="nav-link" data-scroll-target="#pca-and-eigenvalue-extraction"><span class="header-section-number">9.5</span> 3. PCA and Eigenvalue Extraction</a></li>
+  <li><a href="#scree-plot" id="toc-scree-plot" class="nav-link" data-scroll-target="#scree-plot"><span class="header-section-number">9.6</span> 4. Scree plot</a></li>
+  <li><a href="#circle-of-correlations-variables" id="toc-circle-of-correlations-variables" class="nav-link" data-scroll-target="#circle-of-correlations-variables"><span class="header-section-number">9.7</span> 5. Circle of Correlations (Variables)</a></li>
+  <li><a href="#biplot-of-variables-and-individuals" id="toc-biplot-of-variables-and-individuals" class="nav-link" data-scroll-target="#biplot-of-variables-and-individuals"><span class="header-section-number">9.8</span> 6. Biplot of variables and individuals</a></li>
+  <li><a href="#correlation-between-variables-and-principal-components" id="toc-correlation-between-variables-and-principal-components" class="nav-link" data-scroll-target="#correlation-between-variables-and-principal-components"><span class="header-section-number">9.9</span> 7. Correlation between variables and principal components</a></li>
   </ul>
 <div class="toc-actions"><ul><li><a href="https://github.com/Cruzalirio/Nutrigenomics/edit/main/10_PCAInEnglish.qmd" class="toc-action"><i class="bi bi-github"></i>Editar esta página</a></li><li><a href="https://github.com/Cruzalirio/Nutrigenomics/issues/new" class="toc-action"><i class="bi empty"></i>Informar sobre problema</a></li></ul></div></nav>
     </div>
@@ -425,7 +425,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Principal component Analysis (joint some databases)</span></h1>
+<h1 class="title"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Principal component Analysis (joint some databases)</span></h1>
 </div>
 
 
@@ -448,8 +448,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>In applied research, PCA serves as both an exploratory and a preprocessing tool. It reveals latent structures, mitigates multicollinearity, and prepares data for further modeling. As Jolliffe (2002) notes, PCA is not only a method of reduction but also a lens through which the essential geometry of multivariate data becomes interpretable.</p>
 <p>Reference:<br>
 Jolliffe, I. T. (2002). <em>Principal Component Analysis</em> (2nd ed.). Springer Series in Statistics.</p>
-<section id="example" class="level2" data-number="10.1">
-<h2 data-number="10.1" class="anchored" data-anchor-id="example"><span class="header-section-number">10.1</span> Example</h2>
+<section id="example" class="level2" data-number="9.1">
+<h2 data-number="9.1" class="anchored" data-anchor-id="example"><span class="header-section-number">9.1</span> Example</h2>
 <p>This document performs a Principal Component Analysis (PCA) on the combined data from the <code>anthropometrics.csv</code> and <code>vital_signs.csv</code> files (only <code>visit == 3</code>), as requested. It includes:</p>
 <ol type="1">
 <li><p>Correlation matrix.</p></li>
@@ -465,8 +465,8 @@ Jolliffe, I. T. (2002). <em>Principal Component Analysis</em> (2nd ed.). Springe
 <p><strong>Note:</strong> Adjust the file paths if your project uses a different location. The code here assumes that the CSV files are in <code>C:/Users/UIB/Downloads/AI4FoodDB/...</code> as in your example.</p>
 </blockquote>
 </section>
-<section id="data-loading-and-creation-of-the-total-object" class="level2" data-number="10.2">
-<h2 data-number="10.2" class="anchored" data-anchor-id="data-loading-and-creation-of-the-total-object"><span class="header-section-number">10.2</span> 0. Data loading and creation of the <code>Total</code> object</h2>
+<section id="data-loading-and-creation-of-the-total-object" class="level2" data-number="9.2">
+<h2 data-number="9.2" class="anchored" data-anchor-id="data-loading-and-creation-of-the-total-object"><span class="header-section-number">9.2</span> 0. Data loading and creation of the <code>Total</code> object</h2>
 <div class="cell">
 <details class="code-fold">
 <summary>Código</summary>
@@ -572,8 +572,8 @@ Jolliffe, I. T. (2002). <em>Principal Component Analysis</em> (2nd ed.). Springe
 </div>
 </div>
 </section>
-<section id="correlation-matrix" class="level2" data-number="10.3">
-<h2 data-number="10.3" class="anchored" data-anchor-id="correlation-matrix"><span class="header-section-number">10.3</span> 1. Correlation matrix</h2>
+<section id="correlation-matrix" class="level2" data-number="9.3">
+<h2 data-number="9.3" class="anchored" data-anchor-id="correlation-matrix"><span class="header-section-number">9.3</span> 1. Correlation matrix</h2>
 <div class="cell">
 <details class="code-fold">
 <summary>Código</summary>
@@ -22186,8 +22186,8 @@ Jolliffe, I. T. (2002). <em>Principal Component Analysis</em> (2nd ed.). Springe
 </div>
 <p><strong>Quick Explanation:</strong> The correlation matrix shows the linear relationship between pairs of variables (-1 to 1). In PCA, this helps to identify redundancies and strongly correlated variables that influence the components.</p>
 </section>
-<section id="data-standardization" class="level2" data-number="10.4">
-<h2 data-number="10.4" class="anchored" data-anchor-id="data-standardization"><span class="header-section-number">10.4</span> 2. Data Standardization</h2>
+<section id="data-standardization" class="level2" data-number="9.4">
+<h2 data-number="9.4" class="anchored" data-anchor-id="data-standardization"><span class="header-section-number">9.4</span> 2. Data Standardization</h2>
 <div class="cell">
 <details class="code-fold">
 <summary>Código</summary>
@@ -22209,8 +22209,8 @@ Jolliffe, I. T. (2002). <em>Principal Component Analysis</em> (2nd ed.). Springe
 <p><strong>What standardization does and why:</strong></p>
 <p>Standardizing (subtracting the mean and dividing by the standard deviation) places all variables on the same scale. Without standardization, variables with large units (e.g., weight in grams) will dominate the principal components simply because of their scale. With <code>scale()</code>, each variable contributes according to its correlation, not its magnitude.</p>
 </section>
-<section id="pca-and-eigenvalue-extraction" class="level2" data-number="10.5">
-<h2 data-number="10.5" class="anchored" data-anchor-id="pca-and-eigenvalue-extraction"><span class="header-section-number">10.5</span> 3. PCA and Eigenvalue Extraction</h2>
+<section id="pca-and-eigenvalue-extraction" class="level2" data-number="9.5">
+<h2 data-number="9.5" class="anchored" data-anchor-id="pca-and-eigenvalue-extraction"><span class="header-section-number">9.5</span> 3. PCA and Eigenvalue Extraction</h2>
 <div class="cell">
 <details class="code-fold">
 <summary>Código</summary>
@@ -22354,8 +22354,8 @@ Jolliffe, I. T. (2002). <em>Principal Component Analysis</em> (2nd ed.). Springe
 </div>
 <p>Eigenvalues indicate the variance captured by each component. A rule of thumb (Kaiser) suggests keeping components with eigenvalues greater than 1 when performing PCA on the correlation matrix.</p>
 </section>
-<section id="scree-plot" class="level2" data-number="10.6">
-<h2 data-number="10.6" class="anchored" data-anchor-id="scree-plot"><span class="header-section-number">10.6</span> 4. Scree plot</h2>
+<section id="scree-plot" class="level2" data-number="9.6">
+<h2 data-number="9.6" class="anchored" data-anchor-id="scree-plot"><span class="header-section-number">9.6</span> 4. Scree plot</h2>
 <div class="cell">
 <details class="code-fold">
 <summary>Código</summary>
@@ -22371,8 +22371,8 @@ Jolliffe, I. T. (2002). <em>Principal Component Analysis</em> (2nd ed.). Springe
 </div>
 <p><strong>Interpretation:</strong> The graph shows the variance (in %) explained by each component. Look for the “elbow” or use the cumulative variance to decide how many components to retain.</p>
 </section>
-<section id="circle-of-correlations-variables" class="level2" data-number="10.7">
-<h2 data-number="10.7" class="anchored" data-anchor-id="circle-of-correlations-variables"><span class="header-section-number">10.7</span> 5. Circle of Correlations (Variables)</h2>
+<section id="circle-of-correlations-variables" class="level2" data-number="9.7">
+<h2 data-number="9.7" class="anchored" data-anchor-id="circle-of-correlations-variables"><span class="header-section-number">9.7</span> 5. Circle of Correlations (Variables)</h2>
 <div class="cell">
 <details class="code-fold">
 <summary>Código</summary>
@@ -22393,8 +22393,8 @@ Jolliffe, I. T. (2002). <em>Principal Component Analysis</em> (2nd ed.). Springe
 </div>
 <p><strong>What it shows:</strong> Each vector represents the correlation between the original variable and its components. Long vectors and those close to the perimeter have a high correlation with the components; vectors close to the X or Y axis are primarily correlated with PC1 or PC2.</p>
 </section>
-<section id="biplot-of-variables-and-individuals" class="level2" data-number="10.8">
-<h2 data-number="10.8" class="anchored" data-anchor-id="biplot-of-variables-and-individuals"><span class="header-section-number">10.8</span> 6. Biplot of variables and individuals</h2>
+<section id="biplot-of-variables-and-individuals" class="level2" data-number="9.8">
+<h2 data-number="9.8" class="anchored" data-anchor-id="biplot-of-variables-and-individuals"><span class="header-section-number">9.8</span> 6. Biplot of variables and individuals</h2>
 <div class="cell">
 <details class="code-fold">
 <summary>Código</summary>
@@ -22585,8 +22585,8 @@ Jolliffe, I. T. (2002). <em>Principal Component Analysis</em> (2nd ed.). Springe
 </div>
 </div>
 </section>
-<section id="correlation-between-variables-and-principal-components" class="level2" data-number="10.9">
-<h2 data-number="10.9" class="anchored" data-anchor-id="correlation-between-variables-and-principal-components"><span class="header-section-number">10.9</span> 7. Correlation between variables and principal components</h2>
+<section id="correlation-between-variables-and-principal-components" class="level2" data-number="9.9">
+<h2 data-number="9.9" class="anchored" data-anchor-id="correlation-between-variables-and-principal-components"><span class="header-section-number">9.9</span> 7. Correlation between variables and principal components</h2>
 <div class="cell">
 <details class="code-fold">
 <summary>Código</summary>
@@ -23022,12 +23022,12 @@ Jolliffe, I. T. (2002). <em>Principal Component Analysis</em> (2nd ed.). Springe
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
       <a href="./09_PCAEnglish.html" class="pagination-link" aria-label="Principal component Analysis">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Principal component Analysis</span></span>
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Principal component Analysis</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
       <a href="./12_Clustering.html" class="pagination-link" aria-label="Introduction to Clustering">
-        <span class="nav-page-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Introduction to Clustering</span></span> <i class="bi bi-arrow-right-short"></i>
+        <span class="nav-page-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Introduction to Clustering</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>
