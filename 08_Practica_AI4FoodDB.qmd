@@ -6,28 +6,53 @@ The [AI4FoodDB study](https://github.com/AI4Food/AI4FoodDB?tab=readme-ov-file#da
 
 The relevant datasets are:
 
-### Datasets
+## Datasets
 
 | Dataset | Data type | Examples of variables |
-|----------|----------|----------|
+|------------------------|------------------------|------------------------|
 | DS1 | Anthropometry | Weight, BMI, waist circumference |
 | DS2 | Lifestyle and health | Smoking, alcohol consumption, medication use |
 | DS4 | Biomarkers | Plasma proteins, glucose, cholesterol |
 | DS7 | Physical activity (IPAQ) | Minutes of moderate-to-vigorous activity, step counts |
 | DS8 | Sleep (Oviedo Sleep Questionnaire) | Sleep latency, efficiency, and duration |
+| DS9 | Emotional state (DASS-21) | Depression, anxiety, stress, total emotional distress scores |
+| DS10 | System Usability Scale (SUS) | Usability, learnability, user satisfaction, system acceptance |
 
-### Individual Assignments
+## Individual Assignments
 
 | Student | Secondary dataset | Complementary variables | Main tasks |
 |----------|----------|----------|----------|
 | Student 1 | DS1 – Anthropometry | Four anthropometric variables | PCA and clustering incorporating protein data, plus bivariate plots |
-| Student 2 | DS2 – Lifestyle | Four lifestyle variables | PCA, clustering, and analysis of clinical associations |
-| Student 3 | DS8 – Sleep | Four Oviedo Sleep Questionnaire (OSQ) variables | PCA, clustering, and analysis of sleep–proteomics associations |
-| Student 4 | DS7 – Physical activity (IPAQ) | Four physical activity variables | PCA, clustering, and analysis of physical activity–proteomics associations |
+| Student 2 | DS1 – Anthropometry | Four anthropometric variables | PCA and clustering incorporating protein data, plus bivariate plots |
+| Student 3 | DS6 – Vital Signs | Four vital-sign variables | PCA, clustering, and analysis of physiological–proteomics associations |
+| Student 4 | DS2 – Lifestyle and Health | Four lifestyle variables | PCA, clustering, and analysis of clinical associations |
+| Student 5 | DS2 – Lifestyle and Health | Four lifestyle variables | PCA, clustering, and analysis of clinical associations |
+| Student 6 | DS7 – Physical Activity (IPAQ) | Four physical activity variables | PCA, clustering, and analysis of physical activity–proteomics associations |
+| Student 7 | DS7 – Physical Activity (IPAQ) | Four physical activity variables | PCA, clustering, and analysis of physical activity–proteomics associations |
+| Student 8 | DS8 – Sleep (OSQ) | Four sleep variables | PCA, clustering, and analysis of sleep–proteomics associations |
+| Student 9 | DS8 – Sleep (OSQ) | Four sleep variables | PCA, clustering, and analysis of sleep–proteomics associations |
+| Student 10 | DS9 – Emotional State (DASS-21) | Four emotional state variables | PCA, clustering, and analysis of emotional wellbeing–proteomics associations |
+| Student 11 | DS10 – System Usability Scale (SUS) | Four usability variables | PCA, clustering, and analysis of usability–proteomics associations |
+
+## Protein Selection
+
+Each student must select four variables from the assigned secondary dataset. Subsequently, the ten proteins from DS4 showing the strongest overall associations with those four variables should be identified using absolute Pearson correlations.
+
+A possible selection criterion is:
+
+$$
+Score_j = \sum_{k=1}^{4} |r(X_j, Z_k)|
+$$
+
+
+where $X_j$ denotes protein $j$ and $Z_k$ denotes one of the four selected complementary variables.
+
+The ten proteins with the highest scores will be retained for subsequent descriptive, bivariate, PCA, and clustering analyses.
+
 
 ## Practical Assignment Structure
 
-Submission deadline: 15 November 2025
+Submission deadline: 16 December 2026
 
 Each student must submit a report in Quarto Markdown (.qmd) format or an HTML report generated in RStudio. The report must include the following sections.
 
@@ -49,7 +74,7 @@ Each student must submit a report in Quarto Markdown (.qmd) format or an HTML re
 - Produce two bivariate plots to investigate relationships between:
   (a) one protein and one complementary variable; and
   (b) either two proteins or two complementary variables.
-- Include a correlation plot (corrplot) for the 14 selected variables and provide a brief interpretation of the main patterns observed.
+- Include a correlation plot (corrplot) for the 10 selected variables and provide a brief interpretation of the main patterns observed.
 
 ### 4. Handling Repeated Measurements
 
@@ -80,7 +105,7 @@ Romero-Tapiador, S., et al. (2023). “AI4FoodDB: A Database for Personalized e-
 
 Lacruz-Pleguezuelos, B., et al. (2025). “AI4Food, a feasibility study for the implementation of automated devices in the nutritional advice and follow up within a weight loss intervention.” Clinical Nutrition, 48, 80–89.
 
-# Data Exploration: Initial Instructions
+## Data Exploration: Initial Instructions
 
 Briefly describe the AI4FoodDB study and the type of data analysed. Load the dataset assigned to you (for example, DS4 together with DS1, DS2, DS7, or DS8, according to your assignment).
 
@@ -94,11 +119,11 @@ Example R code for loading data (adapt the file paths and variable names as need
 
 Summarise the numbers of participants, variables, and measurement time points.
 
-# Methodology and Data Sources
+## Methodology and Data Sources
 
 Using the study documentation, explain how the data were collected, including the instruments used, the data collection period where relevant, and the nature of each variable. Justify the selection of the 10 proteins and four variables from the complementary dataset.
 
-# Descriptive and Bivariate Analysis
+## Descriptive and Bivariate Analysis
 
 Calculate descriptive statistics (mean, standard deviation, minimum, and maximum) and produce two bivariate plots. One plot should show the relationship between a protein and a clinical or complementary variable; the other should show the relationship between two proteins or between two lifestyle variables.
 
@@ -117,13 +142,13 @@ Include a correlation plot (corrplot) for the 14 selected variables.
 # corrplot(cor(combined_data, use = "pairwise.complete.obs"), method = "color")
 ```
 
-# Handling Repeated Measurements
+## Handling Repeated Measurements
 
 Describe how you will handle the repeated measurements collected at two time points for each participant. Consider either analysing each time point separately or calculating within-participant differences (Δ = post-intervention − pre-intervention).
 
 Justify your decision and provide an example of the calculation.
 
-# Principal Component Analysis (PCA)
+## Principal Component Analysis (PCA)
 
 Perform PCA using the 14 selected variables. Interpret the first two principal components and produce a biplot.
 
@@ -134,7 +159,7 @@ Perform PCA using the 14 selected variables. Interpret the first two principal c
 # fviz_pca_biplot(pca, repel = TRUE)
 ```
 
-# Clustering Analysis
+## Clustering Analysis
 
 Apply k-means or hierarchical clustering, justify the selected number of clusters, and present the corresponding visualisation.
 
@@ -144,18 +169,22 @@ Apply k-means or hierarchical clustering, justify the selected number of cluster
 # fviz_cluster(km, data = scale(combined_data))
 ```
 
-# Conclusions
+## Conclusions
 
 Provide an interpretive summary of the patterns identified and discuss their potential biological or lifestyle-related implications.
 
-## Review Session — 13 November
+## Individual advisory sessions
+
+To support the development of the practical assignment, each student will be offered one individual advisory session of up to 1 hour during the week of 30 November to 4 December 2026. Students are expected to attend the session having already completed the data exploration and initial descriptive analyses.
+
+## Review Session — 14 December
 
 - In-class review of each student's progress on the .qmd report.
 - Review of the data-import and data-cleaning code.
 - Discussion of approaches to repeated measurements and variable scaling.
 - Individual feedback from the instructor.
 
-## Student Presentation Seminar — 4 December
+## Student Presentation Seminar — 17 December
 
 Each student will have 15 minutes to present:
 
@@ -164,6 +193,13 @@ Each student will have 15 minutes to present:
 3.  A biological or broader interpretative discussion.
 4.  Limitations of the analysis.
 
-## Assessment Criteria
+### Assessment Criteria
 
-Criterion \| Weight Data cleaning and preparation \| 15% Methodological clarity and justification \| 20% Bivariate plots and interpretation \| 15% PCA: implementation and interpretation \| 20% Clustering and interpretative analysis \| 15% Writing quality and final presentation \| 15%
+| Criterion | Percentaje |
+|-----------------------------------------|-------------------|
+| Weight Data cleaning and preparation | 15% |
+|Methodological clarity and justification | 20%|
+|Bivariate plots and interpretation | 15%|
+| PCA: implementation and interpretation | 20%|
+|Clustering and interpretative analysis | 15% |
+|Writing quality and final presentation | 15%|

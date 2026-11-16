@@ -54,6 +54,8 @@ lifestyle <- read_csv("data/AI4FoodDB/DS2_LifestyleHealth/lifestyle.csv")
 biomarkers <- read_csv("data/AI4FoodDB/DS4_Biomarkers/biomarkers.csv")
 OSQ <- read_csv("data/AI4FoodDB/DS8_SleepActivity/OviedoSleepQuestionnaire.csv")
 IPAQ <- read_csv("data/AI4FoodDB/DS7_PhysicalActivity/IPAQ.csv")
+SUS <- read_csv("data/AI4FoodDB/DS10_AdditionalInformation/SUS.csv")
+DAS <- read_csv("data/AI4FoodDB/DS9_EmotionalState/DASS-21.csv")
 
 
 Total <- anthropometrics %>%
@@ -61,7 +63,10 @@ Total <- anthropometrics %>%
   full_join(lifestyle, by = c("id")) %>%
   full_join(biomarkers, by = c("id", "visit")) %>%
   full_join(OSQ, by = c("id", "visit")) %>%
-  full_join(IPAQ, by = c("id", "visit"))
+  full_join(IPAQ, by = c("id", "visit"))%>%
+  full_join(SUS, by = c("id", "visit"))%>%
+  full_join(DAS, by = c("id", "visit"))
+
 
 ```
 
@@ -226,7 +231,7 @@ corrplot(cor_mat[selected_vars, selected_vars],
 ```{r estandarizacion}
 # En PCA se suele estandarizar (media 0, sd 1) cuando las variables están en distintas escalas
 scaled_data <- scale(Total_pca[names(Total_pca)%in%selected_vars])
-
+str(scaled_data)
 ```
 
 **What standardization does and why:**
@@ -289,5 +294,5 @@ knitr::kable(head(ind_coords), caption = "Coordenadas de los primeros individuos
 
 ```{r var-pc-correlations}
 var <- get_pca_var(pca_res)
-corrplot(var$cos2[,1:11], is.corr=FALSE)
+corrplot(var$cos2[,1:7], is.corr=FALSE)
 ```
