@@ -1,4 +1,4 @@
-# Practice of Bivariate Analysis
+# Final Practice of Multivariate Analysis
 
 To analyse and integrate clinical, anthropometric, and molecular data from the AI4FoodDB study using descriptive and multivariate statistical methods, including principal component analysis (PCA) and clustering, to investigate patterns of variation and associations among variables from different biological and lifestyle domains.
 
@@ -22,17 +22,17 @@ The relevant datasets are:
 
 | Student | Secondary dataset | Complementary variables | Main tasks |
 |----------|----------|----------|----------|
-| Student 1 | DS1 – Anthropometry | Four anthropometric variables | PCA and clustering incorporating protein data, plus bivariate plots |
-| Student 2 | DS1 – Anthropometry | Four anthropometric variables | PCA and clustering incorporating protein data, plus bivariate plots |
-| Student 3 | DS6 – Vital Signs | Four vital-sign variables | PCA, clustering, and analysis of physiological–proteomics associations |
-| Student 4 | DS2 – Lifestyle and Health | Four lifestyle variables | PCA, clustering, and analysis of clinical associations |
-| Student 5 | DS2 – Lifestyle and Health | Four lifestyle variables | PCA, clustering, and analysis of clinical associations |
-| Student 6 | DS7 – Physical Activity (IPAQ) | Four physical activity variables | PCA, clustering, and analysis of physical activity–proteomics associations |
-| Student 7 | DS7 – Physical Activity (IPAQ) | Four physical activity variables | PCA, clustering, and analysis of physical activity–proteomics associations |
-| Student 8 | DS8 – Sleep (OSQ) | Four sleep variables | PCA, clustering, and analysis of sleep–proteomics associations |
-| Student 9 | DS8 – Sleep (OSQ) | Four sleep variables | PCA, clustering, and analysis of sleep–proteomics associations |
-| Student 10 | DS9 – Emotional State (DASS-21) | Four emotional state variables | PCA, clustering, and analysis of emotional wellbeing–proteomics associations |
-| Student 11 | DS10 – System Usability Scale (SUS) | Four usability variables | PCA, clustering, and analysis of usability–proteomics associations |
+| Student 1 (Marta)| DS1 – Anthropometry | Four anthropometric variables | PCA and clustering incorporating protein data, plus bivariate plots |
+| Student 2 (Pedro)| DS1 – Anthropometry | Four anthropometric variables | PCA and clustering incorporating protein data, plus bivariate plots |
+| Student 3 (Laura)| DS6 – Vital Signs | Four vital-sign variables | PCA, clustering, and analysis of physiological–proteomics associations |
+| Student 4 (Ximena) | DS2 – Lifestyle and Health | Four lifestyle variables | PCA, clustering, and analysis of clinical associations |
+| Student 5 (Maria) | DS2 – Lifestyle and Health | Four lifestyle variables | PCA, clustering, and analysis of clinical associations |
+| Student 6 (José Luis) | DS7 – Physical Activity (IPAQ) | Four physical activity variables | PCA, clustering, and analysis of physical activity–proteomics associations |
+| Student 7 (Mona)| DS7 – Physical Activity (IPAQ) | Four physical activity variables | PCA, clustering, and analysis of physical activity–proteomics associations |
+| Student 8 (Yanira) | DS8 – Sleep (OSQ) | Four sleep variables | PCA, clustering, and analysis of sleep–proteomics associations |
+| Student 9 (Leire) | DS8 – Sleep (OSQ) | Four sleep variables | PCA, clustering, and analysis of sleep–proteomics associations |
+| Student 10 (Lamiae) | DS9 – Emotional State (DASS-21) | Four emotional state variables | PCA, clustering, and analysis of emotional wellbeing–proteomics associations |
+| Student 11 (Montse) | DS10 – System Usability Scale (SUS) | Four usability variables | PCA, clustering, and analysis of usability–proteomics associations |
 
 ## Protein Selection
 
