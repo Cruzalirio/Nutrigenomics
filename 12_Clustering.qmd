@@ -25,17 +25,17 @@ The **distance between individuals** is a numerical measure of how different two
 The most common are:
 
 - Euclidean distance:
-\[
+$$
 d(x_i, x_j) = \sqrt{\sum_{k=1}^p (x_{ik} - x_{jk})^2}
-\]
+$$
 
 - Manhattan distance:
 
-\[
+$$
 d(x_i, x_j) = \sum_{k=1}^p |x_{ik} - x_{jk}|
-\]
+$$
 
-Where \(x_i, x_j\) are vectors of the variables of individuals \(i\) and \(j\).
+Where $x_i, x_j$ are vectors of the variables of individuals $i$ and $j$.
 
 ## Distance between clusters
 
@@ -241,14 +241,14 @@ The *silhouette index* is a commonly used metric to evaluate the quality of a cl
 
 For each observation *i*:
 
-- \(a(i)\): the average distance between observation *i* and all other points in the same cluster (within-cluster cohesion).
-- \(b(i)\): the smallest average distance between observation *i\) and all points in any other cluster (separation from the nearest alternative cluster).
+- $a(i)$: the average distance between observation *i* and all other points in the same cluster (within-cluster cohesion).
+- $b(i)$: the smallest average distance between observation *i$ and all points in any other cluster (separation from the nearest alternative cluster).
 
 The silhouette value for observation *i* is defined as:
 
-\[
+$$
 s(i) = \frac{b(i) - a(i)}{\max\{a(i), b(i)\}}.
-\]
+$$
 
 The silhouette ranges from –1 to 1. Values close to **1** indicate that the observation is well matched to its cluster, values near **0** suggest overlapping clusters, and negative values indicate potential misclassification. The **average silhouette index** across all observations provides an overall measure of clustering quality and is commonly used to compare solutions with different numbers of clusters.
 
@@ -264,22 +264,255 @@ mean_sil_km <- mean(sil_km[, 3])
 cat("Silhouette promedio k-means (k=10): ", round(mean_sil_km, 4), "\n", sep="")
 plot(sil_km, main = "Silhouette para k-means (k=3)")
 ```
-## NbCLust
 
+## Cluster profiling and statistical comparison
+
+### Determination of the number of clusters using NbClust
+
+Selecting the optimal number of clusters is a critical step in cluster analysis. Different clustering validity criteria may provide different recommendations because they evaluate distinct aspects of cluster quality, such as compactness, separation, stability, or explained variance.
+
+The **NbClust** package provides a comprehensive framework for determining the optimal number of clusters by simultaneously evaluating a large collection of clustering validity indices. For each candidate number of clusters \(k\), several criteria are computed and compared.
+
+In this analysis, the first ten principal components obtained from PCA were used as input variables. Hierarchical clustering with complete linkage was applied and cluster solutions ranging from two to ten groups were evaluated.
 
 ```{r}
 library(NbClust)
 
 ACPgrupos <- princomp(num_scaled[,1:99])
-##ACPgrupos$scores
 
-diss_matrix <-  dist(ACPgrupos$scores[,1:10], method = "euclidean", diag = FALSE)
+diss_matrix <- dist(
+  ACPgrupos$scores[,1:10],
+  method = "euclidean"
+)
 
-res <- NbClust(ACPgrupos$scores[,1:10], diss = diss_matrix, distance = NULL, min.nc = 2, max.nc = 10,
-               method = "complete", index = "alllong")
-res$All.index
+res <- NbClust(
+  ACPgrupos$scores[,1:10],
+  diss      = diss_matrix,
+  distance  = NULL,
+  min.nc    = 2,
+  max.nc    = 10,
+  method    = "complete",
+  index     = "alllong"
+)
+
 res$Best.nc
-res$All.CriticalValues
-res$Best.partition
 ```
 
+Each validity index suggests an optimal number of clusters. NbClust then summarizes all recommendations and identifies the solution supported by the majority of criteria. This strategy reduces dependence on any single clustering metric and provides a more robust selection of the number of clusters.
+
+
+
+### Cluster assignment
+
+The selected clustering solution was obtained using K-means.
+
+```{r}
+set.seed(123)
+
+km3 <- kmeans(
+  num_scaled,
+  centers = 3,
+  nstart = 25
+)
+
+Total_imputed$cluster <- factor(km3$cluster)
+Total_mean$cluster <- factor(km3$cluster)
+
+table(Total_mean$cluster)
+```
+
+
+
+## Descriptive statistics by cluster
+
+To characterize the clusters, means and variances were computed for all original variables.
+
+### Means by cluster
+
+```{r}
+cluster_means <- Total_mean %>%
+  group_by(cluster) %>%
+  summarise(
+    across(
+      where(is.numeric),
+      mean,
+      na.rm = TRUE
+    )
+  )
+
+kable(cluster_means, digits = 2)
+```
+
+### Variances by cluster
+
+```{r}
+cluster_vars <- Total_mean %>%
+  group_by(cluster) %>%
+  summarise(
+    across(
+      where(is.numeric),
+      var,
+      na.rm = TRUE
+    )
+  )
+
+kable(cluster_vars, digits = 3)
+```
+
+
+
+## Cluster profiles (mean ± SD)
+
+The following table summarizes the central tendency and dispersion of each variable within each cluster.
+
+```{r}
+profile_table <- Total_mean %>%
+  group_by(cluster) %>%
+  summarise(
+    across(
+      where(is.numeric),
+      list(
+        mean = ~mean(.x, na.rm = TRUE),
+        sd   = ~sd(.x, na.rm = TRUE)
+      )
+    )
+  )
+
+profile_table
+```
+
+
+
+## One-way ANOVA across clusters
+
+To identify which variables significantly differ among clusters, a one-way ANOVA was performed independently for each variable.
+
+The null hypothesis is
+
+$$
+H_0:\mu_1=\mu_2=\cdots=\mu_k
+$$
+
+where \(\mu_j\) denotes the mean of a variable within cluster \(j\).
+
+A significant result indicates that at least one of the cluster means differs from the others.
+
+```{r}
+numeric_vars <- names(
+  Total_mean %>%
+    select(where(is.numeric))
+)
+
+numeric_vars <- setdiff(
+  numeric_vars,
+  c("cluster","id","visit")
+)
+
+anova_results <- lapply(
+  numeric_vars,
+  function(v){
+
+    f <- as.formula(
+      paste0("`", v, "` ~ cluster")
+    )
+
+    model <- aov(
+      f,
+      data = Total_mean
+    )
+
+    pval <- summary(model)[[1]][["Pr(>F)"]][1]
+
+    data.frame(
+      variable = v,
+      pvalue = pval
+    )
+
+  }
+)
+
+
+anova_results <- bind_rows(anova_results)
+
+anova_results <- anova_results %>%
+  arrange(pvalue)
+
+kable(anova_results, digits=5)
+```
+
+
+
+## Multiple testing correction
+
+Since many variables are tested simultaneously, false discovery rate (FDR) correction is applied.
+
+```{r}
+anova_results <- anova_results %>%
+  mutate(
+    p_adj = p.adjust(
+      pvalue,
+      method = "fdr"
+    )
+  ) %>%
+  arrange(p_adj)
+
+kable(anova_results, digits=5)
+```
+
+Variables with
+
+```text
+p_adj < 0.05
+```
+
+are considered significantly different among clusters after controlling for multiple comparisons.
+
+
+
+## Most discriminant variables
+
+The variables that best characterize the cluster structure correspond to those with the smallest FDR-adjusted p-values.
+
+```{r}
+top_variables <- anova_results %>%
+  arrange(p_adj) %>%
+  slice(1:20)
+
+kable(top_variables, digits=5)
+```
+
+
+
+## Boxplots of the most discriminant variables
+
+```{r}
+top5 <- top_variables$variable[1:5]
+
+for(v in top5){
+
+  p <- ggplot(
+    Total_mean,
+    aes(
+      x = cluster,
+      y = .data[[v]],
+      fill = cluster
+    )
+  ) +
+    geom_boxplot() +
+    theme_minimal() +
+    labs(
+      title = v,
+      x = "Cluster",
+      y = v
+    )
+
+  print(p)
+}
+```
+
+
+## Interpretation
+
+Clusters should be interpreted according to the variables exhibiting the largest between-cluster differences and the smallest adjusted p-values.
+
+Variables with large mean differences and significant ANOVA results can be considered key determinants of cluster membership and provide insight into the biological, anthropometric, metabolic, lifestyle, or sleep-related characteristics defining each subgroup.
